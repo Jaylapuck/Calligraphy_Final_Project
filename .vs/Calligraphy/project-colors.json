@@ -1,0 +1,26 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "7c137504-73c7-41ac-98c2-b8e9c75ce9e1": {
+      "ProjectGuid": "7c137504-73c7-41ac-98c2-b8e9c75ce9e1",
+      "DisplayName": "Calligraphy.Controller",
+      "ColorIndex": 0
+    },
+    "01f381b6-5281-4fb7-baf5-a8c662132408": {
+      "ProjectGuid": "01f381b6-5281-4fb7-baf5-a8c662132408",
+      "DisplayName": "Calligraphy.Data",
+      "ColorIndex": 1
+    },
+    "9df2b0d0-8b4a-43c0-8f1b-444f460482d1": {
+      "ProjectGuid": "9df2b0d0-8b4a-43c0-8f1b-444f460482d1",
+      "DisplayName": "Calligraphy.Business",
+      "ColorIndex": 2
+    },
+    "9859b937-c104-403d-8014-966fe2d7efbf": {
+      "ProjectGuid": "9859b937-c104-403d-8014-966fe2d7efbf",
+      "DisplayName": "Calligraphy.Tests",
+      "ColorIndex": 3
+    }
+  },
+  "NextColorIndex": 4
+}

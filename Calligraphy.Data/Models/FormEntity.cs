@@ -1,0 +1,17 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Calligraphy.Data.Models
+{
+    public class FormEntity
+    {
+        [Key] public int FormId { get; set; }
+
+        public string ServiceType { get; set; }
+        public string Comments { get; set; }
+    }
+}

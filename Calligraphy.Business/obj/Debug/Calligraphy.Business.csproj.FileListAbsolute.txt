@@ -1,0 +1,15 @@
+C:\Users\Jeremy Forest\source\repos\Calligraphy\Calligraphy.Business\bin\Debug\Calligraphy.Business.dll.config
+C:\Users\Jeremy Forest\source\repos\Calligraphy\Calligraphy.Business\bin\Debug\Calligraphy.Business.dll
+C:\Users\Jeremy Forest\source\repos\Calligraphy\Calligraphy.Business\bin\Debug\Calligraphy.Business.pdb
+C:\Users\Jeremy Forest\source\repos\Calligraphy\Calligraphy.Business\bin\Debug\Calligraphy.Data.dll
+C:\Users\Jeremy Forest\source\repos\Calligraphy\Calligraphy.Business\bin\Debug\EntityFramework.dll
+C:\Users\Jeremy Forest\source\repos\Calligraphy\Calligraphy.Business\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Jeremy Forest\source\repos\Calligraphy\Calligraphy.Business\bin\Debug\Calligraphy.Data.pdb
+C:\Users\Jeremy Forest\source\repos\Calligraphy\Calligraphy.Business\bin\Debug\Calligraphy.Data.dll.config
+C:\Users\Jeremy Forest\source\repos\Calligraphy\Calligraphy.Business\bin\Debug\EntityFramework.xml
+C:\Users\Jeremy Forest\source\repos\Calligraphy\Calligraphy.Business\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Jeremy Forest\source\repos\Calligraphy\Calligraphy.Business\obj\Debug\Calligraphy.Business.csproj.AssemblyReference.cache
+C:\Users\Jeremy Forest\source\repos\Calligraphy\Calligraphy.Business\obj\Debug\Calligraphy.Business.csproj.CoreCompileInputs.cache
+C:\Users\Jeremy Forest\source\repos\Calligraphy\Calligraphy.Business\obj\Debug\Calligraphy.Business.csproj.CopyComplete
+C:\Users\Jeremy Forest\source\repos\Calligraphy\Calligraphy.Business\obj\Debug\Calligraphy.Business.dll
+C:\Users\Jeremy Forest\source\repos\Calligraphy\Calligraphy.Business\obj\Debug\Calligraphy.Business.pdb
