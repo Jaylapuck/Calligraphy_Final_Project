@@ -30,13 +30,13 @@ namespace Calligraphy.Data.Repo
             }
         }
 
-        public FormEntity Create(FormEntity form)
+        public bool Create(FormEntity form)
         {
             using (_context)
             {
                 _context.Forms.Add(form);
                 _context.SaveChanges();
-                return form;
+                return true;
             }
         }
     }

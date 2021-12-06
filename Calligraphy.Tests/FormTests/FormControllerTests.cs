@@ -61,23 +61,22 @@ namespace Calligraphy.Tests.FormTests
         {
             // Arrange
             var expected = new FormEntity();
-            _mockFormService.Setup(x => x.Create(expected)).Returns(expected);
+            _mockFormService.Setup(x => x.Create(expected)).Returns(true);
 
             // Act
             var actual = _formController.Post(expected);
 
             // Assert
-            Assert.IsInstanceOfType(actual, typeof(OkResult));
+            Assert.IsInstanceOfType(actual, typeof(OkNegotiatedContentResult<FormEntity>));
         }
         
-        /*
         [TestMethod]
         // test post api, returns bad request
         public void Post_ReturnsBadRequest()
         {
             // Arrange
             var expected = new FormEntity();
-            _mockFormService.Setup(x => x.Create(expected)).Returns(expected);
+            _mockFormService.Setup(x => x.Create(expected)).Returns(false);
 
             // Act
             var actual = _formController.Post(null);
@@ -85,6 +84,5 @@ namespace Calligraphy.Tests.FormTests
             // Assert
             Assert.IsInstanceOfType(actual, typeof(BadRequestResult));
         }
-        */
     }
 }

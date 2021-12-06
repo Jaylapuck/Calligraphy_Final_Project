@@ -28,7 +28,7 @@ namespace Calligraphy.Business.Form
         }
 
         //Add new form
-        public FormEntity Create(FormEntity form)
+        public bool Create(FormEntity form)
         {
             return _formRepo.Create(form);
         }

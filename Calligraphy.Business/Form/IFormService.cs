@@ -13,6 +13,6 @@ namespace Calligraphy.Business.Form
         IEnumerable<FormEntity> GetAll();
 
         // POST
-        FormEntity Create(FormEntity form);
+        bool Create(FormEntity form);
     }
 }

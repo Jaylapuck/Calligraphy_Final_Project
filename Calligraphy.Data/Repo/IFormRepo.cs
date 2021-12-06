@@ -7,7 +7,7 @@ namespace Calligraphy.Data.Repo
     {
         IEnumerable<FormEntity> GetAll();
 
-        FormEntity Create(FormEntity form);
+        bool Create(FormEntity form);
 
     }
 }

@@ -37,12 +37,12 @@ namespace Calligraphy.Controllers
         [HttpPost]
         public IHttpActionResult Post([FromBody] FormEntity form)
         {
-            if (!ModelState.IsValid)
+            var result = _formService.Create(form);
+            if (result)
             {
-                return BadRequest(ModelState);
+                return Ok(form);
             }
-            _formService.Create(form);
-            return Ok();
+            return BadRequest();
         }
     }
 }
