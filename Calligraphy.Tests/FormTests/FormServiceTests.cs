@@ -24,7 +24,7 @@ namespace Calligraphy.Tests.FormTests
         }
 
         [TestMethod]
-        // test get all
+        // TS2-TC5
         public void GetAllForms()
         {
             // Arrange
@@ -45,7 +45,7 @@ namespace Calligraphy.Tests.FormTests
         }
         
         [TestMethod]
-        // Post
+        // TS1-TC6
         public void CreateForm()
         {
             // Arrange

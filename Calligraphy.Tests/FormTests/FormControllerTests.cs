@@ -25,6 +25,7 @@ namespace Calligraphy.Tests.FormTests
             _formController = new FormController(_mockFormService.Object);
         }
         
+        // TS2-TC1
         [TestMethod]
         // test get all api
         public void GetAll()
@@ -40,6 +41,7 @@ namespace Calligraphy.Tests.FormTests
             Assert.AreEqual(expected, actual);
         }
         
+        // TS2-TC3
         [TestMethod]
         // test get all api, returns empty list
         public void GetAll_ReturnsNull()
@@ -56,7 +58,7 @@ namespace Calligraphy.Tests.FormTests
         }
         
         [TestMethod]
-        // test post api
+        // TC2-TC2
         public void Post_ReturnsOkResult()
         {
             // Arrange
@@ -71,7 +73,7 @@ namespace Calligraphy.Tests.FormTests
         }
         
         [TestMethod]
-        // test post api, returns bad request
+        // TC2-TC4
         public void Post_ReturnsBadRequest()
         {
             // Arrange
