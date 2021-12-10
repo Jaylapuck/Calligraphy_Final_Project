@@ -13,3 +13,18 @@ C:\Users\Jeremy Forest\source\repos\Calligraphy\Calligraphy.Business\obj\Debug\C
 C:\Users\Jeremy Forest\source\repos\Calligraphy\Calligraphy.Business\obj\Debug\Calligraphy.Business.csproj.CopyComplete
 C:\Users\Jeremy Forest\source\repos\Calligraphy\Calligraphy.Business\obj\Debug\Calligraphy.Business.dll
 C:\Users\Jeremy Forest\source\repos\Calligraphy\Calligraphy.Business\obj\Debug\Calligraphy.Business.pdb
+C:\Users\Jordan\Source\Repos\Calligraphy_Final_Project\Calligraphy.Business\bin\Debug\Calligraphy.Business.dll.config
+C:\Users\Jordan\Source\Repos\Calligraphy_Final_Project\Calligraphy.Business\bin\Debug\Calligraphy.Business.dll
+C:\Users\Jordan\Source\Repos\Calligraphy_Final_Project\Calligraphy.Business\bin\Debug\Calligraphy.Business.pdb
+C:\Users\Jordan\Source\Repos\Calligraphy_Final_Project\Calligraphy.Business\bin\Debug\Calligraphy.Data.dll
+C:\Users\Jordan\Source\Repos\Calligraphy_Final_Project\Calligraphy.Business\bin\Debug\EntityFramework.dll
+C:\Users\Jordan\Source\Repos\Calligraphy_Final_Project\Calligraphy.Business\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Jordan\Source\Repos\Calligraphy_Final_Project\Calligraphy.Business\bin\Debug\Calligraphy.Data.pdb
+C:\Users\Jordan\Source\Repos\Calligraphy_Final_Project\Calligraphy.Business\bin\Debug\Calligraphy.Data.dll.config
+C:\Users\Jordan\Source\Repos\Calligraphy_Final_Project\Calligraphy.Business\bin\Debug\EntityFramework.xml
+C:\Users\Jordan\Source\Repos\Calligraphy_Final_Project\Calligraphy.Business\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Jordan\Source\Repos\Calligraphy_Final_Project\Calligraphy.Business\obj\Debug\Calligraphy.Business.csproj.AssemblyReference.cache
+C:\Users\Jordan\Source\Repos\Calligraphy_Final_Project\Calligraphy.Business\obj\Debug\Calligraphy.Business.csproj.CoreCompileInputs.cache
+C:\Users\Jordan\Source\Repos\Calligraphy_Final_Project\Calligraphy.Business\obj\Debug\Calligraphy.Business.csproj.CopyComplete
+C:\Users\Jordan\Source\Repos\Calligraphy_Final_Project\Calligraphy.Business\obj\Debug\Calligraphy.Business.dll
+C:\Users\Jordan\Source\Repos\Calligraphy_Final_Project\Calligraphy.Business\obj\Debug\Calligraphy.Business.pdb
