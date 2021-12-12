@@ -16,3 +16,12 @@ C:\Users\Jeremy Forest\source\repos\Calligraphy_Final_Project\Calligraphy.Data\o
 C:\Users\Jeremy Forest\source\repos\Calligraphy_Final_Project\Calligraphy.Data\obj\Debug\netstandard2.0\Calligraphy.Data.csproj.CoreCompileInputs.cache
 C:\Users\Jeremy Forest\source\repos\Calligraphy_Final_Project\Calligraphy.Data\obj\Debug\netstandard2.0\Calligraphy.Data.dll
 C:\Users\Jeremy Forest\source\repos\Calligraphy_Final_Project\Calligraphy.Data\obj\Debug\netstandard2.0\Calligraphy.Data.pdb
+C:\Users\Jordan\Source\Repos\Calligraphy_Final_Project\Calligraphy.Data\bin\Debug\netstandard2.0\Calligraphy.Data.dll.config
+C:\Users\Jordan\Source\Repos\Calligraphy_Final_Project\Calligraphy.Data\bin\Debug\netstandard2.0\Calligraphy.Data.deps.json
+C:\Users\Jordan\Source\Repos\Calligraphy_Final_Project\Calligraphy.Data\bin\Debug\netstandard2.0\Calligraphy.Data.dll
+C:\Users\Jordan\Source\Repos\Calligraphy_Final_Project\Calligraphy.Data\bin\Debug\netstandard2.0\Calligraphy.Data.pdb
+C:\Users\Jordan\Source\Repos\Calligraphy_Final_Project\Calligraphy.Data\obj\Debug\netstandard2.0\Calligraphy.Data.csproj.AssemblyReference.cache
+C:\Users\Jordan\Source\Repos\Calligraphy_Final_Project\Calligraphy.Data\obj\Debug\netstandard2.0\Calligraphy.Data.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Jordan\Source\Repos\Calligraphy_Final_Project\Calligraphy.Data\obj\Debug\netstandard2.0\Calligraphy.Data.csproj.CoreCompileInputs.cache
+C:\Users\Jordan\Source\Repos\Calligraphy_Final_Project\Calligraphy.Data\obj\Debug\netstandard2.0\Calligraphy.Data.dll
+C:\Users\Jordan\Source\Repos\Calligraphy_Final_Project\Calligraphy.Data\obj\Debug\netstandard2.0\Calligraphy.Data.pdb
