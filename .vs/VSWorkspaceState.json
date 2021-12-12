@@ -1,7 +1,9 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\Calligraphy.Test",
+    "\\Calligraphy.Test\\Form"
   ],
-  "SelectedNode": "\\Calligraphy.sln",
+  "SelectedNode": "\\Calligraphy.Test\\Form\\FormServiceTests.cs",
   "PreviewInSolutionExplorer": false
 }

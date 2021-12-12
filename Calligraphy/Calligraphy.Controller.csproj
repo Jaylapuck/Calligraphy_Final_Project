@@ -27,8 +27,6 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
     <Folder Include="Views\Form\" />
   </ItemGroup>
   <ItemGroup>
