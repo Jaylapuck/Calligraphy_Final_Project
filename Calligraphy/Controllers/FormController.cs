@@ -1,19 +1,18 @@
 ﻿using Calligraphy.Business.Form;
 using Calligraphy.Data.Models;
+using Microsoft.AspNetCore.Cors;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
-using System.Web.Http;
-using System.Web.Http.Cors;
-using System.Web.Mvc;
-using HttpGetAttribute = System.Web.Http.HttpGetAttribute;
-using HttpPostAttribute = System.Web.Http.HttpPostAttribute;
+using System.Net.Mime;
 
 namespace Calligraphy.Controllers
 {
-    [EnableCors(origins: "*", headers: "*", methods: "*")]
-    public class FormController : ApiController
+    [EnableCors("ApiCorsPolicy")]
+    [ApiController]
+    [Route("[controller]")]
+    public class FormController : ControllerBase
     {
         // GET: Form
         private readonly IFormService _formService;
@@ -23,13 +22,15 @@ namespace Calligraphy.Controllers
             _formService = formService;
         }
 
-        public FormController()
-        {
-            _formService  = new FormService();
-        }
+        //public FormController()
+        //{
+        //    _formService  = new FormService();
+        //}
 
         // GET: api/Form
         [HttpGet]
+        [Route("/api/Form")]
+        [Produces(MediaTypeNames.Application.Json)]
         public IEnumerable<FormEntity> Get()
         {
             return _formService.GetAll();
@@ -37,7 +38,9 @@ namespace Calligraphy.Controllers
 
         // POST: api/Form
         [HttpPost]
-        public IHttpActionResult Post([FromBody] FormEntity form)
+        [Route("/api/Form")]
+        [Consumes(MediaTypeNames.Application.Json)]
+        public IActionResult Post([FromBody] FormEntity form)
         {
             var result = _formService.Create(form);
             if (result)

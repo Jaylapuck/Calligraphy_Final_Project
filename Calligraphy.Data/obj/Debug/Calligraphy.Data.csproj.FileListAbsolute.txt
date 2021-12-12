@@ -22,3 +22,15 @@ C:\Users\Jordan\Source\Repos\Calligraphy_Final_Project\Calligraphy.Data\obj\Debu
 C:\Users\Jordan\Source\Repos\Calligraphy_Final_Project\Calligraphy.Data\obj\Debug\Calligraphy.Data.csproj.CopyComplete
 C:\Users\Jordan\Source\Repos\Calligraphy_Final_Project\Calligraphy.Data\obj\Debug\Calligraphy.Data.dll
 C:\Users\Jordan\Source\Repos\Calligraphy_Final_Project\Calligraphy.Data\obj\Debug\Calligraphy.Data.pdb
+C:\Users\Trim\Source\Repos\Calligraphy_Final_Project\Calligraphy.Data\bin\Debug\Calligraphy.Data.dll.config
+C:\Users\Trim\Source\Repos\Calligraphy_Final_Project\Calligraphy.Data\bin\Debug\Calligraphy.Data.dll
+C:\Users\Trim\Source\Repos\Calligraphy_Final_Project\Calligraphy.Data\bin\Debug\Calligraphy.Data.pdb
+C:\Users\Trim\Source\Repos\Calligraphy_Final_Project\Calligraphy.Data\bin\Debug\EntityFramework.dll
+C:\Users\Trim\Source\Repos\Calligraphy_Final_Project\Calligraphy.Data\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Trim\Source\Repos\Calligraphy_Final_Project\Calligraphy.Data\bin\Debug\EntityFramework.xml
+C:\Users\Trim\Source\Repos\Calligraphy_Final_Project\Calligraphy.Data\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Trim\Source\Repos\Calligraphy_Final_Project\Calligraphy.Data\obj\Debug\Calligraphy.Data.csproj.AssemblyReference.cache
+C:\Users\Trim\Source\Repos\Calligraphy_Final_Project\Calligraphy.Data\obj\Debug\Calligraphy.Data.csproj.CoreCompileInputs.cache
+C:\Users\Trim\Source\Repos\Calligraphy_Final_Project\Calligraphy.Data\obj\Debug\Calligraphy.Data.csproj.CopyComplete
+C:\Users\Trim\Source\Repos\Calligraphy_Final_Project\Calligraphy.Data\obj\Debug\Calligraphy.Data.dll
+C:\Users\Trim\Source\Repos\Calligraphy_Final_Project\Calligraphy.Data\obj\Debug\Calligraphy.Data.pdb

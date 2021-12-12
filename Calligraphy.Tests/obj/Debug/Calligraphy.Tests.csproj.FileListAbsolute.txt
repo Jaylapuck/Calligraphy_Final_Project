@@ -126,3 +126,5 @@ C:\Users\Jordan\Source\Repos\Calligraphy_Final_Project\Calligraphy.Tests\obj\Deb
 C:\Users\Jordan\Source\Repos\Calligraphy_Final_Project\Calligraphy.Tests\obj\Debug\Calligraphy.Tests.csproj.CopyComplete
 C:\Users\Jordan\Source\Repos\Calligraphy_Final_Project\Calligraphy.Tests\obj\Debug\Calligraphy.Tests.dll
 C:\Users\Jordan\Source\Repos\Calligraphy_Final_Project\Calligraphy.Tests\obj\Debug\Calligraphy.Tests.pdb
+C:\Users\Trim\source\repos\Calligraphy_Final_Project\Calligraphy.Tests\obj\Debug\Calligraphy.Tests.dll
+C:\Users\Trim\source\repos\Calligraphy_Final_Project\Calligraphy.Tests\obj\Debug\Calligraphy.Tests.pdb

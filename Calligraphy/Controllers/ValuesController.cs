@@ -1,13 +1,13 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
-using System.Web.Http;
 
 namespace Calligraphy.Controllers
 {
-    public class ValuesController : ApiController
+    public class ValuesController : Microsoft.AspNetCore.Mvc.ControllerBase
     {
         // GET api/values
         public IEnumerable<string> Get()

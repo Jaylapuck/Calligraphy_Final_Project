@@ -1,5 +1,6 @@
 ﻿using Calligraphy.Data.Config;
 using Calligraphy.Data.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +12,9 @@ namespace Calligraphy.Data.Repo
     public class FormRepo : IFormRepo
     {
         private readonly CalligraphyContext _context;
-        
+        private readonly DbContextOptions<CalligraphyContext> options;
+
+
         public FormRepo(CalligraphyContext context)
         {
             _context = context;
@@ -19,7 +22,7 @@ namespace Calligraphy.Data.Repo
 
         public FormRepo()
         {
-            _context = new CalligraphyContext();
+            _context = new CalligraphyContext(options);
         }
         
         public IEnumerable<FormEntity> GetAll()
