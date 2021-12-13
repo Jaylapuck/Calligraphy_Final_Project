@@ -21,34 +21,49 @@ namespace Calligraphy.Data.Repo.Image
         {
             _context = new CalligraphyContext(options);
         }
-        
-        public void AddImage(ImageEntity image)
+
+        public IEnumerable<ImageEntity> GetAll()
         {
-            _context.Images.Add(image);
-            _context.SaveChanges();
+            using (_context)
+            {
+                return _context.Images.ToList();
+            }
         }
-        
-        public void DeleteImage(int id)
+
+        public ImageEntity GetById(int id)
         {
-            var image = _context.Images.FirstOrDefault(i => i.Id == id);
-            _context.Images.Remove(image);
-            _context.SaveChanges();
+            using (_context)
+            {
+                return _context.Images.FirstOrDefault(x => x.Id == id);
+            }
         }
-        
-        public ImageEntity GetImage(int id)
+
+        public void Add(ImageEntity image)
         {
-            return _context.Images.FirstOrDefault(i => i.Id == id);
+            using (_context)
+            {
+                _context.Images.Add(image);
+                _context.SaveChanges();
+            }
         }
-        
-        public List<ImageEntity> GetImages()
+
+        public void Update(ImageEntity image)
         {
-            return _context.Images.ToList();
+            using (_context)
+            {
+                _context.Images.Update(image);
+                _context.SaveChanges();
+            }
         }
-        
-        public void UpdateImage(ImageEntity image)
+
+        public void Delete(int id)
         {
-            _context.Images.Update(image);
-            _context.SaveChanges();
+            using (_context)
+            {
+                var image = _context.Images.FirstOrDefault(x => x.Id == id);
+                _context.Images.Remove(image);
+                _context.SaveChanges();
+            }
         }
     }
 }

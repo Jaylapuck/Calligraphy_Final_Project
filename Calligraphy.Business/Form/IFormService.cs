@@ -9,7 +9,7 @@ namespace Calligraphy.Business.Form
 {
     public interface IFormService
     {
-        // GET ALL
+        // GET ALLs
         IEnumerable<FormEntity> GetAll();
 
         // POST
