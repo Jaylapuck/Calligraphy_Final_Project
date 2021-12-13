@@ -1,5 +1,6 @@
 ﻿using Calligraphy.Mailer.Model;
 using Calligraphy.Mailer.Services;
+using Calligraphy.Mailer.Settings;
 using Microsoft.AspNetCore.Http;
 using Moq;
 using System;
@@ -20,12 +21,6 @@ namespace Calligraphy.Test.Mailer
         {
             _service = new Mock<IMailerService>();
             _request = new MailRequest("tristanblacklafleur@hotmail.ca", "Test", "This is a test.", new List<IFormFile>());
-        }
-
-        [Fact]
-        public Task SendEmailOk()
-        {
-            return null;
         }
     }
 }
