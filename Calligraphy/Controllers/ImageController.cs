@@ -11,57 +11,58 @@ namespace Calligraphy.Controllers
     [EnableCors("ApiCorsPolicy")]
     [ApiController]
     [Route("[controller]")]
-    public class ImageController : Controller
+    public class ImageController : ControllerBase
     {
-        private readonly IImageService _formService;
+        private readonly IImageService _imageService;
         
-        public ImageController(IImageService formService)
+        public ImageController(IImageService imageService)
         {
-            _formService = formService;
+            _imageService = imageService;
         }
-        
+
         // GET ALL
         [HttpGet]
-        [Route("/api/Form")]
+        [Route("/api/Image")]
         [Produces(MediaTypeNames.Application.Json)]
         public IEnumerable<ImageEntity> GetAll()
         {
-            return _formService.GetAll();
+            return _imageService.GetAll();
         }
        
         // GET BY ID
         [HttpGet]
-        [Route("/api/Form/{id}")]
+        [Route("/api/Image/{id:int}")]
         [Produces(MediaTypeNames.Application.Json)]
         public IActionResult GetById(int id)
         {
-            return _formService.GetById(id);
+            return _imageService.GetById(id);
         }
         
         // POST
         [HttpPost]
-        [Route("/api/Form")]
-        [Produces(MediaTypeNames.Application.Json)]
+        [Route("/api/Image")]
+        [Consumes(MediaTypeNames.Application.Json)]
         public IActionResult Create([FromBody] ImageEntity image)
         {
-           return _formService.Create(image);
+            return _imageService.Create(image);
         }
         
         // PUT
         [HttpPut]
-        [Route("/api/Form")]
-        [Produces(MediaTypeNames.Application.Json)]
-        public IActionResult Update([FromBody] ImageEntity image)
+        [Route("/api/Image/{id:int}")]
+        [Consumes(MediaTypeNames.Application.Json)]
+        public IActionResult Update([FromBody] ImageEntity image, int id)
         {
-            return _formService.Update(image);
+           return _imageService.Update(image, id);
         }
 
         [HttpDelete]
-        [Route("/api/Form/{id}")]
+        [Route("/api/Image/{id:int}")]
         [Produces(MediaTypeNames.Application.Json)]
-        public IActionResult Delete(ImageEntity image)
+        public IActionResult Delete(int id)
         {
-            return _formService.Delete(image);
+            return _imageService.Delete(id);
+
         }
     }
 }

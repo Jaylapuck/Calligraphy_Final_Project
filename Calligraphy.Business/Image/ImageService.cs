@@ -8,7 +8,7 @@ namespace Calligraphy.Business.Image
     public class ImageService : IImageService
     {
         private readonly IImageRepo _imageRepo;
-        
+
         public ImageService(IImageRepo imageRepo)
         {
             _imageRepo = imageRepo;
@@ -43,24 +43,33 @@ namespace Calligraphy.Business.Image
             _imageRepo.Add(image);
             return new OkObjectResult(image);
         }
-        
-        public IActionResult Update(ImageEntity image)
+
+        public IActionResult Update(ImageEntity image, int id)
         {
             if (image == null)
             {
                 return new BadRequestResult();
             }
-            _imageRepo.Update(image);
-            return new OkObjectResult(image);
+            var imageToUpdate = _imageRepo.GetById(id);
+            if (imageToUpdate == null)
+            {
+                return new NotFoundResult();
+            }
+            imageToUpdate.ImageTitle = image.ImageTitle;
+            imageToUpdate.ImageData = image.ImageData;
+            _imageRepo.Update(imageToUpdate);
+            return new OkObjectResult(imageToUpdate);
         }
 
-        public IActionResult Delete(ImageEntity image)
+
+        public IActionResult Delete(int id)
         {
+            var image = _imageRepo.GetById(id);
             if (image == null)
             {
-                return new NotFoundResult(); 
+                return new NotFoundResult();
             }
-            _imageRepo.Delete(image);
+            _imageRepo.DeleteById(id);
             return new OkResult();
         }
     }

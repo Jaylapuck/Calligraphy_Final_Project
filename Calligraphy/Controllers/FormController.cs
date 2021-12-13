@@ -14,19 +14,13 @@ namespace Calligraphy.Controllers
     [Route("[controller]")]
     public class FormController : ControllerBase
     {
-        // GET: Form
         private readonly IFormService _formService;
         
         public FormController(IFormService formService)
         {
             _formService = formService;
         }
-
-        //public FormController()
-        //{
-        //    _formService  = new FormService();
-        //}
-
+        
         // GET: api/Form
         [HttpGet]
         [Route("/api/Form")]

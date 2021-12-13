@@ -38,32 +38,33 @@ namespace Calligraphy.Data.Repo.Image
             }
         }
 
-        public bool Add(ImageEntity image)
+        public ImageEntity Add(ImageEntity image)
         {
             using (_context)
             {
                 _context.Images.Add(image);
                 _context.SaveChanges();
-                return true;
+                return image;
             }
         }
-
-        public bool Update(ImageEntity image)
+        
+        public ImageEntity Update(ImageEntity image)
         {
             using (_context)
             {
                 _context.Images.Update(image);
                 _context.SaveChanges();
-                return true;
+                return image;
             }
         }
-        public bool Delete(ImageEntity imageEntity)
+
+        public void DeleteById(int id)
         {
             using (_context)
             {
-                _context.Images.Remove(imageEntity);
+                var image = _context.Images.FirstOrDefault(x => x.Id == id);
+                _context.Images.Remove(image);
                 _context.SaveChanges();
-                return true;
             }
         }
     }

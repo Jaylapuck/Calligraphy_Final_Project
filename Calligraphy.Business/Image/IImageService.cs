@@ -16,10 +16,10 @@ namespace Calligraphy.Business.Image
         IActionResult Create(ImageEntity image);
         
         // UPDATE
-        IActionResult Update(ImageEntity image);
+        IActionResult Update(ImageEntity image, int id);
         
         // DELETE
-        IActionResult Delete(ImageEntity image);
+        IActionResult Delete(int id);
         
     }
 }

@@ -10,10 +10,10 @@ namespace Calligraphy.Data.Repo.Image
         ImageEntity GetById(int id);
         
         
-        bool Add(ImageEntity image);
+        ImageEntity Add(ImageEntity image);
         
-        bool Update(ImageEntity image);
+        ImageEntity Update(ImageEntity image);
         
-        bool Delete(ImageEntity image);
+        void DeleteById(int id);
     }
 }
