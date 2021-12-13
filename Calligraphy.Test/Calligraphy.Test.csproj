@@ -24,6 +24,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Calligraphy.Business\Calligraphy.Business.csproj" />
+    <ProjectReference Include="..\Calligraphy.Mailer\Calligraphy.Mailer.csproj" />
     <ProjectReference Include="..\Calligraphy\Calligraphy.Controller.csproj" />
   </ItemGroup>
 
