@@ -1,26 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Jordan\\Source\\Repos\\Calligraphy_Final_Project\\Calligraphy.Data\\Calligraphy.Data.csproj": {}
+    "C:\\Final P\\Calligraphy.Data\\Calligraphy.Data.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Jordan\\Source\\Repos\\Calligraphy_Final_Project\\Calligraphy.Data\\Calligraphy.Data.csproj": {
+    "C:\\Final P\\Calligraphy.Data\\Calligraphy.Data.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Jordan\\Source\\Repos\\Calligraphy_Final_Project\\Calligraphy.Data\\Calligraphy.Data.csproj",
+        "projectUniqueName": "C:\\Final P\\Calligraphy.Data\\Calligraphy.Data.csproj",
         "projectName": "Calligraphy.Data",
-        "projectPath": "C:\\Users\\Jordan\\Source\\Repos\\Calligraphy_Final_Project\\Calligraphy.Data\\Calligraphy.Data.csproj",
-        "packagesPath": "C:\\Users\\Jordan\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Jordan\\Source\\Repos\\Calligraphy_Final_Project\\Calligraphy.Data\\obj\\",
+        "projectPath": "C:\\Final P\\Calligraphy.Data\\Calligraphy.Data.csproj",
+        "packagesPath": "C:\\Users\\ethyl\\.nuget\\packages\\",
+        "outputPath": "C:\\Final P\\Calligraphy.Data\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
         ],
         "configFilePaths": [
-          "C:\\Users\\Jordan\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\ethyl\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netstandard2.0"

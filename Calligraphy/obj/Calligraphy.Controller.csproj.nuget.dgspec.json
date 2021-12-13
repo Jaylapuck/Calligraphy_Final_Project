@@ -1,40 +1,39 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Jordan\\Source\\Repos\\Calligraphy_Final_Project\\Calligraphy\\Calligraphy.Controller.csproj": {}
+    "C:\\Final P\\Calligraphy\\Calligraphy.Controller.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Jordan\\Source\\Repos\\Calligraphy_Final_Project\\Calligraphy.Business\\Calligraphy.Business.csproj": {
+    "C:\\Final P\\Calligraphy.Business\\Calligraphy.Business.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Jordan\\Source\\Repos\\Calligraphy_Final_Project\\Calligraphy.Business\\Calligraphy.Business.csproj",
+        "projectUniqueName": "C:\\Final P\\Calligraphy.Business\\Calligraphy.Business.csproj",
         "projectName": "Calligraphy.Business",
-        "projectPath": "C:\\Users\\Jordan\\Source\\Repos\\Calligraphy_Final_Project\\Calligraphy.Business\\Calligraphy.Business.csproj",
-        "packagesPath": "C:\\Users\\Jordan\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Jordan\\Source\\Repos\\Calligraphy_Final_Project\\Calligraphy.Business\\obj\\",
+        "projectPath": "C:\\Final P\\Calligraphy.Business\\Calligraphy.Business.csproj",
+        "packagesPath": "C:\\Users\\ethyl\\.nuget\\packages\\",
+        "outputPath": "C:\\Final P\\Calligraphy.Business\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
         ],
         "configFilePaths": [
-          "C:\\Users\\Jordan\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\ethyl\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
         "originalTargetFrameworks": [
-          "netstandard2.0"
+          "net5.0"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "netstandard2.0": {
-            "targetAlias": "netstandard2.0",
+          "net5.0": {
+            "targetAlias": "net5.0",
             "projectReferences": {
-              "C:\\Users\\Jordan\\Source\\Repos\\Calligraphy_Final_Project\\Calligraphy.Data\\Calligraphy.Data.csproj": {
-                "projectPath": "C:\\Users\\Jordan\\Source\\Repos\\Calligraphy_Final_Project\\Calligraphy.Data\\Calligraphy.Data.csproj"
+              "C:\\Final P\\Calligraphy.Data\\Calligraphy.Data.csproj": {
+                "projectPath": "C:\\Final P\\Calligraphy.Data\\Calligraphy.Data.csproj"
               }
             }
           }
@@ -46,8 +45,8 @@
         }
       },
       "frameworks": {
-        "netstandard2.0": {
-          "targetAlias": "netstandard2.0",
+        "net5.0": {
+          "targetAlias": "net5.0",
           "dependencies": {
             "EntityFramework": {
               "target": "Package",
@@ -60,12 +59,6 @@
             "Microsoft.DotNet.UpgradeAssistant.Extensions.Default.Analyzers": {
               "target": "Package",
               "version": "[0.3.256001, )"
-            },
-            "NETStandard.Library": {
-              "suppressParent": "All",
-              "target": "Package",
-              "version": "[2.0.3, )",
-              "autoReferenced": true
             },
             "System.ComponentModel.Annotations": {
               "target": "Package",
@@ -86,27 +79,31 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
           "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\Jordan\\Source\\Repos\\Calligraphy_Final_Project\\Calligraphy.Data\\Calligraphy.Data.csproj": {
+    "C:\\Final P\\Calligraphy.Data\\Calligraphy.Data.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Jordan\\Source\\Repos\\Calligraphy_Final_Project\\Calligraphy.Data\\Calligraphy.Data.csproj",
+        "projectUniqueName": "C:\\Final P\\Calligraphy.Data\\Calligraphy.Data.csproj",
         "projectName": "Calligraphy.Data",
-        "projectPath": "C:\\Users\\Jordan\\Source\\Repos\\Calligraphy_Final_Project\\Calligraphy.Data\\Calligraphy.Data.csproj",
-        "packagesPath": "C:\\Users\\Jordan\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Jordan\\Source\\Repos\\Calligraphy_Final_Project\\Calligraphy.Data\\obj\\",
+        "projectPath": "C:\\Final P\\Calligraphy.Data\\Calligraphy.Data.csproj",
+        "packagesPath": "C:\\Users\\ethyl\\.nuget\\packages\\",
+        "outputPath": "C:\\Final P\\Calligraphy.Data\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
         ],
         "configFilePaths": [
-          "C:\\Users\\Jordan\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\ethyl\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netstandard2.0"
@@ -185,23 +182,22 @@
         }
       }
     },
-    "C:\\Users\\Jordan\\Source\\Repos\\Calligraphy_Final_Project\\Calligraphy\\Calligraphy.Controller.csproj": {
+    "C:\\Final P\\Calligraphy\\Calligraphy.Controller.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Jordan\\Source\\Repos\\Calligraphy_Final_Project\\Calligraphy\\Calligraphy.Controller.csproj",
+        "projectUniqueName": "C:\\Final P\\Calligraphy\\Calligraphy.Controller.csproj",
         "projectName": "Calligraphy",
-        "projectPath": "C:\\Users\\Jordan\\Source\\Repos\\Calligraphy_Final_Project\\Calligraphy\\Calligraphy.Controller.csproj",
-        "packagesPath": "C:\\Users\\Jordan\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Jordan\\Source\\Repos\\Calligraphy_Final_Project\\Calligraphy\\obj\\",
+        "projectPath": "C:\\Final P\\Calligraphy\\Calligraphy.Controller.csproj",
+        "packagesPath": "C:\\Users\\ethyl\\.nuget\\packages\\",
+        "outputPath": "C:\\Final P\\Calligraphy\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
         ],
         "configFilePaths": [
-          "C:\\Users\\Jordan\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\ethyl\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net5.0"
@@ -214,11 +210,11 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "C:\\Users\\Jordan\\Source\\Repos\\Calligraphy_Final_Project\\Calligraphy.Business\\Calligraphy.Business.csproj": {
-                "projectPath": "C:\\Users\\Jordan\\Source\\Repos\\Calligraphy_Final_Project\\Calligraphy.Business\\Calligraphy.Business.csproj"
+              "C:\\Final P\\Calligraphy.Business\\Calligraphy.Business.csproj": {
+                "projectPath": "C:\\Final P\\Calligraphy.Business\\Calligraphy.Business.csproj"
               },
-              "C:\\Users\\Jordan\\Source\\Repos\\Calligraphy_Final_Project\\Calligraphy.Data\\Calligraphy.Data.csproj": {
-                "projectPath": "C:\\Users\\Jordan\\Source\\Repos\\Calligraphy_Final_Project\\Calligraphy.Data\\Calligraphy.Data.csproj"
+              "C:\\Final P\\Calligraphy.Data\\Calligraphy.Data.csproj": {
+                "projectPath": "C:\\Final P\\Calligraphy.Data\\Calligraphy.Data.csproj"
               }
             }
           }
@@ -263,24 +259,6 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.AspNetCore.App.Ref",
-              "version": "[5.0.0, 5.0.0]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Host.win-x64",
-              "version": "[5.0.12, 5.0.12]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Ref",
-              "version": "[5.0.0, 5.0.0]"
-            },
-            {
-              "name": "Microsoft.WindowsDesktop.App.Ref",
-              "version": "[5.0.0, 5.0.0]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"

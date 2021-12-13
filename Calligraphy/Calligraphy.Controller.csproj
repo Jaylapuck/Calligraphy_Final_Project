@@ -27,9 +27,6 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Views\Form\" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\Calligraphy.Business\Calligraphy.Business.csproj" />
     <ProjectReference Include="..\Calligraphy.Data\Calligraphy.Data.csproj" />
   </ItemGroup>
