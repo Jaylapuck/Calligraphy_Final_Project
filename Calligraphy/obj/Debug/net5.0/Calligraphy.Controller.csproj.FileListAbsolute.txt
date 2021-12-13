@@ -324,7 +324,6 @@ C:\Final P\Calligraphy\obj\Debug\net5.0\Calligraphy.Controller.RazorCoreGenerate
 C:\Final P\Calligraphy\obj\Debug\net5.0\Razor\Views\Home\Index.cshtml.g.cs
 C:\Final P\Calligraphy\obj\Debug\net5.0\Razor\Views\Shared\Error.cshtml.g.cs
 C:\Final P\Calligraphy\obj\Debug\net5.0\Razor\Views\_ViewImports.cshtml.g.cs
-C:\Final P\Calligraphy\obj\Debug\net5.0\Razor\Views\_ViewStart.cshtml.g.cs
 C:\Final P\Calligraphy\obj\Debug\net5.0\Calligraphy.Controller.RazorTargetAssemblyInfo.cache
 C:\Final P\Calligraphy\obj\Debug\net5.0\Calligraphy.Controller.RazorTargetAssemblyInfo.cs
 C:\Final P\Calligraphy\obj\Debug\net5.0\Calligraphy.Views.pdb
@@ -333,3 +332,4 @@ C:\Final P\Calligraphy\obj\Debug\net5.0\Calligraphy.dll
 C:\Final P\Calligraphy\obj\Debug\net5.0\ref\Calligraphy.dll
 C:\Final P\Calligraphy\obj\Debug\net5.0\Calligraphy.pdb
 C:\Final P\Calligraphy\obj\Debug\net5.0\Calligraphy.Controller.genruntimeconfig.cache
+C:\Final P\Calligraphy\obj\Debug\net5.0\Calligraphy.MvcApplicationPartsAssemblyInfo.cs

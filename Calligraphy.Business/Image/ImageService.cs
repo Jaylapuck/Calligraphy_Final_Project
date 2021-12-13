@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using Calligraphy.Data.Models;
 using Calligraphy.Data.Repo.Image;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Calligraphy.Business.Image
 {
@@ -23,24 +24,44 @@ namespace Calligraphy.Business.Image
             return _imageRepo.GetAll();
         }
 
-        public ImageEntity GetById(int id)
+        public IActionResult GetById(int id)
         {
-            return _imageRepo.GetById(id);
+            var image = _imageRepo.GetById(id);
+            if (image == null)
+            {
+                return new NotFoundResult();
+            }
+            return new OkObjectResult(image);
         }
 
-        public void Create(ImageEntity image)
+        public IActionResult Create(ImageEntity image)
         {
+            if (image == null)
+            {
+                return new BadRequestResult();
+            }
             _imageRepo.Add(image);
+            return new OkObjectResult(image);
         }
-
-        public void Update(ImageEntity image)
+        
+        public IActionResult Update(ImageEntity image)
         {
+            if (image == null)
+            {
+                return new BadRequestResult();
+            }
             _imageRepo.Update(image);
+            return new OkObjectResult(image);
         }
 
-        public void Delete(int id)
+        public IActionResult Delete(ImageEntity image)
         {
-            _imageRepo.Delete(id);
+            if (image == null)
+            {
+                return new NotFoundResult(); 
+            }
+            _imageRepo.Delete(image);
+            return new OkResult();
         }
     }
 }

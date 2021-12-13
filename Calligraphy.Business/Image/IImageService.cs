@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Calligraphy.Data.Models;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Calligraphy.Business.Image
 {
@@ -9,16 +10,16 @@ namespace Calligraphy.Business.Image
         IEnumerable<ImageEntity> GetAll();
         
         // GET BY ID
-        ImageEntity GetById(int id);
+        IActionResult GetById(int id);
         
         // CREATE
-        void Create(ImageEntity image);
+        IActionResult Create(ImageEntity image);
         
         // UPDATE
-        void Update(ImageEntity image);
+        IActionResult Update(ImageEntity image);
         
         // DELETE
-        void Delete(int id);
+        IActionResult Delete(ImageEntity image);
         
     }
 }

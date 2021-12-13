@@ -1980,6 +1980,7 @@
         "dependencies": {
           "Calligraphy.Data": "1.0.0",
           "EntityFramework": "6.4.4",
+          "Microsoft.AspNetCore.Mvc.Core": "2.2.5",
           "Microsoft.CSharp": "4.7.0",
           "Microsoft.DotNet.UpgradeAssistant.Extensions.Default.Analyzers": "0.3.256001",
           "System.ComponentModel.Annotations": "5.0.0",
