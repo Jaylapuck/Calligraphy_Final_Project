@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Calligraphy.Business.Form;
 using Calligraphy.Controllers;
+using Calligraphy.Data.Enums;
 using Calligraphy.Data.Models;
 using Microsoft.AspNetCore.Mvc;
 using Moq;
@@ -28,11 +29,14 @@ namespace Calligraphy.Test.Form
         // test get all api, returns list of forms
         public void GetAll()
         {
+            
+            var address1 = new AddressEntity { AddressId = 1, StreetAddress = "1000 Rue ThisSide", PostalCode = "J1Y1P1", City = "Montreal", Country = "Canada" };
+            var address2 = new AddressEntity { AddressId = 2, StreetAddress = "2000 Rue OtherSide", PostalCode = "J2Y2P2", City = "Ottawa", Country = "Canada" };
             // Arrange
             var forms = new List<FormEntity>
             {
-                new FormEntity {  FormId = 1, ServiceType = "Form 1", Comments = "Description 1"},
-                new FormEntity { FormId = 2, ServiceType = "Form 2", Comments = "Description 2"}
+                new FormEntity {FormId = 1, FirstName="James", LastName="Albe", Address=address1, ServiceType = ServiceType.Calligraphy, Comments = "Comments 1"},
+                new FormEntity {FormId = 2, FirstName="John", LastName="Doe", Address=address2, ServiceType = ServiceType.Engraving, Comments = "Comments 2"}
             };
 
             _mockFormService.Setup(x => x.GetAll()).Returns(forms);

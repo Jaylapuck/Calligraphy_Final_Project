@@ -38,8 +38,8 @@ namespace Calligraphy.Test.Form
             var forms = new List<FormEntity>
             {
                 new FormEntity {FormId = 1, FirstName="James", LastName="Albe", Address=address1, ServiceType = ServiceType.Calligraphy, Comments = "Comments 1"},
-                new FormEntity {FormId = 2, FirstName="John", LastName="Doe", Address=address2, ServiceType = ServiceType.Engraving, Comments = "Comments 1"},
-                new FormEntity {FormId = 3, FirstName="Jane", LastName="Smith", Address=address3, ServiceType = ServiceType.Event, Comments = "Comments 1"}
+                new FormEntity {FormId = 2, FirstName="John", LastName="Doe", Address=address2, ServiceType = ServiceType.Engraving, Comments = "Comments 2"},
+                new FormEntity {FormId = 3, FirstName="Jane", LastName="Smith", Address=address3, ServiceType = ServiceType.Event, Comments = "Comments 3"}
             };
             
             // Act
