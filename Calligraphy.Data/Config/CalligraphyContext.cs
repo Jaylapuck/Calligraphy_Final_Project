@@ -15,5 +15,6 @@ namespace Calligraphy.Data.Config
         }
 
         public DbSet<FormEntity> Forms { get; set; }
+        public DbSet<AddressEntity> Address { get; set; }
     }
 }

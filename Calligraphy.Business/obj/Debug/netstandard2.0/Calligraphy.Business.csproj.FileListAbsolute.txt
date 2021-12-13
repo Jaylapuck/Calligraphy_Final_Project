@@ -37,3 +37,16 @@ C:\Users\Jordan\Source\Repos\Calligraphy_Final_Project\Calligraphy.Business\obj\
 C:\Users\Jordan\Source\Repos\Calligraphy_Final_Project\Calligraphy.Business\obj\Debug\netstandard2.0\Calligraphy.Business.csproj.CopyComplete
 C:\Users\Jordan\Source\Repos\Calligraphy_Final_Project\Calligraphy.Business\obj\Debug\netstandard2.0\Calligraphy.Business.dll
 C:\Users\Jordan\Source\Repos\Calligraphy_Final_Project\Calligraphy.Business\obj\Debug\netstandard2.0\Calligraphy.Business.pdb
+C:\Users\jorda\Source\Repos\Calligraphy_Final_Project\Calligraphy.Business\bin\Debug\netstandard2.0\Calligraphy.Business.dll.config
+C:\Users\jorda\Source\Repos\Calligraphy_Final_Project\Calligraphy.Business\bin\Debug\netstandard2.0\Calligraphy.Business.deps.json
+C:\Users\jorda\Source\Repos\Calligraphy_Final_Project\Calligraphy.Business\bin\Debug\netstandard2.0\Calligraphy.Business.dll
+C:\Users\jorda\Source\Repos\Calligraphy_Final_Project\Calligraphy.Business\bin\Debug\netstandard2.0\Calligraphy.Business.pdb
+C:\Users\jorda\Source\Repos\Calligraphy_Final_Project\Calligraphy.Business\bin\Debug\netstandard2.0\Calligraphy.Data.dll
+C:\Users\jorda\Source\Repos\Calligraphy_Final_Project\Calligraphy.Business\bin\Debug\netstandard2.0\Calligraphy.Data.pdb
+C:\Users\jorda\Source\Repos\Calligraphy_Final_Project\Calligraphy.Business\bin\Debug\netstandard2.0\Calligraphy.Data.dll.config
+C:\Users\jorda\Source\Repos\Calligraphy_Final_Project\Calligraphy.Business\obj\Debug\netstandard2.0\Calligraphy.Business.csproj.AssemblyReference.cache
+C:\Users\jorda\Source\Repos\Calligraphy_Final_Project\Calligraphy.Business\obj\Debug\netstandard2.0\Calligraphy.Business.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\jorda\Source\Repos\Calligraphy_Final_Project\Calligraphy.Business\obj\Debug\netstandard2.0\Calligraphy.Business.csproj.CoreCompileInputs.cache
+C:\Users\jorda\Source\Repos\Calligraphy_Final_Project\Calligraphy.Business\obj\Debug\netstandard2.0\Calligraphy.Business.csproj.CopyComplete
+C:\Users\jorda\Source\Repos\Calligraphy_Final_Project\Calligraphy.Business\obj\Debug\netstandard2.0\Calligraphy.Business.dll
+C:\Users\jorda\Source\Repos\Calligraphy_Final_Project\Calligraphy.Business\obj\Debug\netstandard2.0\Calligraphy.Business.pdb
