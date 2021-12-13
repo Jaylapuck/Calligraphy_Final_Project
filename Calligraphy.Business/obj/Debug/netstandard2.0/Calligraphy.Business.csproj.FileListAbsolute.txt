@@ -37,3 +37,16 @@ C:\Users\Jordan\Source\Repos\Calligraphy_Final_Project\Calligraphy.Business\obj\
 C:\Users\Jordan\Source\Repos\Calligraphy_Final_Project\Calligraphy.Business\obj\Debug\netstandard2.0\Calligraphy.Business.csproj.CopyComplete
 C:\Users\Jordan\Source\Repos\Calligraphy_Final_Project\Calligraphy.Business\obj\Debug\netstandard2.0\Calligraphy.Business.dll
 C:\Users\Jordan\Source\Repos\Calligraphy_Final_Project\Calligraphy.Business\obj\Debug\netstandard2.0\Calligraphy.Business.pdb
+C:\Users\trist\source\repos\ASP.NET\Calligraphy_Final_Project\Calligraphy.Business\bin\Debug\netstandard2.0\Calligraphy.Business.dll.config
+C:\Users\trist\source\repos\ASP.NET\Calligraphy_Final_Project\Calligraphy.Business\bin\Debug\netstandard2.0\Calligraphy.Business.deps.json
+C:\Users\trist\source\repos\ASP.NET\Calligraphy_Final_Project\Calligraphy.Business\bin\Debug\netstandard2.0\Calligraphy.Business.dll
+C:\Users\trist\source\repos\ASP.NET\Calligraphy_Final_Project\Calligraphy.Business\bin\Debug\netstandard2.0\Calligraphy.Business.pdb
+C:\Users\trist\source\repos\ASP.NET\Calligraphy_Final_Project\Calligraphy.Business\bin\Debug\netstandard2.0\Calligraphy.Data.dll
+C:\Users\trist\source\repos\ASP.NET\Calligraphy_Final_Project\Calligraphy.Business\bin\Debug\netstandard2.0\Calligraphy.Data.pdb
+C:\Users\trist\source\repos\ASP.NET\Calligraphy_Final_Project\Calligraphy.Business\bin\Debug\netstandard2.0\Calligraphy.Data.dll.config
+C:\Users\trist\source\repos\ASP.NET\Calligraphy_Final_Project\Calligraphy.Business\obj\Debug\netstandard2.0\Calligraphy.Business.csproj.AssemblyReference.cache
+C:\Users\trist\source\repos\ASP.NET\Calligraphy_Final_Project\Calligraphy.Business\obj\Debug\netstandard2.0\Calligraphy.Business.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\trist\source\repos\ASP.NET\Calligraphy_Final_Project\Calligraphy.Business\obj\Debug\netstandard2.0\Calligraphy.Business.csproj.CoreCompileInputs.cache
+C:\Users\trist\source\repos\ASP.NET\Calligraphy_Final_Project\Calligraphy.Business\obj\Debug\netstandard2.0\Calligraphy.Business.csproj.CopyComplete
+C:\Users\trist\source\repos\ASP.NET\Calligraphy_Final_Project\Calligraphy.Business\obj\Debug\netstandard2.0\Calligraphy.Business.dll
+C:\Users\trist\source\repos\ASP.NET\Calligraphy_Final_Project\Calligraphy.Business\obj\Debug\netstandard2.0\Calligraphy.Business.pdb
