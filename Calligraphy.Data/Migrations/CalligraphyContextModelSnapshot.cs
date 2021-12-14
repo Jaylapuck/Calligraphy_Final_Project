@@ -44,7 +44,7 @@ namespace Calligraphy.Data.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<byte[]>("ImageData")
+                    b.Property<byte[]>("ImagePath")
                         .HasColumnType("varbinary(max)");
 
                     b.Property<string>("ImageTitle")

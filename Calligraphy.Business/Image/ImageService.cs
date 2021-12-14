@@ -13,12 +13,7 @@ namespace Calligraphy.Business.Image
         {
             _imageRepo = imageRepo;
         }
-
-        public ImageService()
-        {
-            _imageRepo = new ImageRepo();
-        }
-
+        
         public IEnumerable<ImageEntity> GetAll()
         {
             return _imageRepo.GetAll();
@@ -56,7 +51,7 @@ namespace Calligraphy.Business.Image
                 return new NotFoundResult();
             }
             imageToUpdate.ImageTitle = image.ImageTitle;
-            imageToUpdate.ImageData = image.ImageData;
+            imageToUpdate.ImagePath = image.ImagePath;
             _imageRepo.Update(imageToUpdate);
             return new OkObjectResult(imageToUpdate);
         }

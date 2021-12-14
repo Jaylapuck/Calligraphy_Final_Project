@@ -14,7 +14,7 @@ namespace Calligraphy.Data.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     ImageTitle = table.Column<string>(nullable: true),
-                    ImageData = table.Column<byte[]>(nullable: true)
+                    ImagePath = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
