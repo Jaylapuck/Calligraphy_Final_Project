@@ -42,7 +42,7 @@ namespace Calligraphy.Test.Form
             
             // Assert
             Assert.Equal(3, result.Count());
-            
+
         }
         
         [Fact]

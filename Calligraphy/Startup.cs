@@ -8,8 +8,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Calligraphy.Business.Form;
+using Calligraphy.Business.Image;
 using Calligraphy.Data.Config;
 using Calligraphy.Data.Repo;
+using Calligraphy.Data.Repo.Image;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -43,6 +45,8 @@ namespace Calligraphy
                     options.UseMemberCasing();
                 });
             services.AddTransient<IFormService, FormService>();
+            services.AddTransient<IImageService, ImageService>();
+            services.AddTransient<IImageRepo, ImageRepo>();
             services.AddTransient<IFormRepo, FormRepo>();
             services.AddDbContext<CalligraphyContext>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("CalligraphyContext")));

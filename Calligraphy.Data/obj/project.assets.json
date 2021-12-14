@@ -6331,26 +6331,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Jordan\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "C:\\Users\\Jeremy Forest\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Jordan\\Source\\Repos\\Calligraphy_Final_Project\\Calligraphy.Data\\Calligraphy.Data.csproj",
+      "projectUniqueName": "C:\\Users\\Jeremy Forest\\RiderProjects\\Calligraphy_Final_Project\\Calligraphy.Data\\Calligraphy.Data.csproj",
       "projectName": "Calligraphy.Data",
-      "projectPath": "C:\\Users\\Jordan\\Source\\Repos\\Calligraphy_Final_Project\\Calligraphy.Data\\Calligraphy.Data.csproj",
-      "packagesPath": "C:\\Users\\Jordan\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Jordan\\Source\\Repos\\Calligraphy_Final_Project\\Calligraphy.Data\\obj\\",
+      "projectPath": "C:\\Users\\Jeremy Forest\\RiderProjects\\Calligraphy_Final_Project\\Calligraphy.Data\\Calligraphy.Data.csproj",
+      "packagesPath": "C:\\Users\\Jeremy Forest\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Jeremy Forest\\RiderProjects\\Calligraphy_Final_Project\\Calligraphy.Data\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-      ],
       "configFilePaths": [
-        "C:\\Users\\Jordan\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Users\\Jeremy Forest\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
