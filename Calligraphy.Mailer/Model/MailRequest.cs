@@ -14,12 +14,12 @@ namespace Calligraphy.Mailer.Model
         public string body { get; set; }
         public List<IFormFile> attachtments { get; set; }
 
-        public MailRequest(string e, string s, string b, List<IFormFile> a)
-        {
-            this.email = e;
-            this.subject = s;
-            this.body = b;
-            this.attachtments = a;
-        }
+        //public MailRequest(string e, string s, string b, List<IFormFile> a)
+        //{
+        //    this.email = e;
+        //    this.subject = s;
+        //    this.body = b;
+        //    this.attachtments = a;
+        //}
     }
 }

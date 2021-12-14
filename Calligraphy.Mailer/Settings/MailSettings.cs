@@ -14,13 +14,13 @@ namespace Calligraphy.Mailer.Settings
         public string host { get; set; }
         public int port { get; set; }
 
-        public MailSettings(string m, string dN, string pa, string h, int po)
-        {
-            this.mail = m;
-            this.displayName = dN;
-            this.password = pa;
-            this.host = h;
-            this.port = po;
-        }
+        //public MailSettings(string m, string dN, string pa, string h, int po)
+        //{
+        //    this.mail = m;
+        //    this.displayName = dN;
+        //    this.password = pa;
+        //    this.host = h;
+        //    this.port = po;
+        //}
     }
 }

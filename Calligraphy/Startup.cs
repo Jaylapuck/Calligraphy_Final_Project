@@ -10,6 +10,8 @@ using System.Threading.Tasks;
 using Calligraphy.Business.Form;
 using Calligraphy.Data.Config;
 using Calligraphy.Data.Repo;
+using Calligraphy.Mailer.Services;
+using Calligraphy.Mailer.Settings;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -18,6 +20,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.OpenApi.Models;
 
 namespace Calligraphy
 {
@@ -42,8 +45,17 @@ namespace Calligraphy
                 {
                     options.UseMemberCasing();
                 });
+            services.Configure<MailSettings>(Configuration.GetSection("MailSettings"));
+
+            services.AddTransient<IMailerService, MailServiceImpl>();
             services.AddTransient<IFormService, FormService>();
             services.AddTransient<IFormRepo, FormRepo>();
+
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Calligraphy.Mailer", Version = "v1" });
+            });
+
             services.AddDbContext<CalligraphyContext>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("CalligraphyContext")));
             services.AddCors(options => options.AddPolicy("ApiCorsPolicy", builder =>
@@ -59,8 +71,11 @@ namespace Calligraphy
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                app.UseSwagger();
+                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Calligraphy.Mailer"));
             }
 
+            app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseRouting();
             app.UseCors("ApiCorsPolicy");

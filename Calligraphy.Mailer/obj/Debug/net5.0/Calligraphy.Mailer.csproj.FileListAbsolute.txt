@@ -9,3 +9,4 @@ C:\Users\trist\source\repos\ASP.NET\Calligraphy_Final_Project\Calligraphy.Mailer
 C:\Users\trist\source\repos\ASP.NET\Calligraphy_Final_Project\Calligraphy.Mailer\obj\Debug\net5.0\Calligraphy.Mailer.dll
 C:\Users\trist\source\repos\ASP.NET\Calligraphy_Final_Project\Calligraphy.Mailer\obj\Debug\net5.0\ref\Calligraphy.Mailer.dll
 C:\Users\trist\source\repos\ASP.NET\Calligraphy_Final_Project\Calligraphy.Mailer\obj\Debug\net5.0\Calligraphy.Mailer.pdb
+C:\Users\trist\source\repos\ASP.NET\Calligraphy_Final_Project\Calligraphy.Mailer\obj\Debug\net5.0\Calligraphy.Mailer.csproj.AssemblyReference.cache

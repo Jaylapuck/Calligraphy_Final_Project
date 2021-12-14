@@ -33,3 +33,4 @@ C:\Users\trist\source\repos\ASP.NET\Calligraphy_Final_Project\Calligraphy.Data\o
 C:\Users\trist\source\repos\ASP.NET\Calligraphy_Final_Project\Calligraphy.Data\obj\Debug\netstandard2.0\Calligraphy.Data.csproj.CoreCompileInputs.cache
 C:\Users\trist\source\repos\ASP.NET\Calligraphy_Final_Project\Calligraphy.Data\obj\Debug\netstandard2.0\Calligraphy.Data.dll
 C:\Users\trist\source\repos\ASP.NET\Calligraphy_Final_Project\Calligraphy.Data\obj\Debug\netstandard2.0\Calligraphy.Data.pdb
+C:\Users\trist\source\repos\ASP.NET\Calligraphy_Final_Project\Calligraphy.Data\obj\Debug\netstandard2.0\Calligraphy.Data.csproj.AssemblyReference.cache

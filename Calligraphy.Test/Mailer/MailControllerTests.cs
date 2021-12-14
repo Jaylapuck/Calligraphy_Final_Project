@@ -28,7 +28,7 @@ namespace Calligraphy.Test.Mailer
         public async Task SendMailOkTest()
         {
             // Arrange 
-            MailRequest email = new MailRequest("email1", "subject1", "body1", null);
+            MailRequest email = new MailRequest();
 
             _service.Setup(s => s.SendMailAsync(email)).Returns(async () => { await Task.Yield(); });
 
