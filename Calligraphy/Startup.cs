@@ -7,6 +7,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Calligraphy.Business.Address;
+using Calligraphy.Business.Customer;
 using Calligraphy.Business.Form;
 using Calligraphy.Business.Image;
 using Calligraphy.Data.Config;
@@ -44,9 +46,12 @@ namespace Calligraphy
                 {
                     options.UseMemberCasing();
                 });
-            services.AddTransient<IFormService, FormService>();
+
             services.AddTransient<IImageService, ImageService>();
             services.AddTransient<IImageRepo, ImageRepo>();
+            services.AddTransient<ICustomerService, CustomerService>();
+            services.AddTransient<IAddressService, AddressService>();
+            services.AddTransient<IFormService, FormService>();
             services.AddTransient<IFormRepo, FormRepo>();
             services.AddDbContext<CalligraphyContext>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("CalligraphyContext")));

@@ -1,9 +1,13 @@
 {
   "ExpandedNodes": [
     "",
+    "\\Calligraphy",
+    "\\Calligraphy.Data",
+    "\\Calligraphy.Data\\Migrations",
+    "\\Calligraphy.Data\\Models",
     "\\Calligraphy.Test",
     "\\Calligraphy.Test\\Form"
   ],
-  "SelectedNode": "\\Calligraphy.Test\\Form\\FormEndToEndTests.cs",
+  "SelectedNode": "\\Calligraphy.sln",
   "PreviewInSolutionExplorer": false
 }
