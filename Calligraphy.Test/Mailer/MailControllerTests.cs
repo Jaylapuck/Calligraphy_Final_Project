@@ -36,7 +36,7 @@ namespace Calligraphy.Test.Mailer
             var result = await _controller.Send(email);
 
             // Assert
-            Assert.IsType<OkObjectResult>(result);
+            Assert.IsType<OkResult>(result);
         }
     }
 }
