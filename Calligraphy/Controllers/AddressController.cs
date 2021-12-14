@@ -22,7 +22,7 @@ namespace Calligraphy.Controllers
 
         // GET: api/Form
         [HttpGet]
-        [Route("/api/Form")]
+        [Route("/api/Address")]
         [Produces(MediaTypeNames.Application.Json)]
         public IEnumerable<AddressEntity> Get()
         {
@@ -31,7 +31,7 @@ namespace Calligraphy.Controllers
 
         // POST: api/Form
         [HttpPost]
-        [Route("/api/Form")]
+        [Route("/api/Address")]
         [Consumes(MediaTypeNames.Application.Json)]
         public IActionResult Post([FromBody] AddressEntity address)
         {
