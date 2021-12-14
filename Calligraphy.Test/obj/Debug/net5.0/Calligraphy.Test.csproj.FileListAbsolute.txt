@@ -328,3 +328,6 @@ C:\Users\trist\source\repos\ASP.NET\Calligraphy_Final_Project\Calligraphy.Test\b
 C:\Users\trist\source\repos\ASP.NET\Calligraphy_Final_Project\Calligraphy.Test\bin\Debug\net5.0\System.IO.Pipelines.dll
 C:\Users\trist\source\repos\ASP.NET\Calligraphy_Final_Project\Calligraphy.Test\bin\Debug\net5.0\Calligraphy.Mailer.dll
 C:\Users\trist\source\repos\ASP.NET\Calligraphy_Final_Project\Calligraphy.Test\bin\Debug\net5.0\Calligraphy.Mailer.pdb
+C:\Users\trist\source\repos\ASP.NET\Calligraphy_Final_Project\Calligraphy.Test\bin\Debug\net5.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\trist\source\repos\ASP.NET\Calligraphy_Final_Project\Calligraphy.Test\bin\Debug\net5.0\Microsoft.Extensions.Options.dll
+C:\Users\trist\source\repos\ASP.NET\Calligraphy_Final_Project\Calligraphy.Test\bin\Debug\net5.0\System.Runtime.CompilerServices.Unsafe.dll

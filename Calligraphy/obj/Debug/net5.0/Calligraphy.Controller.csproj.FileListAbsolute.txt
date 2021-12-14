@@ -334,3 +334,15 @@ C:\Users\trist\source\repos\ASP.NET\Calligraphy_Final_Project\Calligraphy\obj\De
 C:\Users\trist\source\repos\ASP.NET\Calligraphy_Final_Project\Calligraphy\obj\Debug\net5.0\ref\Calligraphy.dll
 C:\Users\trist\source\repos\ASP.NET\Calligraphy_Final_Project\Calligraphy\obj\Debug\net5.0\Calligraphy.pdb
 C:\Users\trist\source\repos\ASP.NET\Calligraphy_Final_Project\Calligraphy\obj\Debug\net5.0\Calligraphy.Controller.genruntimeconfig.cache
+C:\Users\trist\source\repos\ASP.NET\Calligraphy_Final_Project\Calligraphy\bin\net5.0\MailKit.dll
+C:\Users\trist\source\repos\ASP.NET\Calligraphy_Final_Project\Calligraphy\bin\net5.0\Microsoft.AspNetCore.Http.Features.dll
+C:\Users\trist\source\repos\ASP.NET\Calligraphy_Final_Project\Calligraphy\bin\net5.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\trist\source\repos\ASP.NET\Calligraphy_Final_Project\Calligraphy\bin\net5.0\Microsoft.Extensions.Options.dll
+C:\Users\trist\source\repos\ASP.NET\Calligraphy_Final_Project\Calligraphy\bin\net5.0\Microsoft.Extensions.Primitives.dll
+C:\Users\trist\source\repos\ASP.NET\Calligraphy_Final_Project\Calligraphy\bin\net5.0\MimeKit.dll
+C:\Users\trist\source\repos\ASP.NET\Calligraphy_Final_Project\Calligraphy\bin\net5.0\NETCore.MailKit.dll
+C:\Users\trist\source\repos\ASP.NET\Calligraphy_Final_Project\Calligraphy\bin\net5.0\BouncyCastle.Crypto.dll
+C:\Users\trist\source\repos\ASP.NET\Calligraphy_Final_Project\Calligraphy\bin\net5.0\System.IO.Pipelines.dll
+C:\Users\trist\source\repos\ASP.NET\Calligraphy_Final_Project\Calligraphy\bin\net5.0\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\trist\source\repos\ASP.NET\Calligraphy_Final_Project\Calligraphy\bin\net5.0\Calligraphy.Mailer.dll
+C:\Users\trist\source\repos\ASP.NET\Calligraphy_Final_Project\Calligraphy\bin\net5.0\Calligraphy.Mailer.pdb

@@ -22,5 +22,7 @@ namespace Calligraphy.Test.Mailer
             _service = new Mock<IMailerService>();
             _request = new MailRequest("tristanblacklafleur@hotmail.ca", "Test", "This is a test.", new List<IFormFile>());
         }
+
+        
     }
 }
