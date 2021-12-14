@@ -30,8 +30,8 @@ namespace Calligraphy.Test.Form
         public void GetAll()
         {
             
-            var address1 = new AddressEntity { AddressId = 1, StreetAddress = "1000 Rue ThisSide", PostalCode = "J1Y1P1", City = "Montreal", Country = "Canada" };
-            var address2 = new AddressEntity { AddressId = 2, StreetAddress = "2000 Rue OtherSide", PostalCode = "J2Y2P2", City = "Ottawa", Country = "Canada" };
+            var address1 = new AddressEntity { AddressId = 1, Street = "1000 Rue ThisSide", Postal = "J1Y1P1", City = "Montreal", Country = "Canada" };
+            var address2 = new AddressEntity { AddressId = 2, Street = "2000 Rue OtherSide", Postal = "J2Y2P2", City = "Ottawa", Country = "Canada" };
             // Arrange
             var forms = new List<FormEntity>
             {

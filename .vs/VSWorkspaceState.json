@@ -1,9 +1,10 @@
 {
   "ExpandedNodes": [
     "",
+    "\\Calligraphy",
     "\\Calligraphy.Test",
     "\\Calligraphy.Test\\Form"
   ],
-  "SelectedNode": "\\Calligraphy.Test\\Form\\FormEndToEndTests.cs",
+  "SelectedNode": "\\Calligraphy\\appsettings.json",
   "PreviewInSolutionExplorer": false
 }
