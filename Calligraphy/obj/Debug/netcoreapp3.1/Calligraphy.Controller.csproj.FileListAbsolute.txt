@@ -1,6 +1,0 @@
-C:\Users\Trim\source\repos\Calligraphy_Final_Project\Calligraphy\obj\Debug\netcoreapp3.1\Calligraphy.Controller.csproj.AssemblyReference.cache
-C:\Users\Trim\source\repos\Calligraphy_Final_Project\Calligraphy\obj\Debug\netcoreapp3.1\Calligraphy.Controller.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\Trim\source\repos\Calligraphy_Final_Project\Calligraphy\obj\Debug\netcoreapp3.1\Calligraphy.Controller.csproj.CoreCompileInputs.cache
-C:\Users\Trim\source\repos\Calligraphy_Final_Project\Calligraphy\obj\Debug\netcoreapp3.1\Calligraphy.MvcApplicationPartsAssemblyInfo.cache
-C:\Users\Trim\source\repos\Calligraphy_Final_Project\Calligraphy\obj\Debug\netcoreapp3.1\Calligraphy.Controller.RazorAssemblyInfo.cache
-C:\Users\Trim\source\repos\Calligraphy_Final_Project\Calligraphy\obj\Debug\netcoreapp3.1\Calligraphy.Controller.RazorAssemblyInfo.cs
