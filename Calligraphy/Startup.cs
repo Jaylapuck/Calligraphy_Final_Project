@@ -13,6 +13,8 @@ using Calligraphy.Business.Form;
 using Calligraphy.Business.Image;
 using Calligraphy.Data.Config;
 using Calligraphy.Data.Repo;
+using Calligraphy.Data.Repo.Address;
+using Calligraphy.Data.Repo.Customer;
 using Calligraphy.Data.Repo.Image;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -50,7 +52,9 @@ namespace Calligraphy
             services.AddTransient<IImageService, ImageService>();
             services.AddTransient<IImageRepo, ImageRepo>();
             services.AddTransient<ICustomerService, CustomerService>();
+            services.AddTransient<ICustomerRepo, CustomerRepo>();
             services.AddTransient<IAddressService, AddressService>();
+            services.AddTransient<IAddressRepo, AddressRepo>();
             services.AddTransient<IFormService, FormService>();
             services.AddTransient<IFormRepo, FormRepo>();
             services.AddDbContext<CalligraphyContext>(options =>
