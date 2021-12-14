@@ -1,25 +1,21 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Final P\\Calligraphy\\Calligraphy.Controller.csproj": {}
+    "C:\\Users\\Jeremy Forest\\RiderProjects\\Calligraphy_Final_Project\\Calligraphy\\Calligraphy.Controller.csproj": {}
   },
   "projects": {
-    "C:\\Final P\\Calligraphy.Business\\Calligraphy.Business.csproj": {
+    "C:\\Users\\Jeremy Forest\\RiderProjects\\Calligraphy_Final_Project\\Calligraphy.Business\\Calligraphy.Business.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Final P\\Calligraphy.Business\\Calligraphy.Business.csproj",
+        "projectUniqueName": "C:\\Users\\Jeremy Forest\\RiderProjects\\Calligraphy_Final_Project\\Calligraphy.Business\\Calligraphy.Business.csproj",
         "projectName": "Calligraphy.Business",
-        "projectPath": "C:\\Final P\\Calligraphy.Business\\Calligraphy.Business.csproj",
-        "packagesPath": "C:\\Users\\ethyl\\.nuget\\packages\\",
-        "outputPath": "C:\\Final P\\Calligraphy.Business\\obj\\",
+        "projectPath": "C:\\Users\\Jeremy Forest\\RiderProjects\\Calligraphy_Final_Project\\Calligraphy.Business\\Calligraphy.Business.csproj",
+        "packagesPath": "C:\\Users\\Jeremy Forest\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Jeremy Forest\\RiderProjects\\Calligraphy_Final_Project\\Calligraphy.Business\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet"
-        ],
         "configFilePaths": [
-          "C:\\Users\\ethyl\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+          "C:\\Users\\Jeremy Forest\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net5.0"
@@ -32,8 +28,8 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "C:\\Final P\\Calligraphy.Data\\Calligraphy.Data.csproj": {
-                "projectPath": "C:\\Final P\\Calligraphy.Data\\Calligraphy.Data.csproj"
+              "C:\\Users\\Jeremy Forest\\RiderProjects\\Calligraphy_Final_Project\\Calligraphy.Data\\Calligraphy.Data.csproj": {
+                "projectPath": "C:\\Users\\Jeremy Forest\\RiderProjects\\Calligraphy_Final_Project\\Calligraphy.Data\\Calligraphy.Data.csproj"
               }
             }
           }
@@ -92,22 +88,18 @@
         }
       }
     },
-    "C:\\Final P\\Calligraphy.Data\\Calligraphy.Data.csproj": {
+    "C:\\Users\\Jeremy Forest\\RiderProjects\\Calligraphy_Final_Project\\Calligraphy.Data\\Calligraphy.Data.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Final P\\Calligraphy.Data\\Calligraphy.Data.csproj",
+        "projectUniqueName": "C:\\Users\\Jeremy Forest\\RiderProjects\\Calligraphy_Final_Project\\Calligraphy.Data\\Calligraphy.Data.csproj",
         "projectName": "Calligraphy.Data",
-        "projectPath": "C:\\Final P\\Calligraphy.Data\\Calligraphy.Data.csproj",
-        "packagesPath": "C:\\Users\\ethyl\\.nuget\\packages\\",
-        "outputPath": "C:\\Final P\\Calligraphy.Data\\obj\\",
+        "projectPath": "C:\\Users\\Jeremy Forest\\RiderProjects\\Calligraphy_Final_Project\\Calligraphy.Data\\Calligraphy.Data.csproj",
+        "packagesPath": "C:\\Users\\Jeremy Forest\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Jeremy Forest\\RiderProjects\\Calligraphy_Final_Project\\Calligraphy.Data\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet"
-        ],
         "configFilePaths": [
-          "C:\\Users\\ethyl\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+          "C:\\Users\\Jeremy Forest\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netstandard2.0"
@@ -186,22 +178,18 @@
         }
       }
     },
-    "C:\\Final P\\Calligraphy\\Calligraphy.Controller.csproj": {
+    "C:\\Users\\Jeremy Forest\\RiderProjects\\Calligraphy_Final_Project\\Calligraphy\\Calligraphy.Controller.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Final P\\Calligraphy\\Calligraphy.Controller.csproj",
+        "projectUniqueName": "C:\\Users\\Jeremy Forest\\RiderProjects\\Calligraphy_Final_Project\\Calligraphy\\Calligraphy.Controller.csproj",
         "projectName": "Calligraphy",
-        "projectPath": "C:\\Final P\\Calligraphy\\Calligraphy.Controller.csproj",
-        "packagesPath": "C:\\Users\\ethyl\\.nuget\\packages\\",
-        "outputPath": "C:\\Final P\\Calligraphy\\obj\\",
+        "projectPath": "C:\\Users\\Jeremy Forest\\RiderProjects\\Calligraphy_Final_Project\\Calligraphy\\Calligraphy.Controller.csproj",
+        "packagesPath": "C:\\Users\\Jeremy Forest\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Jeremy Forest\\RiderProjects\\Calligraphy_Final_Project\\Calligraphy\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet"
-        ],
         "configFilePaths": [
-          "C:\\Users\\ethyl\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+          "C:\\Users\\Jeremy Forest\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net5.0"
@@ -214,11 +202,11 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "C:\\Final P\\Calligraphy.Business\\Calligraphy.Business.csproj": {
-                "projectPath": "C:\\Final P\\Calligraphy.Business\\Calligraphy.Business.csproj"
+              "C:\\Users\\Jeremy Forest\\RiderProjects\\Calligraphy_Final_Project\\Calligraphy.Business\\Calligraphy.Business.csproj": {
+                "projectPath": "C:\\Users\\Jeremy Forest\\RiderProjects\\Calligraphy_Final_Project\\Calligraphy.Business\\Calligraphy.Business.csproj"
               },
-              "C:\\Final P\\Calligraphy.Data\\Calligraphy.Data.csproj": {
-                "projectPath": "C:\\Final P\\Calligraphy.Data\\Calligraphy.Data.csproj"
+              "C:\\Users\\Jeremy Forest\\RiderProjects\\Calligraphy_Final_Project\\Calligraphy.Data\\Calligraphy.Data.csproj": {
+                "projectPath": "C:\\Users\\Jeremy Forest\\RiderProjects\\Calligraphy_Final_Project\\Calligraphy.Data\\Calligraphy.Data.csproj"
               }
             }
           }
