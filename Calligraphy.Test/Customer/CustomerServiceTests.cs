@@ -54,7 +54,7 @@ namespace Calligraphy.Test.Customer
         public void CreateCustomer()
         {
             // Arrange
-            var customer = new CustomerEntity { CustomerId = 1, FirstName = firstName1, LastName = lastName1, Email = email1 }
+            var customer = new CustomerEntity { CustomerId = 1, FirstName = firstName1, LastName = lastName1, Email = email1 };
 
             // Act
             _mockCustomerRepo.Setup(x => x.Create(customer));

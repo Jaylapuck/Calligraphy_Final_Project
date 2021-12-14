@@ -239,9 +239,7 @@ C:\Users\Jordan\Source\Repos\Calligraphy_Final_Project\Calligraphy\obj\Debug\net
 C:\Users\Jordan\Source\Repos\Calligraphy_Final_Project\Calligraphy\obj\Debug\net5.0\Calligraphy.Controller.RazorCoreGenerate.cache
 C:\Users\Jordan\Source\Repos\Calligraphy_Final_Project\Calligraphy\obj\Debug\net5.0\Razor\Views\Home\Index.cshtml.g.cs
 C:\Users\Jordan\Source\Repos\Calligraphy_Final_Project\Calligraphy\obj\Debug\net5.0\Razor\Views\Shared\Error.cshtml.g.cs
-C:\Users\Jordan\Source\Repos\Calligraphy_Final_Project\Calligraphy\obj\Debug\net5.0\Razor\Views\Shared\_Layout.cshtml.g.cs
 C:\Users\Jordan\Source\Repos\Calligraphy_Final_Project\Calligraphy\obj\Debug\net5.0\Razor\Views\_ViewImports.cshtml.g.cs
-C:\Users\Jordan\Source\Repos\Calligraphy_Final_Project\Calligraphy\obj\Debug\net5.0\Razor\Views\_ViewStart.cshtml.g.cs
 C:\Users\Jordan\Source\Repos\Calligraphy_Final_Project\Calligraphy\obj\Debug\net5.0\Calligraphy.Controller.RazorTargetAssemblyInfo.cache
 C:\Users\Jordan\Source\Repos\Calligraphy_Final_Project\Calligraphy\obj\Debug\net5.0\Calligraphy.Controller.RazorTargetAssemblyInfo.cs
 C:\Users\Jordan\Source\Repos\Calligraphy_Final_Project\Calligraphy\obj\Debug\net5.0\Calligraphy.Views.pdb
@@ -416,3 +414,4 @@ C:\Users\Jeremy Forest\RiderProjects\Calligraphy_Final_Project\Calligraphy\obj\D
 C:\Users\Jeremy Forest\RiderProjects\Calligraphy_Final_Project\Calligraphy\obj\Debug\net5.0\ref\Calligraphy.dll
 C:\Users\Jeremy Forest\RiderProjects\Calligraphy_Final_Project\Calligraphy\obj\Debug\net5.0\Calligraphy.pdb
 C:\Users\Jeremy Forest\RiderProjects\Calligraphy_Final_Project\Calligraphy\obj\Debug\net5.0\Calligraphy.Controller.genruntimeconfig.cache
+C:\Users\Jordan\Source\Repos\Calligraphy_Final_Project\Calligraphy\obj\Debug\net5.0\Calligraphy.MvcApplicationPartsAssemblyInfo.cs
