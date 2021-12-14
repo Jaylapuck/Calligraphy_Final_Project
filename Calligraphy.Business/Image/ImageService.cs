@@ -70,7 +70,7 @@ namespace Calligraphy.Business.Image
                 return new NotFoundResult();
             }
             _imageRepo.DeleteById(id);
-            return new OkResult();
+            return new OkObjectResult(image);
         }
     }
 }
