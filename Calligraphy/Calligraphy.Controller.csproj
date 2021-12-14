@@ -29,6 +29,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Calligraphy.Business\Calligraphy.Business.csproj" />
     <ProjectReference Include="..\Calligraphy.Data\Calligraphy.Data.csproj" />
+    <ProjectReference Include="..\Calligraphy.Mailer\Calligraphy.Mailer.csproj" />
   </ItemGroup>
   <ItemGroup>
     <Analyzer Include="..\packages\Microsoft.DotNet.UpgradeAssistant.Extensions.Default.Analyzers.0.3.256001\analyzers\dotnet\cs\Microsoft.DotNet.UpgradeAssistant.Extensions.Default.Analyzers.Common.dll" />
@@ -45,5 +46,8 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="6.2.3" />
+    <PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="6.2.3" />
+    <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" Version="6.2.3" />
   </ItemGroup>
 </Project>
