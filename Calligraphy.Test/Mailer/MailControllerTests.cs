@@ -10,6 +10,14 @@ using System.Text;
 using System.Threading.Tasks;
 using Xunit;
 
+/// <summary>
+/// Author: Tristan Lafleur
+/// 
+/// Test class to test the controller for Mailer and it's post method
+/// Uses xUnit and Moq as testing libraries
+/// 
+/// </summary>
+
 namespace Calligraphy.Test.Mailer
 {
     public class MailControllerTests
@@ -30,6 +38,7 @@ namespace Calligraphy.Test.Mailer
             // Arrange 
             MailRequest email = new MailRequest();
 
+            // Simulate the await property in the setup of the post method
             _service.Setup(s => s.SendMailAsync(email)).Returns(async () => { await Task.Yield(); });
 
             // Act

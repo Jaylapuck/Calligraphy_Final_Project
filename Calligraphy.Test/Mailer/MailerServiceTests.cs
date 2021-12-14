@@ -10,6 +10,15 @@ using System.Text;
 using System.Threading.Tasks;
 using Xunit;
 
+/// <summary>
+/// 
+/// Author: Tristan Lafleur
+/// 
+/// Test class to test the service
+/// implementation of the SMTP server
+/// 
+/// </summary>
+
 namespace Calligraphy.Test.Mailer
 {
     public class MailerServiceTests

@@ -5,6 +5,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+/// <summary>
+/// Author: Tristan Lafleur
+/// 
+/// Simple model class to map the contents of the payload form the frontend
+/// </summary>
+
 namespace Calligraphy.Mailer.Model
 {
     public class MailRequest
@@ -13,13 +19,5 @@ namespace Calligraphy.Mailer.Model
         public string subject { get; set; }
         public string body { get; set; }
         public List<IFormFile> attachtments { get; set; }
-
-        //public MailRequest(string e, string s, string b, List<IFormFile> a)
-        //{
-        //    this.email = e;
-        //    this.subject = s;
-        //    this.body = b;
-        //    this.attachtments = a;
-        //}
     }
 }

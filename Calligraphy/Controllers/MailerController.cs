@@ -6,6 +6,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
+/// <summary>
+/// Author: Tristan Lafleur
+/// 
+/// This is the controller that takes in the
+/// HTTP requests for the mailer service.
+/// Uses a POST method to send out emails from
+/// a JSON formatted object.
+/// 
+/// </summary>
+
 namespace Calligraphy.Controllers
 {
     [ApiController]

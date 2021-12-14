@@ -10,6 +10,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+/// <summary>
+/// Author: Tristan Lafleur
+/// 
+/// IMailerService implementation class to create an email object from the 
+/// smtp settings and request object's fields
+/// </summary>
+
 namespace Calligraphy.Mailer.Services
 {
     public class MailServiceImpl : IMailerService
