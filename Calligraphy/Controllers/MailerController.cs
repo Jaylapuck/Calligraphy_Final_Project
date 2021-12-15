@@ -32,8 +32,15 @@ namespace Calligraphy.Controllers
         [HttpPost("Send")]
         public async Task<IActionResult> Send([FromForm] MailRequest request)
         {
-            await _mailerService.SendMailAsync(request);
-            return Ok();
+            if(string.IsNullOrEmpty(request.email))
+            {
+                throw new Exception("Email not found", new ArgumentNullException());
+            }
+            else
+            {
+                await _mailerService.SendMailAsync(request);
+                return Ok();
+            }
         }
     }
 }

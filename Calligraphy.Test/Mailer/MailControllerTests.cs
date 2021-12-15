@@ -123,11 +123,10 @@ namespace Calligraphy.Test.Mailer
         }
 
         [Fact]
-        public async Task SendMailBadRequestNoEmail()
+        public async Task SendMailArgumentNullNoEmail()
         {
             // Arrange
             MailRequest email = new MailRequest();
-            email.email = "";
             email.subject = "subject1";
             email.body = "body1";
             string filePath = @"..\..\..\Mailer\TestFiles\23784.png";
@@ -143,7 +142,7 @@ namespace Calligraphy.Test.Mailer
             Func<Task> result = () => _controller.Send(email);
 
             // Assert
-            var error = await Assert.ThrowsAsync<ArgumentNullException>(result);
+            var error = await Assert.ThrowsAsync<Exception>(result);
             Assert.Equal("Email not found", error.Message);
         }
     }
