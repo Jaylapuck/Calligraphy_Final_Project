@@ -1,10 +1,6 @@
 {
   "ExpandedNodes": [
     "",
-    "\\Calligraphy",
-    "\\Calligraphy.Data",
-    "\\Calligraphy.Data\\Migrations",
-    "\\Calligraphy.Data\\Models",
     "\\Calligraphy.Test",
     "\\Calligraphy.Test\\Form"
   ],
