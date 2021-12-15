@@ -11,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Calligraphy.Business", "Cal
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Calligraphy.Test", "Calligraphy.Test\Calligraphy.Test.csproj", "{63A09727-4A59-404C-85B2-2C2EA42F4CEA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calligraphy.Mailer", "Calligraphy.Mailer\Calligraphy.Mailer.csproj", "{BAEC8A9B-0984-4AF1-AE1E-B9DBB3D4D452}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Calligraphy.Mailer", "Calligraphy.Mailer\Calligraphy.Mailer.csproj", "{BAEC8A9B-0984-4AF1-AE1E-B9DBB3D4D452}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
