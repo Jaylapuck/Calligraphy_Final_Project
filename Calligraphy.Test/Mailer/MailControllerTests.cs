@@ -103,6 +103,7 @@ namespace Calligraphy.Test.Mailer
         }
 
         [Fact]
+        // Test to have the email sent without any attachments
         public async Task SendMailOkTestNoAttachtments()
         {
             // Arrange 
@@ -123,6 +124,7 @@ namespace Calligraphy.Test.Mailer
         }
 
         [Fact]
+        // Test to validate that an email must be present
         public async Task SendMailArgumentNullNoEmail()
         {
             // Arrange
@@ -147,6 +149,7 @@ namespace Calligraphy.Test.Mailer
         }
 
         [Fact]
+        // Test to validate that a valid email needs to be received
         public async Task SendMailInvalidInputBadEmail()
         {
             // Arrange
