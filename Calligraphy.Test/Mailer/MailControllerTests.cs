@@ -66,7 +66,7 @@ namespace Calligraphy.Test.Mailer
         {
             // Arrange 
             MailRequest email = new MailRequest();
-            email.email = "email1";
+            email.email = "tristanblacklafleur@hotmail.ca";
             email.body = "body1";
             string filePath = @"..\..\..\Mailer\TestFiles\23784.png";
             using var stream = new MemoryStream(File.ReadAllBytes(filePath).ToArray());
@@ -83,6 +83,7 @@ namespace Calligraphy.Test.Mailer
             var result = await _controller.Send(email);
 
             // Assert
+            Assert.True(string.IsNullOrEmpty(email.subject));
             Assert.IsType<OkResult>(result);
         }
 
@@ -92,7 +93,7 @@ namespace Calligraphy.Test.Mailer
         {
             // Arrange 
             MailRequest email = new MailRequest();
-            email.email = "email1";
+            email.email = "tristanblacklafleur@hotmail.ca";
             email.subject = "subject1";
             string filePath = @"..\..\..\Mailer\TestFiles\23784.png";
             using var stream = new MemoryStream(File.ReadAllBytes(filePath).ToArray());
@@ -108,6 +109,7 @@ namespace Calligraphy.Test.Mailer
             var result = await _controller.Send(email);
 
             // Assert
+            Assert.True(string.IsNullOrEmpty(email.body));
             Assert.IsType<OkResult>(result);
         }
 
@@ -117,7 +119,7 @@ namespace Calligraphy.Test.Mailer
         {
             // Arrange 
             MailRequest email = new MailRequest();
-            email.email = "email1";
+            email.email = "tristanblacklafleur@hotmail.ca";
             email.subject = "subject1";
             email.body = "body1";
             email.attachtments = new List<IFormFile>();
@@ -129,6 +131,7 @@ namespace Calligraphy.Test.Mailer
             var result = await _controller.Send(email);
 
             // Assert
+            Assert.True(email.attachtments.Count == 0);
             Assert.IsType<OkResult>(result);
         }
 
