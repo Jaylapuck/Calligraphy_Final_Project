@@ -35,10 +35,19 @@ namespace Calligraphy.Test.Mailer
 
         [Fact]
         // Test to see that the controller can send an email
-        public async Task SendMailOkTestEmpty()
+        public async Task SendMailOkTestSendEmail()
         {
             // Arrange 
             MailRequest email = new MailRequest();
+            email.email = "tristanblacklafleur@hotmail.ca";
+            email.subject = "subject1";
+            email.body = "body1";
+            string filePath = @"..\..\..\Mailer\TestFiles\23784.png";
+            using var stream = new MemoryStream(File.ReadAllBytes(filePath).ToArray());
+            var formFile = new FormFile(stream, 0, stream.Length, "streamFile", filePath.Split(@"\").Last());
+            List<IFormFile> attachtments = new List<IFormFile>();
+            attachtments.Add(formFile);
+            email.attachtments = attachtments;
 
             // Simulate the await property in the setup of the post method
             _service.Setup(s => s.SendMailAsync(email)).Returns(async () => { await Task.Yield(); });
@@ -121,6 +130,24 @@ namespace Calligraphy.Test.Mailer
 
             // Assert
             Assert.IsType<OkResult>(result);
+        }
+
+        [Fact]
+        // Test to see that the controller can send an email
+        public async Task SendMailBadRequestEmptyObject()
+        {
+            // Arrange 
+            MailRequest email = new MailRequest();
+
+            // Simulate the await property in the setup of the post method
+            _service.Setup(s => s.SendMailAsync(email)).Returns(async () => { await Task.Yield(); });
+
+            // Act
+            Func<Task> result = () => _controller.Send(email);
+
+            // Assert
+            var error = await Assert.ThrowsAsync<Exception>(result);
+            Assert.Equal("Email not found", error.Message);
         }
 
         [Fact]

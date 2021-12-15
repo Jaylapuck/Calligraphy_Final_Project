@@ -40,7 +40,7 @@ namespace Calligraphy.Controllers
                 await _mailerService.SendMailAsync(request);
                 return Ok();
             }
-            catch (ArgumentNullException nullExc)
+            catch(ArgumentNullException nullExc)
             {
                 throw new Exception("Email not found", nullExc);
             }
