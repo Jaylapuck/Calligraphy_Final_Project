@@ -7,6 +7,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Calligraphy.Business.Address;
+using Calligraphy.Business.Customer;
 using Calligraphy.Business.Form;
 using Calligraphy.Business.Image;
 using Calligraphy.Data.Config;
@@ -23,6 +25,8 @@ using Microsoft.Extensions.Hosting;
 using Calligraphy.Mailer.Services;
 using Calligraphy.Mailer.Settings;
 using Microsoft.OpenApi.Models;
+using Calligraphy.Data.Repo.Customer;
+using Calligraphy.Data.Repo.Address;
 
 namespace Calligraphy
 {
@@ -47,12 +51,18 @@ namespace Calligraphy
                 {
                     options.UseMemberCasing();
                 });
+
             services.Configure<MailSettings>(Configuration.GetSection("MailSettings"));
 
             services.AddTransient<IMailerService, MailServiceImpl>();
             services.AddTransient<IFormService, FormService>();
             services.AddTransient<IImageService, ImageService>();
             services.AddTransient<IImageRepo, ImageRepo>();
+            services.AddTransient<ICustomerService, CustomerService>();
+            services.AddTransient<ICustomerRepo, CustomerRepo>();
+            services.AddTransient<IAddressRepo, AddressRepo>();
+            services.AddTransient<IAddressService, AddressService>();
+            services.AddTransient<IFormService, FormService>();
             services.AddTransient<IFormRepo, FormRepo>();
 
             services.AddSwaggerGen(c =>
