@@ -25,6 +25,8 @@ using Microsoft.Extensions.Hosting;
 using Calligraphy.Mailer.Services;
 using Calligraphy.Mailer.Settings;
 using Microsoft.OpenApi.Models;
+using Calligraphy.Data.Repo.Customer;
+using Calligraphy.Data.Repo.Address;
 
 namespace Calligraphy
 {
@@ -49,17 +51,16 @@ namespace Calligraphy
                 {
                     options.UseMemberCasing();
                 });
-<<<<<<< HEAD
 
-=======
             services.Configure<MailSettings>(Configuration.GetSection("MailSettings"));
 
             services.AddTransient<IMailerService, MailServiceImpl>();
             services.AddTransient<IFormService, FormService>();
->>>>>>> 35568e32490792af45e41785c7df8b866193a571
             services.AddTransient<IImageService, ImageService>();
             services.AddTransient<IImageRepo, ImageRepo>();
             services.AddTransient<ICustomerService, CustomerService>();
+            services.AddTransient<ICustomerRepo, CustomerRepo>();
+            services.AddTransient<IAddressRepo, AddressRepo>();
             services.AddTransient<IAddressService, AddressService>();
             services.AddTransient<IFormService, FormService>();
             services.AddTransient<IFormRepo, FormRepo>();

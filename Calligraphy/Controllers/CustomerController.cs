@@ -20,18 +20,18 @@ namespace Calligraphy.Controllers
             _customerService = customerService;
         }
 
-        // GET: api/Form
+        // GET: api/Customer
         [HttpGet]
-        [Route("/api/Form")]
+        [Route("/api/Customer")]
         [Produces(MediaTypeNames.Application.Json)]
         public IEnumerable<CustomerEntity> Get()
         {
             return _customerService.GetAll();
         }
 
-        // POST: api/Form
+        // POST: api/Customer
         [HttpPost]
-        [Route("/api/Form")]
+        [Route("/api/Customer")]
         [Consumes(MediaTypeNames.Application.Json)]
         public IActionResult Post([FromBody] CustomerEntity customer)
         {

@@ -20,18 +20,18 @@ namespace Calligraphy.Controllers
             _addressService = addressService;
         }
 
-        // GET: api/Form
+        // GET: api/Address
         [HttpGet]
-        [Route("/api/Form")]
+        [Route("/api/Address")]
         [Produces(MediaTypeNames.Application.Json)]
         public IEnumerable<AddressEntity> Get()
         {
             return _addressService.GetAll();
         }
 
-        // POST: api/Form
+        // POST: api/Address
         [HttpPost]
-        [Route("/api/Form")]
+        [Route("/api/Address")]
         [Consumes(MediaTypeNames.Application.Json)]
         public IActionResult Post([FromBody] AddressEntity address)
         {
