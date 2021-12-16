@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "XLO3+pGweb9sYweJF7bka/XNhisKQ7T69dn+N6N2zECZ5BW/cLOtNfdvmGNqHVR0pgyeuWFpH5vnA9yuzu+lQw==",
+  "dgSpecHash": "Qf3/ZHZiu0A2GMAAHaoF8/uJUFNKv3mDZjfGXINaam+PgrBHXd7oWOgkm7OFUzeU9+xUuItx8U3nk+2rylpd8Q==",
   "success": true,
   "projectFilePath": "C:\\Users\\Jordan\\Source\\Repos\\Calligraphy_Final_Project\\Calligraphy\\Calligraphy.Controller.csproj",
   "expectedPackageFiles": [
@@ -29,7 +29,6 @@
     "C:\\Users\\Jordan\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
     "C:\\Users\\Jordan\\.nuget\\packages\\microsoft.data.sqlclient\\1.1.3\\microsoft.data.sqlclient.1.1.3.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\microsoft.dotnet.platformabstractions\\2.1.0\\microsoft.dotnet.platformabstractions.2.1.0.nupkg.sha512",
-    "C:\\Users\\Jordan\\.nuget\\packages\\microsoft.dotnet.upgradeassistant.extensions.default.analyzers\\0.3.256001\\microsoft.dotnet.upgradeassistant.extensions.default.analyzers.0.3.256001.nupkg.sha512",
     "C:\\Users\\Jordan\\.nuget\\packages\\microsoft.entityframeworkcore\\3.1.20\\microsoft.entityframeworkcore.3.1.20.nupkg.sha512",
     "C:\\Users\\Jordan\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\3.1.20\\microsoft.entityframeworkcore.abstractions.3.1.20.nupkg.sha512",
     "C:\\Users\\Jordan\\.nuget\\packages\\microsoft.entityframeworkcore.analyzers\\3.1.20\\microsoft.entityframeworkcore.analyzers.3.1.20.nupkg.sha512",

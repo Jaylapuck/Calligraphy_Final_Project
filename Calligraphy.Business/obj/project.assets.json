@@ -329,12 +329,6 @@
           "lib/netstandard1.3/Microsoft.DotNet.PlatformAbstractions.dll": {}
         }
       },
-      "Microsoft.DotNet.UpgradeAssistant.Extensions.Default.Analyzers/0.3.256001": {
-        "type": "package",
-        "build": {
-          "build/Microsoft.DotNet.UpgradeAssistant.Extensions.Default.Analyzers.props": {}
-        }
-      },
       "Microsoft.EntityFrameworkCore/3.1.20": {
         "type": "package",
         "dependencies": {
@@ -2429,30 +2423,6 @@
         "lib/netstandard1.3/Microsoft.DotNet.PlatformAbstractions.dll",
         "microsoft.dotnet.platformabstractions.2.1.0.nupkg.sha512",
         "microsoft.dotnet.platformabstractions.nuspec"
-      ]
-    },
-    "Microsoft.DotNet.UpgradeAssistant.Extensions.Default.Analyzers/0.3.256001": {
-      "sha512": "P4xNWgJWPgYGrKrqMzX6dFki2CThO4RO0Q0kwQ03wFFMcoloK+dd8JllTeSbxbjElN3yq+HMr54Dt+jzNWnwsg==",
-      "type": "package",
-      "path": "microsoft.dotnet.upgradeassistant.extensions.default.analyzers/0.3.256001",
-      "hasTools": true,
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "analyzers/dotnet/cs/Microsoft.DotNet.UpgradeAssistant.Extensions.Default.Analyzers.Common.dll",
-        "analyzers/dotnet/cs/Microsoft.DotNet.UpgradeAssistant.Extensions.Default.Analyzers.dll",
-        "analyzers/dotnet/cs/Microsoft.DotNet.UpgradeAssistant.Extensions.Default.CodeFixes.dll",
-        "analyzers/dotnet/vb/Microsoft.DotNet.UpgradeAssistant.Extensions.Default.Analyzers.Common.dll",
-        "analyzers/dotnet/vb/Microsoft.DotNet.UpgradeAssistant.Extensions.Default.Analyzers.dll",
-        "analyzers/dotnet/vb/Microsoft.DotNet.UpgradeAssistant.Extensions.Default.CodeFixes.dll",
-        "build/Microsoft.DotNet.UpgradeAssistant.Extensions.Default.Analyzers.props",
-        "build/TypeMaps.props",
-        "build/WebTypeReplacements.typemap",
-        "icon.png",
-        "microsoft.dotnet.upgradeassistant.extensions.default.analyzers.0.3.256001.nupkg.sha512",
-        "microsoft.dotnet.upgradeassistant.extensions.default.analyzers.nuspec",
-        "tools/install.ps1",
-        "tools/uninstall.ps1"
       ]
     },
     "Microsoft.EntityFrameworkCore/3.1.20": {
@@ -6948,7 +6918,6 @@
       "EntityFramework >= 6.4.4",
       "Microsoft.AspNetCore.Mvc.Core >= 2.2.5",
       "Microsoft.CSharp >= 4.7.0",
-      "Microsoft.DotNet.UpgradeAssistant.Extensions.Default.Analyzers >= 0.3.256001",
       "System.ComponentModel.Annotations >= 5.0.0",
       "System.Data.DataSetExtensions >= 4.5.0"
     ]
@@ -7014,10 +6983,6 @@
           "Microsoft.CSharp": {
             "target": "Package",
             "version": "[4.7.0, )"
-          },
-          "Microsoft.DotNet.UpgradeAssistant.Extensions.Default.Analyzers": {
-            "target": "Package",
-            "version": "[0.3.256001, )"
           },
           "System.ComponentModel.Annotations": {
             "target": "Package",

@@ -10,7 +10,6 @@
       "Calligraphy.Data/1.0.0": {
         "dependencies": {
           "Microsoft.CSharp": "4.7.0",
-          "Microsoft.DotNet.UpgradeAssistant.Extensions.Default.Analyzers": "0.3.256001",
           "Microsoft.EntityFrameworkCore.Design": "3.1.20",
           "Microsoft.EntityFrameworkCore.SqlServer": "3.1.20",
           "Microsoft.EntityFrameworkCore.Tools": "3.1.20",
@@ -68,7 +67,6 @@
           }
         }
       },
-      "Microsoft.DotNet.UpgradeAssistant.Extensions.Default.Analyzers/0.3.256001": {},
       "Microsoft.EntityFrameworkCore/3.1.20": {
         "dependencies": {
           "Microsoft.Bcl.AsyncInterfaces": "1.1.1",
@@ -1307,13 +1305,6 @@
       "sha512": "sha512-KOT5AoOXIQCF98y+ynMLMaemS05RebDconYlCtqdFGbcpviW+S2/wXhrDNPtZ3MWeB+6ej3t4CrzykRGQKk9gA==",
       "path": "microsoft.data.sqlclient/1.1.3",
       "hashPath": "microsoft.data.sqlclient.1.1.3.nupkg.sha512"
-    },
-    "Microsoft.DotNet.UpgradeAssistant.Extensions.Default.Analyzers/0.3.256001": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-P4xNWgJWPgYGrKrqMzX6dFki2CThO4RO0Q0kwQ03wFFMcoloK+dd8JllTeSbxbjElN3yq+HMr54Dt+jzNWnwsg==",
-      "path": "microsoft.dotnet.upgradeassistant.extensions.default.analyzers/0.3.256001",
-      "hashPath": "microsoft.dotnet.upgradeassistant.extensions.default.analyzers.0.3.256001.nupkg.sha512"
     },
     "Microsoft.EntityFrameworkCore/3.1.20": {
       "type": "package",
