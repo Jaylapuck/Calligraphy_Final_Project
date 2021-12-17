@@ -21,6 +21,7 @@ namespace Calligraphy.Test.Image
         }
         
         [Fact]
+        //TC13
         public void GetImage_ShouldReturnOkActionResult()
         {
             // Arrange
@@ -35,6 +36,7 @@ namespace Calligraphy.Test.Image
         }
         
         [Fact]
+        //TC14
         public void GetImage_ShouldReturnNotFoundActionResult()
         {
             // Arrange
@@ -48,6 +50,7 @@ namespace Calligraphy.Test.Image
         }
         
         [Fact]
+        //TC9
         public void PostImage_ShouldReturnOkActionResult()
         {
             // Arrange
@@ -62,6 +65,7 @@ namespace Calligraphy.Test.Image
         }
         
         [Fact]
+        //TC10
         public void PostImage_ShouldReturnBadRequestActionResult()
         {
             // Arrange
@@ -97,7 +101,7 @@ namespace Calligraphy.Test.Image
             {
                 Id = 1,
                 ImageTitle = "Test",
-                ImagePath = "Path"
+                ImageData = It.IsAny<byte[]>()
             };
             
             _mockFormRepo.Setup(x => x.GetById(1)).Returns(image);
@@ -141,7 +145,7 @@ namespace Calligraphy.Test.Image
             {
                 Id = 1,
                 ImageTitle = "Test",
-                ImagePath = "Path"
+                ImageData = It.IsAny<byte[]>()
             };
             
             _mockFormRepo.Setup(x => x.GetById(1)).Returns(image);

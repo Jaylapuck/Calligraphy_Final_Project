@@ -7,9 +7,7 @@ namespace Calligraphy.Data.Models
     {
         [ForeignKey("CustomerEntity")]
         [Key] public int FormId { get; set; }
-
         public virtual CustomerEntity Customer { get; set; }
-
         public string ServiceType { get; set; }
         public string Comments { get; set; }
     }

@@ -22,6 +22,7 @@ namespace Calligraphy.Test.Image
         }
         
         [Fact]
+        //TC11
         public void GetById_ShouldReturnOk()
         {
             // Arrange
@@ -37,6 +38,7 @@ namespace Calligraphy.Test.Image
         }
         
         [Fact]
+        //TC12
         public void GetById_ShouldReturnNotFound()
         {
             // Arrange
@@ -70,8 +72,8 @@ namespace Calligraphy.Test.Image
             // Arrange
             var images = new List<ImageEntity>()
             {
-                new ImageEntity(){ Id = 1, ImagePath = "Path1", ImageTitle = "Test1" },
-                new ImageEntity(){ Id = 2, ImagePath = "Path2", ImageTitle = "Test2" },
+                new ImageEntity(){ Id = 1, ImageData = It.IsAny<byte[]>() , ImageTitle = "Test1" },
+                new ImageEntity(){ Id = 2, ImageData = It.IsAny<byte[]>(), ImageTitle = "Test2" },
             };
             
             _imageServiceMock.Setup(x => x.GetAll()).Returns(images);
@@ -85,6 +87,7 @@ namespace Calligraphy.Test.Image
         }
         
         [Fact]
+        // TC7: Test for image upload
         public void Create_ShouldReturnOkActionResult()
         {
             // Arrange
@@ -99,6 +102,7 @@ namespace Calligraphy.Test.Image
         }
         
         [Fact]
+        // TC8: Test for image upload
         public void Create_ShouldReturnBadRequestActionResult()
         {
             // Arrange

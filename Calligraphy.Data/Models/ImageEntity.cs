@@ -6,6 +6,6 @@ namespace Calligraphy.Data.Models
     {
         [Key] public int Id { get; set; }
         public string ImageTitle { get; set; }
-        public string ImagePath { get; set; }
+        public byte[] ImageData { get; set; }
     }
 }
