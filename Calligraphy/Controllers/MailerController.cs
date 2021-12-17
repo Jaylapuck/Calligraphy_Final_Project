@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Mail;
 using System.Threading.Tasks;
 
 /// <summary>
@@ -32,8 +33,21 @@ namespace Calligraphy.Controllers
         [HttpPost("Send")]
         public async Task<IActionResult> Send([FromForm] MailRequest request)
         {
-            await _mailerService.SendMailAsync(request);
-            return Ok();
+            try
+            {
+                var address = new MailAddress(request.email).Address;
+
+                await _mailerService.SendMailAsync(request);
+                return Ok();
+            }
+            catch(ArgumentNullException nullExc)
+            {
+                throw new Exception("Email not found", nullExc);
+            }
+            catch(FormatException formatExc)
+            {
+                throw new Exception("Not a valid email", formatExc);
+            }
         }
     }
 }
