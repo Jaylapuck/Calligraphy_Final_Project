@@ -97,7 +97,7 @@ namespace Calligraphy.Test.Image
             {
                 Id = 1,
                 ImageTitle = "Test",
-                ImagePath = "Path"
+                ImageData = It.IsAny<byte[]>()
             };
             
             _mockFormRepo.Setup(x => x.GetById(1)).Returns(image);
@@ -141,7 +141,7 @@ namespace Calligraphy.Test.Image
             {
                 Id = 1,
                 ImageTitle = "Test",
-                ImagePath = "Path"
+                ImageData = It.IsAny<byte[]>()
             };
             
             _mockFormRepo.Setup(x => x.GetById(1)).Returns(image);
