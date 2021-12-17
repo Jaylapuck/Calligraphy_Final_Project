@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Calligraphy.Data.Models;
 using Calligraphy.Data.Repo.Image;
 using Microsoft.AspNetCore.Mvc;
@@ -31,10 +32,13 @@ namespace Calligraphy.Business.Image
 
         public IActionResult Create(ImageEntity image)
         {
+            // convert image to base64
+
             if (image == null)
             {
                 return new BadRequestResult();
             }
+            
             _imageRepo.Add(image);
             return new OkObjectResult(image);
         }
@@ -51,7 +55,7 @@ namespace Calligraphy.Business.Image
                 return new NotFoundResult();
             }
             imageToUpdate.ImageTitle = image.ImageTitle;
-            imageToUpdate.ImagePath = image.ImagePath;
+            imageToUpdate.ImageData = image.ImageData;
             _imageRepo.Update(imageToUpdate);
             return new OkObjectResult(imageToUpdate);
         }

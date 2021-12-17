@@ -19,12 +19,6 @@
     <None Update=".dockerignore">
       <DependentUpon>Dockerfile</DependentUpon>
     </None>
-    <Content Update="Web.Debug.config">
-      <DependentUpon>Web.config</DependentUpon>
-    </Content>
-    <Content Update="Web.Release.config">
-      <DependentUpon>Web.config</DependentUpon>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Calligraphy.Business\Calligraphy.Business.csproj" />
