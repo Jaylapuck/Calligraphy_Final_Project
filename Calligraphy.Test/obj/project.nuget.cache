@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "CY6+HK8iUxvPvaTUt/IcuT+bzMO8obMpYkQ1YMsFqsF5NpLCRYHLKwmMayAo3MybfYC5Y3F16af3V6n+x4nQUw==",
+  "dgSpecHash": "EBrBi33+8vjE7wlfpUJ6kBgHUDu3YTtZGV4ER2JvocpINKld+VB4tGQy3aAka93PaMLg1i1ChSkLqswc2aa2cA==",
   "success": true,
   "projectFilePath": "C:\\Users\\Jordan\\Source\\Repos\\Calligraphy_Final_Project\\Calligraphy.Test\\Calligraphy.Test.csproj",
   "expectedPackageFiles": [
@@ -96,6 +96,7 @@
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\runtime.win-x64.runtime.native.system.data.sqlclient.sni\\4.4.0\\runtime.win-x64.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\runtime.win-x86.runtime.native.system.data.sqlclient.sni\\4.4.0\\runtime.win-x86.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",
     "C:\\Users\\Jordan\\.nuget\\packages\\selenium.firefox.webdriver\\0.27.0\\selenium.firefox.webdriver.0.27.0.nupkg.sha512",
+    "C:\\Users\\Jordan\\.nuget\\packages\\selenium.support\\4.1.0\\selenium.support.4.1.0.nupkg.sha512",
     "C:\\Users\\Jordan\\.nuget\\packages\\selenium.webdriver\\4.1.0\\selenium.webdriver.4.1.0.nupkg.sha512",
     "C:\\Users\\Jordan\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.2.3\\swashbuckle.aspnetcore.swagger.6.2.3.nupkg.sha512",
     "C:\\Users\\Jordan\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.2.3\\swashbuckle.aspnetcore.swaggergen.6.2.3.nupkg.sha512",

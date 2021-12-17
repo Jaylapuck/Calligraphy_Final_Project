@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Calligraphy.Business.Form;
 using Calligraphy.Controllers;
+using Calligraphy.Data.Enums;
 using Calligraphy.Data.Models;
 using Microsoft.AspNetCore.Mvc;
 using Moq;
@@ -31,8 +32,8 @@ namespace Calligraphy.Test.Form
             // Arrange
             var forms = new List<FormEntity>
             {
-                new FormEntity {  FormId = 1, ServiceType = "Form 1", Comments = "Description 1"},
-                new FormEntity { FormId = 2, ServiceType = "Form 2", Comments = "Description 2"}
+                new FormEntity {  FormId = 1, ServiceType = ServiceType.Calligraphy, Comments = "Description 1"},
+                new FormEntity { FormId = 2, ServiceType = ServiceType.Engraving, Comments = "Description 2"}
             };
 
             _mockFormService.Setup(x => x.GetAll()).Returns(forms);

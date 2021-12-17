@@ -10,6 +10,6 @@
     "\\Calligraphy.Test",
     "\\Calligraphy.Test\\Form"
   ],
-  "SelectedNode": "\\Calligraphy.Data\\Migrations\\20211215190339_new_cus_add_db.cs",
+  "SelectedNode": "\\Calligraphy\\Startup.cs",
   "PreviewInSolutionExplorer": false
 }

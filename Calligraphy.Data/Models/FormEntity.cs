@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Calligraphy.Data.Enums;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Calligraphy.Data.Models
@@ -10,7 +11,7 @@ namespace Calligraphy.Data.Models
 
         public virtual CustomerEntity Customer { get; set; }
 
-        public string ServiceType { get; set; }
+        public ServiceType ServiceType { get; set; }
         public string Comments { get; set; }
     }
 }
