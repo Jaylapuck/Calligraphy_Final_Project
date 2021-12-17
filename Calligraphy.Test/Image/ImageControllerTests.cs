@@ -22,6 +22,7 @@ namespace Calligraphy.Test.Image
         }
         
         [Fact]
+        //TC11
         public void GetById_ShouldReturnOk()
         {
             // Arrange
@@ -37,6 +38,7 @@ namespace Calligraphy.Test.Image
         }
         
         [Fact]
+        //TC12
         public void GetById_ShouldReturnNotFound()
         {
             // Arrange
@@ -85,6 +87,7 @@ namespace Calligraphy.Test.Image
         }
         
         [Fact]
+        // TC7: Test for image upload
         public void Create_ShouldReturnOkActionResult()
         {
             // Arrange
@@ -99,6 +102,7 @@ namespace Calligraphy.Test.Image
         }
         
         [Fact]
+        // TC8: Test for image upload
         public void Create_ShouldReturnBadRequestActionResult()
         {
             // Arrange

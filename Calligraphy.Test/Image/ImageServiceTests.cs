@@ -21,6 +21,7 @@ namespace Calligraphy.Test.Image
         }
         
         [Fact]
+        //TC13
         public void GetImage_ShouldReturnOkActionResult()
         {
             // Arrange
@@ -35,6 +36,7 @@ namespace Calligraphy.Test.Image
         }
         
         [Fact]
+        //TC14
         public void GetImage_ShouldReturnNotFoundActionResult()
         {
             // Arrange
@@ -48,6 +50,7 @@ namespace Calligraphy.Test.Image
         }
         
         [Fact]
+        //TC9
         public void PostImage_ShouldReturnOkActionResult()
         {
             // Arrange
@@ -62,6 +65,7 @@ namespace Calligraphy.Test.Image
         }
         
         [Fact]
+        //TC10
         public void PostImage_ShouldReturnBadRequestActionResult()
         {
             // Arrange
