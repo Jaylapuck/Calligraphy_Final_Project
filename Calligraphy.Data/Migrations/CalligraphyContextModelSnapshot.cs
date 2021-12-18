@@ -98,9 +98,12 @@ namespace Calligraphy.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-                    b.Property<byte[]>("ImageData")
-                        .HasColumnType("varbinary(max)");
 
+                    b.Property<string>("ImageData")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("ImageId")
+                        .HasColumnType("int");
 
                     b.Property<string>("ImageTitle")
                         .HasColumnType("nvarchar(max)");

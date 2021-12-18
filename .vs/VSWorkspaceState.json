@@ -1,15 +1,11 @@
 {
   "ExpandedNodes": [
     "",
-    "\\Calligraphy",
     "\\Calligraphy.Business",
-    "\\Calligraphy.Business\\Form",
+    "\\Calligraphy.Business\\Image",
     "\\Calligraphy.Data",
-    "\\Calligraphy.Data\\Migrations",
-    "\\Calligraphy.Data\\Models",
-    "\\Calligraphy.Test",
-    "\\Calligraphy.Test\\Form"
+    "\\Calligraphy.Data\\Models"
   ],
-  "SelectedNode": "\\Calligraphy.Data\\Migrations\\20211215190339_new_cus_add_db.cs",
+  "SelectedNode": "\\Calligraphy.sln",
   "PreviewInSolutionExplorer": false
 }

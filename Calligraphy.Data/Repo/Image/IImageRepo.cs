@@ -9,6 +9,7 @@ namespace Calligraphy.Data.Repo.Image
         
         ImageEntity GetById(int id);
         
+        ImageEntity GetByImageId(int id);
         
         ImageEntity Add(ImageEntity image);
         
