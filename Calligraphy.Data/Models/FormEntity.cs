@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Calligraphy.Data.Enums;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Calligraphy.Data.Models
@@ -8,7 +9,8 @@ namespace Calligraphy.Data.Models
         [ForeignKey("CustomerEntity")]
         [Key] public int FormId { get; set; }
         public virtual CustomerEntity Customer { get; set; }
-        public string ServiceType { get; set; }
+
+        public ServiceType ServiceType { get; set; }
         public string Comments { get; set; }
     }
 }

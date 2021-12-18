@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Calligraphy.Business.Form;
 using Calligraphy.Controllers;
+using Calligraphy.Data.Enums;
 using Calligraphy.Data.Models;
 using Calligraphy.Data.Repo;
 using Microsoft.AspNetCore.Mvc;
@@ -31,9 +32,9 @@ namespace Calligraphy.Test.Form
             // Arrange
             var forms = new List<FormEntity>
             {
-                new FormEntity {FormId = 1, ServiceType = "Service Type 1", Comments = "Comments 1"},
-                new FormEntity {FormId = 2, ServiceType = "Service Type 2", Comments = "Comments 2"},
-                new FormEntity {FormId = 3, ServiceType = "Service Type 3", Comments = "Comments 3"}
+                new FormEntity {FormId = 1, ServiceType = ServiceType.Calligraphy, Comments = "Comments 1"},
+                new FormEntity {FormId = 2, ServiceType = ServiceType.Engraving, Comments = "Comments 2"},
+                new FormEntity {FormId = 3, ServiceType = ServiceType.Event, Comments = "Comments 3"}
             };
             
             // Act
@@ -50,7 +51,7 @@ namespace Calligraphy.Test.Form
         public void CreateForm()
         {
             // Arrange
-            var form = new FormEntity {FormId = 1, ServiceType = "Service Type 1", Comments = "Comments 1"};
+            var form = new FormEntity {FormId = 1, ServiceType = ServiceType.Calligraphy, Comments = "Comments 1"};
             
             // Act
             _mockFormRepo.Setup(x => x.Create(form));

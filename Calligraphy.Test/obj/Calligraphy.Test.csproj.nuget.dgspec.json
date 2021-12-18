@@ -49,10 +49,6 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "dependencies": {
-            "EntityFramework": {
-              "target": "Package",
-              "version": "[6.4.4, )"
-            },
             "Microsoft.AspNetCore.Mvc.Core": {
               "target": "Package",
               "version": "[2.2.5, )"
@@ -319,6 +315,10 @@
               "target": "Package",
               "version": "[0.27.0, )"
             },
+            "Selenium.Support": {
+              "target": "Package",
+              "version": "[4.1.0, )"
+            },
             "Selenium.WebDriver": {
               "target": "Package",
               "version": "[4.1.0, )"
@@ -328,6 +328,10 @@
               "suppressParent": "All",
               "target": "Package",
               "version": "[3.0.2, )"
+            },
+            "netDumbster": {
+              "target": "Package",
+              "version": "[2.0.0.8, )"
             },
             "xunit": {
               "target": "Package",
