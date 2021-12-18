@@ -32,13 +32,20 @@ namespace Calligraphy.Business.Image
 
         public IActionResult Create(ImageEntity image)
         {
-            // convert image to base64
-
+            //verify that  the image entity is valid
             if (image == null)
             {
-                return new BadRequestResult();
+                return new BadRequestObjectResult("Image entity is null");
             }
             
+            //verify that the imageId is not already in the database
+            var imageInDb = _imageRepo.GetByImageId(image.ImageId);
+            
+            if (imageInDb != null)
+            {
+                return new BadRequestObjectResult("ImageId already exists");
+            }
+
             _imageRepo.Add(image);
             return new OkObjectResult(image);
         }

@@ -31,6 +31,11 @@ namespace Calligraphy.Data.Repo.Image
         {
             return _context.Images.FirstOrDefault(x => x.Id == id);
         }
+        
+        public ImageEntity GetByImageId(int imageId)
+        {
+            return _context.Images.FirstOrDefault(x => x.ImageId == imageId);
+        }
 
         public ImageEntity Add(ImageEntity image)
         {

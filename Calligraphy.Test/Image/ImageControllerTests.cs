@@ -72,8 +72,8 @@ namespace Calligraphy.Test.Image
             // Arrange
             var images = new List<ImageEntity>()
             {
-                new ImageEntity(){ Id = 1, ImageData = It.IsAny<byte[]>() , ImageTitle = "Test1" },
-                new ImageEntity(){ Id = 2, ImageData = It.IsAny<byte[]>(), ImageTitle = "Test2" },
+                new ImageEntity(){ Id = 1, ImageData = It.IsAny<string>() , ImageTitle = "Test1" },
+                new ImageEntity(){ Id = 2, ImageData = It.IsAny<string>(), ImageTitle = "Test2" },
             };
             
             _imageServiceMock.Setup(x => x.GetAll()).Returns(images);
