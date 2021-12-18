@@ -69,14 +69,29 @@ namespace Calligraphy.Test.Image
         public void PostImage_ShouldReturnBadRequestActionResult()
         {
             // Arrange
+            _mockFormRepo.Setup(x => x.Add(null)).Returns((ImageEntity) null);
+            
+            // Act
+            var result = _formService.Create(null);
+            
+            // Assert
+            Assert.IsType<BadRequestObjectResult>(result);
+        }
+        
+        [Fact]
+        //TC11
+        public void PostImage_ShouldReturnBadRequestActionResult_WhenImageIdAlreadyExist()
+        {
+            // Arrange
             var image = new ImageEntity();
             _mockFormRepo.Setup(x => x.Add(It.IsAny<ImageEntity>())).Returns((ImageEntity) null);
+            _mockFormRepo.Setup(x => x.GetByImageId(It.IsAny<int>())).Returns(image);
             
             // Act
             var result = _formService.Create(image);
             
             // Assert
-            Assert.IsType<BadRequestResult>(result);
+            Assert.IsType<BadRequestObjectResult>(result);
         }
         
         [Fact]
@@ -101,7 +116,7 @@ namespace Calligraphy.Test.Image
             {
                 Id = 1,
                 ImageTitle = "Test",
-                ImageData = It.IsAny<byte[]>()
+                ImageData = It.IsAny<string>()
             };
             
             _mockFormRepo.Setup(x => x.GetById(1)).Returns(image);
@@ -145,7 +160,7 @@ namespace Calligraphy.Test.Image
             {
                 Id = 1,
                 ImageTitle = "Test",
-                ImageData = It.IsAny<byte[]>()
+                ImageData = It.IsAny<string>()
             };
             
             _mockFormRepo.Setup(x => x.GetById(1)).Returns(image);
