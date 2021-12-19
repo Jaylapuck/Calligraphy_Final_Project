@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "JTy/HyIbGrQYR7h9+KFli993V4YTjg/LD21qbVWYCpK/D0pc5evUCrqDXaoBsay1BB4cVaZDCiMgKbCn+WUhsw==",
+  "dgSpecHash": "+tLDj6kKkZKrhKT2U+uNnUumh7iU+hOJXhI8lrAsUwlIUf5RxpY5/T1kQKGGhOl9yfyO0x5eGfshK1BRh8Qcyg==",
   "success": true,
   "projectFilePath": "C:\\Users\\ethyl\\RiderProjects\\Calligraphy_Final_Project\\Calligraphy.Test\\Calligraphy.Test.csproj",
   "expectedPackageFiles": [
@@ -97,6 +97,7 @@
     "C:\\Users\\ethyl\\.nuget\\packages\\selenium.firefox.webdriver\\0.27.0\\selenium.firefox.webdriver.0.27.0.nupkg.sha512",
     "C:\\Users\\ethyl\\.nuget\\packages\\selenium.support\\4.1.0\\selenium.support.4.1.0.nupkg.sha512",
     "C:\\Users\\ethyl\\.nuget\\packages\\selenium.webdriver\\4.1.0\\selenium.webdriver.4.1.0.nupkg.sha512",
+    "C:\\Users\\ethyl\\.nuget\\packages\\selenium.webdriver.geckodriver.win64\\0.30.0.1\\selenium.webdriver.geckodriver.win64.0.30.0.1.nupkg.sha512",
     "C:\\Users\\ethyl\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.2.3\\swashbuckle.aspnetcore.swagger.6.2.3.nupkg.sha512",
     "C:\\Users\\ethyl\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.2.3\\swashbuckle.aspnetcore.swaggergen.6.2.3.nupkg.sha512",
     "C:\\Users\\ethyl\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\6.2.3\\swashbuckle.aspnetcore.swaggerui.6.2.3.nupkg.sha512",
