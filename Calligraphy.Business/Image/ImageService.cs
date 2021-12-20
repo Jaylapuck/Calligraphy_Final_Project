@@ -30,6 +30,16 @@ namespace Calligraphy.Business.Image
             return new OkObjectResult(image);
         }
 
+        public IActionResult GetByImageId(int id)
+        {
+            var image = _imageRepo.GetByImageId(id);
+            if (image == null)
+            {
+                return new NotFoundResult();
+            }
+            return new OkObjectResult(image);
+        }
+
         public IActionResult Create(ImageEntity image)
         {
             //verify that  the image entity is valid
@@ -56,7 +66,7 @@ namespace Calligraphy.Business.Image
             {
                 return new BadRequestResult();
             }
-            var imageToUpdate = _imageRepo.GetById(id);
+            var imageToUpdate = _imageRepo.GetByImageId(id);
             if (imageToUpdate == null)
             {
                 return new NotFoundResult();
@@ -70,7 +80,7 @@ namespace Calligraphy.Business.Image
 
         public IActionResult Delete(int id)
         {
-            var image = _imageRepo.GetById(id);
+            var image = _imageRepo.GetByImageId(id);
             if (image == null)
             {
                 return new NotFoundResult();
