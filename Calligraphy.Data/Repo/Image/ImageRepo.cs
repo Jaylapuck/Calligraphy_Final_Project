@@ -53,7 +53,7 @@ namespace Calligraphy.Data.Repo.Image
 
         public void DeleteById(int id)
         {
-            var image = _context.Images.FirstOrDefault(x => x.Id == id);
+            var image = _context.Images.FirstOrDefault(x => x.ImageId == id);
             _context.Images.Remove(image);
             _context.SaveChanges();
         }

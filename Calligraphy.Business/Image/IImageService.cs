@@ -12,6 +12,8 @@ namespace Calligraphy.Business.Image
         // GET BY ID
         IActionResult GetById(int id);
         
+        IActionResult GetByImageId(int id);
+        
         // CREATE
         IActionResult Create(ImageEntity image);
         

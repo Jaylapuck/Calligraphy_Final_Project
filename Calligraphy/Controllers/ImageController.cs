@@ -38,6 +38,15 @@ namespace Calligraphy.Controllers
             return _imageService.GetById(id);
         }
         
+        // GET BY ID
+        [HttpGet]
+        [Route("/api/Image/portfolio/{id:int}")]
+        [Produces(MediaTypeNames.Application.Json)]
+        public IActionResult GetByImageId(int id)
+        {
+            return _imageService.GetByImageId(id);
+        }
+        
         // POST
         [HttpPost]
         [Route("/api/Image")]
