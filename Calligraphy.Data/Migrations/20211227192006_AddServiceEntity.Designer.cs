@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Calligraphy.Data.Migrations
 {
     [DbContext(typeof(CalligraphyContext))]
-    [Migration("20211218214735_all")]
-    partial class all
+    [Migration("20211227192006_AddServiceEntity")]
+    partial class AddServiceEntity
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -114,6 +114,24 @@ namespace Calligraphy.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Images");
+                });
+
+            modelBuilder.Entity("Calligraphy.Data.Models.ServiceEntity", b =>
+                {
+                    b.Property<int>("ServiceId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<float>("StartingRate")
+                        .HasColumnType("real");
+
+                    b.Property<int>("TypeName")
+                        .HasColumnType("int");
+
+                    b.HasKey("ServiceId");
+
+                    b.ToTable("Services");
                 });
 
             modelBuilder.Entity("Calligraphy.Data.Models.CustomerEntity", b =>

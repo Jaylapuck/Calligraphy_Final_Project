@@ -18,5 +18,6 @@ namespace Calligraphy.Data.Config
         public DbSet<ImageEntity> Images { get; set; }
         public DbSet<CustomerEntity> Customers { get; set; }
         public DbSet<AddressEntity> Addresses { get; set; }
+        public DbSet<ServiceEntity> Services { get; set; }
     }
 }

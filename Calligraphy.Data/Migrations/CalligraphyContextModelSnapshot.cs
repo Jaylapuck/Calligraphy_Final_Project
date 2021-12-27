@@ -114,6 +114,24 @@ namespace Calligraphy.Data.Migrations
                     b.ToTable("Images");
                 });
 
+            modelBuilder.Entity("Calligraphy.Data.Models.ServiceEntity", b =>
+                {
+                    b.Property<int>("ServiceId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<float>("StartingRate")
+                        .HasColumnType("real");
+
+                    b.Property<int>("TypeName")
+                        .HasColumnType("int");
+
+                    b.HasKey("ServiceId");
+
+                    b.ToTable("Services");
+                });
+
             modelBuilder.Entity("Calligraphy.Data.Models.CustomerEntity", b =>
                 {
                     b.HasOne("Calligraphy.Data.Models.AddressEntity", "Address")
