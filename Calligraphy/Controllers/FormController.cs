@@ -30,6 +30,11 @@ namespace Calligraphy.Controllers
             return _formService.GetAll();
         }
 
+        public IEnumerable<ServiceEntity> GetServices()
+        {
+            return null;
+        }
+
         // POST: api/Form
         [HttpPost]
         [Route("/api/Form")]

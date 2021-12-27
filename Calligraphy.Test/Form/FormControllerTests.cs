@@ -93,5 +93,25 @@ namespace Calligraphy.Test.Form
             // Assert
             Assert.IsType<BadRequestResult>(actual);
         }
+
+        [Fact]
+        public void GetAllServicesOK()
+        {
+            // Arrange
+            List<ServiceEntity> dummyServices = new List<ServiceEntity>
+            {
+                new ServiceEntity{ServiceId = 1, TypeName = ServiceType.Calligraphy, StartingRate = 20.00f},
+                new ServiceEntity{ServiceId = 2, TypeName = ServiceType.Engraving, StartingRate = 30.00f}
+            };
+
+            _mockFormService.Setup(x => x.GetAllServices()).Returns(dummyServices);
+
+            // Act
+            var result = _formController.GetServices();
+
+            // Assert
+            Assert.IsType<List<ServiceEntity>>(result);
+            Assert.Equal(2, dummyServices.Count);
+        }
     }
 }
