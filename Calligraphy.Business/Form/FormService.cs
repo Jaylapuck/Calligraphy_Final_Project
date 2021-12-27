@@ -27,6 +27,11 @@ namespace Calligraphy.Business.Form
             return _formRepo.GetAll();
         }
 
+        public IEnumerable<ServiceEntity> GetAllServices()
+        {
+            return null;
+        }
+
         //Add new form
         public bool Create(FormEntity form)
         {
