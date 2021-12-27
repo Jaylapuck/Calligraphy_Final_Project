@@ -5,16 +5,19 @@ using System.Text;
 using System.Threading.Tasks;
 using Calligraphy.Data.Models;
 using Calligraphy.Data.Repo;
+using Calligraphy.Data.Repo.Service;
 
 namespace Calligraphy.Business.Form
 {
     public class FormService :  IFormService
     {
         private readonly IFormRepo _formRepo;
+        private readonly IServiceRepo _serviceRepo;
         
-        public FormService(IFormRepo formRepo)
+        public FormService(IFormRepo formRepo, IServiceRepo serviceRepo)
         {
             _formRepo = formRepo;
+            _serviceRepo = serviceRepo;
         }
 
         public FormService()
@@ -29,7 +32,7 @@ namespace Calligraphy.Business.Form
 
         public IEnumerable<ServiceEntity> GetAllServices()
         {
-            return null;
+            return _serviceRepo.GetAll();
         }
 
         //Add new form

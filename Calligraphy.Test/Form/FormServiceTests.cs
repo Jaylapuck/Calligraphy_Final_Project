@@ -24,7 +24,8 @@ namespace Calligraphy.Test.Form
         public FormServiceTests()
         {
             _mockFormRepo = new Mock<IFormRepo>();
-            _formService = new FormService(_mockFormRepo.Object);
+            _mockServiceRepo = new Mock<IServiceRepo>();
+            _formService = new FormService(_mockFormRepo.Object, _mockServiceRepo.Object);
         }
 
         [Fact]
