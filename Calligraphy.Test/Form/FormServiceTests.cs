@@ -8,6 +8,7 @@ using Calligraphy.Controllers;
 using Calligraphy.Data.Enums;
 using Calligraphy.Data.Models;
 using Calligraphy.Data.Repo;
+using Calligraphy.Data.Repo.Service;
 using Microsoft.AspNetCore.Mvc;
 using Moq;
 using Xunit;
@@ -17,6 +18,7 @@ namespace Calligraphy.Test.Form
     public class FormServiceTests
     {
         private readonly Mock<IFormRepo> _mockFormRepo;
+        private readonly Mock<IServiceRepo> _mockServiceRepo;
         private readonly FormService _formService;
 
         public FormServiceTests()
@@ -59,6 +61,24 @@ namespace Calligraphy.Test.Form
             
             // Assert
             _mockFormRepo.Verify(x => x.Create(form), Times.Once);
+        }
+
+        [Fact]
+        public void GetAllServicesOk()
+        {
+            // Arrange
+            List<ServiceEntity> dummyServices = new List<ServiceEntity>
+            {
+                new ServiceEntity{ServiceId = 1, TypeName = ServiceType.Calligraphy, StartingRate = 20.00f},
+                new ServiceEntity{ServiceId = 2, TypeName = ServiceType.Engraving, StartingRate = 30.00f}
+            };
+
+            // Act
+            _mockServiceRepo.Setup(x => x.GetAll()).Returns(dummyServices);
+            var result = _formService.GetAllServices();
+
+            // Assert 
+            Assert.Equal(2, result.Count());
         }
     }
 }
