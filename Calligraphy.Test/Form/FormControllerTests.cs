@@ -113,5 +113,21 @@ namespace Calligraphy.Test.Form
             Assert.IsType<List<ServiceEntity>>(result);
             Assert.Equal(2, dummyServices.Count);
         }
+
+        [Fact]
+        public void GetAllServicesEmpty()
+        {
+            // Arrange
+            List<ServiceEntity> dummyServices = new List<ServiceEntity>();
+
+            _mockFormService.Setup(x => x.GetAllServices()).Returns(dummyServices);
+
+            // Act
+            var result = _formController.GetServices();
+
+            // Assert
+            Assert.IsType<List<ServiceEntity>>(result);
+            Assert.Empty(dummyServices);
+        }
     }
 }

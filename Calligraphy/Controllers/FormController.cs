@@ -32,7 +32,7 @@ namespace Calligraphy.Controllers
 
         public IEnumerable<ServiceEntity> GetServices()
         {
-            return null;
+            return _formService.GetAllServices();
         }
 
         // POST: api/Form
