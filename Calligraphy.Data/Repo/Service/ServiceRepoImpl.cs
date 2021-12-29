@@ -3,6 +3,7 @@ using Calligraphy.Data.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace Calligraphy.Data.Repo.Service
@@ -25,7 +26,10 @@ namespace Calligraphy.Data.Repo.Service
 
         public IEnumerable<ServiceEntity> GetAll()
         {
-            throw new NotImplementedException();
+            using (_context)
+            {
+                return _context.Services.ToList();
+            }
         }
     }
 }
