@@ -12,6 +12,8 @@ namespace Calligraphy.Business.Form
         // GET ALLs
         IEnumerable<FormEntity> GetAll();
 
+        IEnumerable<ServiceEntity> GetAllServices();
+
         // POST
         bool Create(FormEntity form);
     }

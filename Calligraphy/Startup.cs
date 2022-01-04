@@ -27,6 +27,7 @@ using Calligraphy.Mailer.Settings;
 using Microsoft.OpenApi.Models;
 using Calligraphy.Data.Repo.Customer;
 using Calligraphy.Data.Repo.Address;
+using Calligraphy.Data.Repo.Service;
 
 namespace Calligraphy
 {
@@ -64,6 +65,7 @@ namespace Calligraphy
             services.AddTransient<IAddressService, AddressService>();
             services.AddTransient<IFormService, FormService>();
             services.AddTransient<IFormRepo, FormRepo>();
+            services.AddTransient<IServiceRepo, ServiceRepoImpl>();
 
             services.AddSwaggerGen(c =>
             {
