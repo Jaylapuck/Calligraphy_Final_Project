@@ -14,6 +14,7 @@ namespace Calligraphy.Data.Models
 
         public ServiceType ServiceType { get; set; }
         public string Comments { get; set; }
+        [NotMapped]
         public List<IFormFile> Attachments { get; set; }
     }
 }
