@@ -7,6 +7,7 @@ using Calligraphy.Business.Form;
 using Calligraphy.Controllers;
 using Calligraphy.Data.Enums;
 using Calligraphy.Data.Models;
+using Calligraphy.Mailer.Services;
 using Microsoft.AspNetCore.Mvc;
 using Moq;
 using Xunit;
@@ -16,12 +17,14 @@ namespace Calligraphy.Test.Form
     public class FormControllerTests
     {
         private readonly Mock<IFormService> _mockFormService;
+        private readonly Mock<IMailerService> _mockMailerService;
         private readonly FormController _formController;
 
         public FormControllerTests()
         {
             _mockFormService = new Mock<IFormService>();
-            _formController = new FormController(_mockFormService.Object);
+            _mockMailerService = new Mock<IMailerService>();
+            _formController = new FormController(_mockFormService.Object, _mockMailerService.Object);
         }
 
         // TS2-TC1
