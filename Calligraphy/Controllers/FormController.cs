@@ -91,17 +91,13 @@ namespace Calligraphy.Controllers
                 }
                 return BadRequest();
             }
-            catch (ArgumentNullException nullExc)
+            catch (ArgumentException nullExc)
             {
-                throw new Exception("Email not found", nullExc);
+                throw new ArgumentException("Email not found", nullExc);
             }
             catch (FormatException formatExc)
             {
-                throw new Exception("Not a valid email", formatExc);
-            }
-            catch (Exception exc)
-            {
-                throw new Exception("An error occured...");
+                throw new FormatException("Not a valid email", formatExc);
             }
         }
     }
