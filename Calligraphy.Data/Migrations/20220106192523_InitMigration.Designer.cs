@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Calligraphy.Data.Migrations
 {
     [DbContext(typeof(CalligraphyContext))]
-    [Migration("20211227192006_AddServiceEntity")]
-    partial class AddServiceEntity
+    [Migration("20220106192523_InitMigration")]
+    partial class InitMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -86,6 +86,9 @@ namespace Calligraphy.Data.Migrations
 
                     b.Property<int>("ServiceType")
                         .HasColumnType("int");
+
+                    b.Property<double>("StartingRate")
+                        .HasColumnType("float");
 
                     b.HasKey("FormId");
 

@@ -11,8 +11,8 @@ namespace Calligraphy.Data.Models
         [ForeignKey("CustomerEntity")]
         [Key] public int FormId { get; set; }
         public virtual CustomerEntity Customer { get; set; }
-
         public ServiceType ServiceType { get; set; }
+        public double StartingRate { get; set; }
         public string Comments { get; set; }
         [NotMapped]
         public List<IFormFile> Attachments { get; set; }

@@ -85,6 +85,9 @@ namespace Calligraphy.Data.Migrations
                     b.Property<int>("ServiceType")
                         .HasColumnType("int");
 
+                    b.Property<double>("StartingRate")
+                        .HasColumnType("float");
+
                     b.HasKey("FormId");
 
                     b.HasIndex("CustomerId");

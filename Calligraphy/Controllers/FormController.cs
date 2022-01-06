@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Net.Mail;
 using System.Net.Mime;
@@ -56,8 +57,9 @@ namespace Calligraphy.Controllers
 
                 var emailTo = address;
                 var subject = "Request for: " + form.ServiceType;
-                var today = new DateTime();
-                var date = today.ToString("MMMM dddd, yyyy");
+                var today = DateTime.UtcNow;
+                var culture = new CultureInfo("en-US");
+                var date = today.ToString(culture);
                 var body = "<h1>Greetings from Serene Flourish!</h1>";
                 body += "<h3>Hello " + form.Customer.FirstName + "!</h3>";
                 body += "<p>We\'ve received your order and will contact you as soon as your package is shipped. You can find your purchase information below.</p>";
@@ -65,6 +67,8 @@ namespace Calligraphy.Controllers
                 body += "<p>" + date + "</p>";
                 body += "<h3>Service Title</h3>";
                 body += "<p>" + form.ServiceType + "</p>";
+                body += "<h3>Service Approximate Rate</h3>";
+                body += "<p>$" + form.StartingRate + "/hr</p>";
                 body += "<h3>Customization Comments</h3>";
                 body += "<p>" + form.Comments + "</p>";
                 body += "<h3>Your Contact Information</h3>";

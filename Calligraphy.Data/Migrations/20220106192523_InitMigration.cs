@@ -2,7 +2,7 @@
 
 namespace Calligraphy.Data.Migrations
 {
-    public partial class AddServiceEntity : Migration
+    public partial class InitMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -81,6 +81,7 @@ namespace Calligraphy.Data.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     CustomerId = table.Column<int>(nullable: true),
                     ServiceType = table.Column<int>(nullable: false),
+                    StartingRate = table.Column<double>(nullable: false),
                     Comments = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
