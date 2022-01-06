@@ -81,6 +81,7 @@ namespace Calligraphy.Test.Form
             using var stream = new MemoryStream(File.ReadAllBytes(filePath).ToArray());
             var formFile = new FormFile(stream, 0, stream.Length, "streamFile", filePath.Split(@"\").Last());
             List<IFormFile> dummyAttachments = new List<IFormFile>();
+            dummyAttachments.Add(formFile);
             FormEntity dummyForm = new FormEntity { FormId = 1, Customer = dummyCustomer, ServiceType = ServiceType.Calligraphy, StartingRate = 20.00, Comments = "some text", Attachments = dummyAttachments };
             MailRequest dummyRequest = new MailRequest();
 
@@ -91,6 +92,27 @@ namespace Calligraphy.Test.Form
             var actual = await _formController.Post(dummyForm);
 
             // Assert
+            Assert.IsType<OkObjectResult>(actual);
+        }
+
+        [Fact]
+        // Test to see if we get a successful post wo/an attachment
+        public async void PostOKResultTestNoAttachments()
+        {
+            // Arrange
+            AddressEntity dummyAddress = new AddressEntity { AddressId = 1, Street = "somne street", City = "some city", Country = "some country", Postal = "some code" };
+            CustomerEntity dummyCustomer = new CustomerEntity { CustomerId = 1, FirstName = "some name", LastName = "some name", Address = dummyAddress, Email = "tristanblacklafleur@hotmail.ca" };
+            FormEntity dummyForm = new FormEntity { FormId = 1, Customer = dummyCustomer, ServiceType = ServiceType.Calligraphy, StartingRate = 20.00, Comments = "some text", Attachments = new List<IFormFile>() };
+            MailRequest dummyRequest = new MailRequest();
+
+            _mockFormService.Setup(x => x.Create(dummyForm)).Returns(true);
+            _mockMailerService.Setup(s => s.SendMailAsync(dummyRequest)).Returns(async () => { await Task.Yield(); });
+
+            // Act
+            var actual = await _formController.Post(dummyForm);
+
+            // Assert
+            Assert.Empty(dummyForm.Attachments);
             Assert.IsType<OkObjectResult>(actual);
         }
     }
