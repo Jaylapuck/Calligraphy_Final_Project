@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -7,7 +8,9 @@ using Calligraphy.Business.Form;
 using Calligraphy.Controllers;
 using Calligraphy.Data.Enums;
 using Calligraphy.Data.Models;
+using Calligraphy.Mailer.Model;
 using Calligraphy.Mailer.Services;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Moq;
 using Xunit;
@@ -68,69 +71,27 @@ namespace Calligraphy.Test.Form
         }
 
         [Fact]
-        // TC2-TC2
-        public void Post_ReturnsOkResult()
+        // Test to see if we get a successful post
+        public async void PostOKResultTest()
         {
             // Arrange
-            var expected = new FormEntity();
-            _mockFormService.Setup(x => x.Create(expected)).Returns(true);
+            AddressEntity dummyAddress = new AddressEntity{ AddressId = 1, Street = "somne street", City = "some city", Country = "some country", Postal = "some code" };
+            CustomerEntity dummyCustomer = new CustomerEntity { CustomerId = 1, FirstName = "some name", LastName = "some name", Address = dummyAddress, Email = "tristanblacklafleur@hotmail.ca" };
+            string filePath = @"..\..\..\Mailer\TestFiles\23784.png";
+            using var stream = new MemoryStream(File.ReadAllBytes(filePath).ToArray());
+            var formFile = new FormFile(stream, 0, stream.Length, "streamFile", filePath.Split(@"\").Last());
+            List<IFormFile> dummyAttachments = new List<IFormFile>();
+            FormEntity dummyForm = new FormEntity { FormId = 1, Customer = dummyCustomer, ServiceType = ServiceType.Calligraphy, StartingRate = 20.00, Comments = "some text", Attachments = dummyAttachments };
+            MailRequest dummyRequest = new MailRequest();
+
+            _mockFormService.Setup(x => x.Create(dummyForm)).Returns(true);
+            _mockMailerService.Setup(s => s.SendMailAsync(dummyRequest)).Returns(async () => { await Task.Yield(); });
 
             // Act
-            var actual = _formController.Post(expected);
+            var actual = await _formController.Post(dummyForm);
 
             // Assert
             Assert.IsType<OkObjectResult>(actual);
-        }
-
-        [Fact]
-        // TC2-TC4
-        public void Post_ReturnsBadRequest()
-        {
-            // Arrange
-            var expected = new FormEntity();
-            _mockFormService.Setup(x => x.Create(expected)).Returns(false);
-
-            // Act
-            var actual = _formController.Post(null);
-
-            // Assert
-            Assert.IsType<BadRequestResult>(actual);
-        }
-
-        [Fact]
-        public void GetAllServicesOK()
-        {
-            // Arrange
-            List<ServiceEntity> dummyServices = new List<ServiceEntity>
-            {
-                new ServiceEntity{ServiceId = 1, TypeName = ServiceType.Calligraphy, StartingRate = 20.00f},
-                new ServiceEntity{ServiceId = 2, TypeName = ServiceType.Engraving, StartingRate = 30.00f}
-            };
-
-            _mockFormService.Setup(x => x.GetAllServices()).Returns(dummyServices);
-
-            // Act
-            var result = _formController.GetServices();
-
-            // Assert
-            Assert.IsType<List<ServiceEntity>>(result);
-            Assert.Equal(2, dummyServices.Count);
-        }
-
-        [Fact]
-        public void GetAllServicesEmpty()
-        {
-            // Arrange
-            List<ServiceEntity> dummyServices = new List<ServiceEntity>();
-
-            _mockFormService.Setup(x => x.GetAllServices()).Returns(dummyServices);
-
-            // Act
-            var result = _formController.GetServices();
-
-            // Assert
-            Assert.IsType<List<ServiceEntity>>(result);
-            Assert.Empty(dummyServices);
         }
     }
 }
