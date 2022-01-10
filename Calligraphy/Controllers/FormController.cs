@@ -44,7 +44,16 @@ namespace Calligraphy.Controllers
         {
             return _formService.GetAllServices();
         }
-
+        
+        // GET pageable
+        [HttpGet]
+        [Route("/api/Form/{page}")]
+        [Produces(MediaTypeNames.Application.Json)]
+        public IEnumerable<FormEntity> GetPagenated(int page)
+        {
+            return _formService.GetAllPaginated(page, 10);
+        }
+        
         // POST: api/Form
         [HttpPost("/api/Form")]
         public async Task<IActionResult> Post([FromForm] FormEntity form)

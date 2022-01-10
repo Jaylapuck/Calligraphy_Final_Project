@@ -1,13 +1,10 @@
-﻿using Calligraphy.Data.Config;
+﻿using System.Collections.Generic;
+using System.Linq;
+using Calligraphy.Data.Config;
 using Calligraphy.Data.Models;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Calligraphy.Data.Repo
+namespace Calligraphy.Data.Repo.Form
 {
     public class FormRepo : IFormRepo
     {
@@ -30,6 +27,14 @@ namespace Calligraphy.Data.Repo
             using (_context)
             {
                 return _context.Forms.ToList();
+            }
+        }
+
+        public IEnumerable<FormEntity> GetAllPageable(int pageNumber, int pageSize)
+        {
+            using (_context)
+            {
+                return _context.Forms.Skip((pageNumber - 1) * pageSize).Take(pageSize).ToList();
             }
         }
 

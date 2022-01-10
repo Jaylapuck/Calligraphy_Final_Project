@@ -8,6 +8,7 @@ using Calligraphy.Controllers;
 using Calligraphy.Data.Enums;
 using Calligraphy.Data.Models;
 using Calligraphy.Data.Repo;
+using Calligraphy.Data.Repo.Form;
 using Calligraphy.Data.Repo.Service;
 using Microsoft.AspNetCore.Mvc;
 using Moq;
@@ -83,6 +84,25 @@ namespace Calligraphy.Test.Form
             var result = _formService.GetAllServices();
 
             // Assert 
+            Assert.Equal(2, result.Count());
+        }
+
+        [Fact]
+        // Get all pages of IEnumerable<FormEntity>
+        public void GetAllPage()
+        {
+            // Arrange
+            var forms = new List<FormEntity>
+            {
+                new FormEntity {FormId = 1, ServiceType = ServiceType.Calligraphy, Comments = "Comments 1"},
+                new FormEntity {FormId = 2, ServiceType = ServiceType.Engraving, Comments = "Comments 2"}
+            };
+
+            // Act
+            _mockFormRepo.Setup(x => x.GetAllPageable(1,10)).Returns(forms);
+            var result = _formService.GetAllPaginated(1, 10);
+
+            // Assert
             Assert.Equal(2, result.Count());
         }
     }

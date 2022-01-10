@@ -1,4 +1,5 @@
-﻿using Calligraphy.Data.Enums;
+﻿using System;
+using Calligraphy.Data.Enums;
 using Microsoft.AspNetCore.Http;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -14,7 +15,11 @@ namespace Calligraphy.Data.Models
         public ServiceType ServiceType { get; set; }
         public double StartingRate { get; set; }
         public string Comments { get; set; }
+        
+        public DateTime CreatedDate { get; set; }
+        
         [NotMapped]
         public List<IFormFile> Attachments { get; set; }
+        
     }
 }

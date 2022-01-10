@@ -1,13 +1,15 @@
 ﻿using System.Collections.Generic;
 using Calligraphy.Data.Models;
 
-namespace Calligraphy.Data.Repo
+namespace Calligraphy.Data.Repo.Form
 {
     public interface IFormRepo
     {
         IEnumerable<FormEntity> GetAll();
 
-        bool Create(FormEntity form);
+        IEnumerable<FormEntity> GetAllPageable(int pageNumber, int pageSize);
 
+        bool Create(FormEntity form);
     }
+
 }

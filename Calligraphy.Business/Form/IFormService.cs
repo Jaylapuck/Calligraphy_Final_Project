@@ -11,6 +11,9 @@ namespace Calligraphy.Business.Form
     {
         // GET ALLs
         IEnumerable<FormEntity> GetAll();
+        
+        // GEt ALL paginated
+        IEnumerable<FormEntity> GetAllPaginated(int page, int pageSize);
 
         IEnumerable<ServiceEntity> GetAllServices();
 

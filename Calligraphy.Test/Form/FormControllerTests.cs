@@ -228,5 +228,36 @@ namespace Calligraphy.Test.Form
             var error = await Assert.ThrowsAsync<FormatException>(result);
             Assert.Equal("Not a valid email", error.Message);
         }
+
+        [Fact]
+        // Test getallpage
+        public void GetAllPage()
+        {
+            // Arrange
+            var dummyForms = new List<FormEntity>();
+            dummyForms.Add(new FormEntity
+            {
+                FormId = 1,
+                Customer = new CustomerEntity
+                    {CustomerId = 1, FirstName = "some name", LastName = "some name", Email = "some email"},
+                ServiceType = ServiceType.Calligraphy, StartingRate = 20.00, Comments = "some text"
+            });
+            dummyForms.Add(new FormEntity
+            {
+                FormId = 2,
+                Customer = new CustomerEntity
+                    {CustomerId = 2, FirstName = "some name", LastName = "some name", Email = "some email"},
+                ServiceType = ServiceType.Calligraphy, StartingRate = 20.00, Comments = "some text"
+            });
+            
+            _mockFormService.Setup(x => x.GetAllPaginated(1,10)).Returns(dummyForms);
+
+            // Act
+            var result = _formController.GetPagenated(1);
+            
+            // Assert
+            Assert.Equal(2, result.Count());
+            
+        }
     }
 }

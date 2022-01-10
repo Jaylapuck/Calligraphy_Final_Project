@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Calligraphy.Data.Models;
 using Calligraphy.Data.Repo;
+using Calligraphy.Data.Repo.Form;
 using Calligraphy.Data.Repo.Service;
 
 namespace Calligraphy.Business.Form
@@ -30,6 +31,11 @@ namespace Calligraphy.Business.Form
             return _formRepo.GetAll();
         }
 
+        public IEnumerable<FormEntity> GetAllPaginated(int page, int pageSize)
+        {
+            return _formRepo.GetAllPageable(page, pageSize);
+        }
+
         public IEnumerable<ServiceEntity> GetAllServices()
         {
             return _serviceRepo.GetAll();
@@ -38,6 +44,13 @@ namespace Calligraphy.Business.Form
         //Add new form
         public bool Create(FormEntity form)
         {
+            // check if form is valid
+            if (form == null)
+            {
+                return false;
+            }
+            
+            form.CreatedDate = DateTime.Now;
             return _formRepo.Create(form);
         }
        
