@@ -33,11 +33,12 @@ namespace Calligraphy.Test.Form
         public void GetAllForms()
         {
             // Arrange
+            AddressEntity dummyAddress = new AddressEntity { AddressId = 1, Street = "some street", City = "some city", Country = "some country", Postal = "some code" };
+            CustomerEntity dummyCustomer = new CustomerEntity { CustomerId = 1, FirstName = "some name", LastName = "some name", Address = dummyAddress, Email = "some email" };
             var forms = new List<FormEntity>
             {
-                new FormEntity {FormId = 1, ServiceType = ServiceType.Calligraphy, Comments = "Comments 1"},
-                new FormEntity {FormId = 2, ServiceType = ServiceType.Engraving, Comments = "Comments 2"},
-                new FormEntity {FormId = 3, ServiceType = ServiceType.Event, Comments = "Comments 3"}
+                new FormEntity {FormId = 1, Customer = dummyCustomer, ServiceType = ServiceType.Calligraphy, StartingRate = 20.00, Comments = "Comments 1"},
+                new FormEntity {FormId = 2, Customer = dummyCustomer, ServiceType = ServiceType.Engraving, StartingRate = 30.00, Comments = "Comments 2"}
             };
             
             // Act
@@ -45,8 +46,11 @@ namespace Calligraphy.Test.Form
             var result = _formService.GetAll();
             
             // Assert
-            Assert.Equal(3, result.Count());
-
+            Assert.Equal(2, result.Count());
+            foreach(FormEntity temp in result)
+            {
+                Assert.NotNull(temp.Customer);
+            }
         }
         
         [Fact]
