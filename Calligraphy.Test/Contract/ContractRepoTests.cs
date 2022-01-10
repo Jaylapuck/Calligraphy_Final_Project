@@ -33,7 +33,7 @@ namespace Calligraphy.Test.Contract
                 var result = contractRepo.GetAll();
 
                 // Assert
-                Assert.Single(result);
+                Assert.Equal(4, result.Count());
             }
         }
     }

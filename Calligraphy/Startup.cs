@@ -28,6 +28,7 @@ using Microsoft.OpenApi.Models;
 using Calligraphy.Data.Repo.Customer;
 using Calligraphy.Data.Repo.Address;
 using Calligraphy.Data.Repo.Service;
+using Calligraphy.Data.Repo.Contract;
 
 namespace Calligraphy
 {
@@ -66,6 +67,7 @@ namespace Calligraphy
             services.AddTransient<IFormService, FormService>();
             services.AddTransient<IFormRepo, FormRepo>();
             services.AddTransient<IServiceRepo, ServiceRepoImpl>();
+            services.AddTransient<IContractRepo, ContractRepo>();
 
             services.AddSwaggerGen(c =>
             {

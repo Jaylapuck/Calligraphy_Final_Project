@@ -5,6 +5,12 @@
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Remove="Migrations\20220110211202_AddContractEntity.cs" />
+    <Compile Remove="Migrations\20220110211202_AddContractEntity.Designer.cs" />
+    <Compile Remove="Migrations\20220110211301_AddContractEntity.cs" />
+    <Compile Remove="Migrations\20220110211301_AddContractEntity.Designer.cs" />
+  </ItemGroup>
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Http.Features" Version="5.0.13" />
     <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.20">
