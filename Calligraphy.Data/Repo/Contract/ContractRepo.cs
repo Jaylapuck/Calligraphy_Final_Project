@@ -3,6 +3,7 @@ using Calligraphy.Data.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace Calligraphy.Data.Repo.Contract
@@ -24,7 +25,10 @@ namespace Calligraphy.Data.Repo.Contract
 
         public IEnumerable<ContractEntity> GetAll()
         {
-            throw new NotImplementedException();
+            using (_context)
+            {
+                return _context.Contracts.ToList();
+            }
         }
     }
 }

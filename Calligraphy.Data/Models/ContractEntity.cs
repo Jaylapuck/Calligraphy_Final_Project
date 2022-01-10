@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Text;
 
 namespace Calligraphy.Data.Models
 {
     public class ContractEntity
     {
+        [Key]
         public int ContractId { get; set; }
         public double FinalCost { get; set; }
         public double DownPayment { get; set; }

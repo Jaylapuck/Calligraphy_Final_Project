@@ -9819,20 +9819,25 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\ethyl\\.nuget\\packages\\": {}
+    "C:\\Users\\trist\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\ethyl\\RiderProjects\\Calligraphy_Final_Project\\Calligraphy.Test\\Calligraphy.Test.csproj",
+      "projectUniqueName": "C:\\Users\\trist\\source\\repos\\ASP.NET\\Calligraphy_Final_Project\\Calligraphy.Test\\Calligraphy.Test.csproj",
       "projectName": "Calligraphy.Test",
-      "projectPath": "C:\\Users\\ethyl\\RiderProjects\\Calligraphy_Final_Project\\Calligraphy.Test\\Calligraphy.Test.csproj",
-      "packagesPath": "C:\\Users\\ethyl\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\ethyl\\RiderProjects\\Calligraphy_Final_Project\\Calligraphy.Test\\obj\\",
+      "projectPath": "C:\\Users\\trist\\source\\repos\\ASP.NET\\Calligraphy_Final_Project\\Calligraphy.Test\\Calligraphy.Test.csproj",
+      "packagesPath": "C:\\Users\\trist\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\trist\\source\\repos\\ASP.NET\\Calligraphy_Final_Project\\Calligraphy.Test\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
+      ],
       "configFilePaths": [
-        "C:\\Users\\ethyl\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Users\\trist\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net5.0"
@@ -9845,14 +9850,14 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "projectReferences": {
-            "C:\\Users\\ethyl\\RiderProjects\\Calligraphy_Final_Project\\Calligraphy.Business\\Calligraphy.Business.csproj": {
-              "projectPath": "C:\\Users\\ethyl\\RiderProjects\\Calligraphy_Final_Project\\Calligraphy.Business\\Calligraphy.Business.csproj"
+            "C:\\Users\\trist\\source\\repos\\ASP.NET\\Calligraphy_Final_Project\\Calligraphy.Business\\Calligraphy.Business.csproj": {
+              "projectPath": "C:\\Users\\trist\\source\\repos\\ASP.NET\\Calligraphy_Final_Project\\Calligraphy.Business\\Calligraphy.Business.csproj"
             },
-            "C:\\Users\\ethyl\\RiderProjects\\Calligraphy_Final_Project\\Calligraphy.Mailer\\Calligraphy.Mailer.csproj": {
-              "projectPath": "C:\\Users\\ethyl\\RiderProjects\\Calligraphy_Final_Project\\Calligraphy.Mailer\\Calligraphy.Mailer.csproj"
+            "C:\\Users\\trist\\source\\repos\\ASP.NET\\Calligraphy_Final_Project\\Calligraphy.Mailer\\Calligraphy.Mailer.csproj": {
+              "projectPath": "C:\\Users\\trist\\source\\repos\\ASP.NET\\Calligraphy_Final_Project\\Calligraphy.Mailer\\Calligraphy.Mailer.csproj"
             },
-            "C:\\Users\\ethyl\\RiderProjects\\Calligraphy_Final_Project\\Calligraphy\\Calligraphy.Controller.csproj": {
-              "projectPath": "C:\\Users\\ethyl\\RiderProjects\\Calligraphy_Final_Project\\Calligraphy\\Calligraphy.Controller.csproj"
+            "C:\\Users\\trist\\source\\repos\\ASP.NET\\Calligraphy_Final_Project\\Calligraphy\\Calligraphy.Controller.csproj": {
+              "projectPath": "C:\\Users\\trist\\source\\repos\\ASP.NET\\Calligraphy_Final_Project\\Calligraphy\\Calligraphy.Controller.csproj"
             }
           }
         }
@@ -9923,14 +9928,11 @@
         "assetTargetFallback": true,
         "warn": true,
         "frameworkReferences": {
-          "Microsoft.AspNetCore.App": {
-            "privateAssets": "none"
-          },
           "Microsoft.NETCore.App": {
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.403\\RuntimeIdentifierGraph.json"
       }
     }
   }
