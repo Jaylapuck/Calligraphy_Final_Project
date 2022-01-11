@@ -3063,6 +3063,7 @@
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
           "Microsoft.AspNetCore.Http.Features": "5.0.13",
+          "Microsoft.AspNetCore.WebUtilities": "2.2.0",
           "Microsoft.CSharp": "4.7.0",
           "Microsoft.EntityFrameworkCore.SqlServer": "3.1.20",
           "Newtonsoft.Json": "13.0.1",
@@ -9922,6 +9923,9 @@
         "assetTargetFallback": true,
         "warn": true,
         "frameworkReferences": {
+          "Microsoft.AspNetCore.App": {
+            "privateAssets": "none"
+          },
           "Microsoft.NETCore.App": {
             "privateAssets": "all"
           }
