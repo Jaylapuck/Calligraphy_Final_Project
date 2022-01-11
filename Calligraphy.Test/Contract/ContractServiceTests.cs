@@ -44,5 +44,22 @@ namespace Calligraphy.Test.Contract
             Assert.IsType<ContractEntity>(result.ElementAt(0));
             Assert.Equal(4, result.Count());
         }
+
+        [Fact]
+        // Test to see if we get a single contract by it's id
+        public void GetContractByIdOk()
+        {
+            // Arrange 
+            ContractEntity contract = new ContractEntity { ContractId = 1, FinalCost = 150.00, DownPayment = 75.00, DateCommissioned = new DateTime(2021, 6, 8), EndDate = new DateTime(2021, 7, 8), HasSignature = true, IsFinished = true };
+
+            _mockContractRepo.Setup(x => x.GetById(1)).Returns(contract);
+
+            // Act
+            var result = _contractService.GetContractById(1);
+
+            // Assert
+            Assert.IsType<ContractEntity>(result);
+            Assert.Equal(1, result.ContractId);
+        }
     }
 }

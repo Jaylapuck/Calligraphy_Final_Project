@@ -10,5 +10,6 @@ namespace Calligraphy.Business.Contract
     interface IContractService
     {
         IEnumerable<ContractEntity> GetAllContracts();
+        ContractEntity GetContractById(int ContractId);
     }
 }
