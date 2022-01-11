@@ -34,6 +34,7 @@ using Calligraphy.Business.Quote;
 using Calligraphy.Data.Repo.Quote;
 using Microsoft.AspNetCore.Http;
 using Calligraphy.Data.Repo.Contract;
+using Calligraphy.Data.Repo.Contract;
 
 namespace Calligraphy
 {
