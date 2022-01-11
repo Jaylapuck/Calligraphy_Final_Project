@@ -8,6 +8,9 @@ using Calligraphy.Business.Form;
 using Calligraphy.Business.Quote;
 using Calligraphy.Controllers;
 using Calligraphy.Data.Enums;
+using Calligraphy.Data.Filters;
+using Calligraphy.Data.Helpers;
+using Calligraphy.Data.IUriService;
 using Calligraphy.Data.Models;
 using Calligraphy.Mailer.Model;
 using Calligraphy.Mailer.Services;
@@ -22,58 +25,24 @@ namespace Calligraphy.Test.Form
     {
         private readonly Mock<IFormService> _mockFormService;
         private readonly Mock<IMailerService> _mockMailerService;
-
+        private readonly Mock<PaginationHelper> _mockPaginationHelper;
+        private readonly Mock<IUriService> _mockUriService;
+        private readonly Mock<PaginationFilter> _mockPaginationFilter;
         private readonly FormController _formController;
 
         public FormControllerTests()
         {
+    
             _mockFormService = new Mock<IFormService>();
+            _mockPaginationHelper = new Mock<PaginationHelper>();
+            _mockUriService = new Mock<IUriService>();
+            _mockPaginationFilter = new Mock<PaginationFilter>();
             _mockMailerService = new Mock<IMailerService>();
             _formController = new FormController(_mockFormService.Object, _mockMailerService.Object);
         }
-
-        // TS2-TC1
+        
         [Fact]
-        // test get all api, returns list of forms
-        public void GetAll()
-        {
-            // Arrange
-            var forms = new List<FormEntity>
-            {
-                new FormEntity {  FormId = 1, ServiceType = ServiceType.Calligraphy, Comments = "Description 1"},
-                new FormEntity { FormId = 2, ServiceType = ServiceType.Engraving, Comments = "Description 2"}
-            };
-
-            _mockFormService.Setup(x => x.GetAll()).Returns(forms);
-
-            // Act
-            var result = _formController.Get();
-
-            // Assert
-            Assert.IsType<List<FormEntity>>(result);
-            Assert.Equal(2, result.Count());
-        }
-
-        // TS2-TC3
-        [Fact]
-        // test get all api, returns empty list
-        public void GetAll_ReturnsEmptyList()
-        {
-            // Arrange
-            var forms = new List<FormEntity>();
-
-            _mockFormService.Setup(x => x.GetAll()).Returns(forms);
-
-            // Act
-            var result = _formController.Get();
-
-            // Assert
-            Assert.IsType<List<FormEntity>>(result);
-            Assert.Empty(result);
-        }
-
-        [Fact]
-        public void GetAllServicesOK()
+        public void GetAllServicesOk()
         {
             // Arrange
             List<ServiceEntity> dummyServices = new List<ServiceEntity>
@@ -110,7 +79,7 @@ namespace Calligraphy.Test.Form
 
         [Fact]
         // Test to see if we get a successful post
-        public async void PostOKResultTest()
+        public async void PostOkResultTest()
         {
             // Arrange
             AddressEntity dummyAddress = new AddressEntity{ AddressId = 1, Street = "somne street", City = "some city", Country = "some country", Postal = "some code" };
@@ -230,5 +199,20 @@ namespace Calligraphy.Test.Form
             var error = await Assert.ThrowsAsync<FormatException>(result);
             Assert.Equal("Not a valid email", error.Message);
         }
+
+        [Fact]
+        //  Test GetAll
+        public void GetAllTest()
+        {
+            
+        }
+        
+        // Test  GetAll without any forms
+        [Fact]
+        public void GetAllEmptyTest()
+        {
+            
+        }
+
     }
 }

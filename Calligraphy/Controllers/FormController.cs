@@ -12,6 +12,9 @@ using System.Linq;
 using System.Net.Mail;
 using System.Net.Mime;
 using System.Threading.Tasks;
+using Calligraphy.Data.Filters;
+using Calligraphy.Data.Repo.Wrappers;
+using Org.BouncyCastle.Ocsp;
 
 namespace Calligraphy.Controllers
 {
@@ -29,15 +32,6 @@ namespace Calligraphy.Controllers
             _mailService = mailService;
         }
         
-        // GET: api/Form
-        [HttpGet]
-        [Route("/api/Form")]
-        [Produces(MediaTypeNames.Application.Json)]
-        public IEnumerable<FormEntity> Get()
-        {
-            return _formService.GetAll();
-        }
-
         [HttpGet]
         [Route("/api/Form/Services")]
         [Produces(MediaTypeNames.Application.Json)]
@@ -45,7 +39,18 @@ namespace Calligraphy.Controllers
         {
             return _formService.GetAllServices();
         }
-
+        
+        // GET pageable
+        [HttpGet]
+        [Route("/api/Form")]
+        [Produces(MediaTypeNames.Application.Json)]
+        public IActionResult GetAllPages([FromQuery] PaginationFilter filter)
+        {
+            var route = Request.Path.Value;
+            var result = _formService.GetAll(filter, route);
+            return result;
+        }
+        
         // POST: api/Form
         [HttpPost("/api/Form")]
         public async Task<IActionResult> Post([FromForm] FormEntity form)

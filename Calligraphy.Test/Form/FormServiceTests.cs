@@ -6,8 +6,10 @@ using System.Threading.Tasks;
 using Calligraphy.Business.Form;
 using Calligraphy.Controllers;
 using Calligraphy.Data.Enums;
+using Calligraphy.Data.IUriService;
 using Calligraphy.Data.Models;
 using Calligraphy.Data.Repo;
+using Calligraphy.Data.Repo.Form;
 using Calligraphy.Data.Repo.Service;
 using Microsoft.AspNetCore.Mvc;
 using Moq;
@@ -19,6 +21,7 @@ namespace Calligraphy.Test.Form
     {
         private readonly Mock<IFormRepo> _mockFormRepo;
         private readonly Mock<IServiceRepo> _mockServiceRepo;
+        private readonly Mock<IUriService> _mockUriService;
         private readonly FormService _formService;
 
         public FormServiceTests()
@@ -26,7 +29,6 @@ namespace Calligraphy.Test.Form
             _mockFormRepo = new Mock<IFormRepo>();
             _mockServiceRepo = new Mock<IServiceRepo>();
             _formService = new FormService(_mockFormRepo.Object, _mockServiceRepo.Object);
-        }
 
         [Fact]
         // TS2-TC5
@@ -51,6 +53,7 @@ namespace Calligraphy.Test.Form
             {
                 Assert.NotNull(temp.Customer);
             }
+            _formService = new FormService(_mockFormRepo.Object, _mockServiceRepo.Object, _mockUriService.Object);
         }
         
         [Fact]
@@ -84,6 +87,20 @@ namespace Calligraphy.Test.Form
 
             // Assert 
             Assert.Equal(2, result.Count());
+        }
+        
+        [Fact]
+        //  Test GetAll
+        public void GetAllTest()
+        {
+            
+        }
+        
+        // Test  GetAll without any forms
+        [Fact]
+        public void GetAllEmptyTest()
+        {
+            
         }
     }
 }

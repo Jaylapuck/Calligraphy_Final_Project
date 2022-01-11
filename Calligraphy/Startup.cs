@@ -12,6 +12,7 @@ using Calligraphy.Business.Customer;
 using Calligraphy.Business.Form;
 using Calligraphy.Business.Image;
 using Calligraphy.Data.Config;
+using Calligraphy.Data.IUriService;
 using Calligraphy.Data.Repo;
 using Calligraphy.Data.Repo.Image;
 using Microsoft.AspNetCore.Builder;
@@ -27,9 +28,11 @@ using Calligraphy.Mailer.Settings;
 using Microsoft.OpenApi.Models;
 using Calligraphy.Data.Repo.Customer;
 using Calligraphy.Data.Repo.Address;
+using Calligraphy.Data.Repo.Form;
 using Calligraphy.Data.Repo.Service;
 using Calligraphy.Business.Quote;
 using Calligraphy.Data.Repo.Quote;
+using Microsoft.AspNetCore.Http;
 
 namespace Calligraphy
 {
@@ -81,6 +84,15 @@ namespace Calligraphy
             {
                 builder.WithOrigins("http://localhost:3000").AllowAnyMethod().AllowAnyHeader();
             }));
+            services.AddHttpContextAccessor();
+            services.AddSingleton<IUriService>(o =>
+            {
+                var accessor = o.GetRequiredService<IHttpContextAccessor>();
+                var request = accessor.HttpContext.Request;
+                var uri = string.Concat(request.Scheme, "://", request.Host.ToUriComponent());
+                return new UriService(uri);
+            });
+            services.AddControllers();
             services.AddMvc(options => options.EnableEndpointRouting = false).SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
         }
 
