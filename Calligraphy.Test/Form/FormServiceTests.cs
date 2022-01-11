@@ -6,8 +6,10 @@ using System.Threading.Tasks;
 using Calligraphy.Business.Form;
 using Calligraphy.Controllers;
 using Calligraphy.Data.Enums;
+using Calligraphy.Data.IUriService;
 using Calligraphy.Data.Models;
 using Calligraphy.Data.Repo;
+using Calligraphy.Data.Repo.Form;
 using Calligraphy.Data.Repo.Service;
 using Microsoft.AspNetCore.Mvc;
 using Moq;
@@ -19,38 +21,14 @@ namespace Calligraphy.Test.Form
     {
         private readonly Mock<IFormRepo> _mockFormRepo;
         private readonly Mock<IServiceRepo> _mockServiceRepo;
+        private readonly Mock<IUriService> _mockUriService;
         private readonly FormService _formService;
 
         public FormServiceTests()
         {
             _mockFormRepo = new Mock<IFormRepo>();
             _mockServiceRepo = new Mock<IServiceRepo>();
-            _formService = new FormService(_mockFormRepo.Object, _mockServiceRepo.Object);
-        }
-
-        [Fact]
-        // TS2-TC5
-        public void GetAllForms()
-        {
-            // Arrange
-            AddressEntity dummyAddress = new AddressEntity { AddressId = 1, Street = "some street", City = "some city", Country = "some country", Postal = "some code" };
-            CustomerEntity dummyCustomer = new CustomerEntity { CustomerId = 1, FirstName = "some name", LastName = "some name", Address = dummyAddress, Email = "some email" };
-            var forms = new List<FormEntity>
-            {
-                new FormEntity {FormId = 1, Customer = dummyCustomer, ServiceType = ServiceType.Calligraphy, StartingRate = 20.00, Comments = "Comments 1"},
-                new FormEntity {FormId = 2, Customer = dummyCustomer, ServiceType = ServiceType.Engraving, StartingRate = 30.00, Comments = "Comments 2"}
-            };
-            
-            // Act
-            _mockFormRepo.Setup(x => x.GetAll()).Returns(forms);
-            var result = _formService.GetAll();
-            
-            // Assert
-            Assert.Equal(2, result.Count());
-            foreach(FormEntity temp in result)
-            {
-                Assert.NotNull(temp.Customer);
-            }
+            _formService = new FormService(_mockFormRepo.Object, _mockServiceRepo.Object, _mockUriService.Object);
         }
         
         [Fact]
@@ -84,6 +62,20 @@ namespace Calligraphy.Test.Form
 
             // Assert 
             Assert.Equal(2, result.Count());
+        }
+        
+        [Fact]
+        //  Test GetAll
+        public void GetAllTest()
+        {
+            
+        }
+        
+        // Test  GetAll without any forms
+        [Fact]
+        public void GetAllEmptyTest()
+        {
+            
         }
     }
 }
