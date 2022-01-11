@@ -1,5 +1,6 @@
 ﻿using Calligraphy.Data.Models;
 using Calligraphy.Data.Repo.Contract;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,14 +18,35 @@ namespace Calligraphy.Business.Contract
             _contractRepo = contractRepo;
         }
 
-        public IEnumerable<ContractEntity> GetAllContracts()
+        public IActionResult CreateNewContract(ContractEntity ContractEntity)
         {
-            return _contractRepo.GetAll();
+            throw new NotImplementedException();
         }
 
-        public ContractEntity GetContractById(int ContractId)
+        public IActionResult GetAllContracts()
         {
-            return _contractRepo.GetById(ContractId);
+            var contracts = _contractRepo.GetAll();
+            if(contracts != null)
+            {
+                return new OkObjectResult(contracts);
+            }
+            else
+            {
+                return new NotFoundResult();
+            }
+        }
+
+        public IActionResult GetContractById(int ContractId)
+        {
+            var contract = _contractRepo.GetById(ContractId);
+            if (contract != null)
+            {
+                return new OkObjectResult(contract);
+            }
+            else
+            {
+                return new NotFoundResult();
+            }
         }
     }
 }

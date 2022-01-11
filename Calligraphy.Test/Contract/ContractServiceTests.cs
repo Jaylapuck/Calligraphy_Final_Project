@@ -1,6 +1,7 @@
 ﻿using Calligraphy.Business.Contract;
 using Calligraphy.Data.Models;
 using Calligraphy.Data.Repo.Contract;
+using Microsoft.AspNetCore.Mvc;
 using Moq;
 using System;
 using System.Collections.Generic;
@@ -41,8 +42,21 @@ namespace Calligraphy.Test.Contract
             var result = _contractService.GetAllContracts();
 
             // Assert
-            Assert.IsType<ContractEntity>(result.ElementAt(0));
-            Assert.Equal(4, result.Count());
+            Assert.IsType<OkObjectResult>(result);
+        }
+
+        [Fact]
+        // Test to see if we get back a not found result
+        public void GetAllContractsNotFound()
+        {
+            // Arrange
+            _mockContractRepo.Setup(x => x.GetAll()).Returns((List<ContractEntity>) null);
+
+            // Act
+            var result = _contractService.GetAllContracts();
+
+            // Assert
+            Assert.IsType<NotFoundResult>(result);
         }
 
         [Fact]
@@ -52,14 +66,59 @@ namespace Calligraphy.Test.Contract
             // Arrange 
             ContractEntity contract = new ContractEntity { ContractId = 1, FinalCost = 150.00, DownPayment = 75.00, DateCommissioned = new DateTime(2021, 6, 8), EndDate = new DateTime(2021, 7, 8), HasSignature = true, IsFinished = true };
 
-            _mockContractRepo.Setup(x => x.GetById(1)).Returns(contract);
+            _mockContractRepo.Setup(x => x.GetById(It.IsAny<int>())).Returns(contract);
 
             // Act
             var result = _contractService.GetContractById(1);
 
             // Assert
-            Assert.IsType<ContractEntity>(result);
-            Assert.Equal(1, result.ContractId);
+            Assert.IsType<OkObjectResult>(result);
+        }
+
+        [Fact]
+        // Test to see if we get a not found result trying to get a contract by id
+        public void GetContractByIdNotFound()
+        {
+            // Arrange 
+            _mockContractRepo.Setup(x => x.GetById(It.IsAny<int>())).Returns((ContractEntity) null);
+
+            // Act
+            var result = _contractService.GetContractById(1);
+
+            // Assert
+            Assert.IsType<NotFoundResult>(result);
+        }
+
+        [Fact]
+        // Test to see if we can create a single contract
+        public void CreateContractTestOk()
+        {
+            // Arrange
+            ContractEntity contract = new ContractEntity { FinalCost = 150.00, DownPayment = 75.00, DateCommissioned = new DateTime(2021, 6, 8), EndDate = new DateTime(2021, 7, 8), HasSignature = true, IsFinished = true };
+
+            _mockContractRepo.Setup(x => x.CreateNewContract(contract)).Returns(1);
+
+            // Act
+            var result = _contractService.CreateNewContract(contract);
+
+            // Assert
+            Assert.IsType<OkObjectResult>(result);
+        }
+
+        [Fact]
+        // Test to see if we get a bad request when making a contract
+        public void CreateContractTestBadrequest()
+        {
+            // Arrange
+            ContractEntity contract = new ContractEntity { FinalCost = 150.00, DownPayment = 75.00, DateCommissioned = new DateTime(2021, 6, 8), EndDate = new DateTime(2021, 7, 8), HasSignature = true, IsFinished = true };
+
+            _mockContractRepo.Setup(x => x.CreateNewContract(contract)).Returns(0);
+
+            // Act
+            var result = _contractService.CreateNewContract(contract);
+
+            // Assert
+            Assert.IsType<BadRequestResult>(result);
         }
     }
 }
