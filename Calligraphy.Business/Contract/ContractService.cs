@@ -56,5 +56,10 @@ namespace Calligraphy.Business.Contract
                 return new NotFoundResult();
             }
         }
+
+        public IActionResult UpdateContract(ContractEntity ContractEntity)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

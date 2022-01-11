@@ -120,5 +120,49 @@ namespace Calligraphy.Test.Contract
             // Assert
             Assert.IsType<BadRequestResult>(result);
         }
+
+        [Fact]
+        // Test to see if we can update an existing contract
+        public void UpdateContractOkResult()
+        {
+            // Arrange
+            ContractEntity contract = new ContractEntity { ContractId = 1, FinalCost = 0.0, DownPayment = 0.0, DateCommissioned = new DateTime(2021, 6, 8), EndDate = new DateTime(2021, 7, 8), HasSignature = false, IsFinished = false };
+
+            _mockContractRepo.Setup(x => x.CreateNewContract(contract)).Returns(1);
+
+            var CreateResult = _contractService.CreateNewContract(contract);
+
+            ContractEntity UpdateContract = new ContractEntity { ContractId = 1, FinalCost = 150.00, DownPayment = 75.00, DateCommissioned = new DateTime(2021, 6, 8), EndDate = new DateTime(2021, 7, 8), HasSignature = true, IsFinished = true };
+
+            _mockContractRepo.Setup(x => x.UpdateContract(UpdateContract)).Returns(UpdateContract);
+
+            // Act
+            var result = _contractService.UpdateContract(UpdateContract);
+
+            // Assert
+            Assert.IsType<OkResult>(result);
+        }
+
+        [Fact]
+        // Test to see if we can update an existing contract
+        public void UpdateContractBadRequestResult()
+        {
+            // Arrange
+            ContractEntity contract = new ContractEntity { ContractId = 1, FinalCost = 0.0, DownPayment = 0.0, DateCommissioned = new DateTime(2021, 6, 8), EndDate = new DateTime(2021, 7, 8), HasSignature = false, IsFinished = false };
+
+            _mockContractRepo.Setup(x => x.CreateNewContract(contract)).Returns(1);
+
+            var CreateResult = _contractService.CreateNewContract(contract);
+
+            ContractEntity UpdateContract = new ContractEntity { ContractId = 2, FinalCost = 150.00, DownPayment = 75.00, DateCommissioned = new DateTime(2021, 6, 8), EndDate = new DateTime(2021, 7, 8), HasSignature = true, IsFinished = true };
+
+            _mockContractRepo.Setup(x => x.UpdateContract(UpdateContract)).Returns((ContractEntity) null);
+
+            // Act
+            var result = _contractService.UpdateContract(UpdateContract);
+
+            // Assert
+            Assert.IsType<BadRequestResult>(result);
+        }
     }
 }
