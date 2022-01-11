@@ -59,7 +59,15 @@ namespace Calligraphy.Business.Contract
 
         public IActionResult UpdateContract(ContractEntity ContractEntity)
         {
-            throw new NotImplementedException();
+            var UpdatedContract = _contractRepo.UpdateContract(ContractEntity);
+            if(UpdatedContract != null)
+            {
+                return new OkObjectResult(UpdatedContract);
+            }
+            else
+            {
+                return new BadRequestResult();
+            }
         }
     }
 }
