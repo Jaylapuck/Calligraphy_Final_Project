@@ -30,5 +30,10 @@ namespace Calligraphy.Data.Repo.Contract
                 return _context.Contracts.ToList();
             }
         }
+
+        public ContractEntity GetById(int ContractId)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
