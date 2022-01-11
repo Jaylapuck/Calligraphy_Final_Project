@@ -28,6 +28,31 @@ namespace Calligraphy.Test.Form
         {
             _mockFormRepo = new Mock<IFormRepo>();
             _mockServiceRepo = new Mock<IServiceRepo>();
+            _formService = new FormService(_mockFormRepo.Object, _mockServiceRepo.Object);
+
+        [Fact]
+        // TS2-TC5
+        public void GetAllForms()
+        {
+            // Arrange
+            AddressEntity dummyAddress = new AddressEntity { AddressId = 1, Street = "some street", City = "some city", Country = "some country", Postal = "some code" };
+            CustomerEntity dummyCustomer = new CustomerEntity { CustomerId = 1, FirstName = "some name", LastName = "some name", Address = dummyAddress, Email = "some email" };
+            var forms = new List<FormEntity>
+            {
+                new FormEntity {FormId = 1, Customer = dummyCustomer, ServiceType = ServiceType.Calligraphy, StartingRate = 20.00f, Comments = "Comments 1"},
+                new FormEntity {FormId = 2, Customer = dummyCustomer, ServiceType = ServiceType.Engraving, StartingRate = 30.00f, Comments = "Comments 2"}
+            };
+            
+            // Act
+            _mockFormRepo.Setup(x => x.GetAll()).Returns(forms);
+            var result = _formService.GetAll();
+            
+            // Assert
+            Assert.Equal(2, result.Count());
+            foreach(FormEntity temp in result)
+            {
+                Assert.NotNull(temp.Customer);
+            }
             _formService = new FormService(_mockFormRepo.Object, _mockServiceRepo.Object, _mockUriService.Object);
         }
         

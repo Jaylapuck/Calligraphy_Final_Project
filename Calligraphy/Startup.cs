@@ -30,6 +30,8 @@ using Calligraphy.Data.Repo.Customer;
 using Calligraphy.Data.Repo.Address;
 using Calligraphy.Data.Repo.Form;
 using Calligraphy.Data.Repo.Service;
+using Calligraphy.Business.Quote;
+using Calligraphy.Data.Repo.Quote;
 using Microsoft.AspNetCore.Http;
 
 namespace Calligraphy
@@ -59,9 +61,10 @@ namespace Calligraphy
             services.Configure<MailSettings>(Configuration.GetSection("MailSettings"));
 
             services.AddTransient<IMailerService, MailServiceImpl>();
-            services.AddTransient<IFormService, FormService>();
             services.AddTransient<IImageService, ImageService>();
             services.AddTransient<IImageRepo, ImageRepo>();
+            services.AddTransient<IQuoteService, QuoteService>();
+            services.AddTransient<IQuoteRepo, QuoteRepo>();
             services.AddTransient<ICustomerService, CustomerService>();
             services.AddTransient<ICustomerRepo, CustomerRepo>();
             services.AddTransient<IAddressRepo, AddressRepo>();

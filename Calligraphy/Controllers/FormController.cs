@@ -1,4 +1,5 @@
 ﻿using Calligraphy.Business.Form;
+using Calligraphy.Business.Quote;
 using Calligraphy.Data.Models;
 using Calligraphy.Mailer.Model;
 using Calligraphy.Mailer.Services;
@@ -24,7 +25,7 @@ namespace Calligraphy.Controllers
     {
         private readonly IFormService _formService;
         private readonly IMailerService _mailService;
-        
+
         public FormController(IFormService formService, IMailerService mailService)
         {
             _formService = formService;
@@ -56,8 +57,8 @@ namespace Calligraphy.Controllers
         {
             try
             {
+                var quote = new QuoteEntity();
                 var address = new MailAddress(form.Customer.Email).Address;
-
                 var mailRequest = new MailRequest();
 
                 var emailTo = address;
@@ -88,9 +89,20 @@ namespace Calligraphy.Controllers
                 mailRequest.body = body;
                 mailRequest.attachtments = file;
 
+               
+                quote.Materials = "None";
+                quote.Price = form.StartingRate;
+                form.Quote = quote;
+
                 var result = _formService.Create(form);
                 if (result)
                 {
+                    
+
+                    //form.Quote.FormId = form.FormId;
+                    //form.Quote.Price = form.StartingRate;
+                    //quote.Form = form;
+                    //_quoteService.Create(quote);
                     await _mailService.SendMailAsync(mailRequest);
                     return Ok(form);
                 }
