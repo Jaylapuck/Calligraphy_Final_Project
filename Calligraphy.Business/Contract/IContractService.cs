@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Calligraphy.Business.Contract
 {
-    interface IContractService
+    public interface IContractService
     {
         IActionResult GetAllContracts();
         IActionResult GetContractById(int ContractId);
