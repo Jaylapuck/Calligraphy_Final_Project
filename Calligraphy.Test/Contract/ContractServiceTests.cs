@@ -14,8 +14,8 @@ namespace Calligraphy.Test.Contract
 {
     public class ContractServiceTests
     {
-        private Mock<IContractRepo> _mockContractRepo;
-        private ContractService _contractService;
+        private readonly Mock<IContractRepo> _mockContractRepo;
+        private readonly ContractService _contractService;
 
         public ContractServiceTests()
         {

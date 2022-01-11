@@ -34,7 +34,7 @@ using Calligraphy.Business.Quote;
 using Calligraphy.Data.Repo.Quote;
 using Microsoft.AspNetCore.Http;
 using Calligraphy.Data.Repo.Contract;
-using Calligraphy.Data.Repo.Contract;
+using Calligraphy.Business.Contract;
 
 namespace Calligraphy
 {
@@ -75,6 +75,7 @@ namespace Calligraphy
             services.AddTransient<IFormRepo, FormRepo>();
             services.AddTransient<IServiceRepo, ServiceRepoImpl>();
             services.AddTransient<IContractRepo, ContractRepo>();
+            services.AddTransient<IContractService, ContractService>();
 
             services.AddSwaggerGen(c =>
             {

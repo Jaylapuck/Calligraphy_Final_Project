@@ -15,7 +15,7 @@ namespace Calligraphy.Controllers
     [Route("[controller]")]
     public class ContractController : ControllerBase
     {
-        private IContractService _contractService;
+        private readonly IContractService _contractService;
 
         public ContractController(IContractService contractService)
         {
@@ -32,7 +32,7 @@ namespace Calligraphy.Controllers
 
         [HttpGet]
         [Produces(MediaTypeNames.Application.Json)]
-        [Route("/api/contract/get/{ContractId:int")]
+        [Route("/api/contract/get/{ContractId:int}")]
         public IActionResult GetContractById(int ContractId)
         {
             return _contractService.GetContractById(ContractId);

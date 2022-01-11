@@ -11,7 +11,7 @@ namespace Calligraphy.Business.Contract
 {
     public class ContractService : IContractService
     {
-        private IContractRepo _contractRepo;
+        private readonly IContractRepo _contractRepo;
 
         public ContractService(IContractRepo contractRepo)
         {
