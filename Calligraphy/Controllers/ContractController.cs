@@ -23,10 +23,10 @@ namespace Calligraphy.Controllers
 
         [HttpGet]
         [Produces(MediaTypeNames.Application.Json)]
-        [Route("/api/get")]
+        [Route("/api/contract/get")]
         public IActionResult GetAllContracts()
         {
-            throw new NotImplementedException();
+            return _contractService.GetAllContracts();
         }
     }
 }
