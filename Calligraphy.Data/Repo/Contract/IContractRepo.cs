@@ -11,5 +11,6 @@ namespace Calligraphy.Data.Repo.Contract
         IEnumerable<ContractEntity> GetAll();
         ContractEntity GetById(int ContractId);
         int CreateNewContract(ContractEntity NewEntity);
+        ContractEntity UpdateContract(ContractEntity Entity);
     }
 }
