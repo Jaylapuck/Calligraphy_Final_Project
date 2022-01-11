@@ -43,7 +43,7 @@ namespace Calligraphy.Controllers
         [Route("/api/contract/update")]
         public IActionResult UpdateContract([FromBody] ContractEntity Contract)
         {
-            throw new NotImplementedException();
+            return _contractService.UpdateContract(Contract);
         }
     }
 }
