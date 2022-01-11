@@ -140,7 +140,7 @@ namespace Calligraphy.Test.Contract
             var result = _contractService.UpdateContract(UpdateContract);
 
             // Assert
-            Assert.IsType<OkResult>(result);
+            Assert.IsType<OkObjectResult>(result);
         }
 
         [Fact]
