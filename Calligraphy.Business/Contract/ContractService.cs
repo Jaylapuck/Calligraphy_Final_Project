@@ -24,7 +24,7 @@ namespace Calligraphy.Business.Contract
 
         public ContractEntity GetContractById(int ContractId)
         {
-            throw new NotImplementedException();
+            return _contractRepo.GetById(ContractId);
         }
     }
 }
