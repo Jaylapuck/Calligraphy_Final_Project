@@ -50,7 +50,12 @@ namespace Calligraphy.Data.Repo.Contract
 
         public ContractEntity UpdateContract(ContractEntity Entity)
         {
-            throw new NotImplementedException();
+            using (_context)
+            {
+                _context.Entry(Entity).State = EntityState.Modified;
+                _context.SaveChanges();
+                return Entity;
+            }
         }
     }
 }
