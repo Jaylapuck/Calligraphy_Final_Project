@@ -42,7 +42,7 @@ namespace Calligraphy.Test.Contract
         // Test to see if we can retrieve a single contract
         public void GetSingleContractOk()
         {
-            using (var context = new CalligraphyContext(ContextOptions)) 
+            using (var context = new CalligraphyContext(ContextOptions))
             {
                 // Arrange 
                 var contextRepo = new ContractRepo(context);
@@ -53,6 +53,24 @@ namespace Calligraphy.Test.Contract
                 // Assert
                 Assert.IsType<ContractEntity>(result);
                 Assert.Equal(4, result.ContractId);
+            }
+        }
+
+        [Fact]
+        // Test to see if we can create a new contract
+        public void CreateNewContractOk() 
+        { 
+            using (var context = new CalligraphyContext(ContextOptions))
+            {
+                // Arrange 
+                var contextRepo = new ContractRepo(context);
+                ContractEntity dummyEntity = new ContractEntity { FinalCost = 60.00, DownPayment = 30.00, DateCommissioned = new DateTime(2021, 11, 1), EndDate = new DateTime(2021, 11, 20), HasSignature = true, IsFinished = true };
+
+                // Act
+                var result = contextRepo.CreateNewContract(dummyEntity);
+
+                // Assert
+                Assert.Equal(1, result);
             }
         }
     }
