@@ -17,9 +17,9 @@ namespace Calligraphy.Business.Contract
             _contractRepo = contractRepo;
         }
 
-        public List<ContractEntity> GetAllContracts()
+        public IEnumerable<ContractEntity> GetAllContracts()
         {
-            throw new NotImplementedException();
+            return _contractRepo.GetAll();
         }
     }
 }
