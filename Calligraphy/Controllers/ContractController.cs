@@ -28,5 +28,13 @@ namespace Calligraphy.Controllers
         {
             return _contractService.GetAllContracts();
         }
+
+        [HttpGet]
+        [Produces(MediaTypeNames.Application.Json)]
+        [Route("/api/contract/get/{ContractId:int")]
+        public IActionResult GetContractById(int ContractId)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
