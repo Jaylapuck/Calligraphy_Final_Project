@@ -108,5 +108,37 @@ namespace Calligraphy.Test.Contract
             // Assert
             Assert.IsType<NotFoundResult>(result);
         }
+
+        [Fact]
+        // Test to see if we can update the contract
+        public void UpdateContractShouldReturnOkResult()
+        {
+            // Arrange
+            ContractEntity contract = new ContractEntity { ContractId = 1, FinalCost = 150.00, DownPayment = 75.00, DateCommissioned = new DateTime(2021, 6, 8), EndDate = new DateTime(2021, 7, 8), HasSignature = true, IsFinished = true };
+
+            _mockContractService.Setup(x => x.UpdateContract(contract)).Returns(new OkObjectResult(contract));
+
+            // Act
+            var result = _contractController.UpdateContract(contract);
+
+            // Assert
+            Assert.IsType<OkObjectResult>(result);
+        }
+
+        [Fact]
+        // Test to see if we can update the contract
+        public void UpdateContractShouldReturnBadRequest()
+        {
+            // Arrange
+            ContractEntity contract = new ContractEntity { ContractId = 1, FinalCost = 150.00, DownPayment = 75.00, DateCommissioned = new DateTime(2021, 6, 8), EndDate = new DateTime(2021, 7, 8), HasSignature = true, IsFinished = true };
+
+            _mockContractService.Setup(x => x.UpdateContract(contract)).Returns(new BadRequestResult());
+
+            // Act
+            var result = _contractController.UpdateContract(contract);
+
+            // Assert
+            Assert.IsType<BadRequestResult>(result);
+        }
     }
 }

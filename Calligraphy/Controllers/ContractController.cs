@@ -1,4 +1,5 @@
 ﻿using Calligraphy.Business.Contract;
+using Calligraphy.Data.Models;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -35,6 +36,14 @@ namespace Calligraphy.Controllers
         public IActionResult GetContractById(int ContractId)
         {
             return _contractService.GetContractById(ContractId);
+        }
+
+        [HttpPut]
+        [Consumes(MediaTypeNames.Application.Json)]
+        [Route("/api/contract/update")]
+        public IActionResult UpdateContract([FromBody] ContractEntity Contract)
+        {
+            throw new NotImplementedException();
         }
     }
 }
