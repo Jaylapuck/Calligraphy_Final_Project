@@ -9,5 +9,6 @@ namespace Calligraphy.Data.Repo.Contract
     public interface IContractRepo
     {
         IEnumerable<ContractEntity> GetAll();
+        ContractEntity GetById(int ContractId);
     }
 }

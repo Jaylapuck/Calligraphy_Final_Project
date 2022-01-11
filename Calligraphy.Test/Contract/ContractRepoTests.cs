@@ -1,4 +1,5 @@
 ﻿using Calligraphy.Data.Config;
+using Calligraphy.Data.Models;
 using Calligraphy.Data.Repo.Contract;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -34,6 +35,24 @@ namespace Calligraphy.Test.Contract
 
                 // Assert
                 Assert.Equal(4, result.Count());
+            }
+        }
+
+        [Fact]
+        // Test to see if we can retrieve a single contract
+        public void GetSingleContractOk()
+        {
+            using (var context = new CalligraphyContext(ContextOptions)) 
+            {
+                // Arrange 
+                var contextRepo = new ContractRepo(context);
+
+                // Act
+                var result = contextRepo.GetById(4);
+
+                // Assert
+                Assert.IsType<ContractEntity>(result.GetType());
+                Assert.Equal(4, result.ContractId);
             }
         }
     }
