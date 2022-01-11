@@ -38,5 +38,10 @@ namespace Calligraphy.Data.Repo.Contract
                 return _context.Contracts.FirstOrDefault(x => x.ContractId == ContractId);
             }
         }
+
+        public int CreateNewContract(ContractEntity NewEntity)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
