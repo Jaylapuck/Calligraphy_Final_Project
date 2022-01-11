@@ -13,5 +13,6 @@ namespace Calligraphy.Business.Contract
         IActionResult GetAllContracts();
         IActionResult GetContractById(int ContractId);
         IActionResult CreateNewContract(ContractEntity ContractEntity);
+        IActionResult UpdateContract(ContractEntity ContractEntity);
     }
 }
