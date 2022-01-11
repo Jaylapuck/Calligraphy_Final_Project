@@ -51,7 +51,7 @@ namespace Calligraphy.Test.Contract
                 var result = contextRepo.GetById(4);
 
                 // Assert
-                Assert.IsType<ContractEntity>(result.GetType());
+                Assert.IsType<ContractEntity>(result);
                 Assert.Equal(4, result.ContractId);
             }
         }

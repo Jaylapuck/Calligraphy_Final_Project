@@ -33,7 +33,10 @@ namespace Calligraphy.Data.Repo.Contract
 
         public ContractEntity GetById(int ContractId)
         {
-            throw new NotImplementedException();
+            using (_context)
+            {
+                return _context.Contracts.FirstOrDefault(x => x.ContractId == ContractId);
+            }
         }
     }
 }
