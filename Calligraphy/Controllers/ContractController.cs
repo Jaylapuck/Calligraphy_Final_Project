@@ -34,7 +34,7 @@ namespace Calligraphy.Controllers
         [Route("/api/contract/get/{ContractId:int")]
         public IActionResult GetContractById(int ContractId)
         {
-            throw new NotImplementedException();
+            return _contractService.GetContractById(ContractId);
         }
     }
 }
