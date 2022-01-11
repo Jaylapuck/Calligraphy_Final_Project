@@ -20,7 +20,15 @@ namespace Calligraphy.Business.Contract
 
         public IActionResult CreateNewContract(ContractEntity ContractEntity)
         {
-            throw new NotImplementedException();
+            int CreateContract = _contractRepo.CreateNewContract(ContractEntity);
+            if(CreateContract != 0)
+            {
+                return new OkResult();
+            }
+            else
+            {
+                return new BadRequestResult();
+            }
         }
 
         public IActionResult GetAllContracts()
