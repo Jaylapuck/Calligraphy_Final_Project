@@ -47,5 +47,10 @@ namespace Calligraphy.Data.Repo.Contract
                 return _context.SaveChanges();
             }
         }
+
+        public ContractEntity UpdateContract(ContractEntity Entity)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

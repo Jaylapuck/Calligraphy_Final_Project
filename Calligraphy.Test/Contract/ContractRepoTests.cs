@@ -73,5 +73,28 @@ namespace Calligraphy.Test.Contract
                 Assert.Equal(1, result);
             }
         }
+
+        [Fact]
+        // Test to see if we can update a given contract 
+        public void UpdateExistingContractOk()
+        {
+            using (var context = new CalligraphyContext(ContextOptions))
+            {
+                // Arrange 
+                var contextRepo = new ContractRepo(context);
+                ContractEntity dummyEntity = new ContractEntity { ContractId = 4, FinalCost = 100.00, DownPayment = 50.00, DateCommissioned = new DateTime(2022, 1, 10), EndDate = new DateTime(2022, 3, 21), HasSignature = true, IsFinished = true };
+
+                // Act
+                var result = contextRepo.UpdateContract(dummyEntity);
+
+                // Assert
+                Assert.IsType<ContractEntity>(result);
+                Assert.Equal(4, result.ContractId);
+                Assert.NotEqual(0.0, result.FinalCost);
+                Assert.NotEqual(0.0, result.DownPayment);
+                Assert.True(result.HasSignature);
+                Assert.True(result.IsFinished);
+            }
+        }
     }
 }
