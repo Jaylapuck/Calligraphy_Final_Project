@@ -41,7 +41,11 @@ namespace Calligraphy.Data.Repo.Contract
 
         public int CreateNewContract(ContractEntity NewEntity)
         {
-            throw new NotImplementedException();
+            using (_context)
+            {
+                _context.Contracts.Add(NewEntity);
+                return _context.SaveChanges();
+            }
         }
     }
 }
