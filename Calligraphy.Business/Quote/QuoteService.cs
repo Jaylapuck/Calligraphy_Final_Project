@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Mime;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -36,6 +37,7 @@ namespace Calligraphy.Business.Quote
         {
             return _quoteRepo.Create(quote);
         }
+
 
         public IActionResult Update(QuoteEntity quote, int form_id)
         {

@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Calligraphy.Business.Form;
+using Calligraphy.Business.Quote;
 using Calligraphy.Controllers;
 using Calligraphy.Data.Enums;
 using Calligraphy.Data.Models;
@@ -21,6 +22,7 @@ namespace Calligraphy.Test.Form
     {
         private readonly Mock<IFormService> _mockFormService;
         private readonly Mock<IMailerService> _mockMailerService;
+
         private readonly FormController _formController;
 
         public FormControllerTests()
@@ -118,7 +120,7 @@ namespace Calligraphy.Test.Form
             var formFile = new FormFile(stream, 0, stream.Length, "streamFile", filePath.Split(@"\").Last());
             List<IFormFile> dummyAttachments = new List<IFormFile>();
             dummyAttachments.Add(formFile);
-            FormEntity dummyForm = new FormEntity { FormId = 1, Customer = dummyCustomer, ServiceType = ServiceType.Calligraphy, StartingRate = 20.00, Comments = "some text", Attachments = dummyAttachments };
+            FormEntity dummyForm = new FormEntity { FormId = 1, Customer = dummyCustomer, ServiceType = ServiceType.Calligraphy, StartingRate = 20.00f, Comments = "some text", Attachments = dummyAttachments };
             MailRequest dummyRequest = new MailRequest();
 
             _mockFormService.Setup(x => x.Create(dummyForm)).Returns(true);
@@ -143,7 +145,7 @@ namespace Calligraphy.Test.Form
             var formFile = new FormFile(stream, 0, stream.Length, "streamFile", filePath.Split(@"\").Last());
             List<IFormFile> dummyAttachments = new List<IFormFile>();
             dummyAttachments.Add(formFile);
-            FormEntity dummyForm = new FormEntity { FormId = 1, Customer = dummyCustomer, ServiceType = ServiceType.Calligraphy, StartingRate = 20.00, Comments = "some text", Attachments = dummyAttachments };
+            FormEntity dummyForm = new FormEntity { FormId = 1, Customer = dummyCustomer, ServiceType = ServiceType.Calligraphy, StartingRate = 20.00f, Comments = "some text", Attachments = dummyAttachments };
             MailRequest dummyRequest = new MailRequest();
 
             _mockFormService.Setup(x => x.Create(dummyForm)).Returns(false);
@@ -162,7 +164,7 @@ namespace Calligraphy.Test.Form
             // Arrange
             AddressEntity dummyAddress = new AddressEntity { AddressId = 1, Street = "somne street", City = "some city", Country = "some country", Postal = "some code" };
             CustomerEntity dummyCustomer = new CustomerEntity { CustomerId = 1, FirstName = "some name", LastName = "some name", Address = dummyAddress, Email = "tristanblacklafleur@hotmail.ca" };
-            FormEntity dummyForm = new FormEntity { FormId = 1, Customer = dummyCustomer, ServiceType = ServiceType.Calligraphy, StartingRate = 20.00, Comments = "some text", Attachments = new List<IFormFile>() };
+            FormEntity dummyForm = new FormEntity { FormId = 1, Customer = dummyCustomer, ServiceType = ServiceType.Calligraphy, StartingRate = 20.00f, Comments = "some text", Attachments = new List<IFormFile>() };
             MailRequest dummyRequest = new MailRequest();
 
             _mockFormService.Setup(x => x.Create(dummyForm)).Returns(true);
@@ -188,7 +190,7 @@ namespace Calligraphy.Test.Form
             var formFile = new FormFile(stream, 0, stream.Length, "streamFile", filePath.Split(@"\").Last());
             List<IFormFile> dummyAttachments = new List<IFormFile>();
             dummyAttachments.Add(formFile);
-            FormEntity dummyForm = new FormEntity { FormId = 1, Customer = dummyCustomer, ServiceType = ServiceType.Calligraphy, StartingRate = 20.00, Comments = "some text", Attachments = dummyAttachments };
+            FormEntity dummyForm = new FormEntity { FormId = 1, Customer = dummyCustomer, ServiceType = ServiceType.Calligraphy, StartingRate = 20.00f, Comments = "some text", Attachments = dummyAttachments };
             MailRequest dummyRequest = new MailRequest();
 
             _mockFormService.Setup(x => x.Create(dummyForm)).Returns(true);
@@ -215,7 +217,7 @@ namespace Calligraphy.Test.Form
             var formFile = new FormFile(stream, 0, stream.Length, "streamFile", filePath.Split(@"\").Last());
             List<IFormFile> dummyAttachments = new List<IFormFile>();
             dummyAttachments.Add(formFile);
-            FormEntity dummyForm = new FormEntity { FormId = 1, Customer = dummyCustomer, ServiceType = ServiceType.Calligraphy, StartingRate = 20.00, Comments = "some text", Attachments = dummyAttachments };
+            FormEntity dummyForm = new FormEntity { FormId = 1, Customer = dummyCustomer, ServiceType = ServiceType.Calligraphy, StartingRate = 20.00f, Comments = "some text", Attachments = dummyAttachments };
             MailRequest dummyRequest = new MailRequest();
 
             _mockFormService.Setup(x => x.Create(dummyForm)).Returns(true);

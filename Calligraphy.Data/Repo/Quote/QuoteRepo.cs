@@ -34,7 +34,7 @@ namespace Calligraphy.Data.Repo.Quote
 
         public QuoteEntity GetByFormId(int formId)
         {
-            return _context.Quotes.FirstOrDefault(x => x.Form.FormId == formId);
+            return _context.Quotes.FirstOrDefault(x => x.QuoteId == formId);
         }
 
         public bool Create(QuoteEntity quote)

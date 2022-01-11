@@ -37,10 +37,8 @@ namespace Calligraphy.Controllers
         {
             return _quoteService.GetByFormId(id);
         }
-
         // POST
         [HttpPost]
-        [Route("/api/Quote")]
         [Consumes(MediaTypeNames.Application.Json)]
         public IActionResult Create([FromBody] QuoteEntity quote)
         {
@@ -51,7 +49,6 @@ namespace Calligraphy.Controllers
             }
             return BadRequest();
         }
-
         // PUT
         [HttpPut]
         [Route("/api/Quote/{id:int}")]

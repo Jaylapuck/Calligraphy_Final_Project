@@ -31,8 +31,8 @@ namespace Calligraphy.Test.Quote
             FormEntity form = new FormEntity();
             var quotes = new List<QuoteEntity>
             {
-                new QuoteEntity(){ QuoteId = 1, Form = form, ApprovalStatus = Status.Approved, Materials = "Random Materials", Price = 25},
-                new QuoteEntity(){ QuoteId = 2, Form = form, ApprovalStatus = Status.Denied, Materials = "Random Materials", Price = 35 },
+                new QuoteEntity(){ QuoteId = 1, ApprovalStatus = Status.Approved, Materials = "Random Materials", Price = 25},
+                new QuoteEntity(){ QuoteId = 2, ApprovalStatus = Status.Denied, Materials = "Random Materials", Price = 35 },
             };
 
             // Act
@@ -43,7 +43,7 @@ namespace Calligraphy.Test.Quote
             Assert.Equal(2, result.Count());
             foreach (QuoteEntity temp in result)
             {
-                Assert.NotNull(temp.Form);
+                Assert.NotNull(temp.QuoteId);
             }
         }
 
@@ -53,7 +53,7 @@ namespace Calligraphy.Test.Quote
         {
             FormEntity form = new FormEntity();
             // Arrange
-            var quote = new QuoteEntity { QuoteId = 1, Form = form, ApprovalStatus = Status.Approved, Materials = "Random Materials", Price = 25 };
+            var quote = new QuoteEntity { QuoteId = 1, ApprovalStatus = Status.Approved, Materials = "Random Materials", Price = 25 };
 
             // Act
             _mockQuoteRepo.Setup(x => x.Create(quote));

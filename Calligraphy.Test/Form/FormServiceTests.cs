@@ -37,8 +37,8 @@ namespace Calligraphy.Test.Form
             CustomerEntity dummyCustomer = new CustomerEntity { CustomerId = 1, FirstName = "some name", LastName = "some name", Address = dummyAddress, Email = "some email" };
             var forms = new List<FormEntity>
             {
-                new FormEntity {FormId = 1, Customer = dummyCustomer, ServiceType = ServiceType.Calligraphy, StartingRate = 20.00, Comments = "Comments 1"},
-                new FormEntity {FormId = 2, Customer = dummyCustomer, ServiceType = ServiceType.Engraving, StartingRate = 30.00, Comments = "Comments 2"}
+                new FormEntity {FormId = 1, Customer = dummyCustomer, ServiceType = ServiceType.Calligraphy, StartingRate = 20.00f, Comments = "Comments 1"},
+                new FormEntity {FormId = 2, Customer = dummyCustomer, ServiceType = ServiceType.Engraving, StartingRate = 30.00f, Comments = "Comments 2"}
             };
             
             // Act

@@ -76,8 +76,8 @@ namespace Calligraphy.Test.Quote
             FormEntity form = new FormEntity();
             var quotes = new List<QuoteEntity>()
             {
-                new QuoteEntity(){ QuoteId = 1, Form = form, ApprovalStatus = Status.Approved, Materials = "Random Materials", Price = 25},
-                new QuoteEntity(){ QuoteId = 2, Form = form, ApprovalStatus = Status.Denied, Materials = "Random Materials", Price = 35 },
+                new QuoteEntity(){ QuoteId = 1, ApprovalStatus = Status.Approved, Materials = "Random Materials", Price = 25},
+                new QuoteEntity(){ QuoteId = 2, ApprovalStatus = Status.Denied, Materials = "Random Materials", Price = 35 },
             };
 
             _quoteServiceMock.Setup(x => x.GetAll()).Returns(quotes);
@@ -86,7 +86,7 @@ namespace Calligraphy.Test.Quote
             var result = _quoteController.GetAll();
 
             // Assert
-            Assert.IsType<List<FormEntity>>(result);
+            Assert.IsType<List<QuoteEntity>>(result);
             Assert.Equal(2, result.Count());
         }
 
@@ -104,7 +104,7 @@ namespace Calligraphy.Test.Quote
             var result = _quoteController.GetAll();
 
             // Assert
-            Assert.IsType<List<FormEntity>>(result);
+            Assert.IsType<List<QuoteEntity>>(result);
             Assert.Empty(result);
         }
 
@@ -114,7 +114,7 @@ namespace Calligraphy.Test.Quote
         {
             // Arrange
             FormEntity form = new FormEntity();
-            QuoteEntity dummyQuote = new QuoteEntity() { QuoteId = 1, Form = form, ApprovalStatus = Status.Approved, Materials = "Random Materials", Price = 25 };
+            QuoteEntity dummyQuote = new QuoteEntity() { QuoteId = 1, ApprovalStatus = Status.Approved, Materials = "Random Materials", Price = 25 };
 
             _quoteServiceMock.Setup(x => x.Create(dummyQuote)).Returns(true);
 
@@ -131,7 +131,7 @@ namespace Calligraphy.Test.Quote
         {
             // Arrange
             FormEntity form = new FormEntity();
-            QuoteEntity dummyQuote = new QuoteEntity() { QuoteId = 1, Form = form, ApprovalStatus = Status.Approved, Materials = "Random Materials", Price = 25 };
+            QuoteEntity dummyQuote = new QuoteEntity() { QuoteId = 1, ApprovalStatus = Status.Approved, Materials = "Random Materials", Price = 25 };
 
             _quoteServiceMock.Setup(x => x.Create(dummyQuote)).Returns(false);
 
