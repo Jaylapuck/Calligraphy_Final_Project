@@ -74,5 +74,39 @@ namespace Calligraphy.Test.Contract
             // Assert
             Assert.IsType<BadRequestResult>(result);
         }
+
+        [Fact]
+        // test to see if we can get back a contract by it's id
+        public void GetContractByIdReturnsOkResult()
+        {
+            // Arrange
+            const int ContractId = 1;
+            ContractEntity contract = new ContractEntity { ContractId = 1, FinalCost = 150.00, DownPayment = 75.00, DateCommissioned = new DateTime(2021, 6, 8), EndDate = new DateTime(2021, 7, 8), HasSignature = true, IsFinished = true };
+
+            _mockContractService.Setup(x => x.GetContractById(ContractId)).Returns(new OkObjectResult(contract));
+
+            // Act
+            var result = _contractController.GetContractById(ContractId);
+
+            // Assert
+            Assert.IsType<OkObjectResult>(result);
+        }
+
+        [Fact]
+        // test to see if we can get back a contract by it's id
+        public void GetContractByIdReturnsNotFound()
+        {
+            // Arrange
+            int ContractId = 2;
+            ContractEntity contract = new ContractEntity { ContractId = 1, FinalCost = 150.00, DownPayment = 75.00, DateCommissioned = new DateTime(2021, 6, 8), EndDate = new DateTime(2021, 7, 8), HasSignature = true, IsFinished = true };
+
+            _mockContractService.Setup(x => x.GetContractById(ContractId)).Returns(new NotFoundResult());
+
+            // Act
+            var result = _contractController.GetContractById(ContractId);
+
+            // Assert
+            Assert.IsType<NotFoundResult>(result);
+        }
     }
 }
