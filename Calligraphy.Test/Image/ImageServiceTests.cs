@@ -112,18 +112,12 @@ namespace Calligraphy.Test.Image
         public void PutImage_ShouldReturnOkResult()
         {
             // Arrange
-            var image = new ImageEntity()
-            {
-                Id = 1,
-                ImageTitle = "Test",
-                ImageData = It.IsAny<string>()
-            };
-            
-            _mockFormRepo.Setup(x => x.GetById(1)).Returns(image);
+            var image = new ImageEntity();
+            _mockFormRepo.Setup(x => x.GetByImageId(It.IsAny<int>())).Returns(image);
             _mockFormRepo.Setup(x => x.Update(It.IsAny<ImageEntity>())).Returns(image);
             
             // Act
-            var result = _formService.Update(image, 1);
+            var result = _formService.Update(image, It.IsAny<int>());
             
             // Assert
             Assert.IsType<OkObjectResult>(result);
@@ -163,7 +157,7 @@ namespace Calligraphy.Test.Image
                 ImageData = It.IsAny<string>()
             };
             
-            _mockFormRepo.Setup(x => x.GetById(1)).Returns(image);
+            _mockFormRepo.Setup(x => x.GetByImageId(It.IsAny<int>())).Returns(image);
             _mockFormRepo.Setup(x => x.DeleteById(It.IsAny<int>()));
             
             // Act

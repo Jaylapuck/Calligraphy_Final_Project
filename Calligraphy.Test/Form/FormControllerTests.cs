@@ -128,7 +128,7 @@ namespace Calligraphy.Test.Form
 
         [Fact]
         // Test to see if we get a successful post wo/an attachment
-        public async void PostOKResultTestNoAttachments()
+        public async void PostOkResultTestNoAttachments()
         {
             // Arrange
             AddressEntity dummyAddress = new AddressEntity { AddressId = 1, Street = "somne street", City = "some city", Country = "some country", Postal = "some code" };
@@ -193,21 +193,23 @@ namespace Calligraphy.Test.Form
             _mockMailerService.Setup(s => s.SendMailAsync(dummyRequest)).Returns(async () => { await Task.Yield(); });
 
             // Act
-            Func<Task> result = () => _formController.Post(dummyForm);
+            Task Result() => _formController.Post(dummyForm);
 
             // Assert
-            var error = await Assert.ThrowsAsync<FormatException>(result);
+            var error = await Assert.ThrowsAsync<FormatException>(Result);
             Assert.Equal("Not a valid email", error.Message);
         }
 
         [Fact]
         //  Test GetAll
+        // This will be done towards the end of the project
         public void GetAllTest()
         {
-            
+
         }
         
         // Test  GetAll without any forms
+        // This will be done towards the end of the project
         [Fact]
         public void GetAllEmptyTest()
         {

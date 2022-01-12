@@ -22,21 +22,21 @@ namespace Calligraphy.Business.Form
         private readonly IFormRepo _formRepo;
         private readonly IServiceRepo _serviceRepo;
         private readonly IUriService  _serviceUri;
+        private readonly PaginationHelper _paginationHelper;
         
         public FormService(IFormRepo formRepo, IServiceRepo serviceRepo, IUriService serviceUri)
         {
             _formRepo = formRepo;
             _serviceRepo = serviceRepo;
             _serviceUri = serviceUri;
+            _paginationHelper = new PaginationHelper();
         }
         
         public IActionResult GetAll(PaginationFilter filter, string? route)
         {
-           
-            
             var validFilter = new PaginationFilter(filter.PageNumber, filter.PageSize);
             var data = _formRepo.GetAll(validFilter, out var totalRecords);
-            var pagedResponse = PaginationHelper.CreatePagedReponse<FormEntity>(data, validFilter,  totalRecords, _serviceUri,  route);
+            var pagedResponse = _paginationHelper.CreatePagedResponse(data, validFilter, totalRecords, _serviceUri, route);
             return new OkObjectResult(pagedResponse);
         }
         
