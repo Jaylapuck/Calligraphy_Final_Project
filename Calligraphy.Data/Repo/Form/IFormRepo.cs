@@ -7,7 +7,7 @@ namespace Calligraphy.Data.Repo.Form
 {
     public interface IFormRepo
     {
-        IEnumerable<FormEntity> GetAll(PaginationFilter validFilter, out int totalRecords);
+        IEnumerable<FormEntity> GetAll(PaginationFilter validFilter);
 
         bool Create(FormEntity form);
     }

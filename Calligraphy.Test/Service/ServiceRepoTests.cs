@@ -16,7 +16,7 @@ using Calligraphy.Data.Repo.Service;
 
 namespace Calligraphy.Test.Service
 {
-    public class ServiceRepoTests : EFRepoTests
+    public class ServiceRepoTests : EfRepoTests
     {
         public ServiceRepoTests() : base(
             new DbContextOptionsBuilder<CalligraphyContext>()
@@ -32,10 +32,10 @@ namespace Calligraphy.Test.Service
             using (var context = new CalligraphyContext(ContextOptions))
             {
                 // Arrange
-                var _serviceRepo = new ServiceRepoImpl(context);
+                var serviceRepo = new ServiceRepoImpl(context);
 
                 // Act
-                var result = _serviceRepo.GetAll();
+                var result = serviceRepo.GetAll();
 
                 // Assert
                 Assert.Single(result);
