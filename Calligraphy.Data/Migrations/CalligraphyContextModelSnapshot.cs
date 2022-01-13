@@ -115,15 +115,20 @@ namespace Calligraphy.Data.Migrations
                     b.Property<int?>("CustomerId")
                         .HasColumnType("int");
 
+                    b.Property<int?>("QuoteId")
+                        .HasColumnType("int");
+
                     b.Property<int>("ServiceType")
                         .HasColumnType("int");
 
-                    b.Property<double>("StartingRate")
-                        .HasColumnType("float");
+                    b.Property<float>("StartingRate")
+                        .HasColumnType("real");
 
                     b.HasKey("FormId");
 
                     b.HasIndex("CustomerId");
+
+                    b.HasIndex("QuoteId");
 
                     b.ToTable("Forms");
                 });
@@ -148,6 +153,27 @@ namespace Calligraphy.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Images");
+                });
+
+            modelBuilder.Entity("Calligraphy.Data.Models.QuoteEntity", b =>
+                {
+                    b.Property<int>("QuoteId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("ApprovalStatus")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Materials")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<float>("Price")
+                        .HasColumnType("real");
+
+                    b.HasKey("QuoteId");
+
+                    b.ToTable("Quotes");
                 });
 
             modelBuilder.Entity("Calligraphy.Data.Models.ServiceEntity", b =>
@@ -180,6 +206,10 @@ namespace Calligraphy.Data.Migrations
                     b.HasOne("Calligraphy.Data.Models.CustomerEntity", "Customer")
                         .WithMany()
                         .HasForeignKey("CustomerId");
+
+                    b.HasOne("Calligraphy.Data.Models.QuoteEntity", "Quote")
+                        .WithMany()
+                        .HasForeignKey("QuoteId");
                 });
 #pragma warning restore 612, 618
         }

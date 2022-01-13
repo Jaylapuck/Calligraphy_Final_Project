@@ -162,7 +162,7 @@ namespace Calligraphy.Test.Image
         public void Delete_ShouldReturnOkActionResult()
         {
             // Arrange
-            var imageId = 1;
+            const int imageId = 1;
             _imageServiceMock.Setup(x => x.Delete(imageId)).Returns(new OkResult());
             
             // Act

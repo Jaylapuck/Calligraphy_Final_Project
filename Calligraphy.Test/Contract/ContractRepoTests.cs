@@ -11,7 +11,7 @@ using Xunit;
 
 namespace Calligraphy.Test.Contract
 {
-    public class ContractRepoTests : EFRepoTests
+    public class ContractRepoTests : EfRepoTests
     {
         public ContractRepoTests() : base(
             new DbContextOptionsBuilder<CalligraphyContext>()
