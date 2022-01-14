@@ -85,12 +85,13 @@ namespace Calligraphy.Test.Form
                 PageNumber = 1,
                 PageSize = 2
             };
-      
 
+            var totalRecords = 0;
+            
             var dummyRoute = 
                 $"{dummyUri.AbsolutePath}?pageNumber={dummyPaginationFilter.PageNumber}&pageSize={dummyPaginationFilter.PageSize}";
 
-            _mockFormRepo.Setup(x => x.GetAll(dummyPaginationFilter)).Returns(dummyForms);
+            _mockFormRepo.Setup(x => x.GetAll(dummyPaginationFilter, out totalRecords )).Returns(dummyForms);
 
             // create a PagedResponse
             var pagedResponse = new PagedResponse<IEnumerable<FormEntity>>(dummyForms, dummyPaginationFilter.PageNumber,
