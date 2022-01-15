@@ -36,7 +36,6 @@ namespace Calligraphy.Test
 
             context.AddRange(service1);
             context.AddRange(contracts);
-
             context.SaveChanges();
         }
     }

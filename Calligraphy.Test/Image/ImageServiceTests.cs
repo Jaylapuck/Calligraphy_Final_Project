@@ -21,7 +21,7 @@ namespace Calligraphy.Test.Image
         }
         
         [Fact]
-        //TC13
+        //TC5-TS1
         public void GetImage_ShouldReturnOkActionResult()
         {
             // Arrange
@@ -36,7 +36,7 @@ namespace Calligraphy.Test.Image
         }
         
         [Fact]
-        //TC14
+        //TC5-TS2
         public void GetImage_ShouldReturnNotFoundActionResult()
         {
             // Arrange
@@ -50,7 +50,7 @@ namespace Calligraphy.Test.Image
         }
         
         [Fact]
-        //TC9
+        //TC5-TS3
         public void PostImage_ShouldReturnOkActionResult()
         {
             // Arrange
@@ -65,7 +65,7 @@ namespace Calligraphy.Test.Image
         }
         
         [Fact]
-        //TC10
+        //TC5-TS4
         public void PostImage_ShouldReturnBadRequestActionResult()
         {
             // Arrange
@@ -79,7 +79,7 @@ namespace Calligraphy.Test.Image
         }
         
         [Fact]
-        //TC11
+        //TC5-TS5
         public void PostImage_ShouldReturnBadRequestActionResult_WhenImageIdAlreadyExist()
         {
             // Arrange
@@ -95,6 +95,7 @@ namespace Calligraphy.Test.Image
         }
         
         [Fact]
+        //TC5-TS6
         public void PutImage_ShouldReturnNotFoundResult()
         {
             // Arrange
@@ -109,6 +110,7 @@ namespace Calligraphy.Test.Image
         }
         
         [Fact]
+        //TC5-TS7
         public void PutImage_ShouldReturnOkResult()
         {
             // Arrange
@@ -123,6 +125,7 @@ namespace Calligraphy.Test.Image
             Assert.IsType<OkObjectResult>(result);
         }
 
+        //TC5-TS8
         [Fact]
         public void PutImage_ShouldReturnBadRequestResult()
         {
@@ -133,6 +136,7 @@ namespace Calligraphy.Test.Image
             Assert.IsType<BadRequestResult>(result);
         }
         
+        //TC5-TS9
         [Fact]
         public void DeleteImage_ShouldReturnNotFoundResult()
         {
@@ -146,6 +150,7 @@ namespace Calligraphy.Test.Image
             Assert.IsType<NotFoundResult>(result);
         }
         
+        //TC5-TS10
         [Fact]
         public void DeleteImage_ShouldReturnOkResult()
         {

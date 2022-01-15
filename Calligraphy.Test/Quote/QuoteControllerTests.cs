@@ -25,7 +25,7 @@ namespace Calligraphy.Test.Quote
         }
 
         [Fact]
-        //TC11
+        //TC7-TC1
         public void GetByFormId_ShouldReturnOk()
         {
             // Arrange
@@ -41,7 +41,7 @@ namespace Calligraphy.Test.Quote
         }
 
         [Fact]
-        //TC12
+        //TC7-TC2
         public void GetById_ShouldReturnNotFound()
         {
             // Arrange
@@ -55,6 +55,7 @@ namespace Calligraphy.Test.Quote
             Assert.IsType<NotFoundResult>(result);
         }
 
+        //TC7-TC3
         [Fact]
         public void GetAll_ShouldReturnEmptyList()
         {
@@ -69,6 +70,7 @@ namespace Calligraphy.Test.Quote
             Assert.Empty(quotes);
         }
 
+        //TC7-TC4
         [Fact]
         public void GetAll_ShouldReturnListOfTwoEntities()
         {
@@ -90,7 +92,7 @@ namespace Calligraphy.Test.Quote
             Assert.Equal(2, result.Count());
         }
 
-        // TS2-TC3
+        //TC7-TC5
         [Fact]
         // test get all api, returns empty list
         public void GetAll_ReturnsEmptyList()
@@ -108,6 +110,7 @@ namespace Calligraphy.Test.Quote
             Assert.Empty(result);
         }
 
+        //TC7-TC6
         [Fact]
         // Test to see if we get a successful post
         public void CreateOKResultTest()
@@ -125,6 +128,7 @@ namespace Calligraphy.Test.Quote
             Assert.IsType<OkObjectResult>(actual);
         }
 
+        //TC7-TC7
         [Fact]
         // Test to see if we get a failed post
         public void CreateBadResultTest()
@@ -142,6 +146,7 @@ namespace Calligraphy.Test.Quote
             Assert.IsType<BadRequestResult>(actual);
         }
 
+        //TC7-TC8
         [Fact]
         public void Update_ShouldReturnOkActionResult()
         {
@@ -156,6 +161,7 @@ namespace Calligraphy.Test.Quote
             Assert.IsType<OkObjectResult>(result);
         }
 
+        //TC7-TC9
         [Fact]
         public void Update_ShouldReturnBadRequestActionResult()
         {
@@ -170,6 +176,7 @@ namespace Calligraphy.Test.Quote
             Assert.IsType<BadRequestResult>(result);
         }
 
+        //TC7-TC10
         [Fact]
         public void Update_ShouldReturnNotFoundActionResult()
         {

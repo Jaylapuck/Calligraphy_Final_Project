@@ -24,6 +24,7 @@ namespace Calligraphy.Test.Contract
         }
 
         [Fact]
+        // TC2-TS1
         // Test to see if we can get back all the contracts
         public void GetAllContractsOk()
         {
@@ -46,6 +47,7 @@ namespace Calligraphy.Test.Contract
         }
 
         [Fact]
+        // TC2-TS2
         // Test to see if we get back a not found result
         public void GetAllContractsNotFound()
         {
@@ -60,6 +62,7 @@ namespace Calligraphy.Test.Contract
         }
 
         [Fact]
+        // TC2-TS3
         // Test to see if we get a single contract by it's id
         public void GetContractByIdOk()
         {
@@ -76,6 +79,7 @@ namespace Calligraphy.Test.Contract
         }
 
         [Fact]
+        // TC2-TS4
         // Test to see if we get a not found result trying to get a contract by id
         public void GetContractByIdNotFound()
         {
@@ -90,6 +94,7 @@ namespace Calligraphy.Test.Contract
         }
 
         [Fact]
+        // TC2-TS5
         // Test to see if we can create a single contract
         public void CreateContractTestOk()
         {
@@ -106,6 +111,7 @@ namespace Calligraphy.Test.Contract
         }
 
         [Fact]
+        // TC2-TS6
         // Test to see if we get a bad request when making a contract
         public void CreateContractTestBadrequest()
         {
@@ -122,6 +128,7 @@ namespace Calligraphy.Test.Contract
         }
 
         [Fact]
+        // TC2-TS7
         // Test to see if we can update an existing contract
         public void UpdateContractOkResult()
         {
@@ -144,6 +151,7 @@ namespace Calligraphy.Test.Contract
         }
 
         [Fact]
+        // TC2-TS8
         // Test to see if we can update an existing contract
         public void UpdateContractBadRequestResult()
         {

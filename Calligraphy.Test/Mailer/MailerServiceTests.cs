@@ -26,7 +26,7 @@ namespace Calligraphy.Test.Mailer
 {
     public class MailerServiceTests
     {
-        private MailRequest _request;
+        private readonly MailRequest _request;
 
         public MailerServiceTests()
         {
@@ -36,6 +36,7 @@ namespace Calligraphy.Test.Mailer
             _request.body = "body1";
         }
 
+        //TC6-TS1
         private MimeMessage CreateMailMessage(MailRequest request)
         {
             var email = new MimeMessage();
@@ -69,6 +70,7 @@ namespace Calligraphy.Test.Mailer
             return email;
         }
 
+        //TC6-TS2
         [Fact]
         // Test the server mockup to see if an email can be sent
         public void SendEmailOk()

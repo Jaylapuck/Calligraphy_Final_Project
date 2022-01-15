@@ -28,7 +28,7 @@ namespace Calligraphy.Test.Customer
         }
 
         [Fact]
-        // TS2-TC5
+        // TC3-TS1
         public void GetAllCustomers()
         {
             // Arrange
@@ -50,7 +50,7 @@ namespace Calligraphy.Test.Customer
         }
 
         [Fact]
-        // TS1-TC6
+        // TC3-TS2
         public void CreateCustomer()
         {
             // Arrange

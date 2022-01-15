@@ -40,6 +40,7 @@ namespace Calligraphy.Test.Form
             _formController = new FormController(_mockFormService.Object, _mockMailerService.Object);
         }
 
+        //TC4-TC1
         [Fact]
         public void GetAllServicesOk()
         {
@@ -59,7 +60,8 @@ namespace Calligraphy.Test.Form
             Assert.IsType<List<ServiceEntity>>(result);
             Assert.Equal(2, dummyServices.Count);
         }
-
+        
+        //TC4-TC2
         [Fact]
         public void GetAllServicesEmpty()
         {
@@ -76,6 +78,7 @@ namespace Calligraphy.Test.Form
             Assert.Empty(dummyServices);
         }
 
+        //TC4-TC3
         [Fact]
         // Test to see if we get a successful post
         public async void PostOkResultTest()
@@ -112,6 +115,7 @@ namespace Calligraphy.Test.Form
             Assert.IsType<OkObjectResult>(actual);
         }
 
+        //TC4-TC4
         [Fact]
         // Test to see if we get a failed post
         public async void PostBadRequestTest()
@@ -146,6 +150,7 @@ namespace Calligraphy.Test.Form
             Assert.IsType<BadRequestResult>(actual);
         }
 
+        //TC4-TC5
         [Fact]
         // Test to see if we get a successful post wo/an attachment
         public async void PostOkResultTestNoAttachments()
@@ -179,6 +184,7 @@ namespace Calligraphy.Test.Form
             Assert.IsType<OkObjectResult>(actual);
         }
 
+        //TC4-TC6
         [Fact]
         // Test to see if we get an exception when encountering an empty email
         public async void PostBadRequestTestNoEmail()
@@ -214,7 +220,8 @@ namespace Calligraphy.Test.Form
             var error = await Assert.ThrowsAsync<ArgumentException>(result);
             Assert.Equal("Email not found", error.Message);
         }
-
+        
+        //TC4-TC7
         [Fact]
         // Test to see if we get an exception when encountering an invalid email
         public async void PostBadRequestTestInvalidEmail()
@@ -252,6 +259,7 @@ namespace Calligraphy.Test.Form
             Assert.Equal("Not a valid email", error.Message);
         }
 
+        //TC4-TC8
         [Fact]
         // Test GetAll
         // This will be done towards the end of the project

@@ -28,7 +28,7 @@ namespace Calligraphy.Test.Address
         }
 
         [Fact]
-        // TS2-TC5
+        // TS1-TA1
         public void GetAllAddresses()
         {
             // Arrange
@@ -50,7 +50,7 @@ namespace Calligraphy.Test.Address
         }
 
         [Fact]
-        // TS1-TC6
+        // TS1-TA2
         public void CreateAddress()
         {
             // Arrange
