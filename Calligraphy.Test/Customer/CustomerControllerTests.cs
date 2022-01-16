@@ -26,7 +26,7 @@ namespace Calligraphy.Test.Customer
             _customerController = new CustomerController(_mockCustomerService.Object);
         }
 
-        // TS2-TC1
+        // TC3-TC1
         [Fact]
         // test get all api, returns list of customers
         public void GetAll()
@@ -48,7 +48,7 @@ namespace Calligraphy.Test.Customer
             Assert.Equal(2, result.Count());
         }
 
-        // TS2-TC3
+        // TC3-TC2
         [Fact]
         // test get all api, returns empty list
         public void GetAll_ReturnsEmptyList()
@@ -67,7 +67,7 @@ namespace Calligraphy.Test.Customer
         }
 
         [Fact]
-        // TC2-TC2
+        // TC3-TC3
         public void Post_ReturnsOkResult()
         {
             // Arrange
@@ -82,7 +82,7 @@ namespace Calligraphy.Test.Customer
         }
 
         [Fact]
-        // TC2-TC4
+        // TC3-TC4
         public void Post_ReturnsBadRequest()
         {
             // Arrange

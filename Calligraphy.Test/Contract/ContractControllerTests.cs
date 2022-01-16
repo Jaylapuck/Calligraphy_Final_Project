@@ -24,11 +24,12 @@ namespace Calligraphy.Test.Contract
         }
 
         [Fact]
+        // TC2-TC1
         // Test to see if we get a good result when fetching all contracts and getting back some entries
         public void GetAllContractsOkResultReturnsList()
         {
             // Arrange
-            List<ContractEntity> contracts = new List<ContractEntity>
+            var contracts = new List<ContractEntity>
             {
                 new ContractEntity { FinalCost = 150.00, DownPayment = 75.00, DateCommissioned = new DateTime(2021, 6, 8), EndDate = new DateTime(2021, 7, 8), HasSignature = true, IsFinished = true },
                 new ContractEntity { FinalCost = 60.00, DownPayment = 30.00, DateCommissioned = new DateTime(2017, 5, 19), EndDate = new DateTime(2017, 5, 30), HasSignature = true, IsFinished = true},
@@ -46,6 +47,7 @@ namespace Calligraphy.Test.Contract
         }
 
         [Fact]
+        // TC2-TC2
         // Test to see if we get a good result when fetching all contracts and getting back an empty list
         public void GetAllContractsOkResultReturnsEmptyList()
         {
@@ -62,6 +64,7 @@ namespace Calligraphy.Test.Contract
         }
 
         [Fact]
+        // TC2-TC3
         // Test to see if we get a bad result
         public void GetAllContractsBadRequest()
         {
@@ -76,7 +79,8 @@ namespace Calligraphy.Test.Contract
         }
 
         [Fact]
-        // test to see if we can get back a contract by it's id
+        // TC2-TC4
+        // // test to see if we can get back a contract by it's id
         public void GetContractByIdReturnsOkResult()
         {
             // Arrange
@@ -93,6 +97,7 @@ namespace Calligraphy.Test.Contract
         }
 
         [Fact]
+        // TC2-TC5
         // test to see if we can get back a contract by it's id
         public void GetContractByIdReturnsNotFound()
         {
@@ -110,6 +115,7 @@ namespace Calligraphy.Test.Contract
         }
 
         [Fact]
+        // TC2-TC6
         // Test to see if we can update the contract
         public void UpdateContractShouldReturnOkResult()
         {
@@ -126,6 +132,7 @@ namespace Calligraphy.Test.Contract
         }
 
         [Fact]
+        // TC2-TC7
         // Test to see if we can update the contract
         public void UpdateContractShouldReturnBadRequest()
         {

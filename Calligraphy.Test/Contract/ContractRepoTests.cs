@@ -22,23 +22,23 @@ namespace Calligraphy.Test.Contract
         }
 
         [Fact]
+        // TC2-TR1
         // Test to see if we can recover all registered contracts
         public void GetAllContractsOk()
         {
-            using (var context = new CalligraphyContext(ContextOptions))
-            {
-                // Arrange
-                var contractRepo = new ContractRepo(context);
+            using var context = new CalligraphyContext(ContextOptions);
+            // Arrange
+            var contractRepo = new ContractRepo(context);
 
-                // Act
-                var result = contractRepo.GetAll();
+            // Act
+            var result = contractRepo.GetAll();
 
-                // Assert
-                Assert.Equal(4, result.Count());
-            }
+            // Assert
+            Assert.Equal(4, result.Count());
         }
 
         [Fact]
+        // TC2-TR2
         // Test to see if we can retrieve a single contract
         public void GetSingleContractOk()
         {
@@ -57,6 +57,7 @@ namespace Calligraphy.Test.Contract
         }
 
         [Fact]
+        // TC2-TR3
         // Test to see if we can create a new contract
         public void CreateNewContractOk() 
         { 
@@ -75,6 +76,7 @@ namespace Calligraphy.Test.Contract
         }
 
         [Fact]
+        // TC2-TR4
         // Test to see if we can update a given contract 
         public void UpdateExistingContractOk()
         {

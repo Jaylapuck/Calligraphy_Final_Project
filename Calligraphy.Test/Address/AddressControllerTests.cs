@@ -26,7 +26,7 @@ namespace Calligraphy.Test.Address
             _addressController = new AddressController(_mockAddressService.Object);
         }
 
-        // TS2-TC1
+        // TC1-TA1
         [Fact]
         // test get all api, returns list of addresses
         public void GetAll()
@@ -48,7 +48,7 @@ namespace Calligraphy.Test.Address
             Assert.Equal(2, result.Count());
         }
 
-        // TS2-TC3
+        // TC1-TA2
         [Fact]
         // test get all api, returns empty list
         public void GetAll_ReturnsEmptyList()
@@ -67,7 +67,7 @@ namespace Calligraphy.Test.Address
         }
 
         [Fact]
-        // TC2-TC2
+        // TC1-TA3
         public void Post_ReturnsOkResult()
         {
             // Arrange
@@ -82,7 +82,7 @@ namespace Calligraphy.Test.Address
         }
 
         [Fact]
-        // TC2-TC4
+        // TC1-TA4
         public void Post_ReturnsBadRequest()
         {
             // Arrange

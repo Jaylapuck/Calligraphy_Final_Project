@@ -22,7 +22,7 @@ namespace Calligraphy.Test.Image
         }
         
         [Fact]
-        //TC11
+        //TC5-TC1
         public void GetById_ShouldReturnOk()
         {
             // Arrange
@@ -38,7 +38,7 @@ namespace Calligraphy.Test.Image
         }
         
         [Fact]
-        //TC12
+        //TC5-TC2
         public void GetById_ShouldReturnNotFound()
         {
             // Arrange
@@ -52,6 +52,7 @@ namespace Calligraphy.Test.Image
             Assert.IsType<NotFoundResult>(result);
         }
         
+        //TC5-TC3
         [Fact]
         public void GetAll_ShouldReturnEmptyList()
         {
@@ -66,6 +67,7 @@ namespace Calligraphy.Test.Image
             Assert.Empty(images);
         }
         
+        //TC5-TC4
         [Fact]
         public void GetAll_ShouldReturnListOfTwoEntities()
         {
@@ -86,8 +88,8 @@ namespace Calligraphy.Test.Image
             Assert.Equal(2, result.Count());
         }
         
+        //TC5-TC5
         [Fact]
-        // TC7: Test for image upload
         public void Create_ShouldReturnOkActionResult()
         {
             // Arrange
@@ -101,8 +103,8 @@ namespace Calligraphy.Test.Image
             Assert.IsType<OkObjectResult>(result);
         }
         
+        //TC5-TC6
         [Fact]
-        // TC8: Test for image upload
         public void Create_ShouldReturnBadRequestActionResult()
         {
             // Arrange
@@ -116,6 +118,7 @@ namespace Calligraphy.Test.Image
             Assert.IsType<BadRequestResult>(result);
         }
         
+        //TC5-TC7
         [Fact]
         public void Update_ShouldReturnOkActionResult()
         {
@@ -130,6 +133,7 @@ namespace Calligraphy.Test.Image
             Assert.IsType<OkObjectResult>(result);
         }
         
+        //TC5-TC8
         [Fact]
         public void Update_ShouldReturnBadRequestActionResult()
         {
@@ -144,6 +148,7 @@ namespace Calligraphy.Test.Image
             Assert.IsType<BadRequestResult>(result);
         }
 
+        //TC5-TC9
         [Fact]
         public void Update_ShouldReturnNotFoundActionResult()
         {
@@ -158,6 +163,7 @@ namespace Calligraphy.Test.Image
             Assert.IsType<NotFoundResult>(result);
         }
         
+        //TC5-TC10
         [Fact]
         public void Delete_ShouldReturnOkActionResult()
         {
@@ -172,6 +178,7 @@ namespace Calligraphy.Test.Image
             Assert.IsType<OkResult>(result);
         }
         
+        //TC5-TC11
         [Fact]
         public void Delete_ShouldReturnNotFoundActionResult()
         {

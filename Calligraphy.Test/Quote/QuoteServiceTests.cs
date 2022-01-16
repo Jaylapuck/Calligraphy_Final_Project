@@ -24,7 +24,7 @@ namespace Calligraphy.Test.Quote
         }
 
         [Fact]
-        // TS2-TC5
+        // TS7-TS1
         public void GetAllQuotes()
         {
             // Arrange
@@ -48,7 +48,7 @@ namespace Calligraphy.Test.Quote
         }
 
         [Fact]
-        // TS1-TC6
+        // TS7-TS2
         public void CreateQuote()
         {
             FormEntity form = new FormEntity();
