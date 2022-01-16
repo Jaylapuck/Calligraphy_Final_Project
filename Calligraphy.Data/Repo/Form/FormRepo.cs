@@ -24,11 +24,12 @@ namespace Calligraphy.Data.Repo.Form
             _context = new CalligraphyContext(options);
         }
         
-        public IEnumerable<FormEntity> GetAll(PaginationFilter validFilter)
+        public IEnumerable<FormEntity> GetAll(PaginationFilter validFilter, out int totalRecords)
         {
             var list = _context.Forms.Skip((validFilter.PageNumber - 1) * validFilter.PageSize)
                 .Take(validFilter.PageSize)
                 .ToList();
+            totalRecords = _context.Forms.Count();
             return list;
         }
         

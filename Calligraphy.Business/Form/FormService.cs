@@ -35,10 +35,8 @@ namespace Calligraphy.Business.Form
         public IActionResult GetAll(PaginationFilter filter, string? route)
         {
             var validFilter = new PaginationFilter(filter.PageNumber, filter.PageSize);
-            var data = _formRepo.GetAll(validFilter);
-            var formEntities = data as FormEntity[] ?? data.ToArray();
-            var totalRecords = formEntities.Count();
-            var pagedResponse = _paginationHelper.CreatePagedResponse(formEntities, validFilter, totalRecords, route);
+            var data = _formRepo.GetAll(validFilter, out var totalRecords);
+            var pagedResponse = _paginationHelper.CreatePagedResponse(data, validFilter, totalRecords, route);
             return new OkObjectResult(pagedResponse);
         }
         
