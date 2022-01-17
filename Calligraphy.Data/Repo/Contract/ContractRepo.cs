@@ -31,30 +31,30 @@ namespace Calligraphy.Data.Repo.Contract
             }
         }
 
-        public ContractEntity GetById(int ContractId)
+        public ContractEntity GetById(int contractId)
         {
             using (_context)
             {
-                return _context.Contracts.FirstOrDefault(x => x.ContractId == ContractId);
+                return _context.Contracts.FirstOrDefault(x => x.ContractId == contractId);
             }
         }
 
-        public int CreateNewContract(ContractEntity NewEntity)
+        public int CreateNewContract(ContractEntity newEntity)
         {
             using (_context)
             {
-                _context.Contracts.Add(NewEntity);
+                _context.Contracts.Add(newEntity);
                 return _context.SaveChanges();
             }
         }
 
-        public ContractEntity UpdateContract(ContractEntity Entity)
+        public ContractEntity UpdateContract(ContractEntity entity)
         {
             using (_context)
             {
-                _context.Entry(Entity).State = EntityState.Modified;
+                _context.Entry(entity).State = EntityState.Modified;
                 _context.SaveChanges();
-                return Entity;
+                return entity;
             }
         }
     }

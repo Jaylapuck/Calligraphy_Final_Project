@@ -28,8 +28,13 @@ namespace Calligraphy.Data.Repo.Form
         {
             var list = _context.Forms.Skip((validFilter.PageNumber - 1) * validFilter.PageSize)
                 .Take(validFilter.PageSize)
-                .ToList();
+                .Include(nameof(FormEntity.Customer))
+                .Include(nameof(FormEntity.Quote))
+                .Include(nameof(FormEntity.Customer.Address))
+                .AsNoTracking().ToList();
+            
             totalRecords = _context.Forms.Count();
+            
             return list;
         }
         
