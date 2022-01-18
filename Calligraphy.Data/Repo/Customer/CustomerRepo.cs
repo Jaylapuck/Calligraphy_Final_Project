@@ -28,7 +28,9 @@ namespace Calligraphy.Data.Repo.Customer
         {
             using (_context)
             {
-                return _context.Customers.ToList();
+                var customers = _context.Customers
+                    .Include(nameof(CustomerEntity.Address)).AsNoTracking().ToList();
+                return customers;
             }
         }
 
