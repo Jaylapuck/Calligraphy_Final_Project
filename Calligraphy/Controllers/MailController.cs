@@ -72,11 +72,13 @@ namespace Calligraphy.Controllers
             body += "<table style=\"border:1px solid black;\">";
             body += "<tr>";
             body += "<th>Estimated Cost</th>";
+            body += "<th>Estimated Duration</th>";
             body += "<th>Materials</th>";
             body += "<th>Current Status</th>";
             body += "</tr>";
             body += "<tr>";
-            body += "<td>" + request.Quote.Price + "</td>";
+            body += "<td> $" + request.Quote.Price + "</td>";
+            body += "<td>" + request.Quote.Duration + " Days</td>";
             body += "<td>" + request.Quote.Materials + "</td>";
             body += "<td>" + request.Quote.ApprovalStatus + "</td>";
             body += "</tr>";

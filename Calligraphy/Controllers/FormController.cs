@@ -60,6 +60,18 @@ namespace Calligraphy.Controllers
                 var quote = new QuoteEntity();
                 quote.Materials = "None";
                 quote.Price = form.StartingRate;
+                switch(form.ServiceType)
+                {
+                    case Data.Enums.ServiceType.Calligraphy:
+                        quote.Duration = 14;
+                        break;
+                    case Data.Enums.ServiceType.Engraving:
+                        quote.Duration = 21;
+                        break;
+                    default:
+                        quote.Duration = 0;
+                        break;
+                }
                 form.Quote = quote;
 
                 var result = _formService.Create(form);

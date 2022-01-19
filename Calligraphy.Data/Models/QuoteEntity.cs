@@ -12,6 +12,7 @@ namespace Calligraphy.Data.Models
     {
         [Key] public int QuoteId { get; set; }
         public float Price { get; set; }
+        public int Duration { get; set; }
         public string Materials { get; set; }
         public Status ApprovalStatus { get; set; }
 
