@@ -71,8 +71,9 @@ namespace Calligraphy.Controllers
                     //form.Quote.Price = form.StartingRate;
                     //quote.Form = form;
                     //_quoteService.Create(quote);
-                    var mailCOntroller = new MailController(_mailService);
-                    await mailCOntroller.SendCustomerConfirmation(form);
+                    var mailController = new MailController(_mailService);
+                    await mailController.SendCustomerConfirmation(form);
+                    await mailController.SendOwnerAlertNewQuote(form);
                     return Ok(form);
                 }
                 return BadRequest();
