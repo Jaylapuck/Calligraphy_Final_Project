@@ -67,14 +67,22 @@ namespace Calligraphy.Controllers
                 var newContract = new ContractEntity();
                 newContract.FinalCost = quote.Price;
                 newContract.DownPayment = quote.Price / 2;
-                newContract.DateCommissioned = System.DateTime.UtcNow;
+                newContract.DateCommissioned = System.DateTime.Now;
                 newContract.EndDate = newContract.DateCommissioned.AddDays(quote.Duration);
                 newContract.HasSignature = false;
                 newContract.IsFinished = false;
 
-                _contractService.CreateNewContract(newContract);
-                MailController mailController = new MailController(_mailerService);
-                await mailController.SendOwnerAlertNewContract(quote, newContract);
+                var quoteResult = _quoteService.Update(quote, id);
+                var contractResult = _contractService.CreateNewContract(newContract);
+
+                if(quoteResult.GetType() == typeof(OkObjectResult) && contractResult.GetType() == typeof(OkResult))
+                {
+                    quote.QuoteId = id;
+                    MailController mailController = new MailController(_mailerService);
+                    await mailController.SendOwnerAlertNewContract(quote, newContract);
+                }
+
+                return quoteResult;
             }
 
             return _quoteService.Update(quote, id);
