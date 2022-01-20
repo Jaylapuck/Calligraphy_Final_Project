@@ -1,10 +1,13 @@
-﻿using Calligraphy.Business.Quote;
+﻿using Calligraphy.Business.Contract;
+using Calligraphy.Business.Quote;
 using Calligraphy.Data.Models;
+using Calligraphy.Mailer.Services;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Net.Mime;
+using System.Threading.Tasks;
 
 namespace Calligraphy.Controllers
 {
@@ -14,10 +17,14 @@ namespace Calligraphy.Controllers
         public class QuoteController : ControllerBase
         {
         private readonly IQuoteService _quoteService;
+        private readonly IMailerService _mailerService;
+        private readonly IContractService _contractService;
 
-        public QuoteController(IQuoteService quoteService)
+        public QuoteController(IQuoteService quoteService, IMailerService mailerService, IContractService contractService)
         {
             _quoteService = quoteService;
+            _mailerService = mailerService;
+            _contractService = contractService;
         }
 
         // GET ALL
@@ -53,8 +60,23 @@ namespace Calligraphy.Controllers
         [HttpPut]
         [Route("/api/Quote/{id:int}")]
         [Consumes(MediaTypeNames.Application.Json)]
-        public IActionResult Update([FromBody] QuoteEntity quote, int id)
+        public async Task<IActionResult> Update([FromBody] QuoteEntity quote, int id)
         {
+            if(quote.ApprovalStatus == Data.Enums.Status.Approved)
+            {
+                var newContract = new ContractEntity();
+                newContract.FinalCost = quote.Price;
+                newContract.DownPayment = quote.Price / 2;
+                newContract.DateCommissioned = System.DateTime.UtcNow;
+                newContract.EndDate = newContract.DateCommissioned.AddDays(quote.Duration);
+                newContract.HasSignature = false;
+                newContract.IsFinished = false;
+
+                _contractService.CreateNewContract(newContract);
+                MailController mailController = new MailController(_mailerService);
+                await mailController.SendOwnerAlertNewContract(quote, newContract);
+            }
+
             return _quoteService.Update(quote, id);
         }
     }

@@ -1,4 +1,5 @@
-﻿using Calligraphy.Business.Quote;
+﻿using Calligraphy.Business.Contract;
+using Calligraphy.Business.Quote;
 using Calligraphy.Controllers;
 using Calligraphy.Data.Enums;
 using Calligraphy.Data.Models;
@@ -17,11 +18,15 @@ namespace Calligraphy.Test.Quote
     public class QuoteControllerTests
     {
         private readonly Mock<IQuoteService> _quoteServiceMock;
+        private readonly Mock<IMailerService> _mailServiceMock;
+        private readonly Mock<IContractService> _contractServiceMock;
         private readonly QuoteController _quoteController;
         public QuoteControllerTests()
         {
             _quoteServiceMock = new Mock<IQuoteService>();
-            _quoteController = new QuoteController(_quoteServiceMock.Object);
+            _mailServiceMock = new Mock<IMailerService>();
+            _contractServiceMock = new Mock<IContractService>();
+            _quoteController = new QuoteController(_quoteServiceMock.Object, _mailServiceMock.Object, _contractServiceMock.Object);
         }
 
         [Fact]

@@ -125,5 +125,64 @@ namespace Calligraphy.Controllers
             await _mailService.SendMailAsync(mailRequest);
             return Ok();
         }
+
+        public async Task<IActionResult> SendOwnerAlertNewContract(QuoteEntity quote, ContractEntity contract)
+        {
+            var mailRequest = new MailRequest();
+
+            var address = new MailAddress("tristanblacklafleur@hotmail.ca").Address;
+            var emailTo = address;
+            var subject = "New Contract for: Quote " + quote.QuoteId;
+            var today = DateTime.UtcNow;
+            var culture = new CultureInfo("en-US");
+            var date = today.ToString(culture);
+            var body = "<h1>A Quote has been approved, check the generated Contract</h1>";
+            body += "<h3>New Contract:</h3>";
+            body += "<table style=\"border:1px solid black;\">";
+            body += "<tr>";
+            body += "<th>Final Cost</th>";
+            body += "<th>Down Payment</th>";
+            body += "<th>Date Started</th>";
+            body += "<th>Due Date</th>";
+            body += "<th>Has Signature?</th>";
+            body += "<th>Is FInished?</th>";
+            body += "</tr>";
+            body += "<tr>";
+            body += "<td>$" + contract.FinalCost + "</td>";
+            body += "<td>" + contract.DownPayment + " Days</td>";
+            body += "<td>" + contract.DateCommissioned + "</td>";
+            body += "<td>" + contract.EndDate + "</td>";
+            body += "<td>" + contract.HasSignature + "</td>";
+            body += "<td>" + contract.IsFinished + "</td>";
+            body += "</tr>";
+            body += "</table>";
+            body += "<br/><br/>";
+            body += "Here is the date and time it was created: " + date;
+            body += "<br/><br/>";
+            body += "<h3>Here is the corresponding quote:</h3>";
+            body += "<table style=\"border:1px solid black;\">";
+            body += "<tr>";
+            body += "<th>Estimated Cost</th>";
+            body += "<th>Estimated Duration</th>";
+            body += "<th>Materials</th>";
+            body += "<th>Current Status</th>";
+            body += "</tr>";
+            body += "<tr>";
+            body += "<td> $" + quote.Price + "</td>";
+            body += "<td>" + quote.Duration + " Days</td>";
+            body += "<td>" + quote.Materials + "</td>";
+            body += "<td>" + quote.ApprovalStatus + "</td>";
+            body += "</tr>";
+            body += "</table>";
+            body += "<br/><br/>";
+            body += "<h3>This is an auto-generated COntract, therefore it is encouraged to save this email and go to your admin panel to view the contracts submitted and finalize the contracts w/the customer</h3>";
+
+            mailRequest.email = emailTo;
+            mailRequest.subject = subject;
+            mailRequest.body = body;
+
+            await _mailService.SendMailAsync(mailRequest);
+            return Ok();
+        }
     }
 }
