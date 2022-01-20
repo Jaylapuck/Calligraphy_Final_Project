@@ -43,6 +43,26 @@ namespace Calligraphy.Data.Migrations
                     b.ToTable("Addresses");
                 });
 
+            modelBuilder.Entity("Calligraphy.Data.Models.AdminEntity", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Admins");
+                });
+
             modelBuilder.Entity("Calligraphy.Data.Models.ContractEntity", b =>
                 {
                     b.Property<int>("ContractId")

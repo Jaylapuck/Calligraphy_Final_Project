@@ -1810,7 +1810,7 @@
       },
       "Calligraphy.Data/1.0.0": {
         "type": "project",
-        "framework": ".NETStandard,Version=v2.0",
+        "framework": ".NETCoreApp,Version=v5.0",
         "dependencies": {
           "Microsoft.AspNetCore.Http.Features": "5.0.13",
           "Microsoft.AspNetCore.WebUtilities": "2.2.0",
@@ -6472,25 +6472,20 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\trist\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\": {}
+    "C:\\Users\\ethyl\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\trist\\source\\repos\\ASP.NET\\Calligraphy_Final_Project\\Calligraphy.Business\\Calligraphy.Business.csproj",
+      "projectUniqueName": "C:\\Users\\ethyl\\RiderProjects\\Calligraphy_Final_Project\\Calligraphy.Business\\Calligraphy.Business.csproj",
       "projectName": "Calligraphy.Business",
-      "projectPath": "C:\\Users\\trist\\source\\repos\\ASP.NET\\Calligraphy_Final_Project\\Calligraphy.Business\\Calligraphy.Business.csproj",
-      "packagesPath": "C:\\Users\\trist\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\trist\\source\\repos\\ASP.NET\\Calligraphy_Final_Project\\Calligraphy.Business\\obj\\",
+      "projectPath": "C:\\Users\\ethyl\\RiderProjects\\Calligraphy_Final_Project\\Calligraphy.Business\\Calligraphy.Business.csproj",
+      "packagesPath": "C:\\Users\\ethyl\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\ethyl\\RiderProjects\\Calligraphy_Final_Project\\Calligraphy.Business\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
-      ],
       "configFilePaths": [
-        "C:\\Users\\trist\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        "C:\\Users\\ethyl\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net5.0"
@@ -6503,8 +6498,8 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "projectReferences": {
-            "C:\\Users\\trist\\source\\repos\\ASP.NET\\Calligraphy_Final_Project\\Calligraphy.Data\\Calligraphy.Data.csproj": {
-              "projectPath": "C:\\Users\\trist\\source\\repos\\ASP.NET\\Calligraphy_Final_Project\\Calligraphy.Data\\Calligraphy.Data.csproj"
+            "C:\\Users\\ethyl\\RiderProjects\\Calligraphy_Final_Project\\Calligraphy.Data\\Calligraphy.Data.csproj": {
+              "projectPath": "C:\\Users\\ethyl\\RiderProjects\\Calligraphy_Final_Project\\Calligraphy.Data\\Calligraphy.Data.csproj"
             }
           }
         }
@@ -6551,7 +6546,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.403\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
       }
     }
   }

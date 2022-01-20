@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Net.Mime;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Calligraphy.Controllers
 {
@@ -24,6 +25,7 @@ namespace Calligraphy.Controllers
         [HttpGet]
         [Route("/api/Customer")]
         [Produces(MediaTypeNames.Application.Json)]
+        [Authorize]
         public IEnumerable<CustomerEntity> Get()
         {
             return _customerService.GetAll();

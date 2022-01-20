@@ -14,6 +14,7 @@ using System.Net.Mime;
 using System.Threading.Tasks;
 using Calligraphy.Data.Filters;
 using Calligraphy.Data.Repo.Wrappers;
+using Microsoft.AspNetCore.Authorization;
 using Org.BouncyCastle.Ocsp;
 
 namespace Calligraphy.Controllers
@@ -44,6 +45,7 @@ namespace Calligraphy.Controllers
         [HttpGet]
         [Route("/api/Form")]
         [Produces(MediaTypeNames.Application.Json)]
+        [Authorize]
         public IActionResult GetAllPages([FromQuery] PaginationFilter filter)
         {
             var route = Request.Path.Value;
