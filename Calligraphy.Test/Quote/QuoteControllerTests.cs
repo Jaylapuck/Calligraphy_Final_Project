@@ -153,14 +153,14 @@ namespace Calligraphy.Test.Quote
 
         //TC7-TC8
         [Fact]
-        public void Update_ShouldReturnOkActionResult()
+        public async void Update_ShouldReturnOkActionResult()
         {
             // Arrange
             var quote = new QuoteEntity();
             _quoteServiceMock.Setup(x => x.Update(quote, It.IsAny<int>())).Returns(new OkObjectResult(quote));
 
             // Act
-            var result = _quoteController.Update(quote, It.IsAny<int>());
+            var result = await _quoteController.Update(quote, It.IsAny<int>());
 
             // Assert
             Assert.IsType<OkObjectResult>(result);
@@ -168,14 +168,14 @@ namespace Calligraphy.Test.Quote
 
         //TC7-TC9
         [Fact]
-        public void Update_ShouldReturnBadRequestActionResult()
+        public async void Update_ShouldReturnBadRequestActionResult()
         {
             // Arrange
             var quote = new QuoteEntity();
             _quoteServiceMock.Setup(x => x.Update(quote, It.IsAny<int>())).Returns(new BadRequestResult());
 
             // Act
-            var result = _quoteController.Update(quote, It.IsAny<int>());
+            var result = await _quoteController.Update(quote, It.IsAny<int>());
 
             // Assert
             Assert.IsType<BadRequestResult>(result);
@@ -183,14 +183,14 @@ namespace Calligraphy.Test.Quote
 
         //TC7-TC10
         [Fact]
-        public void Update_ShouldReturnNotFoundActionResult()
+        public async void Update_ShouldReturnNotFoundActionResult()
         {
             // Arrange
             var quote = new QuoteEntity();
             _quoteServiceMock.Setup(x => x.Update(quote, It.IsAny<int>())).Returns(new NotFoundResult());
 
             // Act
-            var result = _quoteController.Update(quote, It.IsAny<int>());
+            var result = await _quoteController.Update(quote, It.IsAny<int>());
 
             // Assert
             Assert.IsType<NotFoundResult>(result);
