@@ -59,7 +59,9 @@ namespace Calligraphy.Business.Contract
 
         public IActionResult GetContractsByMonthOfYear(int Month, int Year, bool IsFinished)
         {
-            throw new NotImplementedException();
+            var MonthlyContracts = _contractRepo.GetByMonthOfYear(Month, Year, IsFinished);
+
+            return new OkObjectResult(MonthlyContracts);
         }
 
         public IActionResult UpdateContract(ContractEntity ContractEntity)
