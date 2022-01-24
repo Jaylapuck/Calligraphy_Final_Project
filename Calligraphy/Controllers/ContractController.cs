@@ -43,7 +43,7 @@ namespace Calligraphy.Controllers
         [Route("/api/contract/get/{Month:int}/{Year:int}/{IsFinished:bool}")]
         public IActionResult GetContractsByMonthOfYear(int Month, int Year, bool IsFinished)
         {
-            throw new NotImplementedException();
+            return _contractService.GetContractsByMonthOfYear(Month, Year, IsFinished);
         }
 
         [HttpPut]
