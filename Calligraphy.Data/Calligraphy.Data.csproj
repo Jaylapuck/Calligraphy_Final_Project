@@ -5,12 +5,6 @@
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Remove="Migrations\20220110211202_AddContractEntity.cs" />
-    <Compile Remove="Migrations\20220110211202_AddContractEntity.Designer.cs" />
-    <Compile Remove="Migrations\20220110211301_AddContractEntity.cs" />
-    <Compile Remove="Migrations\20220110211301_AddContractEntity.Designer.cs" />
-  </ItemGroup>
-  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Http.Features" Version="5.0.13" />
     <PackageReference Include="Microsoft.AspNetCore.WebUtilities" Version="2.2.0" />
     <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
@@ -26,8 +20,5 @@
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     <PackageReference Include="System.ComponentModel.Annotations" Version="5.0.0" />
     <PackageReference Include="System.Data.DataSetExtensions" Version="4.5.0" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Migrations\" />
   </ItemGroup>
 </Project>

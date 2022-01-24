@@ -61,6 +61,11 @@ namespace Calligraphy.Business.Contract
         {
             var MonthlyContracts = _contractRepo.GetByMonthOfYear(Month, Year, IsFinished);
 
+            if(MonthlyContracts.Count() == 0)
+            {
+                return new OkResult();
+            }
+
             return new OkObjectResult(MonthlyContracts);
         }
 

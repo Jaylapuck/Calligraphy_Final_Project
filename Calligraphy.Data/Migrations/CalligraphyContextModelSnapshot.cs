@@ -165,6 +165,9 @@ namespace Calligraphy.Data.Migrations
                     b.Property<int>("ApprovalStatus")
                         .HasColumnType("int");
 
+                    b.Property<int>("Duration")
+                        .HasColumnType("int");
+
                     b.Property<string>("Materials")
                         .HasColumnType("nvarchar(max)");
 
