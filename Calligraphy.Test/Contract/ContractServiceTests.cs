@@ -172,5 +172,30 @@ namespace Calligraphy.Test.Contract
             // Assert
             Assert.IsType<BadRequestResult>(result);
         }
+
+        [Fact]
+        // TC2-TS1
+        // Test to see if we can get back all the contracts
+        public void GetAllContractsByMonthOfYearOk()
+        {
+            // Arrange
+            int Month = 6;
+            int Year = 2021;
+            bool IsFinished = true;
+
+            List<ContractEntity> contracts = new List<ContractEntity>
+            {
+                new ContractEntity { FinalCost = 150.00, DownPayment = 75.00, DateCommissioned = new DateTime(2021, 6, 8), EndDate = new DateTime(2021, 7, 8), HasSignature = true, IsFinished = true },
+                new ContractEntity { FinalCost = 150.00, DownPayment = 75.00, DateCommissioned = new DateTime(2021, 6, 10), EndDate = new DateTime(2021, 6, 30), HasSignature = true, IsFinished = true }
+            };
+
+            _mockContractRepo.Setup(x => x.GetByMonthOfYear(Month, Year, IsFinished)).Returns(contracts);
+
+            // Act
+            var result = _contractService.GetContractsByMonthOfYear(Month, Year, IsFinished);
+
+            // Assert
+            Assert.IsType<OkObjectResult>(result);
+        }
     }
 }
