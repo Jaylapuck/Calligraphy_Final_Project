@@ -174,8 +174,7 @@ namespace Calligraphy.Test.Contract
         }
 
         [Fact]
-        // TC2-TS1
-        // Test to see if we can get back all the contracts
+        // Test to see if we can get back contracts by month
         public void GetAllContractsByMonthOfYearOk()
         {
             // Arrange
@@ -196,6 +195,26 @@ namespace Calligraphy.Test.Contract
 
             // Assert
             Assert.IsType<OkObjectResult>(result);
+        }
+
+        [Fact]
+        // Test to see if we can get back no contracts by a specified month
+        public void GetAllContractsByMonthOfYearEmptyResultOk()
+        {
+            // Arrange
+            int Month = 6;
+            int Year = 2021;
+            bool IsFinished = true;
+
+            List<ContractEntity> contracts = new List<ContractEntity>();
+
+            _mockContractRepo.Setup(x => x.GetByMonthOfYear(Month, Year, IsFinished)).Returns(contracts);
+
+            // Act
+            var result = _contractService.GetContractsByMonthOfYear(Month, Year, IsFinished);
+
+            // Assert
+            Assert.IsType<OkResult>(result);
         }
     }
 }
