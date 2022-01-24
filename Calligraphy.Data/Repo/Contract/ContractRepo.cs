@@ -39,6 +39,11 @@ namespace Calligraphy.Data.Repo.Contract
             }
         }
 
+        public IEnumerable<ContractEntity> GetByMonthOfYear(int Month, int Year, bool IsFinished)
+        {
+            throw new NotImplementedException();
+        }
+
         public int CreateNewContract(ContractEntity newEntity)
         {
             using (_context)

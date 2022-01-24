@@ -98,5 +98,21 @@ namespace Calligraphy.Test.Contract
                 Assert.True(result.IsFinished);
             }
         }
+
+        [Fact]
+        // TC2-TR1
+        // Test to see if we can recover contracts for a specific month that are done
+        public void GetContractsByMonthOk()
+        {
+            using var context = new CalligraphyContext(ContextOptions);
+            // Arrange
+            var contractRepo = new ContractRepo(context);
+
+            // Act
+            var result = contractRepo.GetByMonthOfYear(6, 2021, true);
+
+            // Assert
+            Assert.Equal(2, result.Count());
+        }
     }
 }
