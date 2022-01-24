@@ -41,7 +41,7 @@ namespace Calligraphy.Controllers
         [HttpGet]
         [Produces(MediaTypeNames.Application.Json)]
         [Route("/api/contract/get/{Month:int}/{Year:int}/{IsFinished:bool}")]
-        public IActionResult GetContractsByMonthOfYear(int Month, int Year, bool IsFinished)
+        public IActionResult GetContractsByMonthOfYear(int Month, int Year, bool IsFinished = true)
         {
             return _contractService.GetContractsByMonthOfYear(Month, Year, IsFinished);
         }

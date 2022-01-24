@@ -171,5 +171,25 @@ namespace Calligraphy.Test.Contract
             // Assert
             Assert.IsType<OkObjectResult>(result);
         }
+
+        [Fact]
+        // Test to see if we get a good result w/an empty list when fetching contracts by month
+        public void GetContractsByMonthReturnsEmptyListOkResult()
+        {
+            // Arrange
+            int Month = 6;
+            int Year = 2021;
+            bool IsFinished = true;
+
+            var contracts = new List<ContractEntity>();
+
+            _mockContractService.Setup(x => x.GetContractsByMonthOfYear(Month, Year, IsFinished)).Returns(new OkResult());
+
+            // Act
+            var result = _contractController.GetContractsByMonthOfYear(Month, Year, IsFinished);
+
+            // Assert
+            Assert.IsType<OkResult>(result);
+        }
     }
 }
