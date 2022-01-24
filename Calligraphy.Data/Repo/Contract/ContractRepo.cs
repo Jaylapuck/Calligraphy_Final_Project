@@ -39,6 +39,18 @@ namespace Calligraphy.Data.Repo.Contract
             }
         }
 
+        public IEnumerable<ContractEntity> GetByMonthOfYear(int Month, int Year, bool IsFinished)
+        {
+            using (_context)
+            {
+                return _context.Contracts.ToList().Where(x =>
+                    x.DateCommissioned.Month == Month &&
+                    x.DateCommissioned.Year == Year &&
+                    x.IsFinished == IsFinished
+                );
+            }
+        }
+
         public int CreateNewContract(ContractEntity newEntity)
         {
             using (_context)
