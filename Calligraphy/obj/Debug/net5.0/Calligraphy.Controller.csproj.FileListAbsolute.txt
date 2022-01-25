@@ -13,7 +13,6 @@ C:\Users\Jordan\Source\Repos\Calligraphy_Final_Project\Calligraphy\bin\net5.0\Ca
 C:\Users\Jordan\Source\Repos\Calligraphy_Final_Project\Calligraphy\bin\net5.0\Calligraphy.runtimeconfig.json
 C:\Users\Jordan\Source\Repos\Calligraphy_Final_Project\Calligraphy\bin\net5.0\Calligraphy.runtimeconfig.dev.json
 C:\Users\Jordan\Source\Repos\Calligraphy_Final_Project\Calligraphy\bin\net5.0\Calligraphy.dll
-C:\Users\Jordan\Source\Repos\Calligraphy_Final_Project\Calligraphy\bin\net5.0\ref\Calligraphy.dll
 C:\Users\Jordan\Source\Repos\Calligraphy_Final_Project\Calligraphy\bin\net5.0\Calligraphy.pdb
 C:\Users\Jordan\Source\Repos\Calligraphy_Final_Project\Calligraphy\bin\net5.0\Calligraphy.Views.dll
 C:\Users\Jordan\Source\Repos\Calligraphy_Final_Project\Calligraphy\bin\net5.0\Calligraphy.Views.pdb
@@ -174,3 +173,4 @@ C:\Users\ethyl\RiderProjects\Calligraphy_Final_Project\Calligraphy\obj\Debug\net
 C:\Users\ethyl\RiderProjects\Calligraphy_Final_Project\Calligraphy\obj\Debug\net5.0\ref\Calligraphy.dll
 C:\Users\ethyl\RiderProjects\Calligraphy_Final_Project\Calligraphy\obj\Debug\net5.0\Calligraphy.pdb
 C:\Users\ethyl\RiderProjects\Calligraphy_Final_Project\Calligraphy\obj\Debug\net5.0\Calligraphy.Controller.genruntimeconfig.cache
+C:\Users\Jordan\Source\Repos\Calligraphy_Final_Project\Calligraphy\obj\Debug\net5.0\refint\Calligraphy.dll

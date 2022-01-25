@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Calligraphy.Data.Migrations
 {
     [DbContext(typeof(CalligraphyContext))]
-    [Migration("20220110211430_AddContractEntity")]
-    partial class AddContractEntity
+    [Migration("20220120204421_test")]
+    partial class test
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -20,6 +20,45 @@ namespace Calligraphy.Data.Migrations
                 .HasAnnotation("ProductVersion", "3.1.20")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+            modelBuilder.Entity("Calligraphy.Data.Models.AboutEntity", b =>
+                {
+                    b.Property<int>("AboutId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Country")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Experience")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Language")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Mission")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Phone")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Profession")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("AboutId");
+
+                    b.ToTable("About");
+                });
 
             modelBuilder.Entity("Calligraphy.Data.Models.AddressEntity", b =>
                 {
@@ -111,18 +150,26 @@ namespace Calligraphy.Data.Migrations
                     b.Property<string>("Comments")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
                     b.Property<int?>("CustomerId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("QuoteId")
                         .HasColumnType("int");
 
                     b.Property<int>("ServiceType")
                         .HasColumnType("int");
 
-                    b.Property<double>("StartingRate")
-                        .HasColumnType("float");
+                    b.Property<float>("StartingRate")
+                        .HasColumnType("real");
 
                     b.HasKey("FormId");
 
                     b.HasIndex("CustomerId");
+
+                    b.HasIndex("QuoteId");
 
                     b.ToTable("Forms");
                 });
@@ -147,6 +194,27 @@ namespace Calligraphy.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Images");
+                });
+
+            modelBuilder.Entity("Calligraphy.Data.Models.QuoteEntity", b =>
+                {
+                    b.Property<int>("QuoteId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("ApprovalStatus")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Materials")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<float>("Price")
+                        .HasColumnType("real");
+
+                    b.HasKey("QuoteId");
+
+                    b.ToTable("Quotes");
                 });
 
             modelBuilder.Entity("Calligraphy.Data.Models.ServiceEntity", b =>
@@ -179,6 +247,10 @@ namespace Calligraphy.Data.Migrations
                     b.HasOne("Calligraphy.Data.Models.CustomerEntity", "Customer")
                         .WithMany()
                         .HasForeignKey("CustomerId");
+
+                    b.HasOne("Calligraphy.Data.Models.QuoteEntity", "Quote")
+                        .WithMany()
+                        .HasForeignKey("QuoteId");
                 });
 #pragma warning restore 612, 618
         }

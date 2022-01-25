@@ -2,14 +2,11 @@
   "ExpandedNodes": [
     "",
     "\\Calligraphy",
-    "\\Calligraphy.Business",
-    "\\Calligraphy.Business\\Form",
     "\\Calligraphy.Data",
-    "\\Calligraphy.Data\\Migrations",
-    "\\Calligraphy.Data\\Models",
-    "\\Calligraphy.Test",
-    "\\Calligraphy.Test\\Form"
+    "\\Calligraphy.Data\\Repo",
+    "\\Calligraphy.Data\\Repo\\Form",
+    "\\Calligraphy\\Controllers"
   ],
-  "SelectedNode": "\\Calligraphy\\Startup.cs",
+  "SelectedNode": "\\Calligraphy.Data\\Repo\\Form\\FormRepo.cs",
   "PreviewInSolutionExplorer": false
 }

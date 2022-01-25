@@ -21,5 +21,6 @@ namespace Calligraphy.Data.Config
         public DbSet<AddressEntity> Addresses { get; set; }
         public DbSet<ServiceEntity> Services { get; set; }
         public DbSet<ContractEntity> Contracts { get; set; }
+        public DbSet<AboutEntity> About { get; set; }
     }
 }

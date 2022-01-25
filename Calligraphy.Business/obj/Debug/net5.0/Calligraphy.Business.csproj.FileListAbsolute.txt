@@ -4,7 +4,6 @@ C:\Users\Jordan\Source\Repos\Calligraphy_Final_Project\Calligraphy.Business\obj\
 C:\Users\Jordan\Source\Repos\Calligraphy_Final_Project\Calligraphy.Business\bin\Debug\net5.0\Calligraphy.Business.dll.config
 C:\Users\Jordan\Source\Repos\Calligraphy_Final_Project\Calligraphy.Business\bin\Debug\net5.0\Calligraphy.Business.deps.json
 C:\Users\Jordan\Source\Repos\Calligraphy_Final_Project\Calligraphy.Business\bin\Debug\net5.0\Calligraphy.Business.dll
-C:\Users\Jordan\Source\Repos\Calligraphy_Final_Project\Calligraphy.Business\bin\Debug\net5.0\ref\Calligraphy.Business.dll
 C:\Users\Jordan\Source\Repos\Calligraphy_Final_Project\Calligraphy.Business\bin\Debug\net5.0\Calligraphy.Business.pdb
 C:\Users\Jordan\Source\Repos\Calligraphy_Final_Project\Calligraphy.Business\bin\Debug\net5.0\Calligraphy.Data.dll
 C:\Users\Jordan\Source\Repos\Calligraphy_Final_Project\Calligraphy.Business\bin\Debug\net5.0\Calligraphy.Data.pdb
@@ -28,3 +27,4 @@ C:\Users\ethyl\RiderProjects\Calligraphy_Final_Project\Calligraphy.Business\obj\
 C:\Users\ethyl\RiderProjects\Calligraphy_Final_Project\Calligraphy.Business\obj\Debug\net5.0\Calligraphy.Business.dll
 C:\Users\ethyl\RiderProjects\Calligraphy_Final_Project\Calligraphy.Business\obj\Debug\net5.0\ref\Calligraphy.Business.dll
 C:\Users\ethyl\RiderProjects\Calligraphy_Final_Project\Calligraphy.Business\obj\Debug\net5.0\Calligraphy.Business.pdb
+C:\Users\Jordan\Source\Repos\Calligraphy_Final_Project\Calligraphy.Business\obj\Debug\net5.0\refint\Calligraphy.Business.dll

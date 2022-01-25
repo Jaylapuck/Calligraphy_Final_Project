@@ -35,6 +35,8 @@ using Calligraphy.Data.Repo.Quote;
 using Microsoft.AspNetCore.Http;
 using Calligraphy.Data.Repo.Contract;
 using Calligraphy.Business.Contract;
+using Calligraphy.Data.Repo.About;
+using Calligraphy.Business.About;
 
 namespace Calligraphy
 {
@@ -65,6 +67,8 @@ namespace Calligraphy
             services.AddTransient<IMailerService, MailServiceImpl>();
             services.AddTransient<IImageService, ImageService>();
             services.AddTransient<IImageRepo, ImageRepo>();
+            services.AddTransient<IAboutService, AboutService>();
+            services.AddTransient<IAboutRepo, AboutRepo>();
             services.AddTransient<IQuoteService, QuoteService>();
             services.AddTransient<IQuoteRepo, QuoteRepo>();
             services.AddTransient<ICustomerService, CustomerService>();
