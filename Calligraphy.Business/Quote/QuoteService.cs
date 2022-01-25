@@ -51,6 +51,7 @@ namespace Calligraphy.Business.Quote
                 return new NotFoundResult();
             }
             quoteToUpdate.Price = quote.Price;
+            quoteToUpdate.Duration = quote.Duration;
             quoteToUpdate.Materials = quote.Materials;
             quoteToUpdate.ApprovalStatus = quote.ApprovalStatus;
             _quoteRepo.Update(quoteToUpdate);
