@@ -10,6 +10,7 @@ using Calligraphy.Data.Filters;
 using Calligraphy.Data.Helpers;
 using Calligraphy.Data.IUriService;
 using Calligraphy.Data.Models;
+using Calligraphy.Data.Models.AuthenticationModels;
 using Calligraphy.Data.Repo.Wrappers;
 using Calligraphy.Mailer.Model;
 using Calligraphy.Mailer.Services;

@@ -2010,6 +2010,7 @@
           "Calligraphy.Data": "1.0.0",
           "Microsoft.AspNetCore.Mvc.Core": "2.2.5",
           "Microsoft.CSharp": "4.7.0",
+          "Portable.BouncyCastle": "1.9.0",
           "System.ComponentModel.Annotations": "5.0.0",
           "System.Data.DataSetExtensions": "4.5.0"
         },

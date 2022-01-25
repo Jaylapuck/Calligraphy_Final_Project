@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Calligraphy.Data.Models.AuthenticationModels;
 
 namespace Calligraphy.Data.Repo.Address
 {

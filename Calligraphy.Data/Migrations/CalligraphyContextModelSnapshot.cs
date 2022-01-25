@@ -19,7 +19,7 @@ namespace Calligraphy.Data.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("Calligraphy.Data.Models.AddressEntity", b =>
+            modelBuilder.Entity("Calligraphy.Data.Models.AuthenticationModels.AddressEntity", b =>
                 {
                     b.Property<int>("AddressId")
                         .ValueGeneratedOnAdd()
@@ -43,7 +43,7 @@ namespace Calligraphy.Data.Migrations
                     b.ToTable("Addresses");
                 });
 
-            modelBuilder.Entity("Calligraphy.Data.Models.AdminEntity", b =>
+            modelBuilder.Entity("Calligraphy.Data.Models.AuthenticationModels.JWT.AdminEntity", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -54,11 +54,17 @@ namespace Calligraphy.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("UserName")
-                        .IsRequired()
+                    b.Property<string>("RefreshToken")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("UserName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("UserName")
+                        .IsUnique();
 
                     b.ToTable("Admins");
                 });
@@ -216,7 +222,7 @@ namespace Calligraphy.Data.Migrations
 
             modelBuilder.Entity("Calligraphy.Data.Models.CustomerEntity", b =>
                 {
-                    b.HasOne("Calligraphy.Data.Models.AddressEntity", "Address")
+                    b.HasOne("Calligraphy.Data.Models.AuthenticationModels.AddressEntity", "Address")
                         .WithMany()
                         .HasForeignKey("AddressId");
                 });

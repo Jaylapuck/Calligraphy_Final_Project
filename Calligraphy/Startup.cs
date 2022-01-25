@@ -1,4 +1,6 @@
-﻿using System.Text;
+﻿using System;
+using System.Text;
+using System.Threading.Tasks;
 using Calligraphy.Business.AuthenticationService;
 using Calligraphy.Business.Customer;
 using Calligraphy.Business.Form;
@@ -25,7 +27,11 @@ using Calligraphy.Data.Repo.Quote;
 using Microsoft.AspNetCore.Http;
 using Calligraphy.Data.Repo.Contract;
 using Calligraphy.Business.Contract;
+using Calligraphy.Business.JWTService.JWTTokenHandler;
+using Calligraphy.Business.JWTService.RefreshTokenGenerator;
+using Calligraphy.Business.JWTService.TokenRefresher;
 using Calligraphy.Data.Repo.AdminLogin;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 
@@ -42,26 +48,11 @@ namespace Calligraphy
         
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddAuthentication(opt =>
-            {
-                opt.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-                opt.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-            }).AddJwtBearer(options =>
-            {
-                options.TokenValidationParameters = new TokenValidationParameters
-                {
-                    ValidateIssuer = true,
-                    ValidateAudience = true,
-                    ValidateLifetime = true,
-                    ValidateIssuerSigningKey = true,
-                    ValidAudience = "https://localhost:5001",
-                    ValidIssuer = "https://localhost:5001",
-                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("@YT6*}HnibVtC4?ubl^4ybr1#ekn=<UCN]86T^=yA[8Ivz`ZasJy+GwOr=8avZU"))
-                };
-            });
             
+            //Mail Configuration
             services.Configure<MailSettings>(Configuration.GetSection("MailSettings"));
-
+            
+            //DP Injection
             services.AddTransient<IMailerService, MailServiceImpl>();
             services.AddTransient<IImageService, ImageService>();
             services.AddTransient<IImageRepo, ImageRepo>();
@@ -77,14 +68,46 @@ namespace Calligraphy
             services.AddTransient<IContractService, ContractService>();
             services.AddTransient<IAdminLoginRepo, AdminLoginRepo>();
             services.AddTransient<IAuthService, AuthService>();
-
+            services.AddTransient<IRefreshTokenGenerator, RefreshTokenGenerator>();
+            services.AddTransient<IJwtTokenHandler, JwtTokenHandler>();
+            services.AddTransient<IRefreshTokenGenerator, RefreshTokenGenerator>();
+            services.AddTransient<ITokenRefresher, TokenRefresher>();
+            
+            //JWT AUTHENTICATION
+            services.AddAuthentication(opt =>
+            {
+                opt.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                opt.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+                opt.DefaultSignInScheme =  JwtBearerDefaults.AuthenticationScheme;
+                opt.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
+            })
+                .AddJwtBearer(options =>
+            {
+                options.SaveToken = true;
+                options.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidateIssuer = true,
+                    ValidateAudience = true,
+                    ValidateLifetime = true,
+                    ValidateIssuerSigningKey = true,
+                    ValidAudience = Configuration["Jwt:Audience"],
+                    ValidIssuer = Configuration["Jwt:Issuer"],
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["Jwt:Secret"])),
+                    ClockSkew=TimeSpan.Zero
+                };
+            });
+            
+            // Swagger Config
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Calligraphy.Mailer", Version = "v1" });
             });
 
+            // configure connection to  the database
             services.AddDbContext<CalligraphyContext>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("CalligraphyContext")));
+            
+            //configure CORS
             services.AddCors(options => options.AddPolicy("ApiCorsPolicy", builder =>
             {
                 builder.WithOrigins("http://localhost:3000")
@@ -114,7 +137,6 @@ namespace Calligraphy
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Calligraphy.Mailer"));
             }
-            
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseRouting();

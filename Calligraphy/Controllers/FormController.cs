@@ -14,6 +14,7 @@ using System.Net.Mime;
 using System.Threading.Tasks;
 using Calligraphy.Data.Filters;
 using Calligraphy.Data.Repo.Wrappers;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
 using Org.BouncyCastle.Ocsp;
 
@@ -21,6 +22,7 @@ namespace Calligraphy.Controllers
 {
     [EnableCors("ApiCorsPolicy")]
     [ApiController]
+    [Authorize]
     [Route("[controller]")]
     public class FormController : ControllerBase
     {
@@ -43,9 +45,8 @@ namespace Calligraphy.Controllers
         
         // GET pageable
         [HttpGet]
-        [Route("/api/Form")]
+        [Route("/api/form")]
         [Produces(MediaTypeNames.Application.Json)]
-        [Authorize]
         public IActionResult GetAllPages([FromQuery] PaginationFilter filter)
         {
             var route = Request.Path.Value;
@@ -54,7 +55,8 @@ namespace Calligraphy.Controllers
         }
         
         // POST: api/Form
-        [HttpPost("/api/Form")]
+        [HttpPost("/api/form")]
+        [AllowAnonymous]
         public async Task<IActionResult> Post([FromForm] FormEntity form)
         {
             try

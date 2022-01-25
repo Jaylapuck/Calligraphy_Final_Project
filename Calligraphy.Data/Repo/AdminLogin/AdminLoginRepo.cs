@@ -8,12 +8,10 @@ namespace Calligraphy.Data.Repo.AdminLogin
     public class AdminLoginRepo  : IAdminLoginRepo
     {
         private readonly CalligraphyContext _context;
-        private readonly ILogger<AdminLoginRepo> _logger;
 
-        public AdminLoginRepo(CalligraphyContext context, ILogger<AdminLoginRepo> logger)
+        public AdminLoginRepo(CalligraphyContext context)
         {
             _context = context;
-            _logger = logger;
         }
 
         public bool Login(string username, string password)
@@ -21,5 +19,26 @@ namespace Calligraphy.Data.Repo.AdminLogin
             var admin = _context.Admins.FirstOrDefault(a => a.UserName == username && a.Password == password);
             return admin != null;
         }
+        
+        public bool AddRefreshTokenToUser(string username, string refreshToken)
+        {
+            var admin = _context.Admins.FirstOrDefault(a => a.UserName == username);
+            
+            if (admin == null)
+            {
+                return false;
+            }
+            
+            admin.RefreshToken = refreshToken;
+            _context.SaveChanges();
+            return true;
+        }
+
+        public string GetRefreshToken(string userName)
+        {
+            var admin = _context.Admins.FirstOrDefault(a => a.UserName == userName);
+            return admin?.RefreshToken;
+        }
+        
     }
 }

@@ -5,12 +5,14 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Net.Mime;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Calligraphy.Controllers
 {
         [EnableCors("ApiCorsPolicy")]
         [ApiController]
         [Route("[controller]")]
+        [Authorize]
         public class QuoteController : ControllerBase
         {
         private readonly IQuoteService _quoteService;

@@ -1,25 +1,66 @@
-﻿using Calligraphy.Business.AuthenticationService;
+﻿using System;
+using System.Net;
+using Calligraphy.Business.AuthenticationService;
+using Calligraphy.Business.JWTService.TokenRefresher;
 using Calligraphy.Data.Models;
+using Calligraphy.Data.Models.AuthenticationModels;
+using Calligraphy.Data.Models.AuthenticationModels.JWT;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Calligraphy.Controllers
 {
+    [Route("api/admin")]
+    [Authorize]
     public class AdminController : ControllerBase
     {
         private readonly IAuthService _authService;
+        private readonly ITokenRefresher _tokenRefresher;
 
-        public AdminController(IAuthService authService)
+        public AdminController(IAuthService authService, ITokenRefresher tokenRefresher)
         {
             _authService = authService;
+            _tokenRefresher = tokenRefresher;
+            
         }
-
-
+        
+        [AllowAnonymous]
         [HttpPost]
-        [Route("api/admin/login")]
+        [Route("login")]
         public IActionResult Login([FromBody] AdminEntity admin)
         {
-            var result = _authService.Login(admin);
-            return result;
+            var token = _authService.Login(admin);
+            
+            if (token.JwtToken == null || token.RefreshToken == null)
+            {
+                return Unauthorized(new
+                {
+                    HttpCode = HttpStatusCode.Unauthorized,
+                    message = "Invalid username or password"
+                });
+            }
+
+            return Ok(token);
+        }
+
+        [AllowAnonymous]
+        [HttpPost]
+        [Route("refresh")]
+        public IActionResult Refresh([FromBody] RefreshCred refreshCred)
+        {
+            var token  = _tokenRefresher.Refresh(refreshCred);
+            
+            if (token.JwtToken == null || token.RefreshToken == null)
+            {
+                return Unauthorized(new
+                {
+                    HttpCode = HttpStatusCode.Unauthorized,
+                    message = "Invalid username or password"
+                });
+            }
+
+            return Ok(token);
         }
     }
 }
