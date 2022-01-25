@@ -23,7 +23,6 @@ namespace Calligraphy.Data.Config
         public DbSet<AddressEntity> Addresses { get; set; }
         public DbSet<ServiceEntity> Services { get; set; }
         public DbSet<ContractEntity> Contracts { get; set; }
-        
         public DbSet<AdminEntity> Admins { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
@@ -37,5 +36,6 @@ namespace Calligraphy.Data.Config
                 Password = "admin"
             });
         }
+        public DbSet<AboutEntity> About { get; set; }
     }
 }
