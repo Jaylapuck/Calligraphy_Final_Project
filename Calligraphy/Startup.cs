@@ -34,6 +34,8 @@ using Calligraphy.Data.Repo.AdminLogin;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
+using Calligraphy.Business.About;
+using Calligraphy.Data.Repo.About;
 
 namespace Calligraphy
 {
@@ -98,6 +100,9 @@ namespace Calligraphy
             });
             
             // Swagger Config
+            services.AddTransient<IAboutService, AboutService>();
+            services.AddTransient<IAboutRepo, AboutRepo>();
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Calligraphy.Mailer", Version = "v1" });
