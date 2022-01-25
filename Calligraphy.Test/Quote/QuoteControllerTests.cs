@@ -1,4 +1,5 @@
-﻿using Calligraphy.Business.Quote;
+﻿using Calligraphy.Business.Contract;
+using Calligraphy.Business.Quote;
 using Calligraphy.Controllers;
 using Calligraphy.Data.Enums;
 using Calligraphy.Data.Models;
@@ -17,11 +18,15 @@ namespace Calligraphy.Test.Quote
     public class QuoteControllerTests
     {
         private readonly Mock<IQuoteService> _quoteServiceMock;
+        private readonly Mock<IMailerService> _mailServiceMock;
+        private readonly Mock<IContractService> _contractServiceMock;
         private readonly QuoteController _quoteController;
         public QuoteControllerTests()
         {
             _quoteServiceMock = new Mock<IQuoteService>();
-            _quoteController = new QuoteController(_quoteServiceMock.Object);
+            _mailServiceMock = new Mock<IMailerService>();
+            _contractServiceMock = new Mock<IContractService>();
+            _quoteController = new QuoteController(_quoteServiceMock.Object, _mailServiceMock.Object, _contractServiceMock.Object);
         }
 
         [Fact]
@@ -148,14 +153,14 @@ namespace Calligraphy.Test.Quote
 
         //TC7-TC8
         [Fact]
-        public void Update_ShouldReturnOkActionResult()
+        public async void Update_ShouldReturnOkActionResult()
         {
             // Arrange
             var quote = new QuoteEntity();
             _quoteServiceMock.Setup(x => x.Update(quote, It.IsAny<int>())).Returns(new OkObjectResult(quote));
 
             // Act
-            var result = _quoteController.Update(quote, It.IsAny<int>());
+            var result = await _quoteController.Update(quote, It.IsAny<int>());
 
             // Assert
             Assert.IsType<OkObjectResult>(result);
@@ -163,14 +168,14 @@ namespace Calligraphy.Test.Quote
 
         //TC7-TC9
         [Fact]
-        public void Update_ShouldReturnBadRequestActionResult()
+        public async void Update_ShouldReturnBadRequestActionResult()
         {
             // Arrange
             var quote = new QuoteEntity();
             _quoteServiceMock.Setup(x => x.Update(quote, It.IsAny<int>())).Returns(new BadRequestResult());
 
             // Act
-            var result = _quoteController.Update(quote, It.IsAny<int>());
+            var result = await _quoteController.Update(quote, It.IsAny<int>());
 
             // Assert
             Assert.IsType<BadRequestResult>(result);
@@ -178,14 +183,14 @@ namespace Calligraphy.Test.Quote
 
         //TC7-TC10
         [Fact]
-        public void Update_ShouldReturnNotFoundActionResult()
+        public async void Update_ShouldReturnNotFoundActionResult()
         {
             // Arrange
             var quote = new QuoteEntity();
             _quoteServiceMock.Setup(x => x.Update(quote, It.IsAny<int>())).Returns(new NotFoundResult());
 
             // Act
-            var result = _quoteController.Update(quote, It.IsAny<int>());
+            var result = await _quoteController.Update(quote, It.IsAny<int>());
 
             // Assert
             Assert.IsType<NotFoundResult>(result);

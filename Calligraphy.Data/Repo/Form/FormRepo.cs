@@ -31,6 +31,7 @@ namespace Calligraphy.Data.Repo.Form
                 .Include(a => a.Quote)
                 .Include(a => a.Customer)
                 .Include(a => a.Customer.Address)
+
                 .AsNoTracking().ToList();
             
             totalRecords = _context.Forms.Count();

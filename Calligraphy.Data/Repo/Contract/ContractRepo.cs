@@ -41,11 +41,8 @@ namespace Calligraphy.Data.Repo.Contract
 
         public int CreateNewContract(ContractEntity newEntity)
         {
-            using (_context)
-            {
-                _context.Contracts.Add(newEntity);
-                return _context.SaveChanges();
-            }
+            _context.Contracts.Add(newEntity);
+            return _context.SaveChanges();
         }
 
         public ContractEntity UpdateContract(ContractEntity entity)
