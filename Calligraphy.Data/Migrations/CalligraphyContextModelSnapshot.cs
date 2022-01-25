@@ -19,7 +19,7 @@ namespace Calligraphy.Data.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("Calligraphy.Data.Models.AuthenticationModels.AddressEntity", b =>
+            modelBuilder.Entity("Calligraphy.Data.Models.AddressEntity", b =>
                 {
                     b.Property<int>("AddressId")
                         .ValueGeneratedOnAdd()
@@ -67,6 +67,14 @@ namespace Calligraphy.Data.Migrations
                         .IsUnique();
 
                     b.ToTable("Admins");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Password = "admin",
+                            UserName = "admin"
+                        });
                 });
 
             modelBuilder.Entity("Calligraphy.Data.Models.ContractEntity", b =>
@@ -191,6 +199,9 @@ namespace Calligraphy.Data.Migrations
                     b.Property<int>("ApprovalStatus")
                         .HasColumnType("int");
 
+                    b.Property<int>("Duration")
+                        .HasColumnType("int");
+
                     b.Property<string>("Materials")
                         .HasColumnType("nvarchar(max)");
 
@@ -222,7 +233,7 @@ namespace Calligraphy.Data.Migrations
 
             modelBuilder.Entity("Calligraphy.Data.Models.CustomerEntity", b =>
                 {
-                    b.HasOne("Calligraphy.Data.Models.AuthenticationModels.AddressEntity", "Address")
+                    b.HasOne("Calligraphy.Data.Models.AddressEntity", "Address")
                         .WithMany()
                         .HasForeignKey("AddressId");
                 });

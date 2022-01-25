@@ -12,6 +12,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Calligraphy.Data.Models.AuthenticationModels;
 using Xunit;
 
 namespace Calligraphy.Test.Mailer

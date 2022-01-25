@@ -13,15 +13,6 @@ using System.Text;
 using System.Threading.Tasks;
 using Xunit;
 
-/// <summary>
-/// 
-/// Author: Tristan Lafleur
-/// 
-/// Test class to test the service
-/// implementation of the SMTP server
-/// 
-/// </summary>
-
 namespace Calligraphy.Test.Mailer
 {
     public class MailerServiceTests
@@ -48,19 +39,16 @@ namespace Calligraphy.Test.Mailer
 
             if (request.attachtments != null)
             {
-                byte[] fileBytes;
-                foreach (var file in request.attachtments)
+                foreach (var file in request.attachtments.Where(file => file.Length > 0))
                 {
-                    if (file.Length > 0)
+                    byte[] fileBytes;
+                    using (var ms = new MemoryStream())
                     {
-                        using (var ms = new MemoryStream())
-                        {
-                            file.CopyTo(ms);
-                            fileBytes = ms.ToArray();
-                        }
-
-                        builder.Attachments.Add(file.FileName, fileBytes, ContentType.Parse(file.ContentType));
+                        file.CopyTo(ms);
+                        fileBytes = ms.ToArray();
                     }
+
+                    builder.Attachments.Add(file.FileName, fileBytes, ContentType.Parse(file.ContentType));
                 }
             }
 

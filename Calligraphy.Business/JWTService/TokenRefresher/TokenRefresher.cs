@@ -36,7 +36,10 @@ namespace Calligraphy.Business.JWTService.TokenRefresher
                 ValidateIssuerSigningKey = true,
                 IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Secret"])),
                 ValidateIssuer = true,
-                ValidateAudience = true
+                ValidateAudience = true,
+                ValidIssuer = _configuration["Jwt:Issuer"],
+                ValidAudience = _configuration["Jwt:Audience"]
+
             }, out var securityToken);
             
             if (securityToken is not JwtSecurityToken jwtSecurityToken || !jwtSecurityToken.Header.Alg.Equals(SecurityAlgorithms.HmacSha256, StringComparison.InvariantCultureIgnoreCase))
@@ -46,7 +49,7 @@ namespace Calligraphy.Business.JWTService.TokenRefresher
             
             if (refreshCred.RefreshToken != _authService.GetRefreshToken(user))
             {
-                throw new SecurityTokenException("Invalid token");
+                throw new SecurityTokenException("Invalid token, bad refresh token");
             }
             
             return _jwtTokenHandler.Authenticate(user, principal.Claims.ToArray());

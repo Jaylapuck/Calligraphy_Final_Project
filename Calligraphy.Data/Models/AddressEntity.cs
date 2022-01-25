@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Calligraphy.Data.Models.AuthenticationModels
+namespace Calligraphy.Data.Models
 {
     public class AddressEntity
     {
