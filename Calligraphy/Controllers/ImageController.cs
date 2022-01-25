@@ -3,6 +3,7 @@ using System.Net.Mime;
 using Calligraphy.Business.Form;
 using Calligraphy.Business.Image;
 using Calligraphy.Data.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 
@@ -11,6 +12,7 @@ namespace Calligraphy.Controllers
     [EnableCors("ApiCorsPolicy")]
     [ApiController]
     [Route("[controller]")]
+    [Authorize]
     public class ImageController : ControllerBase
     {
         private readonly IImageService _imageService;
@@ -24,6 +26,7 @@ namespace Calligraphy.Controllers
         [HttpGet]
         [Route("/api/Image")]
         [Produces(MediaTypeNames.Application.Json)]
+        [AllowAnonymous]
         public IEnumerable<ImageEntity> GetAll()
         {
             return _imageService.GetAll();
@@ -33,6 +36,7 @@ namespace Calligraphy.Controllers
         [HttpGet]
         [Route("/api/Image/{id:int}")]
         [Produces(MediaTypeNames.Application.Json)]
+        [AllowAnonymous]
         public IActionResult GetById(int id)
         {
             return _imageService.GetById(id);
@@ -42,6 +46,7 @@ namespace Calligraphy.Controllers
         [HttpGet]
         [Route("/api/Image/portfolio/{id:int}")]
         [Produces(MediaTypeNames.Application.Json)]
+        [AllowAnonymous]
         public IActionResult GetByImageId(int id)
         {
             return _imageService.GetByImageId(id);

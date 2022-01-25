@@ -7,12 +7,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Mime;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Calligraphy.Controllers
 {
     [EnableCors("ApiCorsPolicy")]
     [ApiController]
     [Route("[controller]")]
+    [Authorize]
     public class ContractController : ControllerBase
     {
         private readonly IContractService _contractService;
