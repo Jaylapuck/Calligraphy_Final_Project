@@ -58,52 +58,34 @@ namespace Calligraphy.Controllers
             try
             {
                 var quote = new QuoteEntity();
-                var address = new MailAddress(form.Customer.Email).Address;
-                var mailRequest = new MailRequest();
-
-                var emailTo = address;
-                var subject = "Request for: " + form.ServiceType;
-                var today = DateTime.UtcNow;
-                var culture = new CultureInfo("en-US");
-                var date = today.ToString(culture);
-                var body = "<h1>Greetings from Serene Flourish!</h1>";
-                body += "<h3>Hello " + form.Customer.FirstName + "!</h3>";
-                body += "<p>We\'ve received your order and will contact you as soon as your package is shipped. You can find your purchase information below.</p>";
-                body += "<h3>Order Summary</h3>";
-                body += "<p>" + date + "</p>";
-                body += "<h3>Service Title</h3>";
-                body += "<p>" + form.ServiceType + "</p>";
-                body += "<h3>Service Approximate Rate</h3>";
-                body += "<p>$" + form.StartingRate + "/hr</p>";
-                body += "<h3>Customization Comments</h3>";
-                body += "<p>" + form.Comments + "</p>";
-                body += "<h3>Your Contact Information</h3>";
-                body += "<p>" + form.Customer.FirstName + " " + form.Customer.LastName + "<p>";
-                body += "<p>Address: " + form.Customer.Address.Street + " " + form.Customer.Address.City + " " + form.Customer.Address.Country + " " + form.Customer.Address.Postal + "</p>";
-                body += "<p>Email: " + form.Customer.Email + "</p>";
-                body += "<h3>This is a auto-generated Quote and may be subject to change. If there are any changes we encounter, we will contact you again to receive your approval.</h3>";
-                var file = form.Attachments;
-
-                mailRequest.email = emailTo;
-                mailRequest.subject = subject;
-                mailRequest.body = body;
-                mailRequest.attachtments = file;
-
-               
                 quote.Materials = "None";
                 quote.Price = form.StartingRate;
+                switch(form.ServiceType)
+                {
+                    case Data.Enums.ServiceType.Calligraphy:
+                        quote.Duration = 14;
+                        break;
+                    case Data.Enums.ServiceType.Engraving:
+                        quote.Duration = 21;
+                        break;
+                    default:
+                        quote.Duration = 0;
+                        break;
+                }
                 form.Quote = quote;
 
                 var result = _formService.Create(form);
                 if (result)
                 {
-                    
+
 
                     //form.Quote.FormId = form.FormId;
                     //form.Quote.Price = form.StartingRate;
                     //quote.Form = form;
                     //_quoteService.Create(quote);
-                    await _mailService.SendMailAsync(mailRequest);
+                    var mailController = new MailController(_mailService);
+                    await mailController.SendCustomerConfirmation(form);
+                    await mailController.SendOwnerAlertNewQuote(form);
                     return Ok(form);
                 }
                 return BadRequest();

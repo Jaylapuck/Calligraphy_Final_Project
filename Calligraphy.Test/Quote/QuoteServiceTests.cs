@@ -2,6 +2,7 @@
 using Calligraphy.Data.Enums;
 using Calligraphy.Data.Models;
 using Calligraphy.Data.Repo.Quote;
+using Microsoft.AspNetCore.Mvc;
 using Moq;
 using System;
 using System.Collections.Generic;
@@ -61,6 +62,60 @@ namespace Calligraphy.Test.Quote
 
             // Assert
             _mockQuoteRepo.Verify(x => x.Create(quote), Times.Once);
+        }
+
+        [Fact]
+        // TS7-TS2
+        public void UpdateQuoteShouldReturnOkObjectResult()
+        {
+            // Arrange
+            int OkId = 1;
+            var quote = new QuoteEntity { ApprovalStatus = Status.Pending, Materials = "Random Materials", Price = 25, Duration = 14 };
+
+            _mockQuoteRepo.Setup(x => x.Update(It.IsAny<QuoteEntity>())).Returns(quote);
+            _mockQuoteRepo.Setup(x => x.GetByFormId(It.IsAny<int>())).Returns(quote);
+
+            // Act
+            var actual = _quoteService.Update(quote, OkId);
+
+            // Assert
+            Assert.IsType<int>(OkId);
+            Assert.IsType<OkObjectResult>(actual);
+        }
+
+        [Fact]
+        // TS7-TS2
+        public void UpdateQuoteShouldReturnBadRequestResult()
+        {
+            // Arrange
+            int OkId = 1;
+            QuoteEntity quote = null;
+
+            // Act
+            var actual = _quoteService.Update(quote, OkId);
+
+            // Assert
+            Assert.IsType<int>(OkId);
+            Assert.IsType<BadRequestResult>(actual);
+        }
+
+        [Fact]
+        // TS7-TS2
+        public void UpdateQuoteShouldReturnNotFoundResult()
+        {
+            // Arrange
+            int OkId = 1;
+            QuoteEntity quote = new QuoteEntity { ApprovalStatus = Status.Pending, Materials = "Random Materials", Price = 25, Duration = 14 };
+
+            _mockQuoteRepo.Setup(x => x.Update(It.IsAny<QuoteEntity>())).Returns(quote);
+            _mockQuoteRepo.Setup(x => x.GetByFormId(It.IsAny<int>())).Returns((QuoteEntity)null);
+
+            // Act
+            var actual = _quoteService.Update(quote, OkId);
+
+            // Assert
+            Assert.IsType<int>(OkId);
+            Assert.IsType<NotFoundResult>(actual);
         }
     }
 }

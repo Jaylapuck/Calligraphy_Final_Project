@@ -30,7 +30,6 @@ namespace Calligraphy.Data.Repo.Form
                 .Take(validFilter.PageSize)
                 .Include(nameof(FormEntity.Customer))
                 .Include(nameof(FormEntity.Quote))
-                .Include(nameof(FormEntity.Customer.Address))
                 .AsNoTracking().ToList();
             
             totalRecords = _context.Forms.Count();
