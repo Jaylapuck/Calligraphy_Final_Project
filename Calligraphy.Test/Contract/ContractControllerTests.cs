@@ -147,5 +147,49 @@ namespace Calligraphy.Test.Contract
             // Assert
             Assert.IsType<BadRequestResult>(result);
         }
+
+        [Fact]
+        // Test to see if we get a good result when fetching contracts by month
+        public void GetContractsByMonthReturnsListOkResult()
+        {
+            // Arrange
+            int Month = 6;
+            int Year = 2021;
+            bool IsFinished = true;
+
+            var contracts = new List<ContractEntity>
+            {
+                new ContractEntity { FinalCost = 150.00, DownPayment = 75.00, DateCommissioned = new DateTime(2021, 6, 8), EndDate = new DateTime(2021, 7, 8), HasSignature = true, IsFinished = true },
+                new ContractEntity { FinalCost = 150.00, DownPayment = 75.00, DateCommissioned = new DateTime(2021, 6, 10), EndDate = new DateTime(2021, 6, 30), HasSignature = true, IsFinished = true }
+            };
+
+            _mockContractService.Setup(x => x.GetContractsByMonthOfYear(Month, Year, IsFinished)).Returns(new OkObjectResult(contracts));
+
+            // Act
+            var result = _contractController.GetContractsByMonthOfYear(Month, Year, IsFinished);
+
+            // Assert
+            Assert.IsType<OkObjectResult>(result);
+        }
+
+        [Fact]
+        // Test to see if we get a good result w/an empty list when fetching contracts by month
+        public void GetContractsByMonthReturnsEmptyListOkResult()
+        {
+            // Arrange
+            int Month = 6;
+            int Year = 2021;
+            bool IsFinished = true;
+
+            var contracts = new List<ContractEntity>();
+
+            _mockContractService.Setup(x => x.GetContractsByMonthOfYear(Month, Year, IsFinished)).Returns(new OkResult());
+
+            // Act
+            var result = _contractController.GetContractsByMonthOfYear(Month, Year, IsFinished);
+
+            // Assert
+            Assert.IsType<OkResult>(result);
+        }
     }
 }

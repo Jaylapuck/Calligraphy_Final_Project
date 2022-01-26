@@ -10,6 +10,7 @@ namespace Calligraphy.Data.Repo.Contract
     {
         IEnumerable<ContractEntity> GetAll();
         ContractEntity GetById(int ContractId);
+        IEnumerable<ContractEntity> GetByMonthOfYear(int Month, int Year, bool IsFinished);
         int CreateNewContract(ContractEntity NewEntity);
         ContractEntity UpdateContract(ContractEntity Entity);
     }

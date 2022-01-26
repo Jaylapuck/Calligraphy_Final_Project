@@ -57,6 +57,18 @@ namespace Calligraphy.Business.Contract
             }
         }
 
+        public IActionResult GetContractsByMonthOfYear(int Month, int Year, bool IsFinished)
+        {
+            var MonthlyContracts = _contractRepo.GetByMonthOfYear(Month, Year, IsFinished);
+
+            if (MonthlyContracts.Count() == 0)
+            {
+                return new OkResult();
+            }
+
+            return new OkObjectResult(MonthlyContracts);
+        }
+
         public IActionResult UpdateContract(ContractEntity ContractEntity)
         {
             var UpdatedContract = _contractRepo.UpdateContract(ContractEntity);
