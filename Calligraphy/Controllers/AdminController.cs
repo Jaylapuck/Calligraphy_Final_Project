@@ -62,5 +62,18 @@ namespace Calligraphy.Controllers
 
             return Ok(token);
         }
+        
+        [HttpGet]
+        [Route("verify")]
+        public IActionResult CheckIfTokenIsValid()
+        {
+            return Ok(new
+            {
+                HttpStatusCode = HttpStatusCode.OK,
+                message = "Token is valid"
+            });
+        }
+        
+        
     }
 }

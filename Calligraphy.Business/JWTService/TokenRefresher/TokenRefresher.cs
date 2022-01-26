@@ -49,7 +49,7 @@ namespace Calligraphy.Business.JWTService.TokenRefresher
             
             if (refreshCred.RefreshToken != _authService.GetRefreshToken(user))
             {
-                throw new SecurityTokenException("Invalid token, bad refresh token");
+                throw new SecurityTokenException("Invalid token");
             }
             
             return _jwtTokenHandler.Authenticate(user, principal.Claims.ToArray());
