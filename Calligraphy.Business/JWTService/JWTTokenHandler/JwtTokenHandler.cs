@@ -29,7 +29,7 @@ namespace Calligraphy.Business.JWTService.JWTTokenHandler
         {
             var jwtSecurityToken = new JwtSecurityToken(
                 claims: claims,
-                expires: DateTime.UtcNow.AddMinutes(10),
+                expires: DateTime.UtcNow.AddHours(1),
                 audience: _configuration["Jwt:Audience"],
                 issuer: _configuration["Jwt:Issuer"],
                 signingCredentials: new SigningCredentials(new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Secret"])), SecurityAlgorithms.HmacSha256)
@@ -60,7 +60,7 @@ namespace Calligraphy.Business.JWTService.JWTTokenHandler
                 }),
                 Audience = _configuration["Jwt:Audience"],
                 Issuer = _configuration["Jwt:Issuer"],
-                Expires = DateTime.UtcNow.AddSeconds(10),
+                Expires = DateTime.UtcNow.AddHours(1),
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key),
                     SecurityAlgorithms.HmacSha256Signature)
             };
