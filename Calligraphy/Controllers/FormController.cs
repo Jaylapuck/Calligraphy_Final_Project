@@ -38,6 +38,7 @@ namespace Calligraphy.Controllers
         [HttpGet]
         [Route("/api/Form/Services")]
         [Produces(MediaTypeNames.Application.Json)]
+        [AllowAnonymous]
         public IEnumerable<ServiceEntity> GetServices()
         {
             return _formService.GetAllServices();
