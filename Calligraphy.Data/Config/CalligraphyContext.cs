@@ -25,6 +25,8 @@ namespace Calligraphy.Data.Config
         public DbSet<ServiceEntity> Services { get; set; }
         public DbSet<ContractEntity> Contracts { get; set; }
         public DbSet<AdminEntity> Admins { get; set; }
+        
+        public DbSet<AboutEntity> About { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -39,6 +41,7 @@ namespace Calligraphy.Data.Config
 
             builder.Entity<AboutEntity>().HasData(new AboutEntity()
             {
+                AboutId = 1,
                 Name = "Serena Tam",
                 Email = "serena22@email.com",
                 Phone = "(123)-456-7890",
@@ -67,6 +70,5 @@ namespace Calligraphy.Data.Config
             });
             
         }
-        public DbSet<AboutEntity> About { get; set; }
     }
 }

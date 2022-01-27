@@ -19,6 +19,60 @@ namespace Calligraphy.Data.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+            modelBuilder.Entity("Calligraphy.Data.Models.AboutEntity", b =>
+                {
+                    b.Property<int>("AboutId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Country")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Experience")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Language")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Mission")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Phone")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Profession")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("AboutId");
+
+                    b.ToTable("About");
+
+                    b.HasData(
+                        new
+                        {
+                            AboutId = 1,
+                            Country = "Canada",
+                            Description = "I am a student, worked here blabla",
+                            Email = "serena22@email.com",
+                            Experience = "Phd and masters",
+                            Language = "All Languages",
+                            Mission = "Make that moneeeeeyy ya know",
+                            Name = "Serena Tam",
+                            Phone = "(123)-456-7890",
+                            Profession = "Calligrapher and Engraver"
+                        });
+                });
+
             modelBuilder.Entity("Calligraphy.Data.Models.AddressEntity", b =>
                 {
                     b.Property<int>("AddressId")
@@ -229,6 +283,20 @@ namespace Calligraphy.Data.Migrations
                     b.HasKey("ServiceId");
 
                     b.ToTable("Services");
+
+                    b.HasData(
+                        new
+                        {
+                            ServiceId = 1,
+                            StartingRate = 20f,
+                            TypeName = 1
+                        },
+                        new
+                        {
+                            ServiceId = 2,
+                            StartingRate = 30f,
+                            TypeName = 0
+                        });
                 });
 
             modelBuilder.Entity("Calligraphy.Data.Models.CustomerEntity", b =>
