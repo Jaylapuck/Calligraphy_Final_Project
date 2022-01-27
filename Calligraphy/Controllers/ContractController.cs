@@ -1,13 +1,9 @@
-﻿using Calligraphy.Business.Contract;
+﻿using System.Net.Mime;
+using Calligraphy.Business.Contract;
 using Calligraphy.Data.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Mime;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authorization;
 
 namespace Calligraphy.Controllers
 {

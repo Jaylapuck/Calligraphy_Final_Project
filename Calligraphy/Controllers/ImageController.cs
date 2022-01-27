@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Net.Mime;
-using Calligraphy.Business.Form;
 using Calligraphy.Business.Image;
 using Calligraphy.Data.Models;
 using Microsoft.AspNetCore.Authorization;
@@ -16,7 +15,7 @@ namespace Calligraphy.Controllers
     public class ImageController : ControllerBase
     {
         private readonly IImageService _imageService;
-        
+
         public ImageController(IImageService imageService)
         {
             _imageService = imageService;
@@ -31,7 +30,7 @@ namespace Calligraphy.Controllers
         {
             return _imageService.GetAll();
         }
-       
+
         // GET BY ID
         [HttpGet]
         [Route("/api/Image/{id:int}")]
@@ -41,7 +40,7 @@ namespace Calligraphy.Controllers
         {
             return _imageService.GetById(id);
         }
-        
+
         // GET BY ID
         [HttpGet]
         [Route("/api/Image/portfolio/{id:int}")]
@@ -51,7 +50,7 @@ namespace Calligraphy.Controllers
         {
             return _imageService.GetByImageId(id);
         }
-        
+
         // POST
         [HttpPost]
         [Route("/api/Image")]
@@ -60,14 +59,14 @@ namespace Calligraphy.Controllers
         {
             return _imageService.Create(image);
         }
-        
+
         // PUT
         [HttpPut]
         [Route("/api/Image/{id:int}")]
         [Consumes(MediaTypeNames.Application.Json)]
         public IActionResult Update([FromBody] ImageEntity image, int id)
         {
-           return _imageService.Update(image, id);
+            return _imageService.Update(image, id);
         }
 
         [HttpDelete]
@@ -76,7 +75,6 @@ namespace Calligraphy.Controllers
         public IActionResult Delete(int id)
         {
             return _imageService.Delete(id);
-
         }
     }
 }

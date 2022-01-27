@@ -1,9 +1,8 @@
-﻿using Calligraphy.Business.About;
+﻿using System.Net.Mime;
+using Calligraphy.Business.About;
 using Calligraphy.Data.Models;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
-using System.Collections.Generic;
-using System.Net.Mime;
 
 namespace Calligraphy.Controllers
 {
@@ -27,6 +26,7 @@ namespace Calligraphy.Controllers
         {
             return _aboutService.Get();
         }
+
         // PUT
         [HttpPut]
         [Route("/api/About")]

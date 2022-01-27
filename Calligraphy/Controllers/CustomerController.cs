@@ -1,11 +1,10 @@
-﻿using Calligraphy.Business.Customer;
-using Calligraphy.Data.Models;
-using Microsoft.AspNetCore.Cors;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Net.Mime;
+using Calligraphy.Business.Customer;
+using Calligraphy.Data.Models;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Cors;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Calligraphy.Controllers
 {
@@ -15,6 +14,7 @@ namespace Calligraphy.Controllers
     [Authorize]
     public class CustomerController : ControllerBase
     {
+        // Should be removed later on
         private readonly ICustomerService _customerService;
 
         public CustomerController(ICustomerService customerService)
@@ -26,6 +26,7 @@ namespace Calligraphy.Controllers
         [HttpGet]
         [Route("/api/Customer")]
         [Produces(MediaTypeNames.Application.Json)]
+        [AllowAnonymous]
         public IEnumerable<CustomerEntity> Get()
         {
             return _customerService.GetAll();
@@ -39,10 +40,7 @@ namespace Calligraphy.Controllers
         public IActionResult Post([FromBody] CustomerEntity customer)
         {
             var result = _customerService.Create(customer);
-            if (result)
-            {
-                return Ok(customer);
-            }
+            if (result) return Ok(customer);
             return BadRequest();
         }
     }

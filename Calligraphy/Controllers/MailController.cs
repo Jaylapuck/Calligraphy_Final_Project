@@ -1,13 +1,11 @@
-﻿using Calligraphy.Data.Models;
+﻿using System;
+using System.Globalization;
+using System.Net.Mail;
+using System.Threading.Tasks;
+using Calligraphy.Data.Models;
 using Calligraphy.Mailer.Model;
 using Calligraphy.Mailer.Services;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using System.Net.Mail;
-using System.Threading.Tasks;
 
 namespace Calligraphy.Controllers
 {
@@ -32,7 +30,8 @@ namespace Calligraphy.Controllers
             var date = today.ToString(culture);
             var body = "<h1>Greetings from Serene Flourish!</h1>";
             body += "<h3>Hello " + request.Customer.FirstName + "!</h3>";
-            body += "<p>We\'ve received your order and will contact you as soon as your package is shipped. You can find your purchase information below.</p>";
+            body +=
+                "<p>We\'ve received your order and will contact you as soon as your package is shipped. You can find your purchase information below.</p>";
             body += "<h3>Order Summary</h3>";
             body += "<p>" + date + "</p>";
             body += "<h3>Service Title</h3>";
@@ -43,9 +42,11 @@ namespace Calligraphy.Controllers
             body += "<p>" + request.Comments + "</p>";
             body += "<h3>Your Contact Information</h3>";
             body += "<p>" + request.Customer.FirstName + " " + request.Customer.LastName + "<p>";
-            body += "<p>Address: " + request.Customer.Address.Street + " " + request.Customer.Address.City + " " + request.Customer.Address.Country + " " + request.Customer.Address.Postal + "</p>";
+            body += "<p>Address: " + request.Customer.Address.Street + " " + request.Customer.Address.City + " " +
+                    request.Customer.Address.Country + " " + request.Customer.Address.Postal + "</p>";
             body += "<p>Email: " + request.Customer.Email + "</p>";
-            body += "<h3>This is a auto-generated Quote and may be subject to change. If there are any changes we encounter, we will contact you again to receive your approval.</h3>";
+            body +=
+                "<h3>This is a auto-generated Quote and may be subject to change. If there are any changes we encounter, we will contact you again to receive your approval.</h3>";
             var file = request.Attachments;
 
             mailRequest.email = emailTo;
@@ -114,7 +115,8 @@ namespace Calligraphy.Controllers
             body += "<br/>";
             body += request.Comments;
             body += "<br/><br/>";
-            body += "<h3>This is an auto-generated Quote, therefore it is encouraged to save this email and go to your admin panel to view the forms submitted and finalize the quote w/the customer</h3>";
+            body +=
+                "<h3>This is an auto-generated Quote, therefore it is encouraged to save this email and go to your admin panel to view the forms submitted and finalize the quote w/the customer</h3>";
             var file = request.Attachments;
 
             mailRequest.email = emailTo;
@@ -176,7 +178,8 @@ namespace Calligraphy.Controllers
             body += "</tr>";
             body += "</table>";
             body += "<br/><br/>";
-            body += "<h3>This is an auto-generated COntract, therefore it is encouraged to save this email and go to your admin panel to view the contracts submitted and finalize the contracts w/the customer</h3>";
+            body +=
+                "<h3>This is an auto-generated COntract, therefore it is encouraged to save this email and go to your admin panel to view the contracts submitted and finalize the contracts w/the customer</h3>";
 
             mailRequest.email = emailTo;
             mailRequest.subject = subject;
