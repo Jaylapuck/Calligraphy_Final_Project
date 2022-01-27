@@ -35,6 +35,7 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Calligraphy.Business.About;
+using Calligraphy.Data.Migrations;
 using Calligraphy.Data.Repo.About;
 
 namespace Calligraphy
@@ -50,6 +51,15 @@ namespace Calligraphy
         
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddControllersWithViews(ConfigureMvcOptions)
+                // Newtonsoft.Json is added for compatibility reasons
+                // The recommended approach is to use System.Text.Json for serialization
+                // Visit the following link for more guidance about moving away from Newtonsoft.Json to System.Text.Json
+                // https://docs.microsoft.com/dotnet/standard/serialization/system-text-json-migrate-from-newtonsoft-how-to
+                .AddNewtonsoftJson(options =>
+                {
+                    options.UseMemberCasing();
+                });
             
             //Mail Configuration
             services.Configure<MailSettings>(Configuration.GetSection("MailSettings"));
@@ -74,6 +84,8 @@ namespace Calligraphy
             services.AddTransient<IJwtTokenHandler, JwtTokenHandler>();
             services.AddTransient<IRefreshTokenGenerator, RefreshTokenGenerator>();
             services.AddTransient<ITokenRefresher, TokenRefresher>();
+            services.AddTransient<IAboutService, AboutService>();
+            services.AddTransient<IAboutRepo, AboutRepo>();
             
             //JWT AUTHENTICATION
             services.AddAuthentication(opt =>
@@ -109,13 +121,9 @@ namespace Calligraphy
                         return Task.CompletedTask;
                     }
                 };
-               
-      });
+            });
             
             // Swagger Config
-            services.AddTransient<IAboutService, AboutService>();
-            services.AddTransient<IAboutRepo, AboutRepo>();
-
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Calligraphy.Mailer", Version = "v1" });
@@ -144,6 +152,11 @@ namespace Calligraphy
             });
             services.AddControllers();
             services.AddMvc(options => options.EnableEndpointRouting = false).SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
+        }
+
+        private void ConfigureMvcOptions(MvcOptions obj)
+        {
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
