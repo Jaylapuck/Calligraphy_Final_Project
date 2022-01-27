@@ -43,6 +43,40 @@ namespace Calligraphy.Data.Migrations
                     b.ToTable("Addresses");
                 });
 
+            modelBuilder.Entity("Calligraphy.Data.Models.AuthenticationModels.JWT.AdminEntity", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("RefreshToken")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserName")
+                        .IsUnique();
+
+                    b.ToTable("Admins");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Password = "admin",
+                            UserName = "admin"
+                        });
+                });
+
             modelBuilder.Entity("Calligraphy.Data.Models.ContractEntity", b =>
                 {
                     b.Property<int>("ContractId")
@@ -163,6 +197,9 @@ namespace Calligraphy.Data.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<int>("ApprovalStatus")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Duration")
                         .HasColumnType("int");
 
                     b.Property<string>("Materials")

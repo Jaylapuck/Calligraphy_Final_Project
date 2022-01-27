@@ -5,12 +5,14 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Net.Mime;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Calligraphy.Controllers
 {
     [EnableCors("ApiCorsPolicy")]
     [ApiController]
     [Route("[controller]")]
+    [Authorize]
     public class CustomerController : ControllerBase
     {
         private readonly ICustomerService _customerService;
@@ -33,6 +35,7 @@ namespace Calligraphy.Controllers
         [HttpPost]
         [Route("/api/Customer")]
         [Consumes(MediaTypeNames.Application.Json)]
+        [AllowAnonymous]
         public IActionResult Post([FromBody] CustomerEntity customer)
         {
             var result = _customerService.Create(customer);

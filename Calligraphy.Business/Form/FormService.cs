@@ -12,6 +12,7 @@ using Calligraphy.Data.Repo;
 using Calligraphy.Data.Repo.Form;
 using Calligraphy.Data.Repo.Service;
 using Calligraphy.Data.Repo.Wrappers;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Routing;
 
@@ -40,7 +41,6 @@ namespace Calligraphy.Business.Form
             return new OkObjectResult(pagedResponse);
         }
         
-
         public IEnumerable<ServiceEntity> GetAllServices()
         {
             return _serviceRepo.GetAll();

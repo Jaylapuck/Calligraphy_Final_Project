@@ -9,16 +9,8 @@ using System.Web;
 
 namespace Calligraphy
 {
-    /// <summary>
-    /// Temporary helper class for retrieving the current <see cref="HttpContext"/> . This temporary
-    /// workaround should be removed in the future and <see cref="HttpContext"/> should be retrieved
-    /// from the current controller, middleware, or page instead.
 #if NET || NETCOREAPP
-    ///
-    /// If working in another component, the current <see cref="HttpContext"/> can be retrieved from an <see cref="IHttpContextAccessor"/>
-    /// retrieved via dependency injection.
 #endif
-    /// </summary>
     internal static class HttpContextHelper
     {
         private const string Message = "Prefer accessing HttpContext via injection";
