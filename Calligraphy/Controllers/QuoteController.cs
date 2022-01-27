@@ -1,28 +1,30 @@
-﻿using Calligraphy.Business.Contract;
-using Calligraphy.Business.Quote;
-using Calligraphy.Data.Models;
-using Calligraphy.Mailer.Services;
-using Microsoft.AspNetCore.Cors;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using System;
 using System.Collections.Generic;
 using System.Net.Mime;
-using Microsoft.AspNetCore.Authorization;
 using System.Threading.Tasks;
+using Calligraphy.Business.Contract;
+using Calligraphy.Business.Quote;
+using Calligraphy.Data.Enums;
+using Calligraphy.Data.Models;
+using Calligraphy.Mailer.Services;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Cors;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Calligraphy.Controllers
 {
-        [EnableCors("ApiCorsPolicy")]
-        [ApiController]
-        [Route("[controller]")]
-        [Authorize]
-        public class QuoteController : ControllerBase
-        {
-        private readonly IQuoteService _quoteService;
-        private readonly IMailerService _mailerService;
+    [EnableCors("ApiCorsPolicy")]
+    [ApiController]
+    [Route("[controller]")]
+    [Authorize]
+    public class QuoteController : ControllerBase
+    {
         private readonly IContractService _contractService;
-
-        public QuoteController(IQuoteService quoteService, IMailerService mailerService, IContractService contractService)
+        private readonly IMailerService _mailerService;
+        private readonly IQuoteService _quoteService;
+        
+        public QuoteController(IQuoteService quoteService, IMailerService mailerService,
+            IContractService contractService)
         {
             _quoteService = quoteService;
             _mailerService = mailerService;
@@ -46,30 +48,30 @@ namespace Calligraphy.Controllers
         {
             return _quoteService.GetByFormId(id);
         }
+
         // POST
         [HttpPost]
         [Consumes(MediaTypeNames.Application.Json)]
+        [AllowAnonymous]
         public IActionResult Create([FromBody] QuoteEntity quote)
         {
             var result = _quoteService.Create(quote);
-            if (result)
-            {
-                return Ok(quote);
-            }
+            if (result) return Ok(quote);
             return BadRequest();
         }
+
         // PUT
         [HttpPut]
         [Route("/api/Quote/{id:int}")]
         [Consumes(MediaTypeNames.Application.Json)]
         public async Task<IActionResult> Update([FromBody] QuoteEntity quote, int id)
         {
-            if(quote.ApprovalStatus == Data.Enums.Status.Approved)
+            if (quote.ApprovalStatus == Status.Approved)
             {
                 var newContract = new ContractEntity();
                 newContract.FinalCost = quote.Price;
                 newContract.DownPayment = quote.Price / 2;
-                newContract.DateCommissioned = System.DateTime.Now;
+                newContract.DateCommissioned = DateTime.Now;
                 newContract.EndDate = newContract.DateCommissioned.AddDays(quote.Duration);
                 newContract.HasSignature = false;
                 newContract.IsFinished = false;
@@ -77,10 +79,10 @@ namespace Calligraphy.Controllers
                 var quoteResult = _quoteService.Update(quote, id);
                 var contractResult = _contractService.CreateNewContract(newContract);
 
-                if(quoteResult.GetType() == typeof(OkObjectResult) && contractResult.GetType() == typeof(OkResult))
+                if (quoteResult.GetType() == typeof(OkObjectResult) && contractResult.GetType() == typeof(OkResult))
                 {
                     quote.QuoteId = id;
-                    MailController mailController = new MailController(_mailerService);
+                    var mailController = new MailController(_mailerService);
                     await mailController.SendOwnerAlertNewContract(quote, newContract);
                 }
 

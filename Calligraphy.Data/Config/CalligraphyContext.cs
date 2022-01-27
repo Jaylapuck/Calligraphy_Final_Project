@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Calligraphy.Data.Enums;
 using Calligraphy.Data.Models.AuthenticationModels;
 using Calligraphy.Data.Models.AuthenticationModels.JWT;
 
@@ -35,6 +36,36 @@ namespace Calligraphy.Data.Config
                 UserName = "admin",
                 Password = "admin"
             });
+
+            builder.Entity<AboutEntity>().HasData(new AboutEntity()
+            {
+                Name = "Serena Tam",
+                Email = "serena22@email.com",
+                Phone = "(123)-456-7890",
+                Profession = "Calligrapher and Engraver",
+                Description = "I am a student, worked here blabla",
+                Language = "All Languages",
+                Country = "Canada",
+                Experience = "Phd and masters",
+                Mission = "Make that moneeeeeyy ya know"
+            });
+            
+            //create two entries data for serviceEntity
+
+            builder.Entity<ServiceEntity>().HasData(new ServiceEntity()
+            {
+                ServiceId = 1,
+                StartingRate = 20.0f,
+                TypeName = ServiceType.Engraving
+            });
+            
+            builder.Entity<ServiceEntity>().HasData(new ServiceEntity()
+            {
+                ServiceId = 2,
+                StartingRate = 30.0f,
+                TypeName = ServiceType.Calligraphy
+            });
+            
         }
         public DbSet<AboutEntity> About { get; set; }
     }

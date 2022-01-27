@@ -1,22 +1,15 @@
-﻿using Calligraphy.Business.Form;
-using Calligraphy.Business.Quote;
-using Calligraphy.Data.Models;
-using Calligraphy.Mailer.Model;
-using Calligraphy.Mailer.Services;
-using Microsoft.AspNetCore.Cors;
-using Microsoft.AspNetCore.Mvc;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using System.Net.Mail;
 using System.Net.Mime;
 using System.Threading.Tasks;
+using Calligraphy.Business.Form;
+using Calligraphy.Data.Enums;
 using Calligraphy.Data.Filters;
-using Calligraphy.Data.Repo.Wrappers;
-using Microsoft.AspNetCore.Authentication.Cookies;
+using Calligraphy.Data.Models;
+using Calligraphy.Mailer.Services;
 using Microsoft.AspNetCore.Authorization;
-using Org.BouncyCastle.Ocsp;
+using Microsoft.AspNetCore.Cors;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Calligraphy.Controllers
 {
@@ -34,7 +27,7 @@ namespace Calligraphy.Controllers
             _formService = formService;
             _mailService = mailService;
         }
-        
+
         [HttpGet]
         [Route("/api/Form/Services")]
         [Produces(MediaTypeNames.Application.Json)]
@@ -43,7 +36,7 @@ namespace Calligraphy.Controllers
         {
             return _formService.GetAllServices();
         }
-        
+
         // GET pageable
         [HttpGet]
         [Route("/api/form")]
@@ -54,9 +47,10 @@ namespace Calligraphy.Controllers
             var result = _formService.GetAll(filter, route);
             return result;
         }
-        
+
         // POST: api/Form
-        [HttpPost("/api/form")]
+        [HttpPost]
+        [Route("/api/form")]
         [AllowAnonymous]
         public async Task<IActionResult> Post([FromForm] FormEntity form)
         {
@@ -65,35 +59,27 @@ namespace Calligraphy.Controllers
                 var quote = new QuoteEntity();
                 quote.Materials = "None";
                 quote.Price = form.StartingRate;
-                switch(form.ServiceType)
+                switch (form.ServiceType)
                 {
-                    case Data.Enums.ServiceType.Calligraphy:
+                    case ServiceType.Calligraphy:
                         quote.Duration = 14;
                         break;
-                    case Data.Enums.ServiceType.Engraving:
+                    case ServiceType.Engraving:
                         quote.Duration = 21;
                         break;
                     default:
                         quote.Duration = 0;
                         break;
                 }
+
                 form.Quote = quote;
 
                 var result = _formService.Create(form);
-                if (result)
-                {
-
-
-                    //form.Quote.FormId = form.FormId;
-                    //form.Quote.Price = form.StartingRate;
-                    //quote.Form = form;
-                    //_quoteService.Create(quote);
-                    var mailController = new MailController(_mailService);
-                    await mailController.SendCustomerConfirmation(form);
-                    await mailController.SendOwnerAlertNewQuote(form);
-                    return Ok(form);
-                }
-                return BadRequest();
+                if (!result) return BadRequest();
+                var mailController = new MailController(_mailService);
+                await mailController.SendCustomerConfirmation(form);
+                await mailController.SendOwnerAlertNewQuote(form);
+                return Ok(form);
             }
             catch (ArgumentException nullExc)
             {
