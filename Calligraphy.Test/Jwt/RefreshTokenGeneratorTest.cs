@@ -13,6 +13,7 @@ namespace Calligraphy.Test.Jwt
             _refreshTokenGenerator = new RefreshTokenGenerator();
         }
 
+        //TC10-TG1
         [Fact]
         public void GenerateRefreshToken_ShouldReturnToken()
         {
