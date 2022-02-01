@@ -35,7 +35,6 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Calligraphy.Business.About;
-using Calligraphy.Data.Migrations;
 using Calligraphy.Data.Repo.About;
 
 namespace Calligraphy

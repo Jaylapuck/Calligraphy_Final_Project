@@ -26,7 +26,7 @@ namespace Calligraphy.Test.About
             _aboutController = new AboutController(_mockAboutService.Object);
         }
 
-        // TC1-TA1
+        // TC8-TC1
         [Fact]
         // test get  api, returns the baout information
         public void Get()
@@ -56,7 +56,7 @@ namespace Calligraphy.Test.About
         }
 
         [Fact]
-        //TC7-TC2
+        //TC8-TC1
         public void Get_ShouldReturnNotFound()
         {
             // Arrange
@@ -68,7 +68,7 @@ namespace Calligraphy.Test.About
             // Assert
             Assert.IsType<NotFoundResult>(result);
         }
-        //TC7-TC9
+        //TC8-TC2
         [Fact]
         public void Update_ShouldReturnBadRequestActionResult()
         {
@@ -83,7 +83,7 @@ namespace Calligraphy.Test.About
             Assert.IsType<BadRequestResult>(result);
         }
 
-        //TC7-TC10
+        //TC8-TC10
         [Fact]
         public void Update_ShouldReturnNotFoundActionResult()
         {

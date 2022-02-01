@@ -23,6 +23,7 @@ namespace Calligraphy.Test.Jwt
             _jwtTokenHandler = new JwtTokenHandler(refreshTokenGeneratorMock.Object, adminLoginRepoMock.Object, _configurationMock.Object);
         }
         
+        //TC10-TH1
         [Fact]
         public void AuthenticateWithUsername_Should_Return_AuthenticationResponse()
         {
@@ -39,6 +40,7 @@ namespace Calligraphy.Test.Jwt
             Assert.IsType<AuthenticationResponse>(result);
         }
 
+        //TC10-TH2
         [Fact]
         public void AuthenticateWithUsernameAndListOfClaim_Should_Return_AuthenticatedResponse()
         {

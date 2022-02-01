@@ -174,6 +174,7 @@ namespace Calligraphy.Test.Contract
         }
 
         [Fact]
+        // TC2-TS9
         // Test to see if we can get back all the contracts
         public void GetAllContractsByMonthOfYearOk()
         {
@@ -198,6 +199,7 @@ namespace Calligraphy.Test.Contract
         }
 
         [Fact]
+        // TC2-TS10
         // Test to see if we can get back no contracts by a specified month
         public void GetAllContractsByMonthOfYearEmptyResultOk()
         {

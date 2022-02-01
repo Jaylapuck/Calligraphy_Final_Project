@@ -149,6 +149,7 @@ namespace Calligraphy.Test.Contract
         }
 
         [Fact]
+        // TC2-TC8
         // Test to see if we get a good result when fetching contracts by month
         public void GetContractsByMonthReturnsListOkResult()
         {
@@ -172,6 +173,7 @@ namespace Calligraphy.Test.Contract
             Assert.IsType<OkObjectResult>(result);
         }
 
+        // TC2-TC9
         [Fact]
         // Test to see if we get a good result w/an empty list when fetching contracts by month
         public void GetContractsByMonthReturnsEmptyListOkResult()
