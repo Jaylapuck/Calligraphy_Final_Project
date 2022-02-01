@@ -28,7 +28,7 @@ namespace Calligraphy.Test.About
         }
 
         [Fact]
-        // TS1-TA1
+        // TC8-TS1
         public void Get_DoesNotReturnNull()
         {
             // Arrange
