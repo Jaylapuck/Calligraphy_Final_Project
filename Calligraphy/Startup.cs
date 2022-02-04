@@ -139,6 +139,21 @@ namespace Calligraphy
                     .AllowAnyMethod()
                     .AllowCredentials()
                     .AllowAnyHeader();
+
+                builder.WithOrigins("https://calligraphy-final-project.vercel.app")
+                    .AllowAnyMethod()
+                    .AllowCredentials()
+                    .AllowAnyHeader();
+
+                builder.WithOrigins("http://172.22.192.1:3000")
+                    .AllowAnyMethod()
+                    .AllowCredentials()
+                    .AllowAnyHeader();
+                
+                builder.WithOrigins("https://calligraphy-final-project-2vrlmrebu-trim.vercel.app")
+                    .AllowAnyMethod()
+                    .AllowCredentials()
+                    .AllowAnyHeader();
             }));
             
             services.AddHttpContextAccessor();
