@@ -6,7 +6,6 @@ using Calligraphy.Business.Customer;
 using Calligraphy.Business.Form;
 using Calligraphy.Business.Image;
 using Calligraphy.Data.Config;
-using Calligraphy.Data.IUriService;
 using Calligraphy.Data.Repo.Image;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -31,11 +30,9 @@ using Calligraphy.Business.JWTService.JWTTokenHandler;
 using Calligraphy.Business.JWTService.RefreshTokenGenerator;
 using Calligraphy.Business.JWTService.TokenRefresher;
 using Calligraphy.Data.Repo.AdminLogin;
-using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Calligraphy.Business.About;
-using Calligraphy.Data.Migrations;
 using Calligraphy.Data.Repo.About;
 
 namespace Calligraphy
@@ -52,10 +49,6 @@ namespace Calligraphy
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews(ConfigureMvcOptions)
-                // Newtonsoft.Json is added for compatibility reasons
-                // The recommended approach is to use System.Text.Json for serialization
-                // Visit the following link for more guidance about moving away from Newtonsoft.Json to System.Text.Json
-                // https://docs.microsoft.com/dotnet/standard/serialization/system-text-json-migrate-from-newtonsoft-how-to
                 .AddNewtonsoftJson(options =>
                 {
                     options.UseMemberCasing();
@@ -139,17 +132,12 @@ namespace Calligraphy
                 builder.WithOrigins("http://localhost:3000")
                     .AllowAnyMethod()
                     .AllowCredentials()
+                    .AllowAnyHeader()
+                    .WithExposedHeaders("X-Pagination")
                     .AllowAnyHeader();
             }));
             
             services.AddHttpContextAccessor();
-            services.AddSingleton<IUriService>(o =>
-            {
-                var accessor = o.GetRequiredService<IHttpContextAccessor>();
-                var request = accessor.HttpContext.Request;
-                var uri = string.Concat(request.Scheme, "://", request.Host.ToUriComponent());
-                return new UriService(uri);
-            });
             services.AddControllers();
             services.AddMvc(options => options.EnableEndpointRouting = false).SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
         }

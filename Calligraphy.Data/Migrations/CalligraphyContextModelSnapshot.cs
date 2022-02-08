@@ -219,6 +219,48 @@ namespace Calligraphy.Data.Migrations
                     b.HasIndex("QuoteId");
 
                     b.ToTable("Forms");
+
+                    b.HasData(
+                        new
+                        {
+                            FormId = 1,
+                            Comments = "I am a student, worked here blabla",
+                            CreatedDate = new DateTime(2022, 2, 3, 15, 39, 25, 248, DateTimeKind.Local).AddTicks(5333),
+                            ServiceType = 0,
+                            StartingRate = 0f
+                        },
+                        new
+                        {
+                            FormId = 2,
+                            Comments = "I am a student, worked here blabla",
+                            CreatedDate = new DateTime(2022, 2, 3, 15, 39, 25, 250, DateTimeKind.Local).AddTicks(4154),
+                            ServiceType = 0,
+                            StartingRate = 0f
+                        },
+                        new
+                        {
+                            FormId = 3,
+                            Comments = "I am a student, worked here blabla",
+                            CreatedDate = new DateTime(2022, 2, 3, 15, 39, 25, 250, DateTimeKind.Local).AddTicks(4224),
+                            ServiceType = 0,
+                            StartingRate = 0f
+                        },
+                        new
+                        {
+                            FormId = 4,
+                            Comments = "I am a student, worked here blabla",
+                            CreatedDate = new DateTime(2022, 2, 3, 15, 39, 25, 250, DateTimeKind.Local).AddTicks(4239),
+                            ServiceType = 0,
+                            StartingRate = 0f
+                        },
+                        new
+                        {
+                            FormId = 5,
+                            Comments = "I am a student, worked here blabla",
+                            CreatedDate = new DateTime(2022, 2, 3, 15, 39, 25, 250, DateTimeKind.Local).AddTicks(4319),
+                            ServiceType = 0,
+                            StartingRate = 0f
+                        });
                 });
 
             modelBuilder.Entity("Calligraphy.Data.Models.ImageEntity", b =>

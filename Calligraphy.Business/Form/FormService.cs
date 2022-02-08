@@ -1,20 +1,10 @@
 ﻿#nullable enable
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Calligraphy.Data.Filters;
-using Calligraphy.Data.Helpers;
-using Calligraphy.Data.IUriService;
 using Calligraphy.Data.Models;
-using Calligraphy.Data.Repo;
+using Calligraphy.Data.Pagination;
 using Calligraphy.Data.Repo.Form;
 using Calligraphy.Data.Repo.Service;
-using Calligraphy.Data.Repo.Wrappers;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Routing;
 
 namespace Calligraphy.Business.Form
 {
@@ -22,23 +12,17 @@ namespace Calligraphy.Business.Form
     {
         private readonly IFormRepo _formRepo;
         private readonly IServiceRepo _serviceRepo;
-        private readonly IUriService  _serviceUri;
-        private readonly PaginationHelper _paginationHelper;
-        
-        public FormService(IFormRepo formRepo, IServiceRepo serviceRepo, IUriService serviceUri)
+
+        public FormService(IFormRepo formRepo, IServiceRepo serviceRepo)
         {
             _formRepo = formRepo;
             _serviceRepo = serviceRepo;
-            _serviceUri = serviceUri;
-            _paginationHelper = new PaginationHelper(_serviceUri);
         }
         
-        public IActionResult GetAll(PaginationFilter filter, string? route)
+        public PagedList<FormEntity> GetAll(FormParameters formParameters)
         {
-            var validFilter = new PaginationFilter(filter.PageNumber, filter.PageSize);
-            var data = _formRepo.GetAll(validFilter, out var totalRecords);
-            var pagedResponse = _paginationHelper.CreatePagedResponse(data, validFilter, totalRecords, route);
-            return new OkObjectResult(pagedResponse);
+            var formEntities = _formRepo.GetAll(formParameters);
+            return formEntities;
         }
         
         public IEnumerable<ServiceEntity> GetAllServices()

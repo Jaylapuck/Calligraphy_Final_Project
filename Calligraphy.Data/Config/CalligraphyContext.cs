@@ -52,7 +52,7 @@ namespace Calligraphy.Data.Config
                 Experience = "Phd and masters",
                 Mission = "Make that moneeeeeyy ya know"
             });
-            
+
             //create two entries data for serviceEntity
 
             builder.Entity<ServiceEntity>().HasData(new ServiceEntity()
@@ -61,14 +61,49 @@ namespace Calligraphy.Data.Config
                 StartingRate = 20.0f,
                 TypeName = ServiceType.Engraving
             });
-            
+
             builder.Entity<ServiceEntity>().HasData(new ServiceEntity()
             {
                 ServiceId = 2,
                 StartingRate = 30.0f,
                 TypeName = ServiceType.Calligraphy
             });
+
+            //build five form entries
+            builder.Entity<FormEntity>().HasData(new FormEntity()
+            {
+                FormId = 1,
+                CreatedDate = DateTime.Now,
+                Comments = "I am a student, worked here blabla"
+            });
+
+            builder.Entity<FormEntity>().HasData(new FormEntity()
+            {
+                FormId = 2,
+                CreatedDate = DateTime.Now,
+                Comments = "I am a student, worked here blabla"
+            });
+
+            builder.Entity<FormEntity>().HasData(new FormEntity()
+            {
+                FormId = 3,
+                CreatedDate = DateTime.Now,
+                Comments = "I am a student, worked here blabla"
+            });
             
+            builder.Entity<FormEntity>().HasData(new FormEntity()
+            {
+                FormId = 4,
+                CreatedDate = DateTime.Now,
+                Comments = "I am a student, worked here blabla"
+            });
+            
+            builder.Entity<FormEntity>().HasData(new FormEntity()
+            {
+                FormId = 5,
+                CreatedDate = DateTime.Now,
+                Comments = "I am a student, worked here blabla"
+            });
         }
     }
 }

@@ -6,17 +6,17 @@ using System.Threading.Tasks;
 using Calligraphy.Business.Form;
 using Calligraphy.Controllers;
 using Calligraphy.Data.Enums;
-using Calligraphy.Data.Filters;
-using Calligraphy.Data.Helpers;
-using Calligraphy.Data.IUriService;
 using Calligraphy.Data.Models;
-using Calligraphy.Data.Models.AuthenticationModels;
-using Calligraphy.Data.Repo.Wrappers;
+using Calligraphy.Data.Pagination;
 using Calligraphy.Mailer.Model;
 using Calligraphy.Mailer.Services;
+using HttpContextMoq;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Primitives;
 using Moq;
+using Newtonsoft.Json;
 using Xunit;
 
 namespace Calligraphy.Test.Form
@@ -25,20 +25,17 @@ namespace Calligraphy.Test.Form
     {
         private readonly Mock<IFormService> _mockFormService;
         private readonly Mock<IMailerService> _mockMailerService;
-        private readonly Mock<PaginationHelper> _mockPaginationHelper;
-        private readonly Mock<IUriService> _mockUriService;
-        private readonly Mock<PaginationFilter> _mockPaginationFilter;
+        //logger
+        private readonly ILogger<FormController> _logger;
         private readonly FormController _formController;
 
         public FormControllerTests()
         {
 
+            _logger = Mock.Of<ILogger<FormController>>();
             _mockFormService = new Mock<IFormService>();
-            _mockPaginationHelper = new Mock<PaginationHelper>();
-            _mockUriService = new Mock<IUriService>();
-            _mockPaginationFilter = new Mock<PaginationFilter>();
             _mockMailerService = new Mock<IMailerService>();
-            _formController = new FormController(_mockFormService.Object, _mockMailerService.Object);
+            _formController = new FormController(_mockFormService.Object, _mockMailerService.Object, _logger);
         }
 
         //TC4-TC1
@@ -67,7 +64,7 @@ namespace Calligraphy.Test.Form
         public void GetAllServicesEmpty()
         {
             // Arrange
-            List<ServiceEntity> dummyServices = new List<ServiceEntity>();
+            var dummyServices = new List<ServiceEntity>();
 
             _mockFormService.Setup(x => x.GetAllServices()).Returns(dummyServices);
 
@@ -264,40 +261,63 @@ namespace Calligraphy.Test.Form
         [Fact]
         // Test GetAll
         // This will be done towards the end of the project
-        public void GetAllTest()
+        public void GetAllFormsTest()
         {
-            /*
             // Arrange
-            var dummyForms = new List<FormEntity>
+            var dummyForms = new List<FormEntity>();
+            for (var i = 0; i < 10; i++)
             {
-                new() {FormId = 1, ServiceType = ServiceType.Calligraphy, Comments = "Comments 1"},
-                new() {FormId = 2, ServiceType = ServiceType.Calligraphy, Comments = "Comments 2"},
-                new() {FormId = 3, ServiceType = ServiceType.Calligraphy, Comments = "Comments 3"}
-            };
-            
-            // Pagination Filter
-            var dummyFilter = new PaginationFilter
+                var dummyAddress = new AddressEntity
+                {
+                    AddressId = 1, Street = "somne street", City = "some city", Country = "some country",
+                    Postal = "some code"
+                };
+                var dummyCustomer = new CustomerEntity
+                {
+                    CustomerId = 1, FirstName = "some name", LastName = "some name", Address = dummyAddress,
+                    Email = "some email"
+                };
+                var dummyAttachments = new List<IFormFile>();
+                var dummyForm = new FormEntity
+                {
+                    FormId = 1, Customer = dummyCustomer, ServiceType = ServiceType.Calligraphy, StartingRate = 20.00f,
+                    Comments = "some text", Attachments = dummyAttachments
+                };
+                dummyForms.Add(dummyForm);
+            }
+
+            var formParams = new FormParameters()
             {
                 PageNumber = 1,
-                PageSize = 2
+                PageSize = 2,
             };
             
-            var dummyUri = new Uri("http://localhost:5000/api/form");
+            var paged = new PagedList<FormEntity>(dummyForms, 10, formParams.PageNumber, formParams.PageSize);
             
-            //mock Route
-            var dummyRoute = 
-                $"{dummyUri.AbsolutePath}?pageNumber={dummyFilter.PageNumber}&pageSize={dummyFilter.PageSize}";
+            var metadata = new {
+                TotalCount = paged.TotalCount,
+                PageSize = paged.PageSize,
+                PageNumber = paged.CurrentPage,
+                TotalPages = paged.TotalPages,
+                HasNext = true,
+                HasPrevious = false
+            };
             
-            var pagedResponse = new PagedResponse<IEnumerable<FormEntity>>(dummyForms, dummyFilter.PageNumber,
-                dummyFilter.PageSize);
+            // mock http header X-Pagination with serialized PagedList
+            var mockHttpContext = new HttpContextMock();
+            mockHttpContext.Request.Headers.Add("X-Pagination", JsonConvert.SerializeObject(metadata));
+            _formController.ControllerContext = new ControllerContext
+            {
+                HttpContext = mockHttpContext
+            };
             
-            _mockFormService.Setup(x => x.GetAll(dummyFilter, dummyRoute )).Returns(new OkObjectResult(pagedResponse));
+            _mockFormService.Setup(x => x.GetAll(formParams)).Returns(paged);
             
             // Act
-            var result = _formController.GetAllPages(dummyFilter);
+            var result = _formController.GetAllPages(formParams);
             
+            // Assert
             Assert.IsType<OkObjectResult>(result);
-            */
         }
     }
 }
