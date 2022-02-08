@@ -140,22 +140,22 @@ namespace Calligraphy
                     .AllowCredentials()
                     .AllowAnyHeader();
 
+                builder.WithOrigins("http://172.22.192.1:3000")
+                    .AllowAnyMethod()
+                    .AllowCredentials()
+                    .AllowAnyHeader();
+
                 builder.WithOrigins("https://calligraphy-final-project.vercel.app")
                     .AllowAnyMethod()
                     .AllowCredentials()
                     .AllowAnyHeader();
 
-                builder.WithOrigins("http://172.22.192.1:3000")
+                builder.WithOrigins("https://calligraphy-final-project-trim.vercel.app")
                     .AllowAnyMethod()
                     .AllowCredentials()
                     .AllowAnyHeader();
                 
-                builder.WithOrigins("https://calligraphy-final-project-9wqjcrz46-trim.vercel.app")
-                    .AllowAnyMethod()
-                    .AllowCredentials()
-                    .AllowAnyHeader();
-                
-                builder.WithOrigins("https://calligraphy-final-project-git-feat-scwsfp-57impleme-c92330-trim.vercel.app")
+                builder.WithOrigins("https://calligraphy-final-project-git-master-trim.vercel.app")
                     .AllowAnyMethod()
                     .AllowCredentials()
                     .AllowAnyHeader();
