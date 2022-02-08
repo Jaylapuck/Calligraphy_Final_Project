@@ -1,13 +1,11 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
-using Calligraphy.Data.Filters;
-using Calligraphy.Data.Models;
+﻿using Calligraphy.Data.Models;
+using Calligraphy.Data.Pagination;
 
 namespace Calligraphy.Data.Repo.Form
 {
     public interface IFormRepo
     {
-        IEnumerable<FormEntity> GetAll(PaginationFilter validFilter, out int totalRecords);
+        PagedList<FormEntity> GetAll(FormParameters formParameters);
 
         bool Create(FormEntity form);
     }

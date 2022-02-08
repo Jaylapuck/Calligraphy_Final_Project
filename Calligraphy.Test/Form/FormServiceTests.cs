@@ -3,14 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using Calligraphy.Business.Form;
 using Calligraphy.Data.Enums;
-using Calligraphy.Data.Filters;
-using Calligraphy.Data.Helpers;
-using Calligraphy.Data.IUriService;
 using Calligraphy.Data.Models;
+using Calligraphy.Data.Pagination;
 using Calligraphy.Data.Repo.Form;
 using Calligraphy.Data.Repo.Service;
-using Calligraphy.Data.Repo.Wrappers;
-using Microsoft.AspNetCore.Mvc;
 using Moq;
 using Xunit;
 
@@ -20,17 +16,13 @@ namespace Calligraphy.Test.Form
     {
         private readonly Mock<IFormRepo> _mockFormRepo;
         private readonly Mock<IServiceRepo> _mockServiceRepo;
-        private readonly Mock<IUriService> _mockUriService;
-        private readonly Mock<PaginationHelper> _mockPaginationHelper;
         private readonly FormService _formService;
 
         public FormServiceTests()
         {
             _mockFormRepo = new Mock<IFormRepo>();
             _mockServiceRepo = new Mock<IServiceRepo>();
-            _mockUriService = new Mock<IUriService>();
-            _mockPaginationHelper = new Mock<PaginationHelper>();
-            _formService = new FormService(_mockFormRepo.Object, _mockServiceRepo.Object, _mockUriService.Object);
+            _formService = new FormService(_mockFormRepo.Object, _mockServiceRepo.Object);
         }
         
         [Fact]
@@ -70,40 +62,72 @@ namespace Calligraphy.Test.Form
 
         //TC4-TS3
         [Fact]
-        public void GetAllOkResult()
+        public void GetAllServicesEmpty()
         {
-         //Arrange 
+            // Arrange
+            List<ServiceEntity> dummyServices = new List<ServiceEntity>();
+
+            // Act
+            _mockServiceRepo.Setup(x => x.GetAll()).Returns(dummyServices);
+            var result = _formService.GetAllServices();
+
+            // Assert 
+            Assert.Empty(result);
+        }
+        
+        //TC4-TS4
+        [Fact]
+        public void GetAllServicesNull()
+        {
+            // Act
+            _mockServiceRepo.Setup(x => x.GetAll()).Returns((List<ServiceEntity>) null);
+            var result = _formService.GetAllServices();
+
+            // Assert 
+            Assert.Null(result);
+        }
+        
+        //TC4-TS5
+        [Fact]
+        public void GetAllServicesException()
+        {
+            // Arrange
+
+            // Act
+            _mockServiceRepo.Setup(x => x.GetAll()).Throws(new Exception());
+            var result = _formService.GetAllServices();
+
+            // Assert 
+            Assert.Null(result);
+        }
+        
+        //TC4-TS6
+        [Fact]
+        public void GetAllForms()
+        {
+            // Arrange
             var dummyForms = new List<FormEntity>
             {
                 new() {FormId = 1, ServiceType = ServiceType.Calligraphy, Comments = "Comments 1"},
-                new() {FormId = 2, ServiceType = ServiceType.Calligraphy, Comments = "Comments 2"},
-                new() {FormId = 3, ServiceType = ServiceType.Calligraphy, Comments = "Comments 3"}
+                new() {FormId = 2, ServiceType = ServiceType.Engraving, Comments = "Comments 2"}
             };
             
-            var dummyUri = new Uri("http://localhost:5000/api/form");
-            
-            var dummyPaginationFilter = new PaginationFilter
+            var formParams = new FormParameters()
             {
                 PageNumber = 1,
-                PageSize = 2
+                PageSize = 2,
             };
-
-            var totalRecords = 0;
             
-            var dummyRoute = 
-                $"{dummyUri.AbsolutePath}?pageNumber={dummyPaginationFilter.PageNumber}&pageSize={dummyPaginationFilter.PageSize}";
-
-            _mockFormRepo.Setup(x => x.GetAll(dummyPaginationFilter, out totalRecords )).Returns(dummyForms);
-
-            // create a PagedResponse
-            var pagedResponse = new PagedResponse<IEnumerable<FormEntity>>(dummyForms, dummyPaginationFilter.PageNumber,
-                dummyPaginationFilter.PageSize);
-
+            var paged = new PagedList<FormEntity>(dummyForms, 10, formParams.PageNumber, formParams.PageSize);
+            
             // Act
-            var result = _formService.GetAll(dummyPaginationFilter, dummyRoute);
+            _mockFormRepo.Setup(x => x.GetAll(formParams)).Returns(paged);
+            var result = _formService.GetAll(formParams);
             
-            // Assert
-            Assert.NotEqual(new OkObjectResult(pagedResponse), result);
+            // Assert 
+            Assert.Equal(2, result.Count());
+            Assert.Equal(1, result.First().FormId);
+            Assert.Equal(2, result.Last().FormId);
         }
     }
 }

@@ -1,18 +1,14 @@
-﻿using Calligraphy.Data.Models;
-using System;
+﻿#nullable enable
+using Calligraphy.Data.Models;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Calligraphy.Data.Filters;
-using Microsoft.AspNetCore.Mvc;
+using Calligraphy.Data.Pagination;
 
 namespace Calligraphy.Business.Form
 {
     public interface IFormService
     {
         // GET ALLs
-        IActionResult GetAll(PaginationFilter filter, string? route);
+        PagedList<FormEntity> GetAll(FormParameters formParameters);
         
         IEnumerable<ServiceEntity> GetAllServices();
 

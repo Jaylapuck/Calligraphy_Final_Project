@@ -1,9 +1,7 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Linq;
 using Calligraphy.Data.Config;
-using Calligraphy.Data.Filters;
 using Calligraphy.Data.Models;
+using Calligraphy.Data.Pagination;
 using Microsoft.EntityFrameworkCore;
 
 namespace Calligraphy.Data.Repo.Form
@@ -24,19 +22,10 @@ namespace Calligraphy.Data.Repo.Form
             _context = new CalligraphyContext(options);
         }
         
-        public IEnumerable<FormEntity> GetAll(PaginationFilter validFilter, out int totalRecords)
+        public PagedList<FormEntity> GetAll(FormParameters formParameters)
         {
-            var list = _context.Forms.Skip((validFilter.PageNumber - 1) * validFilter.PageSize)
-                .Take(validFilter.PageSize)
-                .Include(a => a.Quote)
-                .Include(a => a.Customer)
-                .Include(a => a.Customer.Address)
-
-                .AsNoTracking().ToList();
             
-            totalRecords = _context.Forms.Count();
-            
-            return list;
+            return PagedList<FormEntity>.ToPagedList(_context.Forms.OrderBy(x => x.CreatedDate), formParameters.PageNumber, formParameters.PageSize); 
         }
         
         public bool Create(FormEntity form)

@@ -4,12 +4,14 @@ using System.Net.Mime;
 using System.Threading.Tasks;
 using Calligraphy.Business.Form;
 using Calligraphy.Data.Enums;
-using Calligraphy.Data.Filters;
 using Calligraphy.Data.Models;
+using Calligraphy.Data.Pagination;
 using Calligraphy.Mailer.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
+using Newtonsoft.Json;
 
 namespace Calligraphy.Controllers
 {
@@ -21,11 +23,13 @@ namespace Calligraphy.Controllers
     {
         private readonly IFormService _formService;
         private readonly IMailerService _mailService;
+        private readonly ILogger<FormController> _logger;
 
-        public FormController(IFormService formService, IMailerService mailService)
+        public FormController(IFormService formService, IMailerService mailService, ILogger<FormController> logger)
         {
             _formService = formService;
             _mailService = mailService;
+            _logger = logger;
         }
 
         [HttpGet]
@@ -39,13 +43,25 @@ namespace Calligraphy.Controllers
 
         // GET pageable
         [HttpGet]
-        [Route("/api/form")]
+        [Route("/api/forms")]
         [Produces(MediaTypeNames.Application.Json)]
-        public IActionResult GetAllPages([FromQuery] PaginationFilter filter)
+        public IActionResult GetAllPages([FromQuery] FormParameters formParameters)
         {
-            var route = Request.Path.Value;
-            var result = _formService.GetAll(filter, route);
-            return result;
+            var forms = _formService.GetAll(formParameters);
+            var metadata = new {
+                forms.TotalCount,
+                forms.PageSize,
+                forms.CurrentPage,
+                forms.TotalPages,
+                forms.HasNext,
+                forms.HasPrevious
+            };
+            
+            // make it accessible from the frontend
+            Response.Headers.Add("X-Pagination", JsonConvert.SerializeObject(metadata));
+            
+            _logger.LogInformation($"Returning {forms.Count} forms");
+            return Ok(forms);
         }
 
         // POST: api/Form
@@ -56,24 +72,18 @@ namespace Calligraphy.Controllers
         {
             try
             {
-                var quote = new QuoteEntity();
-                quote.Materials = "None";
-                quote.Price = form.StartingRate;
-                switch (form.ServiceType)
+                var quote = new QuoteEntity
                 {
-                    case ServiceType.Calligraphy:
-                        quote.Duration = 14;
-                        break;
-                    case ServiceType.Engraving:
-                        quote.Duration = 21;
-                        break;
-                    default:
-                        quote.Duration = 0;
-                        break;
-                }
-
+                    Materials = "None",
+                    Price = form.StartingRate,
+                    Duration = form.ServiceType switch
+                    {
+                        ServiceType.Calligraphy => 14,
+                        ServiceType.Engraving => 21,
+                        _ => 0
+                    }
+                };
                 form.Quote = quote;
-
                 var result = _formService.Create(form);
                 if (!result) return BadRequest();
                 var mailController = new MailController(_mailService);
