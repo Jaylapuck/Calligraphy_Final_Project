@@ -150,7 +150,12 @@ namespace Calligraphy
                     .AllowCredentials()
                     .AllowAnyHeader();
                 
-                builder.WithOrigins("https://calligraphy-final-project-2vrlmrebu-trim.vercel.app")
+                builder.WithOrigins("https://calligraphy-final-project-9wqjcrz46-trim.vercel.app")
+                    .AllowAnyMethod()
+                    .AllowCredentials()
+                    .AllowAnyHeader();
+                
+                builder.WithOrigins("https://calligraphy-final-project-git-feat-scwsfp-57impleme-c92330-trim.vercel.app")
                     .AllowAnyMethod()
                     .AllowCredentials()
                     .AllowAnyHeader();
