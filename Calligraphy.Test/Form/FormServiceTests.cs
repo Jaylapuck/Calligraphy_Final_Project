@@ -87,20 +87,6 @@ namespace Calligraphy.Test.Form
             Assert.Null(result);
         }
         
-        //TC4-TS5
-        [Fact]
-        public void GetAllServicesException()
-        {
-            // Arrange
-
-            // Act
-            _mockServiceRepo.Setup(x => x.GetAll()).Throws(new Exception());
-            var result = _formService.GetAllServices();
-
-            // Assert 
-            Assert.Null(result);
-        }
-        
         //TC4-TS6
         [Fact]
         public void GetAllForms()

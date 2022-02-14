@@ -39,7 +39,7 @@ namespace Calligraphy.Test.Service
                 var result = serviceRepo.GetAll();
 
                 // Assert
-                Assert.Single(result);
+                Assert.Equal(2, result.Count<ServiceEntity>());
             }
         }
     }
