@@ -1,7 +1,5 @@
-﻿using Calligraphy.Data.Models;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
+using Calligraphy.Data.Models;
 
 namespace Calligraphy.Data.Repo.Quote
 {
@@ -14,7 +12,5 @@ namespace Calligraphy.Data.Repo.Quote
         bool Create(QuoteEntity quote);
 
         QuoteEntity Update(QuoteEntity quote);
-
-
     }
 }

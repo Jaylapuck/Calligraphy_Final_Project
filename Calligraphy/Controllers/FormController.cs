@@ -22,8 +22,8 @@ namespace Calligraphy.Controllers
     public class FormController : ControllerBase
     {
         private readonly IFormService _formService;
-        private readonly IMailerService _mailService;
         private readonly ILogger<FormController> _logger;
+        private readonly IMailerService _mailService;
 
         public FormController(IFormService formService, IMailerService mailService, ILogger<FormController> logger)
         {
@@ -48,7 +48,8 @@ namespace Calligraphy.Controllers
         public IActionResult GetAllPages([FromQuery] FormParameters formParameters)
         {
             var forms = _formService.GetAll(formParameters);
-            var metadata = new {
+            var metadata = new
+            {
                 forms.TotalCount,
                 forms.PageSize,
                 forms.CurrentPage,
@@ -56,10 +57,10 @@ namespace Calligraphy.Controllers
                 forms.HasNext,
                 forms.HasPrevious
             };
-            
+
             // make it accessible from the frontend
             Response.Headers.Add("X-Pagination", JsonConvert.SerializeObject(metadata));
-            
+
             _logger.LogInformation($"Returning {forms.Count} forms");
             return Ok(forms);
         }

@@ -1,5 +1,4 @@
-﻿using System;
-using Calligraphy.Business.JWTService.RefreshTokenGenerator;
+﻿using Calligraphy.Business.JWTService.RefreshTokenGenerator;
 using Xunit;
 
 namespace Calligraphy.Test.Jwt

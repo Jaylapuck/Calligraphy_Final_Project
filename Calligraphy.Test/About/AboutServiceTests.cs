@@ -1,24 +1,25 @@
 ﻿using Calligraphy.Business.About;
 using Calligraphy.Data.Models;
 using Calligraphy.Data.Repo.About;
-using Microsoft.AspNetCore.Mvc;
 using Moq;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Xunit;
 
 namespace Calligraphy.Test.About
 {
     public class AboutServiceTests
     {
-        private readonly Mock<IAboutRepo> _mockAboutRepo;
         private readonly AboutService _aboutService;
+        private readonly Mock<IAboutRepo> _mockAboutRepo;
 
-        public string name1 = "name1", email1 = "email1", phone1 = "phone1", proffesion1 = "prof1", description1 = "desc1",
-            language1 = "lang1", country1 = "count1", experience1 = "exp1", mission1 = "miss1";
+        public string name1 = "name1",
+            email1 = "email1",
+            phone1 = "phone1",
+            proffesion1 = "prof1",
+            description1 = "desc1",
+            language1 = "lang1",
+            country1 = "count1",
+            experience1 = "exp1",
+            mission1 = "miss1";
 
 
         public AboutServiceTests()

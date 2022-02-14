@@ -12,7 +12,7 @@ namespace Calligraphy.Test.Jwt
     {
         private readonly Mock<IAdminLoginRepo> _adminLoginRepo;
         private readonly Mock<IJwtTokenHandler> _jwtTokenHandler;
-        private AuthService _authService;
+        private readonly AuthService _authService;
 
         public AuthServiceTest()
         {
@@ -26,14 +26,14 @@ namespace Calligraphy.Test.Jwt
         public void Login_ShouldReturnAuthenticationResponse()
         {
             // Arrange
-            var adminLogin = new AdminEntity()
+            var adminLogin = new AdminEntity
             {
                 Id = 1,
                 UserName = "admin",
                 Password = "admin"
             };
 
-            var authenticateResponse = new AuthenticationResponse()
+            var authenticateResponse = new AuthenticationResponse
             {
                 JwtToken = "token",
                 RefreshToken = "refreshToken"
@@ -57,14 +57,14 @@ namespace Calligraphy.Test.Jwt
         public void Login_ShouldReturnAuthenticationResponseBecauseOfLoginDidNotWork()
         {
             // Arrange
-            var adminLogin = new AdminEntity()
+            var adminLogin = new AdminEntity
             {
                 Id = 1,
                 UserName = "admin",
                 Password = "admin"
             };
 
-            var authenticateResponse = new AuthenticationResponse()
+            var authenticateResponse = new AuthenticationResponse
             {
                 JwtToken = null,
                 RefreshToken = null
@@ -81,19 +81,19 @@ namespace Calligraphy.Test.Jwt
             Assert.Equal(authenticateResponse.RefreshToken, result.RefreshToken);
             Assert.IsType<AuthenticationResponse>(result);
         }
-        
+
         //TC9-TS3
         [Fact]
         public void GetRefreshToken()
         {
             // Arrange
             var username = "admin";
-            
+
             _adminLoginRepo.Setup(x => x.GetRefreshToken(username)).Returns("refreshToken");
-            
+
             // Act
             var result = _authService.GetRefreshToken(username);
-            
+
             // Assert
             Assert.NotNull(result);
             Assert.IsType<string>(result);

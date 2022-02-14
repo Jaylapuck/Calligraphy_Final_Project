@@ -4,6 +4,16 @@ namespace Calligraphy.Data.Repo.Wrappers
 {
     public class PagedResponse<T> : Response<T>
     {
+        public PagedResponse(T data, int pageNumber, int pageSize)
+        {
+            PageNumber = pageNumber;
+            PageSize = pageSize;
+            Data = data;
+            Message = null;
+            Success = true;
+            Errors = null;
+        }
+
         public int PageNumber { get; set; }
         public int PageSize { get; set; }
         public Uri FirstPage { get; set; }
@@ -12,15 +22,5 @@ namespace Calligraphy.Data.Repo.Wrappers
         public int TotalRecords { get; set; }
         public Uri NextPage { get; set; }
         public Uri PreviousPage { get; set; }
-
-        public PagedResponse(T data, int pageNumber, int pageSize)
-        {
-            this.PageNumber = pageNumber;
-            this.PageSize = pageSize;
-            this.Data = data;
-            this.Message = null;
-            this.Success = true;
-            this.Errors = null;
-        }
     }
 }

@@ -1,7 +1,5 @@
-﻿using Calligraphy.Data.Models;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
+using Calligraphy.Data.Models;
 
 namespace Calligraphy.Data.Repo.Service
 {

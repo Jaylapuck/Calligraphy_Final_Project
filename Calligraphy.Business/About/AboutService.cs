@@ -1,11 +1,6 @@
 ﻿using Calligraphy.Data.Models;
 using Calligraphy.Data.Repo.About;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Calligraphy.Business.About
 {
@@ -21,23 +16,15 @@ namespace Calligraphy.Business.About
         public IActionResult Get()
         {
             var aboutInfo = _aboutRepo.Get();
-            if (aboutInfo == null)
-            {
-                return new NotFoundResult();
-            }
+            if (aboutInfo == null) return new NotFoundResult();
             return new OkObjectResult(aboutInfo);
         }
+
         public IActionResult Update(AboutEntity aboutInfo)
         {
-            if (aboutInfo == null)
-            {
-                return new BadRequestResult();
-            }
+            if (aboutInfo == null) return new BadRequestResult();
             var aboutToUpdate = _aboutRepo.Get();
-            if (aboutToUpdate == null)
-            {
-                return new NotFoundResult();
-            }
+            if (aboutToUpdate == null) return new NotFoundResult();
             aboutToUpdate.Name = aboutInfo.Name;
             aboutToUpdate.Email = aboutInfo.Email;
             aboutToUpdate.Phone = aboutInfo.Phone;

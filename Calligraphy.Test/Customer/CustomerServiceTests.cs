@@ -1,20 +1,17 @@
-﻿using Calligraphy.Business.Customer;
+﻿using System.Collections.Generic;
+using System.Linq;
+using Calligraphy.Business.Customer;
 using Calligraphy.Data.Models;
 using Calligraphy.Data.Repo.Customer;
 using Moq;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Xunit;
 
 namespace Calligraphy.Test.Customer
 {
     public class CustomerServiceTests
     {
-        private readonly Mock<ICustomerRepo> _mockCustomerRepo;
         private readonly CustomerService _customerService;
+        private readonly Mock<ICustomerRepo> _mockCustomerRepo;
 
         public string firstName1 = "John1", lastName1 = "Doe1", email1 = "email1@email.com";
         public string firstName2 = "John2", lastName2 = "Doe2", email2 = "email2@email.com";
@@ -34,10 +31,9 @@ namespace Calligraphy.Test.Customer
             // Arrange
             var customers = new List<CustomerEntity>
             {
-                new CustomerEntity { CustomerId = 1, FirstName = firstName1, LastName=lastName1, Email=email1},
-                new CustomerEntity { CustomerId = 2, FirstName = firstName2, LastName=lastName2, Email=email2},
-                new CustomerEntity { CustomerId = 3, FirstName = firstName3, LastName=lastName3, Email=email3},
-
+                new() {CustomerId = 1, FirstName = firstName1, LastName = lastName1, Email = email1},
+                new() {CustomerId = 2, FirstName = firstName2, LastName = lastName2, Email = email2},
+                new() {CustomerId = 3, FirstName = firstName3, LastName = lastName3, Email = email3}
             };
 
             // Act
@@ -46,7 +42,6 @@ namespace Calligraphy.Test.Customer
 
             // Assert
             Assert.Equal(3, result.Count());
-
         }
 
         [Fact]
@@ -54,7 +49,8 @@ namespace Calligraphy.Test.Customer
         public void CreateCustomer()
         {
             // Arrange
-            var customer = new CustomerEntity { CustomerId = 1, FirstName = firstName1, LastName = lastName1, Email = email1 };
+            var customer = new CustomerEntity
+                {CustomerId = 1, FirstName = firstName1, LastName = lastName1, Email = email1};
 
             // Act
             _mockCustomerRepo.Setup(x => x.Create(customer));

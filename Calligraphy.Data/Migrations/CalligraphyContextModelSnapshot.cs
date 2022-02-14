@@ -126,7 +126,7 @@ namespace Calligraphy.Data.Migrations
                         new
                         {
                             Id = 1,
-                            Password = "admin",
+                            Password = "$2a$11$IX69qfsF1lL0Lq6tn0jyUe8beXk0FD9vMaG6ZhiKw.jHdJClYlDUK",
                             UserName = "admin"
                         });
                 });
@@ -225,7 +225,7 @@ namespace Calligraphy.Data.Migrations
                         {
                             FormId = 1,
                             Comments = "I am a student, worked here blabla",
-                            CreatedDate = new DateTime(2022, 2, 3, 15, 39, 25, 248, DateTimeKind.Local).AddTicks(5333),
+                            CreatedDate = new DateTime(2022, 2, 14, 15, 30, 21, 611, DateTimeKind.Local).AddTicks(5385),
                             ServiceType = 0,
                             StartingRate = 0f
                         },
@@ -233,7 +233,7 @@ namespace Calligraphy.Data.Migrations
                         {
                             FormId = 2,
                             Comments = "I am a student, worked here blabla",
-                            CreatedDate = new DateTime(2022, 2, 3, 15, 39, 25, 250, DateTimeKind.Local).AddTicks(4154),
+                            CreatedDate = new DateTime(2022, 2, 14, 15, 30, 21, 613, DateTimeKind.Local).AddTicks(6103),
                             ServiceType = 0,
                             StartingRate = 0f
                         },
@@ -241,7 +241,7 @@ namespace Calligraphy.Data.Migrations
                         {
                             FormId = 3,
                             Comments = "I am a student, worked here blabla",
-                            CreatedDate = new DateTime(2022, 2, 3, 15, 39, 25, 250, DateTimeKind.Local).AddTicks(4224),
+                            CreatedDate = new DateTime(2022, 2, 14, 15, 30, 21, 613, DateTimeKind.Local).AddTicks(6148),
                             ServiceType = 0,
                             StartingRate = 0f
                         },
@@ -249,7 +249,7 @@ namespace Calligraphy.Data.Migrations
                         {
                             FormId = 4,
                             Comments = "I am a student, worked here blabla",
-                            CreatedDate = new DateTime(2022, 2, 3, 15, 39, 25, 250, DateTimeKind.Local).AddTicks(4239),
+                            CreatedDate = new DateTime(2022, 2, 14, 15, 30, 21, 613, DateTimeKind.Local).AddTicks(6163),
                             ServiceType = 0,
                             StartingRate = 0f
                         },
@@ -257,7 +257,7 @@ namespace Calligraphy.Data.Migrations
                         {
                             FormId = 5,
                             Comments = "I am a student, worked here blabla",
-                            CreatedDate = new DateTime(2022, 2, 3, 15, 39, 25, 250, DateTimeKind.Local).AddTicks(4319),
+                            CreatedDate = new DateTime(2022, 2, 14, 15, 30, 21, 613, DateTimeKind.Local).AddTicks(6176),
                             ServiceType = 0,
                             StartingRate = 0f
                         });

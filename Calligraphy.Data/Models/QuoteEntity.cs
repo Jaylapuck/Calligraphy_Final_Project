@@ -1,13 +1,8 @@
-﻿using Calligraphy.Data.Enums;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Text;
+﻿using System.ComponentModel.DataAnnotations;
+using Calligraphy.Data.Enums;
 
 namespace Calligraphy.Data.Models
 {
-
     public class QuoteEntity
     {
         [Key] public int QuoteId { get; set; }
@@ -15,7 +10,5 @@ namespace Calligraphy.Data.Models
         public int Duration { get; set; }
         public string Materials { get; set; }
         public Status ApprovalStatus { get; set; }
-
     }
-
 }

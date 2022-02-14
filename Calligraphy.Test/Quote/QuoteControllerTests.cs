@@ -1,4 +1,6 @@
-﻿using Calligraphy.Business.Contract;
+﻿using System.Collections.Generic;
+using System.Linq;
+using Calligraphy.Business.Contract;
 using Calligraphy.Business.Quote;
 using Calligraphy.Controllers;
 using Calligraphy.Data.Enums;
@@ -6,27 +8,24 @@ using Calligraphy.Data.Models;
 using Calligraphy.Mailer.Services;
 using Microsoft.AspNetCore.Mvc;
 using Moq;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Xunit;
 
 namespace Calligraphy.Test.Quote
 {
     public class QuoteControllerTests
     {
-        private readonly Mock<IQuoteService> _quoteServiceMock;
-        private readonly Mock<IMailerService> _mailServiceMock;
         private readonly Mock<IContractService> _contractServiceMock;
+        private readonly Mock<IMailerService> _mailServiceMock;
         private readonly QuoteController _quoteController;
+        private readonly Mock<IQuoteService> _quoteServiceMock;
+
         public QuoteControllerTests()
         {
             _quoteServiceMock = new Mock<IQuoteService>();
             _mailServiceMock = new Mock<IMailerService>();
             _contractServiceMock = new Mock<IContractService>();
-            _quoteController = new QuoteController(_quoteServiceMock.Object, _mailServiceMock.Object, _contractServiceMock.Object);
+            _quoteController = new QuoteController(_quoteServiceMock.Object, _mailServiceMock.Object,
+                _contractServiceMock.Object);
         }
 
         [Fact]
@@ -34,7 +33,7 @@ namespace Calligraphy.Test.Quote
         public void GetByFormId_ShouldReturnOk()
         {
             // Arrange
-            int form_id = 1;
+            var form_id = 1;
             var quote = new QuoteEntity();
             _quoteServiceMock.Setup(x => x.GetByFormId(form_id)).Returns(new OkObjectResult(quote));
 
@@ -80,11 +79,11 @@ namespace Calligraphy.Test.Quote
         public void GetAll_ShouldReturnListOfTwoEntities()
         {
             // Arrange
-            FormEntity form = new FormEntity();
-            var quotes = new List<QuoteEntity>()
+            var form = new FormEntity();
+            var quotes = new List<QuoteEntity>
             {
-                new QuoteEntity(){ QuoteId = 1, ApprovalStatus = Status.Approved, Materials = "Random Materials", Price = 25},
-                new QuoteEntity(){ QuoteId = 2, ApprovalStatus = Status.Denied, Materials = "Random Materials", Price = 35 },
+                new() {QuoteId = 1, ApprovalStatus = Status.Approved, Materials = "Random Materials", Price = 25},
+                new() {QuoteId = 2, ApprovalStatus = Status.Denied, Materials = "Random Materials", Price = 35}
             };
 
             _quoteServiceMock.Setup(x => x.GetAll()).Returns(quotes);
@@ -121,8 +120,9 @@ namespace Calligraphy.Test.Quote
         public void CreateOKResultTest()
         {
             // Arrange
-            FormEntity form = new FormEntity();
-            QuoteEntity dummyQuote = new QuoteEntity() { QuoteId = 1, ApprovalStatus = Status.Approved, Materials = "Random Materials", Price = 25 };
+            var form = new FormEntity();
+            var dummyQuote = new QuoteEntity
+                {QuoteId = 1, ApprovalStatus = Status.Approved, Materials = "Random Materials", Price = 25};
 
             _quoteServiceMock.Setup(x => x.Create(dummyQuote)).Returns(true);
 
@@ -139,8 +139,9 @@ namespace Calligraphy.Test.Quote
         public void CreateBadResultTest()
         {
             // Arrange
-            FormEntity form = new FormEntity();
-            QuoteEntity dummyQuote = new QuoteEntity() { QuoteId = 1, ApprovalStatus = Status.Approved, Materials = "Random Materials", Price = 25 };
+            var form = new FormEntity();
+            var dummyQuote = new QuoteEntity
+                {QuoteId = 1, ApprovalStatus = Status.Approved, Materials = "Random Materials", Price = 25};
 
             _quoteServiceMock.Setup(x => x.Create(dummyQuote)).Returns(false);
 
@@ -197,4 +198,3 @@ namespace Calligraphy.Test.Quote
         }
     }
 }
-

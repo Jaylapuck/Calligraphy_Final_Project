@@ -1,4 +1,9 @@
-﻿using Calligraphy.Controllers;
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Threading.Tasks;
+using Calligraphy.Controllers;
 using Calligraphy.Data.Enums;
 using Calligraphy.Data.Models;
 using Calligraphy.Mailer.Model;
@@ -6,26 +11,19 @@ using Calligraphy.Mailer.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Moq;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Calligraphy.Data.Models.AuthenticationModels;
 using Xunit;
 
 namespace Calligraphy.Test.Mailer
 {
     public class MailerControllerTests
     {
-        private readonly Mock<IMailerService> _service;
         private readonly MailController _controller;
+        private readonly Mock<IMailerService> _service;
 
         public MailerControllerTests()
         {
-            this._service = new Mock<IMailerService>();
-            this._controller = new MailController(_service.Object);
+            _service = new Mock<IMailerService>();
+            _controller = new MailController(_service.Object);
         }
 
         [Fact]
@@ -33,7 +31,7 @@ namespace Calligraphy.Test.Mailer
         public async Task SendMailCustomerConfirmationShouldReturnOkResult()
         {
             // Arrange 
-            AddressEntity dummyAddress = new AddressEntity
+            var dummyAddress = new AddressEntity
             {
                 AddressId = 1,
                 Street = "somne street",
@@ -41,7 +39,7 @@ namespace Calligraphy.Test.Mailer
                 Country = "some country",
                 Postal = "some code"
             };
-            CustomerEntity dummyCustomer = new CustomerEntity
+            var dummyCustomer = new CustomerEntity
             {
                 CustomerId = 1,
                 FirstName = "some name",
@@ -49,11 +47,11 @@ namespace Calligraphy.Test.Mailer
                 Address = dummyAddress,
                 Email = "tristanblacklafleur@hotmail.ca"
             };
-            string filePath = @"..\..\..\Mailer\TestFiles\23784.png";
+            var filePath = @"..\..\..\Mailer\TestFiles\23784.png";
             using var stream = new MemoryStream((await File.ReadAllBytesAsync(filePath)).ToArray());
             var formFile = new FormFile(stream, 0, stream.Length, "streamFile", filePath.Split(@"\").Last());
-            List<IFormFile> dummyAttachments = new List<IFormFile> { formFile };
-            QuoteEntity dummyQuote = new QuoteEntity
+            var dummyAttachments = new List<IFormFile> {formFile};
+            var dummyQuote = new QuoteEntity
             {
                 QuoteId = 1,
                 Price = 20,
@@ -61,7 +59,7 @@ namespace Calligraphy.Test.Mailer
                 Materials = "None",
                 ApprovalStatus = Status.Approved
             };
-            FormEntity dummyForm = new FormEntity
+            var dummyForm = new FormEntity
             {
                 FormId = 1,
                 Customer = dummyCustomer,
@@ -88,7 +86,7 @@ namespace Calligraphy.Test.Mailer
         public async Task SendMailOwnerAlertNewQuoteShouldReturnOkResult()
         {
             // Arrange 
-            AddressEntity dummyAddress = new AddressEntity
+            var dummyAddress = new AddressEntity
             {
                 AddressId = 1,
                 Street = "somne street",
@@ -96,7 +94,7 @@ namespace Calligraphy.Test.Mailer
                 Country = "some country",
                 Postal = "some code"
             };
-            CustomerEntity dummyCustomer = new CustomerEntity
+            var dummyCustomer = new CustomerEntity
             {
                 CustomerId = 1,
                 FirstName = "some name",
@@ -104,11 +102,11 @@ namespace Calligraphy.Test.Mailer
                 Address = dummyAddress,
                 Email = "tristanblacklafleur@hotmail.ca"
             };
-            string filePath = @"..\..\..\Mailer\TestFiles\23784.png";
+            var filePath = @"..\..\..\Mailer\TestFiles\23784.png";
             using var stream = new MemoryStream((await File.ReadAllBytesAsync(filePath)).ToArray());
             var formFile = new FormFile(stream, 0, stream.Length, "streamFile", filePath.Split(@"\").Last());
-            List<IFormFile> dummyAttachments = new List<IFormFile> { formFile };
-            QuoteEntity dummyQuote = new QuoteEntity
+            var dummyAttachments = new List<IFormFile> {formFile};
+            var dummyQuote = new QuoteEntity
             {
                 QuoteId = 1,
                 Price = 20,
@@ -116,7 +114,7 @@ namespace Calligraphy.Test.Mailer
                 Materials = "None",
                 ApprovalStatus = Status.Approved
             };
-            FormEntity dummyForm = new FormEntity
+            var dummyForm = new FormEntity
             {
                 FormId = 1,
                 Customer = dummyCustomer,
@@ -143,7 +141,7 @@ namespace Calligraphy.Test.Mailer
         public async Task SendMailOwnerAlertNewContractShouldReturnOkResult()
         {
             // Arrange 
-            QuoteEntity dummyQuote = new QuoteEntity
+            var dummyQuote = new QuoteEntity
             {
                 QuoteId = 1,
                 Price = 200,
@@ -151,7 +149,7 @@ namespace Calligraphy.Test.Mailer
                 Materials = "Client birthday card",
                 ApprovalStatus = Status.Approved
             };
-            ContractEntity dummyCOntract = new ContractEntity
+            var dummyCOntract = new ContractEntity
             {
                 ContractId = 1,
                 FinalCost = 200,
