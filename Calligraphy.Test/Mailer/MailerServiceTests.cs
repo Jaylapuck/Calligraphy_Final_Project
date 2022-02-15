@@ -1,16 +1,9 @@
-﻿using Calligraphy.Mailer.Model;
-using Calligraphy.Mailer.Services;
-using Calligraphy.Mailer.Settings;
+﻿using System.IO;
+using System.Linq;
+using Calligraphy.Mailer.Model;
 using MailKit.Net.Smtp;
-using Microsoft.AspNetCore.Http;
 using MimeKit;
 using netDumbster.smtp;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Xunit;
 
 namespace Calligraphy.Test.Mailer
@@ -38,7 +31,6 @@ namespace Calligraphy.Test.Mailer
             var builder = new BodyBuilder();
 
             if (request.attachtments != null)
-            {
                 foreach (var file in request.attachtments.Where(file => file.Length > 0))
                 {
                     byte[] fileBytes;
@@ -50,7 +42,6 @@ namespace Calligraphy.Test.Mailer
 
                     builder.Attachments.Add(file.FileName, fileBytes, ContentType.Parse(file.ContentType));
                 }
-            }
 
             builder.HtmlBody = request.body;
             email.Body = builder.ToMessageBody();

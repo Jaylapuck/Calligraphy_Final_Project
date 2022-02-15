@@ -1,21 +1,18 @@
-﻿using Calligraphy.Business.Customer;
+﻿using System.Collections.Generic;
+using System.Linq;
+using Calligraphy.Business.Customer;
 using Calligraphy.Controllers;
 using Calligraphy.Data.Models;
 using Microsoft.AspNetCore.Mvc;
 using Moq;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Xunit;
 
 namespace Calligraphy.Test.Customer
 {
     public class CustomerControllerTests
     {
-        private readonly Mock<ICustomerService> _mockCustomerService;
         private readonly CustomerController _customerController;
+        private readonly Mock<ICustomerService> _mockCustomerService;
 
         public string firstName1 = "John1", lastName1 = "Doe1", email1 = "email1@email.com";
         public string firstName2 = "John2", lastName2 = "Doe2", email2 = "email2@email.com";
@@ -34,8 +31,8 @@ namespace Calligraphy.Test.Customer
             // Arrange
             var customers = new List<CustomerEntity>
             {
-                new CustomerEntity { CustomerId = 1, FirstName = firstName1, LastName=lastName1, Email=email1},
-                new CustomerEntity { CustomerId = 2, FirstName = firstName2, LastName=lastName2, Email=email2}
+                new() {CustomerId = 1, FirstName = firstName1, LastName = lastName1, Email = email1},
+                new() {CustomerId = 2, FirstName = firstName2, LastName = lastName2, Email = email2}
             };
 
             _mockCustomerService.Setup(x => x.GetAll()).Returns(customers);

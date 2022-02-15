@@ -13,11 +13,12 @@ namespace Calligraphy.Business.JWTService.JWTTokenHandler
 {
     public class JwtTokenHandler : IJwtTokenHandler
     {
+        private readonly IAdminLoginRepo _adminLoginRepo;
         private readonly IConfiguration _configuration;
         private readonly IRefreshTokenGenerator _refreshTokenGenerator;
-        private readonly IAdminLoginRepo _adminLoginRepo;
-        
-        public JwtTokenHandler(IRefreshTokenGenerator refreshTokenGenerator, IAdminLoginRepo adminLoginRepo, IConfiguration configuration)
+
+        public JwtTokenHandler(IRefreshTokenGenerator refreshTokenGenerator, IAdminLoginRepo adminLoginRepo,
+            IConfiguration configuration)
         {
             _refreshTokenGenerator = refreshTokenGenerator;
             _adminLoginRepo = adminLoginRepo;
@@ -32,12 +33,14 @@ namespace Calligraphy.Business.JWTService.JWTTokenHandler
                 expires: DateTime.UtcNow.AddHours(1),
                 audience: _configuration["Jwt:Audience"],
                 issuer: _configuration["Jwt:Issuer"],
-                signingCredentials: new SigningCredentials(new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Secret"])), SecurityAlgorithms.HmacSha256)
+                signingCredentials: new SigningCredentials(
+                    new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Secret"])),
+                    SecurityAlgorithms.HmacSha256)
             );
 
-            var token =  new JwtSecurityTokenHandler().WriteToken(jwtSecurityToken);
+            var token = new JwtSecurityTokenHandler().WriteToken(jwtSecurityToken);
             var refreshToken = _refreshTokenGenerator.GenerateRefreshToken();
-            
+
             _adminLoginRepo.AddRefreshTokenToUser(username, refreshToken);
 
             return new AuthenticationResponse
@@ -46,7 +49,7 @@ namespace Calligraphy.Business.JWTService.JWTTokenHandler
                 RefreshToken = refreshToken
             };
         }
-        
+
         //Authorization Token Authentication
         public AuthenticationResponse Authenticate(string username)
         {
@@ -67,7 +70,7 @@ namespace Calligraphy.Business.JWTService.JWTTokenHandler
 
             var token = tokenHandler.CreateToken(tokenDescriptor);
             var refreshToken = _refreshTokenGenerator.GenerateRefreshToken();
-            
+
             _adminLoginRepo.AddRefreshTokenToUser(username, refreshToken);
 
             return new AuthenticationResponse

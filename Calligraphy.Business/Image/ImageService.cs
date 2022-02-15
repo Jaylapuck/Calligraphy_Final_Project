@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Calligraphy.Data.Models;
 using Calligraphy.Data.Repo.Image;
 using Microsoft.AspNetCore.Mvc;
@@ -14,7 +13,7 @@ namespace Calligraphy.Business.Image
         {
             _imageRepo = imageRepo;
         }
-        
+
         public IEnumerable<ImageEntity> GetAll()
         {
             return _imageRepo.GetAll();
@@ -23,38 +22,26 @@ namespace Calligraphy.Business.Image
         public IActionResult GetById(int id)
         {
             var image = _imageRepo.GetById(id);
-            if (image == null)
-            {
-                return new NotFoundResult();
-            }
+            if (image == null) return new NotFoundResult();
             return new OkObjectResult(image);
         }
 
         public IActionResult GetByImageId(int id)
         {
             var image = _imageRepo.GetByImageId(id);
-            if (image == null)
-            {
-                return new NotFoundResult();
-            }
+            if (image == null) return new NotFoundResult();
             return new OkObjectResult(image);
         }
 
         public IActionResult Create(ImageEntity image)
         {
             //verify that  the image entity is valid
-            if (image == null)
-            {
-                return new BadRequestObjectResult("Image entity is null");
-            }
-            
+            if (image == null) return new BadRequestObjectResult("Image entity is null");
+
             //verify that the imageId is not already in the database
             var imageInDb = _imageRepo.GetByImageId(image.ImageId);
-            
-            if (imageInDb != null)
-            {
-                return new BadRequestObjectResult("ImageId already exists");
-            }
+
+            if (imageInDb != null) return new BadRequestObjectResult("ImageId already exists");
 
             _imageRepo.Add(image);
             return new OkObjectResult(image);
@@ -62,15 +49,9 @@ namespace Calligraphy.Business.Image
 
         public IActionResult Update(ImageEntity image, int id)
         {
-            if (image == null)
-            {
-                return new BadRequestResult();
-            }
+            if (image == null) return new BadRequestResult();
             var imageToUpdate = _imageRepo.GetByImageId(id);
-            if (imageToUpdate == null)
-            {
-                return new NotFoundResult();
-            }
+            if (imageToUpdate == null) return new NotFoundResult();
             imageToUpdate.ImageTitle = image.ImageTitle;
             imageToUpdate.ImageData = image.ImageData;
             _imageRepo.Update(imageToUpdate);
@@ -81,10 +62,7 @@ namespace Calligraphy.Business.Image
         public IActionResult Delete(int id)
         {
             var image = _imageRepo.GetByImageId(id);
-            if (image == null)
-            {
-                return new NotFoundResult();
-            }
+            if (image == null) return new NotFoundResult();
             _imageRepo.DeleteById(id);
             return new OkObjectResult(image);
         }

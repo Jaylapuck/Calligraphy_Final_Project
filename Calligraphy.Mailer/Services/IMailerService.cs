@@ -1,9 +1,5 @@
-﻿using Calligraphy.Mailer.Model;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
+using Calligraphy.Mailer.Model;
 
 namespace Calligraphy.Mailer.Services
 {

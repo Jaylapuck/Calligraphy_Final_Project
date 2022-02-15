@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Text;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace Calligraphy.Data.Models
 {
     public class AboutEntity
     {
-        [Key]
-        public int AboutId { get; set; }
+        [Key] public int AboutId { get; set; }
 
         //Personal
         public string Name { get; set; }
@@ -24,7 +20,5 @@ namespace Calligraphy.Data.Models
 
         //Mission
         public string Mission { get; set; }
-
     }
-
 }

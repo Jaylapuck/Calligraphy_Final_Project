@@ -1,16 +1,16 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>net5.0</TargetFramework>
-  </PropertyGroup>
+    <PropertyGroup>
+        <TargetFramework>net5.0</TargetFramework>
+    </PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="MailKit" Version="3.0.0" />
-    <PackageReference Include="Microsoft.AspNetCore.Http.Features" Version="5.0.13" />
-    <PackageReference Include="Microsoft.Extensions.Options" Version="6.0.0" />
-    <PackageReference Include="MimeKit" Version="3.0.0" />
-    <PackageReference Include="PagedList" Version="1.17.0" />
-    <PackageReference Include="PagedList.Mvc" Version="4.5.0" />
-  </ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="BCrypt.Net-Next" Version="4.0.2"/>
+        <PackageReference Include="DotNetEnv" Version="2.3.0"/>
+        <PackageReference Include="MailKit" Version="3.0.0"/>
+        <PackageReference Include="Microsoft.AspNetCore.Http.Features" Version="5.0.13"/>
+        <PackageReference Include="Microsoft.Extensions.Options" Version="6.0.0"/>
+        <PackageReference Include="MimeKit" Version="3.0.0"/>
+    </ItemGroup>
 
 </Project>

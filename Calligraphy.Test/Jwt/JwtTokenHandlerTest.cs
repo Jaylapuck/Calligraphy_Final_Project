@@ -1,5 +1,4 @@
-﻿using System;
-using System.Security.Claims;
+﻿using System.Security.Claims;
 using Calligraphy.Business.JWTService.JWTTokenHandler;
 using Calligraphy.Business.JWTService.RefreshTokenGenerator;
 using Calligraphy.Data.Models.AuthenticationModels.Response;
@@ -12,17 +11,18 @@ namespace Calligraphy.Test.Jwt
 {
     public class JwtTokenHandlerTest
     {
-        private readonly JwtTokenHandler _jwtTokenHandler;
         private readonly Mock<IConfiguration> _configurationMock;
+        private readonly JwtTokenHandler _jwtTokenHandler;
 
         public JwtTokenHandlerTest()
         {
             var refreshTokenGeneratorMock = new Mock<IRefreshTokenGenerator>();
             _configurationMock = new Mock<IConfiguration>();
             var adminLoginRepoMock = new Mock<IAdminLoginRepo>();
-            _jwtTokenHandler = new JwtTokenHandler(refreshTokenGeneratorMock.Object, adminLoginRepoMock.Object, _configurationMock.Object);
+            _jwtTokenHandler = new JwtTokenHandler(refreshTokenGeneratorMock.Object, adminLoginRepoMock.Object,
+                _configurationMock.Object);
         }
-        
+
         //TC10-TH1
         [Fact]
         public void AuthenticateWithUsername_Should_Return_AuthenticationResponse()
@@ -30,11 +30,11 @@ namespace Calligraphy.Test.Jwt
             // Arrange
             var username = "username";
             _configurationMock.Setup(x => x["Jwt:Secret"]).Returns("mysupersecretkeythatbelongstome");
-            
-            
+
+
             // Act
             var result = _jwtTokenHandler.Authenticate(username);
-            
+
             // Assert
             Assert.NotNull(result);
             Assert.IsType<AuthenticationResponse>(result);
@@ -51,10 +51,10 @@ namespace Calligraphy.Test.Jwt
                 new(ClaimTypes.Name, username)
             };
             _configurationMock.Setup(x => x["Jwt:Secret"]).Returns("mysupersecretkeythatbelongstome");
-            
+
             // Act
             var result = _jwtTokenHandler.Authenticate(username, claims);
-            
+
             // Assert
             Assert.NotNull(result);
             Assert.IsType<AuthenticationResponse>(result);

@@ -1,19 +1,15 @@
-﻿using Calligraphy.Data.Config;
+﻿using System.Collections.Generic;
+using System.Linq;
+using Calligraphy.Data.Config;
 using Calligraphy.Data.Models;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace Calligraphy.Data.Repo.Quote
 {
     public class QuoteRepo : IQuoteRepo
     {
         private readonly CalligraphyContext _context;
-        private readonly DbContextOptions<CalligraphyContext> options;
-
-
+        
         public QuoteRepo(CalligraphyContext context)
         {
             _context = context;
@@ -21,7 +17,7 @@ namespace Calligraphy.Data.Repo.Quote
 
         public QuoteRepo()
         {
-            _context = new CalligraphyContext(options);
+            _context = new CalligraphyContext();
         }
 
         public IEnumerable<QuoteEntity> GetAll()
@@ -46,12 +42,12 @@ namespace Calligraphy.Data.Repo.Quote
                 return true;
             }
         }
+
         public QuoteEntity Update(QuoteEntity quote)
         {
             _context.Entry(quote).State = EntityState.Modified;
             _context.SaveChanges();
             return quote;
         }
-
     }
 }

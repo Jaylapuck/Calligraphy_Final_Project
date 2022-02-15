@@ -14,7 +14,6 @@ using HttpContextMoq;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Primitives;
 using Moq;
 using Newtonsoft.Json;
 using Xunit;
@@ -23,15 +22,15 @@ namespace Calligraphy.Test.Form
 {
     public class FormControllerTests
     {
-        private readonly Mock<IFormService> _mockFormService;
-        private readonly Mock<IMailerService> _mockMailerService;
+        private readonly FormController _formController;
+
         //logger
         private readonly ILogger<FormController> _logger;
-        private readonly FormController _formController;
+        private readonly Mock<IFormService> _mockFormService;
+        private readonly Mock<IMailerService> _mockMailerService;
 
         public FormControllerTests()
         {
-
             _logger = Mock.Of<ILogger<FormController>>();
             _mockFormService = new Mock<IFormService>();
             _mockMailerService = new Mock<IMailerService>();
@@ -43,10 +42,10 @@ namespace Calligraphy.Test.Form
         public void GetAllServicesOk()
         {
             // Arrange
-            List<ServiceEntity> dummyServices = new List<ServiceEntity>
+            var dummyServices = new List<ServiceEntity>
             {
-                new ServiceEntity {ServiceId = 1, TypeName = ServiceType.Calligraphy, StartingRate = 20.00f},
-                new ServiceEntity {ServiceId = 2, TypeName = ServiceType.Engraving, StartingRate = 30.00f}
+                new() {ServiceId = 1, TypeName = ServiceType.Calligraphy, StartingRate = 20.00f},
+                new() {ServiceId = 2, TypeName = ServiceType.Engraving, StartingRate = 30.00f}
             };
 
             _mockFormService.Setup(x => x.GetAllServices()).Returns(dummyServices);
@@ -58,7 +57,7 @@ namespace Calligraphy.Test.Form
             Assert.IsType<List<ServiceEntity>>(result);
             Assert.Equal(2, dummyServices.Count);
         }
-        
+
         //TC4-TC2
         [Fact]
         public void GetAllServicesEmpty()
@@ -82,26 +81,26 @@ namespace Calligraphy.Test.Form
         public async void PostOkResultTest()
         {
             // Arrange
-            AddressEntity dummyAddress = new AddressEntity
+            var dummyAddress = new AddressEntity
             {
                 AddressId = 1, Street = "somne street", City = "some city", Country = "some country",
                 Postal = "some code"
             };
-            CustomerEntity dummyCustomer = new CustomerEntity
+            var dummyCustomer = new CustomerEntity
             {
                 CustomerId = 1, FirstName = "some name", LastName = "some name", Address = dummyAddress,
                 Email = "tristanblacklafleur@hotmail.ca"
             };
-            string filePath = @"..\..\..\Mailer\TestFiles\23784.png";
+            var filePath = @"..\..\..\Mailer\TestFiles\23784.png";
             using var stream = new MemoryStream((await File.ReadAllBytesAsync(filePath)).ToArray());
             var formFile = new FormFile(stream, 0, stream.Length, "streamFile", filePath.Split(@"\").Last());
-            List<IFormFile> dummyAttachments = new List<IFormFile> {formFile};
-            FormEntity dummyForm = new FormEntity
+            var dummyAttachments = new List<IFormFile> {formFile};
+            var dummyForm = new FormEntity
             {
                 FormId = 1, Customer = dummyCustomer, ServiceType = ServiceType.Calligraphy, StartingRate = 20.00f,
                 Comments = "some text", Attachments = dummyAttachments
             };
-            MailRequest dummyRequest = new MailRequest();
+            var dummyRequest = new MailRequest();
 
             _mockFormService.Setup(x => x.Create(dummyForm)).Returns(true);
             _mockMailerService.Setup(s => s.SendMailAsync(dummyRequest)).Returns(async () => { await Task.Yield(); });
@@ -154,22 +153,22 @@ namespace Calligraphy.Test.Form
         public async void PostOkResultTestNoAttachments()
         {
             // Arrange
-            AddressEntity dummyAddress = new AddressEntity
+            var dummyAddress = new AddressEntity
             {
                 AddressId = 1, Street = "somne street", City = "some city", Country = "some country",
                 Postal = "some code"
             };
-            CustomerEntity dummyCustomer = new CustomerEntity
+            var dummyCustomer = new CustomerEntity
             {
                 CustomerId = 1, FirstName = "some name", LastName = "some name", Address = dummyAddress,
                 Email = "tristanblacklafleur@hotmail.ca"
             };
-            FormEntity dummyForm = new FormEntity
+            var dummyForm = new FormEntity
             {
                 FormId = 1, Customer = dummyCustomer, ServiceType = ServiceType.Calligraphy, StartingRate = 20.00f,
                 Comments = "some text", Attachments = new List<IFormFile>()
             };
-            MailRequest dummyRequest = new MailRequest();
+            var dummyRequest = new MailRequest();
 
             _mockFormService.Setup(x => x.Create(dummyForm)).Returns(true);
             _mockMailerService.Setup(s => s.SendMailAsync(dummyRequest)).Returns(async () => { await Task.Yield(); });
@@ -188,24 +187,24 @@ namespace Calligraphy.Test.Form
         public async void PostBadRequestTestNoEmail()
         {
             // Arrange
-            AddressEntity dummyAddress = new AddressEntity
+            var dummyAddress = new AddressEntity
             {
                 AddressId = 1, Street = "somne street", City = "some city", Country = "some country",
                 Postal = "some code"
             };
-            CustomerEntity dummyCustomer = new CustomerEntity
+            var dummyCustomer = new CustomerEntity
                 {CustomerId = 1, FirstName = "some name", LastName = "some name", Address = dummyAddress, Email = ""};
-            string filePath = @"..\..\..\Mailer\TestFiles\23784.png";
+            var filePath = @"..\..\..\Mailer\TestFiles\23784.png";
             using var stream = new MemoryStream(File.ReadAllBytes(filePath).ToArray());
             var formFile = new FormFile(stream, 0, stream.Length, "streamFile", filePath.Split(@"\").Last());
-            List<IFormFile> dummyAttachments = new List<IFormFile>();
+            var dummyAttachments = new List<IFormFile>();
             dummyAttachments.Add(formFile);
-            FormEntity dummyForm = new FormEntity
+            var dummyForm = new FormEntity
             {
                 FormId = 1, Customer = dummyCustomer, ServiceType = ServiceType.Calligraphy, StartingRate = 20.00f,
                 Comments = "some text", Attachments = dummyAttachments
             };
-            MailRequest dummyRequest = new MailRequest();
+            var dummyRequest = new MailRequest();
 
             _mockFormService.Setup(x => x.Create(dummyForm)).Returns(true);
             _mockMailerService.Setup(s => s.SendMailAsync(dummyRequest)).Returns(async () => { await Task.Yield(); });
@@ -218,7 +217,7 @@ namespace Calligraphy.Test.Form
             var error = await Assert.ThrowsAsync<ArgumentException>(result);
             Assert.Equal("Email not found", error.Message);
         }
-        
+
         //TC4-TC7
         [Fact]
         // Test to see if we get an exception when encountering an invalid email
@@ -250,7 +249,10 @@ namespace Calligraphy.Test.Form
             _mockMailerService.Setup(s => s.SendMailAsync(dummyRequest)).Returns(async () => { await Task.Yield(); });
 
             // Act
-            Task Result() => _formController.Post(dummyForm);
+            Task Result()
+            {
+                return _formController.Post(dummyForm);
+            }
 
             // Assert
             var error = await Assert.ThrowsAsync<FormatException>(Result);
@@ -286,23 +288,24 @@ namespace Calligraphy.Test.Form
                 dummyForms.Add(dummyForm);
             }
 
-            var formParams = new FormParameters()
+            var formParams = new FormParameters
             {
                 PageNumber = 1,
-                PageSize = 2,
+                PageSize = 2
             };
-            
+
             var paged = new PagedList<FormEntity>(dummyForms, 10, formParams.PageNumber, formParams.PageSize);
-            
-            var metadata = new {
-                TotalCount = paged.TotalCount,
-                PageSize = paged.PageSize,
+
+            var metadata = new
+            {
+                paged.TotalCount,
+                paged.PageSize,
                 PageNumber = paged.CurrentPage,
-                TotalPages = paged.TotalPages,
+                paged.TotalPages,
                 HasNext = true,
                 HasPrevious = false
             };
-            
+
             // mock http header X-Pagination with serialized PagedList
             var mockHttpContext = new HttpContextMock();
             mockHttpContext.Request.Headers.Add("X-Pagination", JsonConvert.SerializeObject(metadata));
@@ -310,12 +313,12 @@ namespace Calligraphy.Test.Form
             {
                 HttpContext = mockHttpContext
             };
-            
+
             _mockFormService.Setup(x => x.GetAll(formParams)).Returns(paged);
-            
+
             // Act
             var result = _formController.GetAllPages(formParams);
-            
+
             // Assert
             Assert.IsType<OkObjectResult>(result);
         }

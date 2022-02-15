@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using Calligraphy.Business.Image;
 using Calligraphy.Controllers;
@@ -12,15 +11,15 @@ namespace Calligraphy.Test.Image
 {
     public class ImageControllerTests
     {
-        private readonly Mock<IImageService> _imageServiceMock;
         private readonly ImageController _imageController;
-        
+        private readonly Mock<IImageService> _imageServiceMock;
+
         public ImageControllerTests()
         {
             _imageServiceMock = new Mock<IImageService>();
             _imageController = new ImageController(_imageServiceMock.Object);
         }
-        
+
         [Fact]
         //TC5-TC1
         public void GetById_ShouldReturnOk()
@@ -29,14 +28,14 @@ namespace Calligraphy.Test.Image
             const int imageId = 1;
             var image = new ImageEntity();
             _imageServiceMock.Setup(x => x.GetById(imageId)).Returns(new OkObjectResult(image));
-            
+
             // Act
             var result = _imageController.GetById(imageId);
-            
+
             // Assert
             Assert.IsType<OkObjectResult>(result);
         }
-        
+
         [Fact]
         //TC5-TC2
         public void GetById_ShouldReturnNotFound()
@@ -44,14 +43,14 @@ namespace Calligraphy.Test.Image
             // Arrange
             const int imageId = 1;
             _imageServiceMock.Setup(x => x.GetById(imageId)).Returns(new NotFoundResult());
-            
+
             // Act
             var result = _imageController.GetById(imageId);
-            
+
             // Assert
             Assert.IsType<NotFoundResult>(result);
         }
-        
+
         //TC5-TC3
         [Fact]
         public void GetAll_ShouldReturnEmptyList()
@@ -59,35 +58,35 @@ namespace Calligraphy.Test.Image
             // Arrange
             var images = new List<ImageEntity>();
             _imageServiceMock.Setup(x => x.GetAll()).Returns(images);
-            
+
             // Act
             var result = _imageController.GetAll();
-            
+
             // Assert
             Assert.Empty(images);
         }
-        
+
         //TC5-TC4
         [Fact]
         public void GetAll_ShouldReturnListOfTwoEntities()
         {
             // Arrange
-            var images = new List<ImageEntity>()
+            var images = new List<ImageEntity>
             {
-                new ImageEntity(){ Id = 1, ImageData = It.IsAny<string>() , ImageTitle = "Test1" },
-                new ImageEntity(){ Id = 2, ImageData = It.IsAny<string>(), ImageTitle = "Test2" },
+                new() {Id = 1, ImageData = It.IsAny<string>(), ImageTitle = "Test1"},
+                new() {Id = 2, ImageData = It.IsAny<string>(), ImageTitle = "Test2"}
             };
-            
+
             _imageServiceMock.Setup(x => x.GetAll()).Returns(images);
-            
+
             // Act
-            var result  = _imageController.GetAll();
-            
+            var result = _imageController.GetAll();
+
             // Assert
             Assert.IsType<List<ImageEntity>>(result);
             Assert.Equal(2, result.Count());
         }
-        
+
         //TC5-TC5
         [Fact]
         public void Create_ShouldReturnOkActionResult()
@@ -95,14 +94,14 @@ namespace Calligraphy.Test.Image
             // Arrange
             var image = new ImageEntity();
             _imageServiceMock.Setup(x => x.Create(image)).Returns(new OkObjectResult(image));
-            
+
             // Act
             var result = _imageController.Create(image);
-            
+
             // Assert
             Assert.IsType<OkObjectResult>(result);
         }
-        
+
         //TC5-TC6
         [Fact]
         public void Create_ShouldReturnBadRequestActionResult()
@@ -110,40 +109,40 @@ namespace Calligraphy.Test.Image
             // Arrange
             var image = new ImageEntity();
             _imageServiceMock.Setup(x => x.Create(image)).Returns(new BadRequestResult());
-            
+
             // Act
             var result = _imageController.Create(image);
-            
+
             // Assert
             Assert.IsType<BadRequestResult>(result);
         }
-        
+
         //TC5-TC7
         [Fact]
         public void Update_ShouldReturnOkActionResult()
         {
             // Arrange
             var image = new ImageEntity();
-            _imageServiceMock.Setup(x => x.Update(image, It.IsAny<int>() )).Returns(new OkObjectResult(image));
-            
+            _imageServiceMock.Setup(x => x.Update(image, It.IsAny<int>())).Returns(new OkObjectResult(image));
+
             // Act
             var result = _imageController.Update(image, It.IsAny<int>());
-            
+
             // Assert
             Assert.IsType<OkObjectResult>(result);
         }
-        
+
         //TC5-TC8
         [Fact]
         public void Update_ShouldReturnBadRequestActionResult()
         {
             // Arrange
             var image = new ImageEntity();
-            _imageServiceMock.Setup(x => x.Update(image, It.IsAny<int>() )).Returns(new BadRequestResult());
-            
+            _imageServiceMock.Setup(x => x.Update(image, It.IsAny<int>())).Returns(new BadRequestResult());
+
             // Act
             var result = _imageController.Update(image, It.IsAny<int>());
-            
+
             // Assert
             Assert.IsType<BadRequestResult>(result);
         }
@@ -154,15 +153,15 @@ namespace Calligraphy.Test.Image
         {
             // Arrange
             var image = new ImageEntity();
-            _imageServiceMock.Setup(x => x.Update(image, It.IsAny<int>() )).Returns(new NotFoundResult());
-            
+            _imageServiceMock.Setup(x => x.Update(image, It.IsAny<int>())).Returns(new NotFoundResult());
+
             // Act
             var result = _imageController.Update(image, It.IsAny<int>());
-            
+
             // Assert
             Assert.IsType<NotFoundResult>(result);
         }
-        
+
         //TC5-TC10
         [Fact]
         public void Delete_ShouldReturnOkActionResult()
@@ -170,14 +169,14 @@ namespace Calligraphy.Test.Image
             // Arrange
             const int imageId = 1;
             _imageServiceMock.Setup(x => x.Delete(imageId)).Returns(new OkResult());
-            
+
             // Act
             var result = _imageController.Delete(imageId);
-            
+
             // Assert
             Assert.IsType<OkResult>(result);
         }
-        
+
         //TC5-TC11
         [Fact]
         public void Delete_ShouldReturnNotFoundActionResult()
@@ -185,10 +184,10 @@ namespace Calligraphy.Test.Image
             // Arrange
             var imageId = 1;
             _imageServiceMock.Setup(x => x.Delete(imageId)).Returns(new NotFoundResult());
-            
+
             // Act
             var result = _imageController.Delete(imageId);
-            
+
             // Assert
             Assert.IsType<NotFoundResult>(result);
         }

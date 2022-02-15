@@ -1,12 +1,7 @@
-﻿using Calligraphy.Data.Models;
+﻿using System.Collections.Generic;
+using Calligraphy.Data.Models;
 using Calligraphy.Data.Repo.Quote;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Mime;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Calligraphy.Business.Quote
 {
@@ -23,13 +18,11 @@ namespace Calligraphy.Business.Quote
         {
             return _quoteRepo.GetAll();
         }
+
         public IActionResult GetByFormId(int form_id)
         {
             var quote = _quoteRepo.GetByFormId(form_id);
-            if (quote == null)
-            {
-                return new NotFoundResult();
-            }
+            if (quote == null) return new NotFoundResult();
             return new OkObjectResult(quote);
         }
 
@@ -41,15 +34,9 @@ namespace Calligraphy.Business.Quote
 
         public IActionResult Update(QuoteEntity quote, int form_id)
         {
-            if (quote == null)
-            {
-                return new BadRequestResult();
-            }
+            if (quote == null) return new BadRequestResult();
             var quoteToUpdate = _quoteRepo.GetByFormId(form_id);
-            if (quoteToUpdate == null)
-            {
-                return new NotFoundResult();
-            }
+            if (quoteToUpdate == null) return new NotFoundResult();
             quoteToUpdate.Price = quote.Price;
             quoteToUpdate.Duration = quote.Duration;
             quoteToUpdate.Materials = quote.Materials;
