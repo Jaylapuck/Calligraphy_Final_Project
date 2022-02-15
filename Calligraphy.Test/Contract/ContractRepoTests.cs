@@ -31,7 +31,7 @@ namespace Calligraphy.Test.Contract
             var result = contractRepo.GetAll();
 
             // Assert
-            Assert.Equal(4, result.Count());
+            Assert.Equal(5, result.Count());
         }
 
         [Fact]

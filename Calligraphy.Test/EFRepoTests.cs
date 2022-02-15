@@ -23,8 +23,7 @@ namespace Calligraphy.Test
             using var context = new CalligraphyContext(ContextOptions);
             context.Database.EnsureDeleted();
             context.Database.EnsureCreated();
-
-            var service1 = new ServiceEntity {TypeName = ServiceType.Calligraphy, StartingRate = 20.00f};
+          
             var contracts = new List<ContractEntity>
             {
                 new()
@@ -54,7 +53,6 @@ namespace Calligraphy.Test
                 }
             };
 
-            context.AddRange(service1);
             context.AddRange(contracts);
             context.SaveChanges();
         }
