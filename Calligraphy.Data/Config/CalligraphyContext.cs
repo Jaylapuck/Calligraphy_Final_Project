@@ -3,17 +3,21 @@ using Calligraphy.Data.Enums;
 using Calligraphy.Data.Models;
 using Calligraphy.Data.Models.AuthenticationModels.JWT;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 
 namespace Calligraphy.Data.Config
 {
     public class CalligraphyContext : DbContext
     {
+        private readonly IConfiguration _configuration;
         public CalligraphyContext(DbContextOptions<CalligraphyContext> options) : base(options)
         {
         }
         
         public CalligraphyContext()
         {
+            _configuration = new ConfigurationBuilder()
+                .Build();
         }
 
         public DbSet<FormEntity> Forms { get; set; }
@@ -34,8 +38,8 @@ namespace Calligraphy.Data.Config
             builder.Entity<AdminEntity>().HasData(new AdminEntity
             {
                 Id = 1,
-                UserName = "admin",
-                Password = BCrypt.Net.BCrypt.HashPassword("admin", BCrypt.Net.BCrypt.GenerateSalt())
+                UserName = _configuration["DefaultCredentials:Username"],
+                Password = BCrypt.Net.BCrypt.HashPassword(_configuration["DefaultCredentials:Password"], BCrypt.Net.BCrypt.GenerateSalt())
             });
 
             builder.Entity<AboutEntity>().HasData(new AboutEntity
