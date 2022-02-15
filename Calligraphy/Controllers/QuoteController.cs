@@ -22,7 +22,7 @@ namespace Calligraphy.Controllers
         private readonly IContractService _contractService;
         private readonly IMailerService _mailerService;
         private readonly IQuoteService _quoteService;
-        
+
         public QuoteController(IQuoteService quoteService, IMailerService mailerService,
             IContractService contractService)
         {

@@ -9,7 +9,6 @@ namespace Calligraphy.Data.Repo.Image
     public class ImageRepo : IImageRepo
     {
         private readonly CalligraphyContext _context;
-        private readonly DbContextOptions<CalligraphyContext> options;
 
 
         public ImageRepo(CalligraphyContext context)
@@ -19,7 +18,7 @@ namespace Calligraphy.Data.Repo.Image
 
         public ImageRepo()
         {
-            _context = new CalligraphyContext(options);
+            _context = new CalligraphyContext();
         }
 
         public IEnumerable<ImageEntity> GetAll()
@@ -31,7 +30,7 @@ namespace Calligraphy.Data.Repo.Image
         {
             return _context.Images.FirstOrDefault(x => x.Id == id);
         }
-        
+
         public ImageEntity GetByImageId(int imageId)
         {
             return _context.Images.FirstOrDefault(x => x.ImageId == imageId);
@@ -43,7 +42,7 @@ namespace Calligraphy.Data.Repo.Image
             _context.SaveChanges();
             return image;
         }
-        
+
         public ImageEntity Update(ImageEntity image)
         {
             _context.Entry(image).State = EntityState.Modified;

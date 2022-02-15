@@ -9,7 +9,6 @@ namespace Calligraphy.Data.Repo.Form
     public class FormRepo : IFormRepo
     {
         private readonly CalligraphyContext _context;
-        private readonly DbContextOptions<CalligraphyContext> options;
 
 
         public FormRepo(CalligraphyContext context)
@@ -19,15 +18,15 @@ namespace Calligraphy.Data.Repo.Form
 
         public FormRepo()
         {
-            _context = new CalligraphyContext(options);
+            _context = new CalligraphyContext();
         }
-        
+
         public PagedList<FormEntity> GetAll(FormParameters formParameters)
         {
-            
-            return PagedList<FormEntity>.ToPagedList(_context.Forms.OrderBy(x => x.CreatedDate), formParameters.PageNumber, formParameters.PageSize); 
+            return PagedList<FormEntity>.ToPagedList(_context.Forms.OrderBy(x => x.CreatedDate),
+                formParameters.PageNumber, formParameters.PageSize);
         }
-        
+
         public bool Create(FormEntity form)
         {
             using (_context)

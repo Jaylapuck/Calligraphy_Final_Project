@@ -1,14 +1,11 @@
-﻿using Calligraphy.Business.Quote;
+﻿using System.Collections.Generic;
+using System.Linq;
+using Calligraphy.Business.Quote;
 using Calligraphy.Data.Enums;
 using Calligraphy.Data.Models;
 using Calligraphy.Data.Repo.Quote;
 using Microsoft.AspNetCore.Mvc;
 using Moq;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Xunit;
 
 namespace Calligraphy.Test.Quote
@@ -29,11 +26,11 @@ namespace Calligraphy.Test.Quote
         public void GetAllQuotes()
         {
             // Arrange
-            FormEntity form = new FormEntity();
+            var form = new FormEntity();
             var quotes = new List<QuoteEntity>
             {
-                new QuoteEntity(){ QuoteId = 1, ApprovalStatus = Status.Approved, Materials = "Random Materials", Price = 25},
-                new QuoteEntity(){ QuoteId = 2, ApprovalStatus = Status.Denied, Materials = "Random Materials", Price = 35 },
+                new() {QuoteId = 1, ApprovalStatus = Status.Approved, Materials = "Random Materials", Price = 25},
+                new() {QuoteId = 2, ApprovalStatus = Status.Denied, Materials = "Random Materials", Price = 35}
             };
 
             // Act
@@ -42,19 +39,17 @@ namespace Calligraphy.Test.Quote
 
             // Assert
             Assert.Equal(2, result.Count());
-            foreach (QuoteEntity temp in result)
-            {
-                Assert.NotNull(temp.QuoteId);
-            }
+            foreach (var temp in result) Assert.NotNull(temp.QuoteId);
         }
 
         [Fact]
         // TS7-TS2
         public void CreateQuote()
         {
-            FormEntity form = new FormEntity();
+            var form = new FormEntity();
             // Arrange
-            var quote = new QuoteEntity { QuoteId = 1, ApprovalStatus = Status.Approved, Materials = "Random Materials", Price = 25 };
+            var quote = new QuoteEntity
+                {QuoteId = 1, ApprovalStatus = Status.Approved, Materials = "Random Materials", Price = 25};
 
             // Act
             _mockQuoteRepo.Setup(x => x.Create(quote));
@@ -69,8 +64,9 @@ namespace Calligraphy.Test.Quote
         public void UpdateQuoteShouldReturnOkObjectResult()
         {
             // Arrange
-            int OkId = 1;
-            var quote = new QuoteEntity { ApprovalStatus = Status.Pending, Materials = "Random Materials", Price = 25, Duration = 14 };
+            var OkId = 1;
+            var quote = new QuoteEntity
+                {ApprovalStatus = Status.Pending, Materials = "Random Materials", Price = 25, Duration = 14};
 
             _mockQuoteRepo.Setup(x => x.Update(It.IsAny<QuoteEntity>())).Returns(quote);
             _mockQuoteRepo.Setup(x => x.GetByFormId(It.IsAny<int>())).Returns(quote);
@@ -88,7 +84,7 @@ namespace Calligraphy.Test.Quote
         public void UpdateQuoteShouldReturnBadRequestResult()
         {
             // Arrange
-            int OkId = 1;
+            var OkId = 1;
             QuoteEntity quote = null;
 
             // Act
@@ -104,11 +100,12 @@ namespace Calligraphy.Test.Quote
         public void UpdateQuoteShouldReturnNotFoundResult()
         {
             // Arrange
-            int OkId = 1;
-            QuoteEntity quote = new QuoteEntity { ApprovalStatus = Status.Pending, Materials = "Random Materials", Price = 25, Duration = 14 };
+            var OkId = 1;
+            var quote = new QuoteEntity
+                {ApprovalStatus = Status.Pending, Materials = "Random Materials", Price = 25, Duration = 14};
 
             _mockQuoteRepo.Setup(x => x.Update(It.IsAny<QuoteEntity>())).Returns(quote);
-            _mockQuoteRepo.Setup(x => x.GetByFormId(It.IsAny<int>())).Returns((QuoteEntity)null);
+            _mockQuoteRepo.Setup(x => x.GetByFormId(It.IsAny<int>())).Returns((QuoteEntity) null);
 
             // Act
             var actual = _quoteService.Update(quote, OkId);

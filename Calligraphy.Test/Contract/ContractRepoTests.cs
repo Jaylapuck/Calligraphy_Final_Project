@@ -1,12 +1,9 @@
-﻿using Calligraphy.Data.Config;
+﻿using System;
+using System.Linq;
+using Calligraphy.Data.Config;
 using Calligraphy.Data.Models;
 using Calligraphy.Data.Repo.Contract;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Xunit;
 
 namespace Calligraphy.Test.Contract
@@ -15,10 +12,10 @@ namespace Calligraphy.Test.Contract
     {
         public ContractRepoTests() : base(
             new DbContextOptionsBuilder<CalligraphyContext>()
-            .UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=Test_FP_DB;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False")
-            .Options)
+                .UseSqlServer(
+                    "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=Test_FP_DB;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False")
+                .Options)
         {
-
         }
 
         [Fact]
@@ -59,13 +56,17 @@ namespace Calligraphy.Test.Contract
         [Fact]
         // TC2-TR3
         // Test to see if we can create a new contract
-        public void CreateNewContractOk() 
-        { 
+        public void CreateNewContractOk()
+        {
             using (var context = new CalligraphyContext(ContextOptions))
             {
                 // Arrange 
                 var contextRepo = new ContractRepo(context);
-                ContractEntity dummyEntity = new ContractEntity { FinalCost = 60.00, DownPayment = 30.00, DateCommissioned = new DateTime(2021, 11, 1), EndDate = new DateTime(2021, 11, 20), HasSignature = true, IsFinished = true };
+                var dummyEntity = new ContractEntity
+                {
+                    FinalCost = 60.00, DownPayment = 30.00, DateCommissioned = new DateTime(2021, 11, 1),
+                    EndDate = new DateTime(2021, 11, 20), HasSignature = true, IsFinished = true
+                };
 
                 // Act
                 var result = contextRepo.CreateNewContract(dummyEntity);
@@ -83,7 +84,11 @@ namespace Calligraphy.Test.Contract
             using var context = new CalligraphyContext(ContextOptions);
             // Arrange 
             var contextRepo = new ContractRepo(context);
-            var dummyEntity = new ContractEntity { ContractId = 4, FinalCost = 100.00, DownPayment = 50.00, DateCommissioned = new DateTime(2022, 1, 10), EndDate = new DateTime(2022, 3, 21), HasSignature = true, IsFinished = true };
+            var dummyEntity = new ContractEntity
+            {
+                ContractId = 4, FinalCost = 100.00, DownPayment = 50.00, DateCommissioned = new DateTime(2022, 1, 10),
+                EndDate = new DateTime(2022, 3, 21), HasSignature = true, IsFinished = true
+            };
 
             // Act
             var result = contextRepo.UpdateContract(dummyEntity);

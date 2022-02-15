@@ -8,7 +8,7 @@ using Calligraphy.Data.Repo.Service;
 
 namespace Calligraphy.Business.Form
 {
-    public class FormService :  IFormService
+    public class FormService : IFormService
     {
         private readonly IFormRepo _formRepo;
         private readonly IServiceRepo _serviceRepo;
@@ -18,13 +18,13 @@ namespace Calligraphy.Business.Form
             _formRepo = formRepo;
             _serviceRepo = serviceRepo;
         }
-        
+
         public PagedList<FormEntity> GetAll(FormParameters formParameters)
         {
             var formEntities = _formRepo.GetAll(formParameters);
             return formEntities;
         }
-        
+
         public IEnumerable<ServiceEntity> GetAllServices()
         {
             return _serviceRepo.GetAll();
@@ -34,14 +34,10 @@ namespace Calligraphy.Business.Form
         public bool Create(FormEntity? form)
         {
             // check if form is valid
-            if (form == null)
-            {
-                return false;
-            }
-            
+            if (form == null) return false;
+
             form.CreatedDate = DateTime.Now;
             return _formRepo.Create(form);
         }
-       
     }
 }

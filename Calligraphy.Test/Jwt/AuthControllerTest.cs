@@ -1,5 +1,4 @@
-﻿using System;
-using Calligraphy.Business.AuthenticationService;
+﻿using Calligraphy.Business.AuthenticationService;
 using Calligraphy.Business.JWTService.TokenRefresher;
 using Calligraphy.Controllers;
 using Calligraphy.Data.Models.AuthenticationModels.JWT;
@@ -12,10 +11,10 @@ namespace Calligraphy.Test.Jwt
 {
     public class AuthControllerTest
     {
+        private readonly AdminController _authController;
         private readonly Mock<IAuthService> _authService;
         private readonly Mock<ITokenRefresher> _tokenRefresher;
-        private readonly AdminController _authController;
-        
+
         public AuthControllerTest()
         {
             _authService = new Mock<IAuthService>();
@@ -28,24 +27,24 @@ namespace Calligraphy.Test.Jwt
         public void Login_ShouldReturnOkResponseWithAuthenticationResponse()
         {
             // Arrange
-            var loginRequest = new AdminEntity()
+            var loginRequest = new AdminEntity
             {
                 Id = 1,
                 UserName = "test",
                 Password = "test"
             };
-            
-            var expectedResponse = new AuthenticationResponse()
+
+            var expectedResponse = new AuthenticationResponse
             {
                 JwtToken = "test",
                 RefreshToken = "test"
             };
-            
+
             _authService.Setup(x => x.Login(loginRequest)).Returns(expectedResponse);
-            
+
             // Act
             var response = _authController.Login(loginRequest);
-            
+
             // Assert
             Assert.IsType<OkObjectResult>(response);
             var result = response as OkObjectResult;
@@ -57,78 +56,78 @@ namespace Calligraphy.Test.Jwt
         public void Login_ShouldReturnUnauthorizedResponse()
         {
             // Arrange
-            var loginRequest = new AdminEntity()
+            var loginRequest = new AdminEntity
             {
                 Id = 1,
                 UserName = "test",
                 Password = "test"
             };
-            
-            var expectedResponse = new AuthenticationResponse()
+
+            var expectedResponse = new AuthenticationResponse
             {
                 JwtToken = null,
                 RefreshToken = null
             };
-            
+
             _authService.Setup(x => x.Login(loginRequest)).Returns(expectedResponse);
-            
+
             // Act
             var response = _authController.Login(loginRequest);
-            
+
             // Assert
             Assert.IsType<UnauthorizedObjectResult>(response);
         }
-        
+
         //TC9-TC3
         [Fact]
         public void RefreshToken_ShouldReturnOkResponseWithAuthenticationResponse()
         {
             // Arrange
-            var refreshTokenRequest = new RefreshCred()
+            var refreshTokenRequest = new RefreshCred
             {
                 JwtToken = "test",
                 RefreshToken = "test"
             };
-            
-            var expectedResponse = new AuthenticationResponse()
+
+            var expectedResponse = new AuthenticationResponse
             {
                 JwtToken = "test",
                 RefreshToken = "test"
             };
-            
+
             _tokenRefresher.Setup(x => x.Refresh(refreshTokenRequest)).Returns(expectedResponse);
-            
+
             // Act
             var response = _authController.Refresh(refreshTokenRequest);
-            
+
             // Assert
             Assert.IsType<OkObjectResult>(response);
             var result = response as OkObjectResult;
             Assert.Equal(expectedResponse, result.Value);
         }
-        
+
         //TC9-TC4
         [Fact]
         public void RefreshToken_ShouldReturnUnauthorizedResponse()
         {
             // Arrange
-            var refreshTokenRequest = new RefreshCred()
+            var refreshTokenRequest = new RefreshCred
             {
                 JwtToken = "test",
                 RefreshToken = "test"
             };
-            
-            var expectedResponse = new AuthenticationResponse()
+
+            var expectedResponse = new AuthenticationResponse
             {
                 JwtToken = null,
                 RefreshToken = null
             };
-            
+
             _tokenRefresher.Setup(x => x.Refresh(refreshTokenRequest)).Returns(expectedResponse);
-            
+
             // Act
             var response = _authController.Refresh(refreshTokenRequest);
-            
+
             // Assert
             Assert.IsType<UnauthorizedObjectResult>(response);
         }

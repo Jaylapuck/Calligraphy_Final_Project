@@ -1,8 +1,5 @@
-﻿using Calligraphy.Data.Models;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using Calligraphy.Data.Models.AuthenticationModels;
+﻿using System.Collections.Generic;
+using Calligraphy.Data.Models;
 
 namespace Calligraphy.Data.Repo.Address
 {
@@ -11,6 +8,5 @@ namespace Calligraphy.Data.Repo.Address
         IEnumerable<AddressEntity> GetAll();
 
         bool Create(AddressEntity address);
-
     }
 }

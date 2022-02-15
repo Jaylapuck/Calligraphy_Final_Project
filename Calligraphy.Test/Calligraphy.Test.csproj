@@ -1,37 +1,37 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>net5.0</TargetFramework>
+    <PropertyGroup>
+        <TargetFramework>net5.0</TargetFramework>
 
-    <IsPackable>false</IsPackable>
-  </PropertyGroup>
+        <IsPackable>false</IsPackable>
+    </PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="HttpContextMoq" Version="1.2.1" />
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.9.4" />
-    <PackageReference Include="Moq" Version="4.16.1" />
-    <PackageReference Include="netDumbster" Version="2.0.0.8" />
-    <PackageReference Include="PagedList" Version="1.17.0" />
-    <PackageReference Include="PagedList.Mvc" Version="4.5.0" />
-    <PackageReference Include="Selenium.Firefox.WebDriver" Version="0.27.0" />
-    <PackageReference Include="Selenium.Support" Version="4.1.0" />
-    <PackageReference Include="Selenium.WebDriver" Version="4.1.0" />
-    <PackageReference Include="Selenium.WebDriver.GeckoDriver.Win64" Version="0.30.0.1" />
-    <PackageReference Include="xunit" Version="2.4.1" />
-    <PackageReference Include="xunit.runner.visualstudio" Version="2.4.3">
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-      <PrivateAssets>all</PrivateAssets>
-    </PackageReference>
-    <PackageReference Include="coverlet.collector" Version="3.0.2">
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-      <PrivateAssets>all</PrivateAssets>
-    </PackageReference>
-  </ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="BCrypt.Net-Next" Version="4.0.2"/>
+        <PackageReference Include="DotNetEnv" Version="2.3.0"/>
+        <PackageReference Include="HttpContextMoq" Version="1.2.1"/>
+        <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.9.4"/>
+        <PackageReference Include="Moq" Version="4.16.1"/>
+        <PackageReference Include="netDumbster" Version="2.0.0.8"/>
+        <PackageReference Include="Selenium.Firefox.WebDriver" Version="0.27.0"/>
+        <PackageReference Include="Selenium.Support" Version="4.1.0"/>
+        <PackageReference Include="Selenium.WebDriver" Version="4.1.0"/>
+        <PackageReference Include="Selenium.WebDriver.GeckoDriver.Win64" Version="0.30.0.1"/>
+        <PackageReference Include="xunit" Version="2.4.1"/>
+        <PackageReference Include="xunit.runner.visualstudio" Version="2.4.3">
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+            <PrivateAssets>all</PrivateAssets>
+        </PackageReference>
+        <PackageReference Include="coverlet.collector" Version="3.0.2">
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+            <PrivateAssets>all</PrivateAssets>
+        </PackageReference>
+    </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\Calligraphy.Business\Calligraphy.Business.csproj" />
-    <ProjectReference Include="..\Calligraphy.Mailer\Calligraphy.Mailer.csproj" />
-    <ProjectReference Include="..\Calligraphy\Calligraphy.Controller.csproj" />
-  </ItemGroup>
+    <ItemGroup>
+        <ProjectReference Include="..\Calligraphy.Business\Calligraphy.Business.csproj"/>
+        <ProjectReference Include="..\Calligraphy.Mailer\Calligraphy.Mailer.csproj"/>
+        <ProjectReference Include="..\Calligraphy\Calligraphy.Controller.csproj"/>
+    </ItemGroup>
 
 </Project>

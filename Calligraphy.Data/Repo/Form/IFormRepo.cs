@@ -9,5 +9,4 @@ namespace Calligraphy.Data.Repo.Form
 
         bool Create(FormEntity form);
     }
-
 }

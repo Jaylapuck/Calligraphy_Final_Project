@@ -1,20 +1,14 @@
-﻿using Calligraphy.Data.Config;
+﻿using System.Collections.Generic;
+using System.Linq;
+using Calligraphy.Data.Config;
 using Calligraphy.Data.Models;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Calligraphy.Data.Models.AuthenticationModels;
 
 namespace Calligraphy.Data.Repo.Address
 {
     public class AddressRepo : IAddressRepo
     {
         private readonly CalligraphyContext _context;
-        private readonly DbContextOptions<CalligraphyContext> options;
-
-
         public AddressRepo(CalligraphyContext context)
         {
             _context = context;
@@ -22,7 +16,7 @@ namespace Calligraphy.Data.Repo.Address
 
         public AddressRepo()
         {
-            _context = new CalligraphyContext(options);
+            _context = new CalligraphyContext();
         }
 
         public IEnumerable<AddressEntity> GetAll()

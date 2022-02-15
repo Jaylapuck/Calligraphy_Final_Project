@@ -1,8 +1,5 @@
-﻿using Calligraphy.Data.Models;
-using Calligraphy.Data.Models.AuthenticationModels;
-using Calligraphy.Data.Models.AuthenticationModels.JWT;
+﻿using Calligraphy.Data.Models.AuthenticationModels.JWT;
 using Calligraphy.Data.Models.AuthenticationModels.Response;
-using Microsoft.AspNetCore.Mvc;
 
 namespace Calligraphy.Business.AuthenticationService
 {

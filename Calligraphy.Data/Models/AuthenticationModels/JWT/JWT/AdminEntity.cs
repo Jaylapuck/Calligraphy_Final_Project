@@ -12,6 +12,7 @@ namespace Calligraphy.Data.Models.AuthenticationModels.JWT
         [Required]
         [DataType(DataType.Password)]
         public string Password { get; set; }
+
         public string RefreshToken { get; set; }
     }
 }

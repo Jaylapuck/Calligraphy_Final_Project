@@ -1,10 +1,6 @@
-﻿using Calligraphy.Data.Models;
+﻿using System.Collections.Generic;
+using Calligraphy.Data.Models;
 using Calligraphy.Data.Repo.Customer;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Calligraphy.Business.Customer
 {
@@ -32,6 +28,5 @@ namespace Calligraphy.Business.Customer
         {
             return _customerRepo.Create(form);
         }
-
     }
 }
