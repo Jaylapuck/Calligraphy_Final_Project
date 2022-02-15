@@ -1,6 +1,8 @@
 ﻿using Calligraphy.Data.Config;
+using Calligraphy.Data.Models;
 using Calligraphy.Data.Repo.Service;
 using Microsoft.EntityFrameworkCore;
+using System.Linq;
 using Xunit;
 
 namespace Calligraphy.Test.Service

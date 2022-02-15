@@ -38,8 +38,8 @@ namespace Calligraphy.Data.Config
             builder.Entity<AdminEntity>().HasData(new AdminEntity
             {
                 Id = 1,
-                UserName = _configuration["DefaultCredentials:Username"],
-                Password = BCrypt.Net.BCrypt.HashPassword(_configuration["DefaultCredentials:Password"], BCrypt.Net.BCrypt.GenerateSalt())
+                UserName = "admin",
+                Password = BCrypt.Net.BCrypt.HashPassword("admin", BCrypt.Net.BCrypt.GenerateSalt())
             });
 
             builder.Entity<AboutEntity>().HasData(new AboutEntity
