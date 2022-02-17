@@ -52,8 +52,9 @@ namespace Calligraphy.Business.Image
             if (image == null) return new BadRequestResult();
             var imageToUpdate = _imageRepo.GetByImageId(id);
             if (imageToUpdate == null) return new NotFoundResult();
-            imageToUpdate.ImageTitle = image.ImageTitle;
+            imageToUpdate.Title = image.Title;
             imageToUpdate.ImageData = image.ImageData;
+            imageToUpdate.Description = image.Description;
             _imageRepo.Update(imageToUpdate);
             return new OkObjectResult(imageToUpdate);
         }

@@ -126,7 +126,7 @@ namespace Calligraphy.Data.Migrations
                         new
                         {
                             Id = 1,
-                            Password = "$2a$11$IX69qfsF1lL0Lq6tn0jyUe8beXk0FD9vMaG6ZhiKw.jHdJClYlDUK",
+                            Password = "$2a$11$NGDbhSoVESy1iwe7.NXiSuDQ6W99ZJXb991bsu2L0xhr2b2D7Atm2",
                             UserName = "admin"
                         });
                 });
@@ -225,7 +225,7 @@ namespace Calligraphy.Data.Migrations
                         {
                             FormId = 1,
                             Comments = "I am a student, worked here blabla",
-                            CreatedDate = new DateTime(2022, 2, 14, 15, 30, 21, 611, DateTimeKind.Local).AddTicks(5385),
+                            CreatedDate = new DateTime(2022, 2, 17, 1, 36, 14, 446, DateTimeKind.Local).AddTicks(6822),
                             ServiceType = 0,
                             StartingRate = 0f
                         },
@@ -233,7 +233,7 @@ namespace Calligraphy.Data.Migrations
                         {
                             FormId = 2,
                             Comments = "I am a student, worked here blabla",
-                            CreatedDate = new DateTime(2022, 2, 14, 15, 30, 21, 613, DateTimeKind.Local).AddTicks(6103),
+                            CreatedDate = new DateTime(2022, 2, 17, 1, 36, 14, 448, DateTimeKind.Local).AddTicks(8138),
                             ServiceType = 0,
                             StartingRate = 0f
                         },
@@ -241,7 +241,7 @@ namespace Calligraphy.Data.Migrations
                         {
                             FormId = 3,
                             Comments = "I am a student, worked here blabla",
-                            CreatedDate = new DateTime(2022, 2, 14, 15, 30, 21, 613, DateTimeKind.Local).AddTicks(6148),
+                            CreatedDate = new DateTime(2022, 2, 17, 1, 36, 14, 448, DateTimeKind.Local).AddTicks(8185),
                             ServiceType = 0,
                             StartingRate = 0f
                         },
@@ -249,7 +249,7 @@ namespace Calligraphy.Data.Migrations
                         {
                             FormId = 4,
                             Comments = "I am a student, worked here blabla",
-                            CreatedDate = new DateTime(2022, 2, 14, 15, 30, 21, 613, DateTimeKind.Local).AddTicks(6163),
+                            CreatedDate = new DateTime(2022, 2, 17, 1, 36, 14, 448, DateTimeKind.Local).AddTicks(8200),
                             ServiceType = 0,
                             StartingRate = 0f
                         },
@@ -257,7 +257,7 @@ namespace Calligraphy.Data.Migrations
                         {
                             FormId = 5,
                             Comments = "I am a student, worked here blabla",
-                            CreatedDate = new DateTime(2022, 2, 14, 15, 30, 21, 613, DateTimeKind.Local).AddTicks(6176),
+                            CreatedDate = new DateTime(2022, 2, 17, 1, 36, 14, 448, DateTimeKind.Local).AddTicks(8211),
                             ServiceType = 0,
                             StartingRate = 0f
                         });
@@ -270,6 +270,9 @@ namespace Calligraphy.Data.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("ImageData")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -277,7 +280,7 @@ namespace Calligraphy.Data.Migrations
                     b.Property<int>("ImageId")
                         .HasColumnType("int");
 
-                    b.Property<string>("ImageTitle")
+                    b.Property<string>("Title")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");

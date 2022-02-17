@@ -157,7 +157,7 @@ namespace Calligraphy.Test.Image
             var image = new ImageEntity
             {
                 Id = 1,
-                ImageTitle = "Test",
+                Title = "Test",
                 ImageData = It.IsAny<string>()
             };
 
