@@ -16,11 +16,6 @@ namespace Calligraphy.Data.Repo.Image
             _context = context;
         }
 
-        public ImageRepo()
-        {
-            _context = new CalligraphyContext();
-        }
-
         public IEnumerable<ImageEntity> GetAll()
         {
             return _context.Images.ToList();

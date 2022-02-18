@@ -15,11 +15,6 @@ namespace Calligraphy.Data.Repo.Contract
             _context = context;
         }
 
-        public ContractRepo()
-        {
-            _context = new CalligraphyContext();
-        }
-
         public IEnumerable<ContractEntity> GetAll()
         {
             using (_context)

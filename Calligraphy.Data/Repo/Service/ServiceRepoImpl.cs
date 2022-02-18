@@ -16,11 +16,6 @@ namespace Calligraphy.Data.Repo.Service
             _context = context;
         }
 
-        public ServiceRepoImpl()
-        {
-            _context = new CalligraphyContext();
-        }
-
         public IEnumerable<ServiceEntity> GetAll()
         {
             using (_context)

@@ -9,17 +9,10 @@ namespace Calligraphy.Data.Config
 {
     public class CalligraphyContext : DbContext
     {
-        private readonly IConfiguration _configuration;
         public CalligraphyContext(DbContextOptions<CalligraphyContext> options) : base(options)
         {
         }
         
-        public CalligraphyContext()
-        {
-            _configuration = new ConfigurationBuilder()
-                .Build();
-        }
-
         public DbSet<FormEntity> Forms { get; set; }
         public DbSet<QuoteEntity> Quotes { get; set; }
         public DbSet<ImageEntity> Images { get; set; }

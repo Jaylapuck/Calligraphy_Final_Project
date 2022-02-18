@@ -16,11 +16,6 @@ namespace Calligraphy.Data.Repo.Customer
             _context = context;
         }
 
-        public CustomerRepo()
-        {
-            _context = new CalligraphyContext();
-        }
-
         public IEnumerable<CustomerEntity> GetAll()
         {
             using (_context)
