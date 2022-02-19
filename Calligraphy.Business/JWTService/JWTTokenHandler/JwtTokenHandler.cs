@@ -28,15 +28,33 @@ namespace Calligraphy.Business.JWTService.JWTTokenHandler
         //Refresh Token Authentication
         public AuthenticationResponse Authenticate(string username, IEnumerable<Claim> claims)
         {
-            var jwtSecurityToken = new JwtSecurityToken(
-                claims: claims,
-                expires: DateTime.UtcNow.AddHours(1),
-                audience: _configuration["Jwt:Audience"],
-                issuer: _configuration["Jwt:Issuer"],
-                signingCredentials: new SigningCredentials(
-                    new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Secret"])),
-                    SecurityAlgorithms.HmacSha256)
-            );
+            bool isDevelopment = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") == "Development";
+            JwtSecurityToken jwtSecurityToken;
+
+            if (isDevelopment)
+            {
+                jwtSecurityToken = new JwtSecurityToken(
+                    claims: claims,
+                    expires: DateTime.UtcNow.AddHours(1),
+                    audience: "https://localhost:5001",
+                    issuer: "https://localhost:5001",
+                    signingCredentials: new SigningCredentials(
+                        new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Secret"])),
+                        SecurityAlgorithms.HmacSha256)
+                );
+            }
+            else
+            {
+                jwtSecurityToken = new JwtSecurityToken(
+                    claims: claims,
+                    expires: DateTime.UtcNow.AddHours(1),
+                    audience: _configuration["Jwt:Audience"],
+                    issuer: _configuration["Jwt:Issuer"],
+                    signingCredentials: new SigningCredentials(
+                        new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Secret"])),
+                        SecurityAlgorithms.HmacSha256)
+                );
+            }
 
             var token = new JwtSecurityTokenHandler().WriteToken(jwtSecurityToken);
             var refreshToken = _refreshTokenGenerator.GenerateRefreshToken();
@@ -55,18 +73,38 @@ namespace Calligraphy.Business.JWTService.JWTTokenHandler
         {
             var tokenHandler = new JwtSecurityTokenHandler();
             var key = Encoding.ASCII.GetBytes(_configuration["Jwt:Secret"]);
-            var tokenDescriptor = new SecurityTokenDescriptor
+            bool isDevelopment = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") == "Development";
+            SecurityTokenDescriptor tokenDescriptor;
+            if(isDevelopment)
             {
-                Subject = new ClaimsIdentity(new[]
+                tokenDescriptor = new SecurityTokenDescriptor
+                {
+                    Subject = new ClaimsIdentity(new[]
                 {
                     new Claim(ClaimTypes.Name, username)
                 }),
-                Audience = _configuration["Jwt:Audience"],
-                Issuer = _configuration["Jwt:Issuer"],
-                Expires = DateTime.UtcNow.AddHours(1),
-                SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key),
+                    Audience = "https://localhost:5001",
+                    Issuer = "https://localhost:5001",
+                    Expires = DateTime.UtcNow.AddHours(1),
+                    SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key),
                     SecurityAlgorithms.HmacSha256Signature)
-            };
+                };
+            }
+            else
+            {
+                tokenDescriptor = new SecurityTokenDescriptor
+                {
+                    Subject = new ClaimsIdentity(new[]
+                {
+                    new Claim(ClaimTypes.Name, username)
+                }),
+                    Audience = _configuration["Jwt:Audience"],
+                    Issuer = _configuration["Jwt:Issuer"],
+                    Expires = DateTime.UtcNow.AddHours(1),
+                    SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key),
+                    SecurityAlgorithms.HmacSha256Signature)
+                };
+            }
 
             var token = tokenHandler.CreateToken(tokenDescriptor);
             var refreshToken = _refreshTokenGenerator.GenerateRefreshToken();
