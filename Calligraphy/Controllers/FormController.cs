@@ -10,6 +10,7 @@ using Calligraphy.Mailer.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 
@@ -24,12 +25,14 @@ namespace Calligraphy.Controllers
         private readonly IFormService _formService;
         private readonly ILogger<FormController> _logger;
         private readonly IMailerService _mailService;
+        private readonly IConfiguration _config;
 
-        public FormController(IFormService formService, IMailerService mailService, ILogger<FormController> logger)
+        public FormController(IFormService formService, IMailerService mailService, ILogger<FormController> logger, IConfiguration config)
         {
             _formService = formService;
             _mailService = mailService;
             _logger = logger;
+            _config = config;
         }
 
         [HttpGet]
@@ -87,7 +90,7 @@ namespace Calligraphy.Controllers
                 form.Quote = quote;
                 var result = _formService.Create(form);
                 if (!result) return BadRequest();
-                var mailController = new MailController(_mailService);
+                var mailController = new MailController(_mailService, _config);
                 await mailController.SendCustomerConfirmation(form);
                 await mailController.SendOwnerAlertNewQuote(form);
                 return Ok(form);
