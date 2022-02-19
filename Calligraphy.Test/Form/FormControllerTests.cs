@@ -13,6 +13,7 @@ using Calligraphy.Mailer.Services;
 using HttpContextMoq;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using Moq;
 using Newtonsoft.Json;
@@ -28,13 +29,14 @@ namespace Calligraphy.Test.Form
         private readonly ILogger<FormController> _logger;
         private readonly Mock<IFormService> _mockFormService;
         private readonly Mock<IMailerService> _mockMailerService;
+        private readonly Mock<IConfiguration> _mockConfig;
 
         public FormControllerTests()
         {
             _logger = Mock.Of<ILogger<FormController>>();
             _mockFormService = new Mock<IFormService>();
             _mockMailerService = new Mock<IMailerService>();
-            _formController = new FormController(_mockFormService.Object, _mockMailerService.Object, _logger);
+            _formController = new FormController(_mockFormService.Object, _mockMailerService.Object, _logger, _mockConfig.Object);
         }
 
         //TC4-TC1

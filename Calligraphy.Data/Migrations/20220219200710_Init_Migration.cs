@@ -11,17 +11,17 @@ namespace Calligraphy.Data.Migrations
                 name: "About",
                 columns: table => new
                 {
-                    AboutId = table.Column<int>(nullable: false)
+                    AboutId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(nullable: true),
-                    Email = table.Column<string>(nullable: true),
-                    Phone = table.Column<string>(nullable: true),
-                    Profession = table.Column<string>(nullable: true),
-                    Description = table.Column<string>(nullable: true),
-                    Language = table.Column<string>(nullable: true),
-                    Country = table.Column<string>(nullable: true),
-                    Experience = table.Column<string>(nullable: true),
-                    Mission = table.Column<string>(nullable: true)
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Email = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Phone = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Profession = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Language = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Country = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Experience = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Mission = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -32,12 +32,12 @@ namespace Calligraphy.Data.Migrations
                 name: "Addresses",
                 columns: table => new
                 {
-                    AddressId = table.Column<int>(nullable: false)
+                    AddressId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Street = table.Column<string>(nullable: true),
-                    Postal = table.Column<string>(nullable: true),
-                    City = table.Column<string>(nullable: true),
-                    Country = table.Column<string>(nullable: true)
+                    Street = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Postal = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    City = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Country = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -48,11 +48,11 @@ namespace Calligraphy.Data.Migrations
                 name: "Admins",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    UserName = table.Column<string>(nullable: false),
-                    Password = table.Column<string>(nullable: false),
-                    RefreshToken = table.Column<string>(nullable: true)
+                    UserName = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    Password = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    RefreshToken = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -63,14 +63,14 @@ namespace Calligraphy.Data.Migrations
                 name: "Contracts",
                 columns: table => new
                 {
-                    ContractId = table.Column<int>(nullable: false)
+                    ContractId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    FinalCost = table.Column<double>(nullable: false),
-                    DownPayment = table.Column<double>(nullable: false),
-                    DateCommissioned = table.Column<DateTime>(nullable: false),
-                    EndDate = table.Column<DateTime>(nullable: false),
-                    HasSignature = table.Column<bool>(nullable: false),
-                    IsFinished = table.Column<bool>(nullable: false)
+                    FinalCost = table.Column<double>(type: "float", nullable: false),
+                    DownPayment = table.Column<double>(type: "float", nullable: false),
+                    DateCommissioned = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    EndDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    HasSignature = table.Column<bool>(type: "bit", nullable: false),
+                    IsFinished = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -81,12 +81,12 @@ namespace Calligraphy.Data.Migrations
                 name: "Images",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    ImageId = table.Column<int>(nullable: false),
-                    Title = table.Column<string>(nullable: true),
-                    Description = table.Column<string>(nullable: true),
-                    ImageData = table.Column<string>(nullable: false)
+                    ImageId = table.Column<int>(type: "int", nullable: false),
+                    Title = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ImageData = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -97,12 +97,12 @@ namespace Calligraphy.Data.Migrations
                 name: "Quotes",
                 columns: table => new
                 {
-                    QuoteId = table.Column<int>(nullable: false)
+                    QuoteId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Price = table.Column<float>(nullable: false),
-                    Duration = table.Column<int>(nullable: false),
-                    Materials = table.Column<string>(nullable: true),
-                    ApprovalStatus = table.Column<int>(nullable: false)
+                    Price = table.Column<float>(type: "real", nullable: false),
+                    Duration = table.Column<int>(type: "int", nullable: false),
+                    Materials = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ApprovalStatus = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -113,10 +113,10 @@ namespace Calligraphy.Data.Migrations
                 name: "Services",
                 columns: table => new
                 {
-                    ServiceId = table.Column<int>(nullable: false)
+                    ServiceId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    TypeName = table.Column<int>(nullable: false),
-                    StartingRate = table.Column<float>(nullable: false)
+                    TypeName = table.Column<int>(type: "int", nullable: false),
+                    StartingRate = table.Column<float>(type: "real", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -127,12 +127,12 @@ namespace Calligraphy.Data.Migrations
                 name: "Customers",
                 columns: table => new
                 {
-                    CustomerId = table.Column<int>(nullable: false)
+                    CustomerId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    FirstName = table.Column<string>(nullable: true),
-                    LastName = table.Column<string>(nullable: true),
-                    Email = table.Column<string>(nullable: true),
-                    AddressId = table.Column<int>(nullable: true)
+                    FirstName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    LastName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Email = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    AddressId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -149,14 +149,14 @@ namespace Calligraphy.Data.Migrations
                 name: "Forms",
                 columns: table => new
                 {
-                    FormId = table.Column<int>(nullable: false)
+                    FormId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    CustomerId = table.Column<int>(nullable: true),
-                    ServiceType = table.Column<int>(nullable: false),
-                    StartingRate = table.Column<float>(nullable: false),
-                    Comments = table.Column<string>(nullable: true),
-                    CreatedDate = table.Column<DateTime>(nullable: false),
-                    QuoteId = table.Column<int>(nullable: true)
+                    CustomerId = table.Column<int>(type: "int", nullable: true),
+                    ServiceType = table.Column<int>(type: "int", nullable: false),
+                    StartingRate = table.Column<float>(type: "real", nullable: false),
+                    Comments = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    QuoteId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -183,19 +183,7 @@ namespace Calligraphy.Data.Migrations
             migrationBuilder.InsertData(
                 table: "Admins",
                 columns: new[] { "Id", "Password", "RefreshToken", "UserName" },
-                values: new object[] { 1, "$2a$11$B8wtCONHVIPXtca01LqG..L1fZ2pDPjlnjk6LEM8NJySS9AhARp1e", null, "admin" });
-
-            migrationBuilder.InsertData(
-                table: "Forms",
-                columns: new[] { "FormId", "Comments", "CreatedDate", "CustomerId", "QuoteId", "ServiceType", "StartingRate" },
-                values: new object[,]
-                {
-                    { 1, "I am a student, worked here blabla", new DateTime(2022, 2, 17, 17, 47, 41, 972, DateTimeKind.Local).AddTicks(4437), null, null, 0, 0f },
-                    { 2, "I am a student, worked here blabla", new DateTime(2022, 2, 17, 17, 47, 41, 975, DateTimeKind.Local).AddTicks(1436), null, null, 0, 0f },
-                    { 3, "I am a student, worked here blabla", new DateTime(2022, 2, 17, 17, 47, 41, 975, DateTimeKind.Local).AddTicks(1485), null, null, 0, 0f },
-                    { 4, "I am a student, worked here blabla", new DateTime(2022, 2, 17, 17, 47, 41, 975, DateTimeKind.Local).AddTicks(1502), null, null, 0, 0f },
-                    { 5, "I am a student, worked here blabla", new DateTime(2022, 2, 17, 17, 47, 41, 975, DateTimeKind.Local).AddTicks(1517), null, null, 0, 0f }
-                });
+                values: new object[] { 1, "$2a$11$XEVQfPPtoWqWOgS8PG4n3uhGY0Vwg85HbWQCOyyZNgjOzqboxQAL6", null, "admin" });
 
             migrationBuilder.InsertData(
                 table: "Services",

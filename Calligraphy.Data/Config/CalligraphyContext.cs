@@ -66,40 +66,40 @@ namespace Calligraphy.Data.Config
             });
 
             //build five form entries
-            builder.Entity<FormEntity>().HasData(new FormEntity
-            {
-                FormId = 1,
-                CreatedDate = DateTime.Now,
-                Comments = "I am a student, worked here blabla"
-            });
+            //builder.Entity<FormEntity>().HasData(new FormEntity
+            //{
+            //    FormId = 1,
+            //    CreatedDate = DateTime.Now,
+            //    Comments = "I am a student, worked here blabla"
+            //});
 
-            builder.Entity<FormEntity>().HasData(new FormEntity
-            {
-                FormId = 2,
-                CreatedDate = DateTime.Now,
-                Comments = "I am a student, worked here blabla"
-            });
+            //builder.Entity<FormEntity>().HasData(new FormEntity
+            //{
+            //    FormId = 2,
+            //    CreatedDate = DateTime.Now,
+            //    Comments = "I am a student, worked here blabla"
+            //});
 
-            builder.Entity<FormEntity>().HasData(new FormEntity
-            {
-                FormId = 3,
-                CreatedDate = DateTime.Now,
-                Comments = "I am a student, worked here blabla"
-            });
+            //builder.Entity<FormEntity>().HasData(new FormEntity
+            //{
+            //    FormId = 3,
+            //    CreatedDate = DateTime.Now,
+            //    Comments = "I am a student, worked here blabla"
+            //});
 
-            builder.Entity<FormEntity>().HasData(new FormEntity
-            {
-                FormId = 4,
-                CreatedDate = DateTime.Now,
-                Comments = "I am a student, worked here blabla"
-            });
+            //builder.Entity<FormEntity>().HasData(new FormEntity
+            //{
+            //    FormId = 4,
+            //    CreatedDate = DateTime.Now,
+            //    Comments = "I am a student, worked here blabla"
+            //});
 
-            builder.Entity<FormEntity>().HasData(new FormEntity
-            {
-                FormId = 5,
-                CreatedDate = DateTime.Now,
-                Comments = "I am a student, worked here blabla"
-            });
+            //builder.Entity<FormEntity>().HasData(new FormEntity
+            //{
+            //    FormId = 5,
+            //    CreatedDate = DateTime.Now,
+            //    Comments = "I am a student, worked here blabla"
+            //});
         }
     }
 }

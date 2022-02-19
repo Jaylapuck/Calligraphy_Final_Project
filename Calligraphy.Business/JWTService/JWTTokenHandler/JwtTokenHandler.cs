@@ -31,30 +31,29 @@ namespace Calligraphy.Business.JWTService.JWTTokenHandler
             bool isDevelopment = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") == "Development";
             JwtSecurityToken jwtSecurityToken;
 
+            string validIssuer;
+            string validAudience;
+
             if (isDevelopment)
             {
-                jwtSecurityToken = new JwtSecurityToken(
-                    claims: claims,
-                    expires: DateTime.UtcNow.AddHours(1),
-                    audience: "https://localhost:5001",
-                    issuer: "https://localhost:5001",
-                    signingCredentials: new SigningCredentials(
-                        new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Secret"])),
-                        SecurityAlgorithms.HmacSha256)
-                );
+                validIssuer = "https://localhost:5001";
+                validAudience = "https://localhost:5001";
             }
             else
             {
-                jwtSecurityToken = new JwtSecurityToken(
+                validIssuer = _configuration["Jwt:Issuer"];
+                validAudience = _configuration["Jwt:Audience"];
+            }
+
+            jwtSecurityToken = new JwtSecurityToken(
                     claims: claims,
                     expires: DateTime.UtcNow.AddHours(1),
-                    audience: _configuration["Jwt:Audience"],
-                    issuer: _configuration["Jwt:Issuer"],
+                    audience: validAudience,
+                    issuer: validIssuer,
                     signingCredentials: new SigningCredentials(
                         new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Secret"])),
                         SecurityAlgorithms.HmacSha256)
-                );
-            }
+            );
 
             var token = new JwtSecurityTokenHandler().WriteToken(jwtSecurityToken);
             var refreshToken = _refreshTokenGenerator.GenerateRefreshToken();
@@ -75,36 +74,33 @@ namespace Calligraphy.Business.JWTService.JWTTokenHandler
             var key = Encoding.ASCII.GetBytes(_configuration["Jwt:Secret"]);
             bool isDevelopment = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") == "Development";
             SecurityTokenDescriptor tokenDescriptor;
-            if(isDevelopment)
+
+            string validIssuer;
+            string validAudience;
+
+            if (isDevelopment)
             {
-                tokenDescriptor = new SecurityTokenDescriptor
-                {
-                    Subject = new ClaimsIdentity(new[]
-                {
-                    new Claim(ClaimTypes.Name, username)
-                }),
-                    Audience = "https://localhost:5001",
-                    Issuer = "https://localhost:5001",
-                    Expires = DateTime.UtcNow.AddHours(1),
-                    SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key),
-                    SecurityAlgorithms.HmacSha256Signature)
-                };
+                validIssuer = "https://localhost:5001";
+                validAudience = "https://localhost:5001";
             }
             else
             {
-                tokenDescriptor = new SecurityTokenDescriptor
+                validIssuer = _configuration["Jwt:Issuer"];
+                validAudience = _configuration["Jwt:Audience"];
+            }
+
+            tokenDescriptor = new SecurityTokenDescriptor
                 {
                     Subject = new ClaimsIdentity(new[]
                 {
                     new Claim(ClaimTypes.Name, username)
                 }),
-                    Audience = _configuration["Jwt:Audience"],
-                    Issuer = _configuration["Jwt:Issuer"],
+                    Audience = validAudience,
+                    Issuer = validIssuer,
                     Expires = DateTime.UtcNow.AddHours(1),
                     SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key),
                     SecurityAlgorithms.HmacSha256Signature)
                 };
-            }
 
             var token = tokenHandler.CreateToken(tokenDescriptor);
             var refreshToken = _refreshTokenGenerator.GenerateRefreshToken();

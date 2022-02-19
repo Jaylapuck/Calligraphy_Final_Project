@@ -79,6 +79,21 @@ namespace Calligraphy
             services.AddTransient<IAboutRepo, AboutRepo>();
 
             //JWT AUTHENTICATION
+
+            string audiece;
+            string issuer;
+
+            if(CurrentEnvironment.IsDevelopment())
+            {
+                audiece = "https://localhost:5001";
+                issuer = "https://localhost:5001";
+            }
+            else
+            {
+                audiece = Configuration["Jwt:Audience"];
+                issuer = Configuration["Jwt:Issuer"];
+            }
+
             services.AddAuthentication(opt =>
                 {
                     opt.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -95,8 +110,8 @@ namespace Calligraphy
                         ValidateAudience = true,
                         ValidateLifetime = true,
                         ValidateIssuerSigningKey = true,
-                        ValidAudience = Configuration["Jwt:Audience"],
-                        ValidIssuer = Configuration["Jwt:Issuer"],
+                        ValidAudience = audiece,
+                        ValidIssuer = issuer,
                         IssuerSigningKey =
                             new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["Jwt:Secret"])),
                         ClockSkew = TimeSpan.Zero

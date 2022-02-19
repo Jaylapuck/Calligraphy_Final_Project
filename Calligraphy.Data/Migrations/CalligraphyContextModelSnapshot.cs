@@ -15,16 +15,16 @@ namespace Calligraphy.Data.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "3.1.20")
+                .UseIdentityColumns()
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
-                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                .HasAnnotation("ProductVersion", "5.0.1");
 
             modelBuilder.Entity("Calligraphy.Data.Models.AboutEntity", b =>
                 {
                     b.Property<int>("AboutId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .UseIdentityColumn();
 
                     b.Property<string>("Country")
                         .HasColumnType("nvarchar(max)");
@@ -78,7 +78,7 @@ namespace Calligraphy.Data.Migrations
                     b.Property<int>("AddressId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .UseIdentityColumn();
 
                     b.Property<string>("City")
                         .HasColumnType("nvarchar(max)");
@@ -102,7 +102,7 @@ namespace Calligraphy.Data.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .UseIdentityColumn();
 
                     b.Property<string>("Password")
                         .IsRequired()
@@ -126,7 +126,7 @@ namespace Calligraphy.Data.Migrations
                         new
                         {
                             Id = 1,
-                            Password = "$2a$11$B8wtCONHVIPXtca01LqG..L1fZ2pDPjlnjk6LEM8NJySS9AhARp1e",
+                            Password = "$2a$11$XEVQfPPtoWqWOgS8PG4n3uhGY0Vwg85HbWQCOyyZNgjOzqboxQAL6",
                             UserName = "admin"
                         });
                 });
@@ -136,7 +136,7 @@ namespace Calligraphy.Data.Migrations
                     b.Property<int>("ContractId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .UseIdentityColumn();
 
                     b.Property<DateTime>("DateCommissioned")
                         .HasColumnType("datetime2");
@@ -166,7 +166,7 @@ namespace Calligraphy.Data.Migrations
                     b.Property<int>("CustomerId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .UseIdentityColumn();
 
                     b.Property<int?>("AddressId")
                         .HasColumnType("int");
@@ -192,7 +192,7 @@ namespace Calligraphy.Data.Migrations
                     b.Property<int>("FormId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .UseIdentityColumn();
 
                     b.Property<string>("Comments")
                         .HasColumnType("nvarchar(max)");
@@ -219,48 +219,6 @@ namespace Calligraphy.Data.Migrations
                     b.HasIndex("QuoteId");
 
                     b.ToTable("Forms");
-
-                    b.HasData(
-                        new
-                        {
-                            FormId = 1,
-                            Comments = "I am a student, worked here blabla",
-                            CreatedDate = new DateTime(2022, 2, 17, 17, 47, 41, 972, DateTimeKind.Local).AddTicks(4437),
-                            ServiceType = 0,
-                            StartingRate = 0f
-                        },
-                        new
-                        {
-                            FormId = 2,
-                            Comments = "I am a student, worked here blabla",
-                            CreatedDate = new DateTime(2022, 2, 17, 17, 47, 41, 975, DateTimeKind.Local).AddTicks(1436),
-                            ServiceType = 0,
-                            StartingRate = 0f
-                        },
-                        new
-                        {
-                            FormId = 3,
-                            Comments = "I am a student, worked here blabla",
-                            CreatedDate = new DateTime(2022, 2, 17, 17, 47, 41, 975, DateTimeKind.Local).AddTicks(1485),
-                            ServiceType = 0,
-                            StartingRate = 0f
-                        },
-                        new
-                        {
-                            FormId = 4,
-                            Comments = "I am a student, worked here blabla",
-                            CreatedDate = new DateTime(2022, 2, 17, 17, 47, 41, 975, DateTimeKind.Local).AddTicks(1502),
-                            ServiceType = 0,
-                            StartingRate = 0f
-                        },
-                        new
-                        {
-                            FormId = 5,
-                            Comments = "I am a student, worked here blabla",
-                            CreatedDate = new DateTime(2022, 2, 17, 17, 47, 41, 975, DateTimeKind.Local).AddTicks(1517),
-                            ServiceType = 0,
-                            StartingRate = 0f
-                        });
                 });
 
             modelBuilder.Entity("Calligraphy.Data.Models.ImageEntity", b =>
@@ -268,7 +226,7 @@ namespace Calligraphy.Data.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .UseIdentityColumn();
 
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
@@ -293,7 +251,7 @@ namespace Calligraphy.Data.Migrations
                     b.Property<int>("QuoteId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .UseIdentityColumn();
 
                     b.Property<int>("ApprovalStatus")
                         .HasColumnType("int");
@@ -317,7 +275,7 @@ namespace Calligraphy.Data.Migrations
                     b.Property<int>("ServiceId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .UseIdentityColumn();
 
                     b.Property<float>("StartingRate")
                         .HasColumnType("real");
@@ -349,6 +307,8 @@ namespace Calligraphy.Data.Migrations
                     b.HasOne("Calligraphy.Data.Models.AddressEntity", "Address")
                         .WithMany()
                         .HasForeignKey("AddressId");
+
+                    b.Navigation("Address");
                 });
 
             modelBuilder.Entity("Calligraphy.Data.Models.FormEntity", b =>
@@ -360,6 +320,10 @@ namespace Calligraphy.Data.Migrations
                     b.HasOne("Calligraphy.Data.Models.QuoteEntity", "Quote")
                         .WithMany()
                         .HasForeignKey("QuoteId");
+
+                    b.Navigation("Customer");
+
+                    b.Navigation("Quote");
                 });
 #pragma warning restore 612, 618
         }
