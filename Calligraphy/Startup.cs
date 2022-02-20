@@ -38,12 +38,14 @@ namespace Calligraphy
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
+        public Startup(IConfiguration configuration, IWebHostEnvironment env)
         {
             Configuration = configuration;
+            CurrentEnvironment = env;
         }
 
         private IConfiguration Configuration { get; }
+        private IWebHostEnvironment CurrentEnvironment { get; set; }
 
         public void ConfigureServices(IServiceCollection services)
         {
@@ -77,6 +79,21 @@ namespace Calligraphy
             services.AddTransient<IAboutRepo, AboutRepo>();
 
             //JWT AUTHENTICATION
+
+            string audiece;
+            string issuer;
+
+            if(CurrentEnvironment.IsDevelopment())
+            {
+                audiece = "https://localhost:5001";
+                issuer = "https://localhost:5001";
+            }
+            else
+            {
+                audiece = Configuration["Jwt:Audience"];
+                issuer = Configuration["Jwt:Issuer"];
+            }
+
             services.AddAuthentication(opt =>
                 {
                     opt.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -93,8 +110,8 @@ namespace Calligraphy
                         ValidateAudience = true,
                         ValidateLifetime = true,
                         ValidateIssuerSigningKey = true,
-                        ValidAudience = Configuration["Jwt:Audience"],
-                        ValidIssuer = Configuration["Jwt:Issuer"],
+                        ValidAudience = audiece,
+                        ValidIssuer = issuer,
                         IssuerSigningKey =
                             new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["Jwt:Secret"])),
                         ClockSkew = TimeSpan.Zero
@@ -118,8 +135,16 @@ namespace Calligraphy
             });
 
             // configure connection to  the database
-            services.AddDbContext<CalligraphyContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("CalligraphyContext")));
+            if(CurrentEnvironment.IsDevelopment())
+            {
+                services.AddDbContext<CalligraphyContext>(options =>
+                    options.UseSqlServer(Configuration.GetConnectionString("LocalContext")));
+            }
+            else
+            {
+                services.AddDbContext<CalligraphyContext>(options =>
+                    options.UseSqlServer(Configuration.GetConnectionString("CalligraphyContext")));
+            }
 
             //configure CORS
             services.AddCors(options => options.AddPolicy("ApiCorsPolicy", builder =>

@@ -13,11 +13,6 @@ namespace Calligraphy.Business.Customer
             _customerRepo = customerRepo;
         }
 
-        public CustomerService()
-        {
-            _customerRepo = new CustomerRepo();
-        }
-
         public IEnumerable<CustomerEntity> GetAll()
         {
             return _customerRepo.GetAll();

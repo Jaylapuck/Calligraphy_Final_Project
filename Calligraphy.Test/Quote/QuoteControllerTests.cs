@@ -7,6 +7,7 @@ using Calligraphy.Data.Enums;
 using Calligraphy.Data.Models;
 using Calligraphy.Mailer.Services;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using Moq;
 using Xunit;
 
@@ -18,6 +19,7 @@ namespace Calligraphy.Test.Quote
         private readonly Mock<IMailerService> _mailServiceMock;
         private readonly QuoteController _quoteController;
         private readonly Mock<IQuoteService> _quoteServiceMock;
+        private readonly Mock<IConfiguration> _mockConfig;
 
         public QuoteControllerTests()
         {
@@ -25,7 +27,7 @@ namespace Calligraphy.Test.Quote
             _mailServiceMock = new Mock<IMailerService>();
             _contractServiceMock = new Mock<IContractService>();
             _quoteController = new QuoteController(_quoteServiceMock.Object, _mailServiceMock.Object,
-                _contractServiceMock.Object);
+                _contractServiceMock.Object, _mockConfig.Object);
         }
 
         [Fact]

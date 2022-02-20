@@ -14,11 +14,6 @@ namespace Calligraphy.Data.Repo.Address
             _context = context;
         }
 
-        public AddressRepo()
-        {
-            _context = new CalligraphyContext();
-        }
-
         public IEnumerable<AddressEntity> GetAll()
         {
             using (_context)

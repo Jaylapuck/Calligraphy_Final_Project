@@ -28,14 +28,31 @@ namespace Calligraphy.Business.JWTService.JWTTokenHandler
         //Refresh Token Authentication
         public AuthenticationResponse Authenticate(string username, IEnumerable<Claim> claims)
         {
-            var jwtSecurityToken = new JwtSecurityToken(
-                claims: claims,
-                expires: DateTime.UtcNow.AddHours(1),
-                audience: _configuration["Jwt:Audience"],
-                issuer: _configuration["Jwt:Issuer"],
-                signingCredentials: new SigningCredentials(
-                    new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Secret"])),
-                    SecurityAlgorithms.HmacSha256)
+            bool isDevelopment = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") == "Development";
+            JwtSecurityToken jwtSecurityToken;
+
+            string validIssuer;
+            string validAudience;
+
+            if (isDevelopment)
+            {
+                validIssuer = "https://localhost:5001";
+                validAudience = "https://localhost:5001";
+            }
+            else
+            {
+                validIssuer = _configuration["Jwt:Issuer"];
+                validAudience = _configuration["Jwt:Audience"];
+            }
+
+            jwtSecurityToken = new JwtSecurityToken(
+                    claims: claims,
+                    expires: DateTime.UtcNow.AddHours(1),
+                    audience: validAudience,
+                    issuer: validIssuer,
+                    signingCredentials: new SigningCredentials(
+                        new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Secret"])),
+                        SecurityAlgorithms.HmacSha256)
             );
 
             var token = new JwtSecurityTokenHandler().WriteToken(jwtSecurityToken);
@@ -55,18 +72,35 @@ namespace Calligraphy.Business.JWTService.JWTTokenHandler
         {
             var tokenHandler = new JwtSecurityTokenHandler();
             var key = Encoding.ASCII.GetBytes(_configuration["Jwt:Secret"]);
-            var tokenDescriptor = new SecurityTokenDescriptor
+            bool isDevelopment = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") == "Development";
+            SecurityTokenDescriptor tokenDescriptor;
+
+            string validIssuer;
+            string validAudience;
+
+            if (isDevelopment)
             {
-                Subject = new ClaimsIdentity(new[]
+                validIssuer = "https://localhost:5001";
+                validAudience = "https://localhost:5001";
+            }
+            else
+            {
+                validIssuer = _configuration["Jwt:Issuer"];
+                validAudience = _configuration["Jwt:Audience"];
+            }
+
+            tokenDescriptor = new SecurityTokenDescriptor
+                {
+                    Subject = new ClaimsIdentity(new[]
                 {
                     new Claim(ClaimTypes.Name, username)
                 }),
-                Audience = _configuration["Jwt:Audience"],
-                Issuer = _configuration["Jwt:Issuer"],
-                Expires = DateTime.UtcNow.AddHours(1),
-                SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key),
+                    Audience = validAudience,
+                    Issuer = validIssuer,
+                    Expires = DateTime.UtcNow.AddHours(1),
+                    SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key),
                     SecurityAlgorithms.HmacSha256Signature)
-            };
+                };
 
             var token = tokenHandler.CreateToken(tokenDescriptor);
             var refreshToken = _refreshTokenGenerator.GenerateRefreshToken();

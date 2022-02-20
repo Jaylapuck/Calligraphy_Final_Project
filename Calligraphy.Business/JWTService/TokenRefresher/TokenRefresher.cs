@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
+using System.Security.Claims;
 using System.Text;
 using Calligraphy.Business.AuthenticationService;
 using Calligraphy.Business.JWTService.JWTTokenHandler;
@@ -27,7 +28,21 @@ namespace Calligraphy.Business.JWTService.TokenRefresher
 
         public AuthenticationResponse Refresh(RefreshCred refreshCred)
         {
+            bool isDevelopment = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") == "Development";
             var tokenHandler = new JwtSecurityTokenHandler();
+            string validIssuer;
+            string validAudience;
+
+            if(isDevelopment)
+            {
+                validIssuer = "https://localhost:5001";
+                validAudience = "https://localhost:5001";
+            }
+            else
+            {
+                validIssuer = _configuration["Jwt:Issuer"];
+                validAudience = _configuration["Jwt:Audience"];
+            }
 
             var principal = tokenHandler.ValidateToken(refreshCred.JwtToken, new TokenValidationParameters
             {
@@ -35,8 +50,8 @@ namespace Calligraphy.Business.JWTService.TokenRefresher
                 IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Secret"])),
                 ValidateIssuer = true,
                 ValidateAudience = true,
-                ValidIssuer = _configuration["Jwt:Issuer"],
-                ValidAudience = _configuration["Jwt:Audience"]
+                ValidIssuer = validIssuer,
+                ValidAudience = validAudience
             }, out var securityToken);
 
             if (securityToken is not JwtSecurityToken jwtSecurityToken ||

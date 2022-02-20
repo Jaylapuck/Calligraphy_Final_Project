@@ -15,11 +15,6 @@ namespace Calligraphy.Data.Repo.Quote
             _context = context;
         }
 
-        public QuoteRepo()
-        {
-            _context = new CalligraphyContext();
-        }
-
         public IEnumerable<QuoteEntity> GetAll()
         {
             using (_context)

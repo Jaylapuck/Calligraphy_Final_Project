@@ -14,11 +14,6 @@ namespace Calligraphy.Data.Repo.About
             _context = context;
         }
 
-        public AboutRepo()
-        {
-            _context = new CalligraphyContext();
-        }
-
         public AboutEntity Get()
         {
             return _context.About.FirstOrDefault();

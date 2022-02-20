@@ -16,11 +16,6 @@ namespace Calligraphy.Data.Repo.Form
             _context = context;
         }
 
-        public FormRepo()
-        {
-            _context = new CalligraphyContext();
-        }
-
         public PagedList<FormEntity> GetAll(FormParameters formParameters)
         {
             return PagedList<FormEntity>.ToPagedList(_context.Forms.OrderBy(x => x.CreatedDate),

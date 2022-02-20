@@ -10,6 +10,7 @@ using Calligraphy.Mailer.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 
 namespace Calligraphy.Controllers
 {
@@ -22,13 +23,15 @@ namespace Calligraphy.Controllers
         private readonly IContractService _contractService;
         private readonly IMailerService _mailerService;
         private readonly IQuoteService _quoteService;
+        private readonly IConfiguration _config;
 
         public QuoteController(IQuoteService quoteService, IMailerService mailerService,
-            IContractService contractService)
+            IContractService contractService, IConfiguration config)
         {
             _quoteService = quoteService;
             _mailerService = mailerService;
             _contractService = contractService;
+            _config = config;
         }
 
         // GET ALL
@@ -82,7 +85,7 @@ namespace Calligraphy.Controllers
                 if (quoteResult.GetType() == typeof(OkObjectResult) && contractResult.GetType() == typeof(OkResult))
                 {
                     quote.QuoteId = id;
-                    var mailController = new MailController(_mailerService);
+                    var mailController = new MailController(_mailerService, _config);
                     await mailController.SendOwnerAlertNewContract(quote, newContract);
                 }
 

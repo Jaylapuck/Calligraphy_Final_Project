@@ -10,6 +10,7 @@ using Calligraphy.Mailer.Model;
 using Calligraphy.Mailer.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using Moq;
 using Xunit;
 
@@ -19,11 +20,12 @@ namespace Calligraphy.Test.Mailer
     {
         private readonly MailController _controller;
         private readonly Mock<IMailerService> _service;
+        private readonly Mock<IConfiguration> _mockConfig;
 
         public MailerControllerTests()
         {
             _service = new Mock<IMailerService>();
-            _controller = new MailController(_service.Object);
+            _controller = new MailController(_service.Object, _mockConfig.Object);
         }
 
         [Fact]

@@ -6,16 +6,19 @@ using Calligraphy.Data.Models;
 using Calligraphy.Mailer.Model;
 using Calligraphy.Mailer.Services;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 
 namespace Calligraphy.Controllers
 {
     public class MailController : ControllerBase
     {
         private readonly IMailerService _mailService;
+        private readonly IConfiguration _config;
 
-        public MailController(IMailerService mailService)
+        public MailController(IMailerService mailService, IConfiguration config)
         {
             _mailService = mailService;
+            _config = config;
         }
 
         public async Task<IActionResult> SendCustomerConfirmation(FormEntity request)
@@ -62,7 +65,8 @@ namespace Calligraphy.Controllers
         {
             var mailRequest = new MailRequest();
 
-            var address = new MailAddress("tristanblacklafleur@hotmail.ca").Address;
+            string email = _config.GetValue<string>("AdminEmail:Email");
+            var address = new MailAddress(email).Address;
             var emailTo = address;
             var subject = "New Quote for: " + request.Customer.FirstName + " " + request.Customer.LastName;
             var today = DateTime.UtcNow;
@@ -132,7 +136,8 @@ namespace Calligraphy.Controllers
         {
             var mailRequest = new MailRequest();
 
-            var address = new MailAddress("tristanblacklafleur@hotmail.ca").Address;
+            string email = _config.GetValue<string>("AdminEmail:Email");
+            var address = new MailAddress(email).Address;
             var emailTo = address;
             var subject = "New Contract for: Quote " + quote.QuoteId;
             var today = DateTime.Now;
