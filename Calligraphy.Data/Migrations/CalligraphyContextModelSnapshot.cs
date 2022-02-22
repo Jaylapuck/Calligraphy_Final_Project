@@ -97,7 +97,7 @@ namespace Calligraphy.Data.Migrations
                     b.ToTable("Addresses");
                 });
 
-            modelBuilder.Entity("Calligraphy.Data.Models.AuthenticationModels.JWT.AdminEntity", b =>
+            modelBuilder.Entity("Calligraphy.Data.Models.AuthenticationModels.JWT.JWT.AdminEntity", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -110,6 +110,9 @@ namespace Calligraphy.Data.Migrations
 
                     b.Property<string>("RefreshToken")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("RefreshTokenExpirationDate")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("UserName")
                         .IsRequired()
@@ -126,7 +129,8 @@ namespace Calligraphy.Data.Migrations
                         new
                         {
                             Id = 1,
-                            Password = "$2a$11$XEVQfPPtoWqWOgS8PG4n3uhGY0Vwg85HbWQCOyyZNgjOzqboxQAL6",
+                            Password = "$2a$11$xK2LgcZllzzz6cHzcZ0WNu6a7Up7UYz5V6noa2CU.MJIhKrs..Pq2",
+                            RefreshTokenExpirationDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             UserName = "admin"
                         });
                 });

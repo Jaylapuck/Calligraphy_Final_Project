@@ -1,5 +1,6 @@
 ﻿using Calligraphy.Business.JWTService.JWTTokenHandler;
 using Calligraphy.Data.Models.AuthenticationModels.JWT;
+using Calligraphy.Data.Models.AuthenticationModels.JWT.JWT;
 using Calligraphy.Data.Models.AuthenticationModels.Response;
 using Calligraphy.Data.Repo.AdminLogin;
 
@@ -32,7 +33,7 @@ namespace Calligraphy.Business.AuthenticationService
             return token;
         }
 
-        public string GetRefreshToken(string userName)
+        public RefreshCredWithExpiration GetRefreshToken(string userName)
         {
             return _authRepo.GetRefreshToken(userName);
         }

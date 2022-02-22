@@ -1,7 +1,8 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 
-namespace Calligraphy.Data.Models.AuthenticationModels.JWT
+namespace Calligraphy.Data.Models.AuthenticationModels.JWT.JWT
 {
     public class AdminEntity
     {
@@ -14,5 +15,7 @@ namespace Calligraphy.Data.Models.AuthenticationModels.JWT
         public string Password { get; set; }
 
         public string RefreshToken { get; set; }
+        
+        public DateTime RefreshTokenExpirationDate { get; set; }
     }
 }

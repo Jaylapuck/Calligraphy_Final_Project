@@ -1,4 +1,5 @@
 ﻿using Calligraphy.Data.Models.AuthenticationModels.JWT;
+using Calligraphy.Data.Models.AuthenticationModels.JWT.JWT;
 using Calligraphy.Data.Models.AuthenticationModels.Response;
 
 namespace Calligraphy.Business.JWTService.TokenRefresher

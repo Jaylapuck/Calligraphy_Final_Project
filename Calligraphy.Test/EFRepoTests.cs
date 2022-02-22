@@ -3,16 +3,24 @@ using System.Collections.Generic;
 using Calligraphy.Data.Config;
 using Calligraphy.Data.Enums;
 using Calligraphy.Data.Models;
+using Castle.Core.Configuration;
 using Microsoft.EntityFrameworkCore;
 
 namespace Calligraphy.Test
 {
     public class EfRepoTests
     {
+        private readonly IConfiguration _configuration;
+        protected EfRepoTests(DbContextOptions<CalligraphyContext> contextOptions, IConfiguration configuration)
+        {
+            ContextOptions = contextOptions;
+            _configuration = configuration;
+            Seed();
+        }
+
         protected EfRepoTests(DbContextOptions<CalligraphyContext> contextOptions)
         {
             ContextOptions = contextOptions;
-
             Seed();
         }
 

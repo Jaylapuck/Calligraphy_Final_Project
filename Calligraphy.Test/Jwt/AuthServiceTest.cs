@@ -1,6 +1,8 @@
-﻿using Calligraphy.Business.AuthenticationService;
+﻿using System;
+using Calligraphy.Business.AuthenticationService;
 using Calligraphy.Business.JWTService.JWTTokenHandler;
 using Calligraphy.Data.Models.AuthenticationModels.JWT;
+using Calligraphy.Data.Models.AuthenticationModels.JWT.JWT;
 using Calligraphy.Data.Models.AuthenticationModels.Response;
 using Calligraphy.Data.Repo.AdminLogin;
 using Moq;
@@ -87,16 +89,23 @@ namespace Calligraphy.Test.Jwt
         public void GetRefreshToken()
         {
             // Arrange
-            var username = "admin";
+            const string username = "admin";
+            
+            var refreshCredWithExpiration = new RefreshCredWithExpiration
+            {
+                RefreshToken = "refreshToken",
+                Expiration = DateTime.Now.AddDays(1)
+            };
 
-            _adminLoginRepo.Setup(x => x.GetRefreshToken(username)).Returns("refreshToken");
+            _adminLoginRepo.Setup(x => x.GetRefreshToken(username)).Returns(refreshCredWithExpiration);
 
             // Act
             var result = _authService.GetRefreshToken(username);
 
             // Assert
-            Assert.NotNull(result);
-            Assert.IsType<string>(result);
+            Assert.Equal(refreshCredWithExpiration.RefreshToken, result.RefreshToken);
+            Assert.Equal(refreshCredWithExpiration.Expiration, result.Expiration);
+            Assert.IsType<RefreshCredWithExpiration>(result);
         }
     }
 }

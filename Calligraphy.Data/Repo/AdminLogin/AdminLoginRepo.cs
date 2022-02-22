@@ -1,5 +1,7 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using Calligraphy.Data.Config;
+using Calligraphy.Data.Models.AuthenticationModels.JWT.JWT;
 
 namespace Calligraphy.Data.Repo.AdminLogin
 {
@@ -17,22 +19,26 @@ namespace Calligraphy.Data.Repo.AdminLogin
             var admin = _context.Admins.FirstOrDefault(a => a.UserName == username);
             return admin != null && BCrypt.Net.BCrypt.Verify(password, admin.Password);
         }
-
-        public bool AddRefreshTokenToUser(string username, string refreshToken)
+        
+        public bool AddRefreshTokenToUser(string username, string refreshToken, DateTime refreshTokenExpiry)
         {
             var admin = _context.Admins.FirstOrDefault(a => a.UserName == username);
-
             if (admin == null) return false;
-
             admin.RefreshToken = refreshToken;
+            admin.RefreshTokenExpirationDate = refreshTokenExpiry;
             _context.SaveChanges();
             return true;
         }
 
-        public string GetRefreshToken(string userName)
+        public RefreshCredWithExpiration GetRefreshToken(string userName)
         {
             var admin = _context.Admins.FirstOrDefault(a => a.UserName == userName);
-            return admin?.RefreshToken;
+            if (admin == null) return null;
+            return new RefreshCredWithExpiration
+            {
+                RefreshToken = admin.RefreshToken,
+                Expiration = admin.RefreshTokenExpirationDate
+            };
         }
     }
 }
