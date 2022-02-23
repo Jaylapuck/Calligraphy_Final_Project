@@ -104,7 +104,7 @@ namespace Calligraphy.Test.Jwt
         _tokenRefresher.Setup(x => x.Refresh(refreshTokenRequest)).Returns(expectedResponse);
 
             // Act
-            var response = _authController.Refresh(tokenOnly);
+            var response = _authController.Refresh();
 
             // Assert
             Assert.IsType<OkObjectResult>(response);
@@ -137,7 +137,7 @@ namespace Calligraphy.Test.Jwt
             _tokenRefresher.Setup(x => x.Refresh(refreshTokenRequest)).Returns(expectedResponse);
 
             // Act
-            var response = _authController.Refresh(tokenOnly);
+            var response = _authController.Refresh();
 
             // Assert
             Assert.IsType<UnauthorizedObjectResult>(response);

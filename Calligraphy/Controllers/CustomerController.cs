@@ -12,6 +12,7 @@ namespace Calligraphy.Controllers
     [ApiController]
     [Route("[controller]")]
     [Authorize]
+    [ValidateAntiForgeryToken]
     public class CustomerController : ControllerBase
     {
         // Should be removed later on
@@ -27,6 +28,7 @@ namespace Calligraphy.Controllers
         [Route("/api/Customer")]
         [Produces(MediaTypeNames.Application.Json)]
         [AllowAnonymous]
+        [IgnoreAntiforgeryToken]
         public IEnumerable<CustomerEntity> Get()
         {
             return _customerService.GetAll();
@@ -37,6 +39,7 @@ namespace Calligraphy.Controllers
         [Route("/api/Customer")]
         [Consumes(MediaTypeNames.Application.Json)]
         [AllowAnonymous]
+        [IgnoreAntiforgeryToken]
         public IActionResult Post([FromBody] CustomerEntity customer)
         {
             var result = _customerService.Create(customer);

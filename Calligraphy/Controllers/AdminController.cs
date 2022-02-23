@@ -42,24 +42,31 @@ namespace Calligraphy.Controllers
                 Secure = true
             });
             
-            //only return the token
+            HttpContext.Response.Cookies.Append("JwtToken", token.JwtToken, new CookieOptions
+            {
+                HttpOnly = true,
+                Secure = true
+            });
+            
             return Ok(new
             {
-                token.JwtToken
+                HttpCode = HttpStatusCode.OK,
+                message = "Login successful",
             });
         }
 
         [AllowAnonymous]
         [HttpPost]
         [Route("refresh")]
-        public IActionResult Refresh([FromBody] TokenOnly tokenOnly)
+        public IActionResult Refresh()
         {
             var refreshToken = HttpContext.Request.Cookies["RefreshToken"];
+            var jwtToken = HttpContext.Request.Cookies["JwtToken"];
 
             var refreshCred = new RefreshCred()
             {
-                JwtToken = tokenOnly.JwtToken,
-                RefreshToken = refreshToken
+                RefreshToken = refreshToken,
+                JwtToken = jwtToken
             };
             
             var token = _tokenRefresher.Refresh(refreshCred);
@@ -74,14 +81,25 @@ namespace Calligraphy.Controllers
             //make cookie http only
             HttpContext.Response.Cookies.Append("RefreshToken", token.RefreshToken, new CookieOptions
             {
-                HttpOnly = true,
+                HttpOnly = false,
                 Secure = true
             });
             
-            return Ok(token);
+            HttpContext.Response.Cookies.Append("JwtToken", token.JwtToken, new CookieOptions
+            {
+                HttpOnly = false,
+                Secure = true
+            });
+            
+            return Ok(new
+            {
+                HttpCode = HttpStatusCode.OK,
+                message = "Refresh successful",
+            });
         }
 
         [HttpGet]
+        [ValidateAntiForgeryToken]
         [Route("verify")]
         public IActionResult CheckIfTokenIsValid()
         {
