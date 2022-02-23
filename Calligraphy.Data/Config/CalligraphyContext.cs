@@ -2,6 +2,7 @@
 using Calligraphy.Data.Enums;
 using Calligraphy.Data.Models;
 using Calligraphy.Data.Models.AuthenticationModels.JWT;
+using Calligraphy.Data.Models.AuthenticationModels.JWT.JWT;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 
@@ -12,7 +13,7 @@ namespace Calligraphy.Data.Config
         public CalligraphyContext(DbContextOptions<CalligraphyContext> options) : base(options)
         {
         }
-        
+
         public DbSet<FormEntity> Forms { get; set; }
         public DbSet<QuoteEntity> Quotes { get; set; }
         public DbSet<ImageEntity> Images { get; set; }

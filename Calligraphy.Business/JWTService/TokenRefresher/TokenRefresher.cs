@@ -6,6 +6,7 @@ using System.Text;
 using Calligraphy.Business.AuthenticationService;
 using Calligraphy.Business.JWTService.JWTTokenHandler;
 using Calligraphy.Data.Models.AuthenticationModels.JWT;
+using Calligraphy.Data.Models.AuthenticationModels.JWT.JWT;
 using Calligraphy.Data.Models.AuthenticationModels.Response;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
@@ -33,7 +34,7 @@ namespace Calligraphy.Business.JWTService.TokenRefresher
             string validIssuer;
             string validAudience;
 
-            if(isDevelopment)
+            if (isDevelopment)
             {
                 validIssuer = "https://localhost:5001";
                 validAudience = "https://localhost:5001";
@@ -61,9 +62,10 @@ namespace Calligraphy.Business.JWTService.TokenRefresher
 
             var user = principal.Identity?.Name;
 
-            if (refreshCred.RefreshToken != _authService.GetRefreshToken(user))
-                throw new SecurityTokenException("Invalid token");
+            if (refreshCred.RefreshToken != _authService.GetRefreshToken(user).RefreshToken && _authService.GetRefreshToken(user).Expiration < DateTime.Now)
 
+                throw new SecurityTokenException("Invalid token");
+            
             return _jwtTokenHandler.Authenticate(user, principal.Claims.ToArray());
         }
     }

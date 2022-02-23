@@ -2,6 +2,7 @@
 using Calligraphy.Business.AuthenticationService;
 using Calligraphy.Business.JWTService.TokenRefresher;
 using Calligraphy.Data.Models.AuthenticationModels.JWT;
+using Calligraphy.Data.Models.AuthenticationModels.JWT.JWT;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 

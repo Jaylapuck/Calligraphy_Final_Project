@@ -29,7 +29,6 @@ namespace Calligraphy.Business.JWTService.JWTTokenHandler
         public AuthenticationResponse Authenticate(string username, IEnumerable<Claim> claims)
         {
             bool isDevelopment = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") == "Development";
-            JwtSecurityToken jwtSecurityToken;
 
             string validIssuer;
             string validAudience;
@@ -45,21 +44,24 @@ namespace Calligraphy.Business.JWTService.JWTTokenHandler
                 validAudience = _configuration["Jwt:Audience"];
             }
 
-            jwtSecurityToken = new JwtSecurityToken(
-                    claims: claims,
-                    expires: DateTime.UtcNow.AddHours(1),
-                    audience: validAudience,
-                    issuer: validIssuer,
-                    signingCredentials: new SigningCredentials(
-                        new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Secret"])),
-                        SecurityAlgorithms.HmacSha256)
+            var jwtSecurityToken = new JwtSecurityToken(
+                claims: claims,
+                expires: DateTime.UtcNow.AddHours(1),
+                audience: validAudience,
+                issuer: validIssuer,
+                signingCredentials: new SigningCredentials(
+                    new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Secret"])),
+                    SecurityAlgorithms.HmacSha256)
             );
 
             var token = new JwtSecurityTokenHandler().WriteToken(jwtSecurityToken);
             var refreshToken = _refreshTokenGenerator.GenerateRefreshToken();
-
-            _adminLoginRepo.AddRefreshTokenToUser(username, refreshToken);
-
+            
+            // add a timer to the refresh token
+            var refreshTokenExpiry = DateTime.UtcNow.AddDays(1);
+            
+            _adminLoginRepo.AddRefreshTokenToUser(username, refreshToken, refreshTokenExpiry);
+            
             return new AuthenticationResponse
             {
                 JwtToken = token,
@@ -72,8 +74,7 @@ namespace Calligraphy.Business.JWTService.JWTTokenHandler
         {
             var tokenHandler = new JwtSecurityTokenHandler();
             var key = Encoding.ASCII.GetBytes(_configuration["Jwt:Secret"]);
-            bool isDevelopment = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") == "Development";
-            SecurityTokenDescriptor tokenDescriptor;
+            var isDevelopment = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") == "Development";
 
             string validIssuer;
             string validAudience;
@@ -89,23 +90,24 @@ namespace Calligraphy.Business.JWTService.JWTTokenHandler
                 validAudience = _configuration["Jwt:Audience"];
             }
 
-            tokenDescriptor = new SecurityTokenDescriptor
-                {
-                    Subject = new ClaimsIdentity(new[]
+            var tokenDescriptor = new SecurityTokenDescriptor
+            {
+                Subject = new ClaimsIdentity(new[]
                 {
                     new Claim(ClaimTypes.Name, username)
                 }),
-                    Audience = validAudience,
-                    Issuer = validIssuer,
-                    Expires = DateTime.UtcNow.AddHours(1),
-                    SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key),
+                Audience = validAudience,
+                Issuer = validIssuer,
+                Expires = DateTime.UtcNow.AddHours(1),
+                SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key),
                     SecurityAlgorithms.HmacSha256Signature)
-                };
+            };
 
             var token = tokenHandler.CreateToken(tokenDescriptor);
             var refreshToken = _refreshTokenGenerator.GenerateRefreshToken();
+            var refreshTokenExpiry = DateTime.UtcNow.AddDays(1);
 
-            _adminLoginRepo.AddRefreshTokenToUser(username, refreshToken);
+            _adminLoginRepo.AddRefreshTokenToUser(username, refreshToken, refreshTokenExpiry);
 
             return new AuthenticationResponse
             {

@@ -1,4 +1,4 @@
-﻿namespace Calligraphy.Data.Models.AuthenticationModels.JWT
+﻿namespace Calligraphy.Data.Models.AuthenticationModels.JWT.JWT
 {
     public class RefreshCred
     {
