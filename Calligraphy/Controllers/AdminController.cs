@@ -4,6 +4,7 @@ using Calligraphy.Business.JWTService.TokenRefresher;
 using Calligraphy.Data.Models.AuthenticationModels.JWT;
 using Calligraphy.Data.Models.AuthenticationModels.JWT.JWT;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Calligraphy.Controllers
@@ -34,15 +35,33 @@ namespace Calligraphy.Controllers
                     HttpCode = HttpStatusCode.Unauthorized,
                     message = "Invalid username or password"
                 });
-
-            return Ok(token);
+            
+            HttpContext.Response.Cookies.Append("RefreshToken", token.RefreshToken, new CookieOptions
+            {
+                HttpOnly = true,
+                Secure = true
+            });
+            
+            //only return the token
+            return Ok(new
+            {
+                token.JwtToken
+            });
         }
 
         [AllowAnonymous]
         [HttpPost]
         [Route("refresh")]
-        public IActionResult Refresh([FromBody] RefreshCred refreshCred)
+        public IActionResult Refresh([FromBody] TokenOnly tokenOnly)
         {
+            var refreshToken = HttpContext.Request.Cookies["RefreshToken"];
+
+            var refreshCred = new RefreshCred()
+            {
+                JwtToken = tokenOnly.JwtToken,
+                RefreshToken = refreshToken
+            };
+            
             var token = _tokenRefresher.Refresh(refreshCred);
 
             if (token.JwtToken == null || token.RefreshToken == null)
@@ -51,7 +70,14 @@ namespace Calligraphy.Controllers
                     HttpCode = HttpStatusCode.Unauthorized,
                     message = "Invalid username or password"
                 });
-
+            
+            //make cookie http only
+            HttpContext.Response.Cookies.Append("RefreshToken", token.RefreshToken, new CookieOptions
+            {
+                HttpOnly = true,
+                Secure = true
+            });
+            
             return Ok(token);
         }
 
