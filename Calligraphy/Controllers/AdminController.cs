@@ -52,6 +52,7 @@ namespace Calligraphy.Controllers
             {
                 HttpCode = HttpStatusCode.OK,
                 message = "Login successful",
+                path = Request.Path.Value
             });
         }
 

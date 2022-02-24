@@ -224,10 +224,10 @@ namespace Calligraphy
 
                 if (
 
-                    string.Equals(path, "/", StringComparison.OrdinalIgnoreCase) ||
-
-                    string.Equals(path, "/index.html", StringComparison.OrdinalIgnoreCase) ||
-
+                    string.Equals(path, "/api/admin/login", StringComparison.OrdinalIgnoreCase) ||
+                    
+                    string.Equals(path, "/api/admin/refresh", StringComparison.OrdinalIgnoreCase) ||
+                    
                     urlAreas.Any(urlAreas=>path.StartsWith(urlAreas))
 
                 )
@@ -240,12 +240,9 @@ namespace Calligraphy
 
                             HttpOnly = false ,
 
-                            Secure=false,
+                            Secure=true,
 
                             IsEssential=true,
-
-                            SameSite=SameSiteMode.Strict                       
-
                         });
 
                 }
