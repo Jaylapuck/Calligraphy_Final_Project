@@ -133,11 +133,6 @@ namespace Calligraphy
                     };
                 });
             
-            services.AddAntiforgery(options =>
-            {
-                options.HeaderName = "X-XSRF-TOKEN";
-            });
-            
             // Swagger Config
             services.AddSwaggerGen(c =>
             {
@@ -213,41 +208,6 @@ namespace Calligraphy
             app.UseCors("ApiCorsPolicy");
             app.UseAuthentication();
             app.UseAuthorization();
-            
-            app.Use(next => context =>
-
-            {
-
-                string path = context.Request.Path.Value;
-
-                string[] urlAreas = { "/api", "/swagger", "articles" };
-
-                if (
-
-                    string.Equals(path, "/api/admin/login", StringComparison.OrdinalIgnoreCase) ||
-                    
-                    string.Equals(path, "/api/admin/refresh", StringComparison.OrdinalIgnoreCase) ||
-                    
-                    urlAreas.Any(urlAreas=>path.StartsWith(urlAreas))
-
-                )
-
-                {
-                    var tokens = antiforgery.GetAndStoreTokens(context);
-                    context.Response.Cookies.Append("XSRF-TOKEN", tokens.RequestToken,
-
-                        new CookieOptions() {
-
-                            HttpOnly = false ,
-
-                            Secure=true,
-
-                            IsEssential=true,
-                        });
-                    
-                }
-                return next(context);
-            }); 
             
             app.UseEndpoints(endpoints =>
             {

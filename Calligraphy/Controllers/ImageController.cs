@@ -12,7 +12,6 @@ namespace Calligraphy.Controllers
     [ApiController]
     [Route("[controller]")]
     [Authorize]
-    [ValidateAntiForgeryToken]
     public class ImageController : ControllerBase
     {
         private readonly IImageService _imageService;
@@ -38,7 +37,6 @@ namespace Calligraphy.Controllers
         [Route("/api/Image/{id:int}")]
         [Produces(MediaTypeNames.Application.Json)]
         [AllowAnonymous]
-        [IgnoreAntiforgeryToken]
         public IActionResult GetById(int id)
         {
             return _imageService.GetById(id);
@@ -49,7 +47,6 @@ namespace Calligraphy.Controllers
         [Route("/api/Image/portfolio/{id:int}")]
         [Produces(MediaTypeNames.Application.Json)]
         [AllowAnonymous]
-        [IgnoreAntiforgeryToken]
         public IActionResult GetByImageId(int id)
         {
             return _imageService.GetByImageId(id);
