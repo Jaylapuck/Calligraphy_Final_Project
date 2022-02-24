@@ -135,7 +135,7 @@ namespace Calligraphy
             
             services.AddAntiforgery(options =>
             {
-                options.HeaderName = "XSRF-TOKEN";
+                options.HeaderName = "X-XSRF-TOKEN";
             });
             
             // Swagger Config
@@ -198,7 +198,7 @@ namespace Calligraphy
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IAntiforgery antiforgery)
         {
             if (env.IsDevelopment())
             {
@@ -222,29 +222,36 @@ namespace Calligraphy
 
                 string[] urlAreas = { "/api", "/swagger", "articles" };
 
-                if (!string.Equals(path, "/api/admin", StringComparison.OrdinalIgnoreCase) &&
-                    !string.Equals(path, "/index.html", StringComparison.OrdinalIgnoreCase) &&
-                    !urlAreas.Any(urlAreas => path.StartsWith(urlAreas))) return next(context);
-                var antiforgery = context.RequestServices.GetRequiredService<IAntiforgery>();
-                    
-                var tokens = antiforgery.GetAndStoreTokens(context);
+                if (
 
-                context.Response.Cookies.Append("XSRF-TOKEN", tokens.RequestToken,
+                    string.Equals(path, "/", StringComparison.OrdinalIgnoreCase) ||
 
-                    new CookieOptions() {
+                    string.Equals(path, "/index.html", StringComparison.OrdinalIgnoreCase) ||
 
-                        HttpOnly = false,
+                    urlAreas.Any(urlAreas=>path.StartsWith(urlAreas))
 
-                        Secure=false,
+                )
 
-                        IsEssential=true,
+                {
+                    var tokens = antiforgery.GetAndStoreTokens(context);
+                    context.Response.Cookies.Append("XSRF-TOKEN", tokens.RequestToken,
 
-                        SameSite=SameSiteMode.Strict                       
+                        new CookieOptions() {
 
-                    });
+                            HttpOnly = false ,
+
+                            Secure=false,
+
+                            IsEssential=true,
+
+                            SameSite=SameSiteMode.Strict                       
+
+                        });
+
+                }
                 return next(context);
-            });
-
+            }); 
+            
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(

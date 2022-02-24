@@ -81,13 +81,13 @@ namespace Calligraphy.Controllers
             //make cookie http only
             HttpContext.Response.Cookies.Append("RefreshToken", token.RefreshToken, new CookieOptions
             {
-                HttpOnly = false,
+                HttpOnly = true,
                 Secure = true
             });
             
             HttpContext.Response.Cookies.Append("JwtToken", token.JwtToken, new CookieOptions
             {
-                HttpOnly = false,
+                HttpOnly = true,
                 Secure = true
             });
             

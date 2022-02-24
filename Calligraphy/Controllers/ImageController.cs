@@ -49,6 +49,7 @@ namespace Calligraphy.Controllers
         [Route("/api/Image/portfolio/{id:int}")]
         [Produces(MediaTypeNames.Application.Json)]
         [AllowAnonymous]
+        [IgnoreAntiforgeryToken]
         public IActionResult GetByImageId(int id)
         {
             return _imageService.GetByImageId(id);
