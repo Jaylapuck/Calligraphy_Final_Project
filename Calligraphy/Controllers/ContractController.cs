@@ -11,7 +11,6 @@ namespace Calligraphy.Controllers
     [ApiController]
     [Route("[controller]")]
     [Authorize]
-    [ValidateAntiForgeryToken]
     public class ContractController : ControllerBase
     {
         private readonly IContractService _contractService;

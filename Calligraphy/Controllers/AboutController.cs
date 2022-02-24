@@ -32,7 +32,6 @@ namespace Calligraphy.Controllers
         [HttpPut]
         [Route("/api/About")]
         [Authorize]
-        [ValidateAntiForgeryToken]
         [Consumes(MediaTypeNames.Application.Json)]
         public IActionResult Update([FromBody] AboutEntity about)
         {

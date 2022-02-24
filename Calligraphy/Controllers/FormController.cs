@@ -19,7 +19,6 @@ namespace Calligraphy.Controllers
     [EnableCors("ApiCorsPolicy")]
     [ApiController]
     [Authorize]
-    [ValidateAntiForgeryToken]
     [Route("[controller]")]
     public class FormController : ControllerBase
     {
@@ -40,7 +39,6 @@ namespace Calligraphy.Controllers
         [Route("/api/Form/Services")]
         [Produces(MediaTypeNames.Application.Json)]
         [AllowAnonymous]
-        [IgnoreAntiforgeryToken]
         public IEnumerable<ServiceEntity> GetServices()
         {
             return _formService.GetAllServices();
@@ -74,7 +72,6 @@ namespace Calligraphy.Controllers
         [HttpPost]
         [Route("/api/form")]
         [AllowAnonymous]
-        [IgnoreAntiforgeryToken]
         public async Task<IActionResult> Post([FromForm] FormEntity form)
         {
             try

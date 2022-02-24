@@ -100,7 +100,6 @@ namespace Calligraphy.Controllers
         }
 
         [HttpGet]
-        [ValidateAntiForgeryToken]
         [Route("verify")]
         public IActionResult CheckIfTokenIsValid()
         {

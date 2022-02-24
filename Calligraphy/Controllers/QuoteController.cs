@@ -18,7 +18,6 @@ namespace Calligraphy.Controllers
     [ApiController]
     [Route("[controller]")]
     [Authorize]
-    [ValidateAntiForgeryToken]
     public class QuoteController : ControllerBase
     {
         private readonly IContractService _contractService;
