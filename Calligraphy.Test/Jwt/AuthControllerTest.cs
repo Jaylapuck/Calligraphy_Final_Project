@@ -96,10 +96,15 @@ namespace Calligraphy.Test.Jwt
                 RefreshToken = "test"
             };
 
-            _tokenRefresher.Setup(x => x.Refresh(refreshTokenRequest)).Returns(expectedResponse);
+            var tokenOnly = new TokenOnly()
+            {
+                JwtToken = "test"
+            };
+
+        _tokenRefresher.Setup(x => x.Refresh(refreshTokenRequest)).Returns(expectedResponse);
 
             // Act
-            var response = _authController.Refresh(refreshTokenRequest);
+            var response = _authController.Refresh();
 
             // Assert
             Assert.IsType<OkObjectResult>(response);
@@ -123,11 +128,16 @@ namespace Calligraphy.Test.Jwt
                 JwtToken = null,
                 RefreshToken = null
             };
+            
+            var tokenOnly = new TokenOnly()
+            {
+                JwtToken = "test"
+            };
 
             _tokenRefresher.Setup(x => x.Refresh(refreshTokenRequest)).Returns(expectedResponse);
 
             // Act
-            var response = _authController.Refresh(refreshTokenRequest);
+            var response = _authController.Refresh();
 
             // Assert
             Assert.IsType<UnauthorizedObjectResult>(response);

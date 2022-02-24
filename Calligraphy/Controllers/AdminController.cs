@@ -4,6 +4,7 @@ using Calligraphy.Business.JWTService.TokenRefresher;
 using Calligraphy.Data.Models.AuthenticationModels.JWT;
 using Calligraphy.Data.Models.AuthenticationModels.JWT.JWT;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Calligraphy.Controllers
@@ -34,15 +35,41 @@ namespace Calligraphy.Controllers
                     HttpCode = HttpStatusCode.Unauthorized,
                     message = "Invalid username or password"
                 });
-
-            return Ok(token);
+            
+            HttpContext.Response.Cookies.Append("RefreshToken", token.RefreshToken, new CookieOptions
+            {
+                HttpOnly = true,
+                Secure = true
+            });
+            
+            HttpContext.Response.Cookies.Append("JwtToken", token.JwtToken, new CookieOptions
+            {
+                HttpOnly = true,
+                Secure = true
+            });
+            
+            return Ok(new
+            {
+                HttpCode = HttpStatusCode.OK,
+                message = "Login successful",
+                path = Request.Path.Value
+            });
         }
 
         [AllowAnonymous]
         [HttpPost]
         [Route("refresh")]
-        public IActionResult Refresh([FromBody] RefreshCred refreshCred)
+        public IActionResult Refresh()
         {
+            var refreshToken = HttpContext.Request.Cookies["RefreshToken"];
+            var jwtToken = HttpContext.Request.Cookies["JwtToken"];
+
+            var refreshCred = new RefreshCred()
+            {
+                RefreshToken = refreshToken,
+                JwtToken = jwtToken
+            };
+            
             var token = _tokenRefresher.Refresh(refreshCred);
 
             if (token.JwtToken == null || token.RefreshToken == null)
@@ -51,11 +78,29 @@ namespace Calligraphy.Controllers
                     HttpCode = HttpStatusCode.Unauthorized,
                     message = "Invalid username or password"
                 });
-
-            return Ok(token);
+            
+            //make cookie http only
+            HttpContext.Response.Cookies.Append("RefreshToken", token.RefreshToken, new CookieOptions
+            {
+                HttpOnly = true,
+                Secure = true
+            });
+            
+            HttpContext.Response.Cookies.Append("JwtToken", token.JwtToken, new CookieOptions
+            {
+                HttpOnly = true,
+                Secure = true
+            });
+            
+            return Ok(new
+            {
+                HttpCode = HttpStatusCode.OK,
+                message = "Refresh successful",
+            });
         }
 
         [HttpGet]
+        [ValidateAntiForgeryToken]
         [Route("verify")]
         public IActionResult CheckIfTokenIsValid()
         {

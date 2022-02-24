@@ -1,4 +1,6 @@
 ﻿using System;
+using System.IO;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Calligraphy.Business.About;
@@ -23,9 +25,11 @@ using Calligraphy.Data.Repo.Quote;
 using Calligraphy.Data.Repo.Service;
 using Calligraphy.Mailer.Services;
 using Calligraphy.Mailer.Settings;
+using Microsoft.AspNetCore.Antiforgery;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -83,7 +87,7 @@ namespace Calligraphy
             string audiece;
             string issuer;
 
-            if(CurrentEnvironment.IsDevelopment())
+            if (CurrentEnvironment.IsDevelopment())
             {
                 audiece = "https://localhost:5001";
                 issuer = "https://localhost:5001";
@@ -94,16 +98,18 @@ namespace Calligraphy
                 issuer = Configuration["Jwt:Issuer"];
             }
 
+          
+            
             services.AddAuthentication(opt =>
                 {
                     opt.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
                     opt.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
                     opt.DefaultSignInScheme = JwtBearerDefaults.AuthenticationScheme;
                     opt.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
+                    opt.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
                 })
                 .AddJwtBearer(options =>
                 {
-                    options.SaveToken = true;
                     options.TokenValidationParameters = new TokenValidationParameters
                     {
                         ValidateIssuer = true,
@@ -119,15 +125,19 @@ namespace Calligraphy
 
                     options.Events = new JwtBearerEvents
                     {
-                        OnAuthenticationFailed = context =>
+                        OnMessageReceived = context =>
                         {
-                            if (context.Exception.GetType() == typeof(SecurityTokenExpiredException))
-                                context.Response.Headers.Add("Token-Expired", "true");
+                            context.Token = context.Request.Cookies["JwtToken"];
                             return Task.CompletedTask;
-                        }
+                        },
                     };
                 });
-
+            
+            services.AddAntiforgery(options =>
+            {
+                options.HeaderName = "X-XSRF-TOKEN";
+            });
+            
             // Swagger Config
             services.AddSwaggerGen(c =>
             {
@@ -188,7 +198,7 @@ namespace Calligraphy
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IAntiforgery antiforgery)
         {
             if (env.IsDevelopment())
             {
@@ -196,20 +206,56 @@ namespace Calligraphy
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Calligraphy.Mailer"));
             }
-
+            
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseRouting();
             app.UseCors("ApiCorsPolicy");
             app.UseAuthentication();
             app.UseAuthorization();
+            
+            app.Use(next => context =>
 
+            {
+
+                string path = context.Request.Path.Value;
+
+                string[] urlAreas = { "/api", "/swagger", "articles" };
+
+                if (
+
+                    string.Equals(path, "/api/admin/login", StringComparison.OrdinalIgnoreCase) ||
+                    
+                    string.Equals(path, "/api/admin/refresh", StringComparison.OrdinalIgnoreCase) ||
+                    
+                    urlAreas.Any(urlAreas=>path.StartsWith(urlAreas))
+
+                )
+
+                {
+                    var tokens = antiforgery.GetAndStoreTokens(context);
+                    context.Response.Cookies.Append("XSRF-TOKEN", tokens.RequestToken,
+
+                        new CookieOptions() {
+
+                            HttpOnly = false ,
+
+                            Secure=true,
+
+                            IsEssential=true,
+                        });
+                    
+                }
+                return next(context);
+            }); 
+            
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
                     "default",
                     "{controller=Home}/{action=Index}/{id?}");
             });
+            
         }
     }
 }

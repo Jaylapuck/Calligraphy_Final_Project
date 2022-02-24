@@ -1,6 +1,7 @@
 ﻿using System.Net.Mime;
 using Calligraphy.Business.About;
 using Calligraphy.Data.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 
@@ -30,6 +31,8 @@ namespace Calligraphy.Controllers
         // PUT
         [HttpPut]
         [Route("/api/About")]
+        [Authorize]
+        [ValidateAntiForgeryToken]
         [Consumes(MediaTypeNames.Application.Json)]
         public IActionResult Update([FromBody] AboutEntity about)
         {
