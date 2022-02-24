@@ -244,7 +244,7 @@ namespace Calligraphy
 
                             IsEssential=true,
                         });
-
+                    
                 }
                 return next(context);
             }); 
